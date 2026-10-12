@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Homework 3: Arrie Thomas</title>
+<style>
+body { margin: 0; padding: 24px 16px 64px; font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; color: #161a23; background: #f3f5f8; }
+main, header.top { max-width: 980px; margin: 0 auto; }
+h1 { font-size: 2rem; margin: 0 0 .3em; } h2 { font-size: 1.5rem; margin: 2em 0 .6em; border-bottom: 2px solid #d9dee7; padding-bottom: .3em; }
+h3 { font-size: 1.2rem; margin: 0 0 .4em; } h4 { font-size: 1rem; margin: 1.2em 0 .4em; }
+section.item { background: #fff; border: 1px solid #d9dee7; border-radius: 10px; padding: 16px 18px; margin: 0 0 18px; }
+.meta { color: #454d5e; margin: 0 0 .3em; } .ok { color: #0f7a55; font-weight: 700; } .no { color: #b9322a; font-weight: 700; }
+table { border-collapse: collapse; width: 100%; background: #fff; } th, td { text-align: left; padding: 8px 10px; border: 1px solid #d9dee7; vertical-align: top; }
+th { background: #edf0f5; }
+ul.checks { list-style: none; padding: 0; margin: 0; } ul.checks li { padding: 3px 0; }
+pre { background: #f6f8fb; border: 1px solid #e1e6ee; border-radius: 8px; padding: 12px; overflow: auto; font: 13px/1.5 Menlo, Consolas, "Courier New", monospace; white-space: pre; max-height: 480px; }
+iframe { width: 100%; height: 380px; border: 1px solid #c3cad7; border-radius: 8px; background: #fff; }
+.answer { white-space: pre-wrap; background: #fff; border-left: 4px solid #6d28d9; padding: 10px 14px; margin: 0; }
+.question { color: #454d5e; }
+</style>
+</head>
+<body>
+<header class="top">
+<h1>Homework 3: Module 3</h1>
+<p class="meta"><strong>Name:</strong> Arrie Thomas</p>
+<p class="meta"><strong>Downloaded:</strong> <time datetime="2026-10-12">October 12, 2026</time></p>
+<table><thead><tr><th scope="col">Work</th><th scope="col">Completed</th></tr></thead><tbody>
+<tr><td>Challenges with every check passing</td><td>10 of 12</td></tr>
+<tr><td>Quizzes finished</td><td>6 of 6</td></tr>
+<tr><td>Written answers (10 words or more)</td><td>5 of 6</td></tr>
+<tr><td>Practice activities</td><td>9 of 9</td></tr>
+</tbody></table>
+</header>
+<main>
+<h2>Challenges</h2>
+<section class="item">
+<h3>Challenge 3.1: Fix the syntax</h3>
+<p class="ok">8 of 8 checks pass</p>
+<ul class="checks"><li><span class="ok">Pass:</span> All element and attribute names are lowercase</li><li><span class="ok">Pass:</span> No overlapping tags: the element opened last is closed first</li><li><span class="ok">Pass:</span> Every non-void element you open is closed</li><li><span class="ok">Pass:</span> Void elements have no closing tag (no &lt;/br&gt;)</li><li><span class="ok">Pass:</span> No slash pretending to close a non-void element (no &lt;div /&gt;)</li><li><span class="ok">Pass:</span> Every attribute value is in double quotes, and the photo&#39;s whole alt text survives</li><li><span class="ok">Pass:</span> The &quot;open to everyone&quot; paragraph is visible (no hidden attribute at all)</li><li><span class="ok">Pass:</span> The reminder checkbox starts unticked (no checked attribute at all)</li></ul>
+<h4>HTML</h4>
+<pre>&lt;!-- A Story Time notice with eight mistakes. Each TODO comment names one. --&gt;
+&lt;h2&gt;Story Time&lt;/h2&gt;                                      &lt;!-- TODO: house style writes element names in lowercase --&gt;
+&lt;p&gt;Read &lt;em&gt;&lt;strong&gt;this&lt;/strong&gt; first&lt;/em&gt;.&lt;/p&gt;        &lt;!-- TODO: these two elements overlap --&gt;
+&lt;p&gt;Stories, songs and a craft for ages 3 to 6.&lt;/p&gt;           &lt;!-- TODO: this paragraph is never closed --&gt;
+&lt;p&gt;Bring a grown-up.&lt;br&gt;Seats are first come.&lt;/p&gt;   &lt;!-- TODO: a void element never gets a closing tag --&gt;
+&lt;!-- The next line is a photo. Its src holds a placeholder picture as text, so no image file is needed. --&gt;
+&lt;img src=&quot;data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#39;0 0 4 2&#39;%3E%3Crect width=&#39;4&#39; height=&#39;2&#39; fill=&#39;%23b9cde6&#39;/%3E%3C/svg%3E&quot; width=&quot;240&quot; height=&quot;120&quot; alt=&quot;Children listening to a story&quot;&gt;
+&lt;!-- TODO (for the img above): an attribute value with spaces must be in double quotes, or the browser cuts it short --&gt;
+&lt;div class=&quot;note&quot;&gt;Ask at the front desk if you need help.&lt;/div&gt;  &lt;!-- TODO: a slash does not close a div --&gt;
+&lt;p&gt;Today&#39;s session is open to everyone.&lt;/p&gt;         &lt;!-- TODO: this paragraph should be visible --&gt;
+&lt;p&gt;&lt;input type=&quot;checkbox&quot; check&gt; Email me a reminder.&lt;/p&gt;  &lt;!-- TODO: the box should start unticked --&gt;</pre>
+<h4>Live preview</h4>
+<iframe title="Preview of Challenge 3.1: Fix the syntax" sandbox="" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;title&gt;Preview&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;!-- A Story Time notice with eight mistakes. Each TODO comment names one. --&gt;
+&lt;h2&gt;Story Time&lt;/h2&gt;                                      &lt;!-- TODO: house style writes element names in lowercase --&gt;
+&lt;p&gt;Read &lt;em&gt;&lt;strong&gt;this&lt;/strong&gt; first&lt;/em&gt;.&lt;/p&gt;        &lt;!-- TODO: these two elements overlap --&gt;
+&lt;p&gt;Stories, songs and a craft for ages 3 to 6.&lt;/p&gt;           &lt;!-- TODO: this paragraph is never closed --&gt;
+&lt;p&gt;Bring a grown-up.&lt;br&gt;Seats are first come.&lt;/p&gt;   &lt;!-- TODO: a void element never gets a closing tag --&gt;
+&lt;!-- The next line is a photo. Its src holds a placeholder picture as text, so no image file is needed. --&gt;
+&lt;img src=&quot;data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#39;0 0 4 2&#39;%3E%3Crect width=&#39;4&#39; height=&#39;2&#39; fill=&#39;%23b9cde6&#39;/%3E%3C/svg%3E&quot; width=&quot;240&quot; height=&quot;120&quot; alt=&quot;Children listening to a story&quot;&gt;
+&lt;!-- TODO (for the img above): an attribute value with spaces must be in double quotes, or the browser cuts it short --&gt;
+&lt;div class=&quot;note&quot;&gt;Ask at the front desk if you need help.&lt;/div&gt;  &lt;!-- TODO: a slash does not close a div --&gt;
+&lt;p&gt;Today&#39;s session is open to everyone.&lt;/p&gt;         &lt;!-- TODO: this paragraph should be visible --&gt;
+&lt;p&gt;&lt;input type=&quot;checkbox&quot; check&gt; Email me a reminder.&lt;/p&gt;  &lt;!-- TODO: the box should start unticked --&gt;
+&lt;/body&gt;
+&lt;/html&gt;"></iframe>
+</section>
+<section class="item">
+<h3>Challenge 3.2: Whitespace and comments</h3>
+<p class="ok">4 of 4 checks pass</p>
+<ul class="checks"><li><span class="ok">Pass:</span> The address shows on three lines, with two &lt;br&gt;s</li><li><span class="ok">Pass:</span> The closure and the sale are two separate paragraphs, with no stacked &lt;br&gt;&lt;br&gt;</li><li><span class="ok">Pass:</span> The draft note is a comment: it is in your code but not on the page</li><li><span class="ok">Pass:</span> The reading-room sign keeps its spacing (&lt;pre&gt;)</li></ul>
+<h4>HTML</h4>
+<pre>&lt;h2&gt;Visit us&lt;/h2&gt;                                         &lt;!-- a section heading --&gt;
+&lt;!-- TODO: the address below is three lines here, but the browser joins them into one line. Keep them on three. --&gt;
+&lt;p class=&quot;address&quot;&gt;
+  Harbor Street Library
+  &lt;br&gt;12 Harbor Street
+  &lt;br&gt;Riverside
+&lt;/p&gt;
+&lt;!-- TODO: the next paragraph holds two separate announcements. Make them two paragraphs instead. --&gt;
+&lt;p&gt;The library is closed on Monday, November 9.&lt;/p&gt;
+&lt;p&gt;The book sale starts on Saturday, November 14.&lt;/p&gt;
+&lt;!--DRAFT: ask Sam whether the sale opens at 9 or 10.--&gt;   &lt;!-- TODO: a note for the team, not for visitors --&gt;
+&lt;!-- TODO: the sign below is lined up with spaces, but the spaces collapse. Use the element that keeps them. --&gt;
+&lt;p class=&quot;sign&quot;&gt;&lt;pre&gt;
++-------------------+
+|   QUIET  PLEASE   |
+|  READING ROOM  2  |
++-------------------+
+&lt;/p&gt;</pre>
+<h4>Live preview</h4>
+<iframe title="Preview of Challenge 3.2: Whitespace and comments" sandbox="" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;title&gt;Preview&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h2&gt;Visit us&lt;/h2&gt;                                         &lt;!-- a section heading --&gt;
+&lt;!-- TODO: the address below is three lines here, but the browser joins them into one line. Keep them on three. --&gt;
+&lt;p class=&quot;address&quot;&gt;
+  Harbor Street Library
+  &lt;br&gt;12 Harbor Street
+  &lt;br&gt;Riverside
+&lt;/p&gt;
+&lt;!-- TODO: the next paragraph holds two separate announcements. Make them two paragraphs instead. --&gt;
+&lt;p&gt;The library is closed on Monday, November 9.&lt;/p&gt;
+&lt;p&gt;The book sale starts on Saturday, November 14.&lt;/p&gt;
+&lt;!--DRAFT: ask Sam whether the sale opens at 9 or 10.--&gt;   &lt;!-- TODO: a note for the team, not for visitors --&gt;
+&lt;!-- TODO: the sign below is lined up with spaces, but the spaces collapse. Use the element that keeps them. --&gt;
+&lt;p class=&quot;sign&quot;&gt;&lt;pre&gt;
++-------------------+
+|   QUIET  PLEASE   |
+|  READING ROOM  2  |
++-------------------+
+&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;"></iframe>
+</section>
+<section class="item">
+<h3>Challenge 3.3: Choose elements by meaning</h3>
+<p class="ok">6 of 6 checks pass</p>
+<ul class="checks"><li><span class="ok">Pass:</span> No obsolete &lt;font&gt; or &lt;center&gt; tags are left</li><li><span class="ok">Pass:</span> &quot;Holiday Hours&quot; is an &lt;h2&gt;</li><li><span class="ok">Pass:</span> &quot;Warning:&quot; is marked as important (&lt;strong&gt;)</li><li><span class="ok">Pass:</span> The stressed word &quot;do&quot; is &lt;em&gt;</li><li><span class="ok">Pass:</span> &quot;carpe librum&quot; is &lt;i&gt; (a different voice), and no longer &lt;em&gt;</li><li><span class="ok">Pass:</span> &quot;Harbor Pass&quot; is &lt;b&gt; (attention, not importance), and no longer &lt;strong&gt;</li></ul>
+<h4>HTML</h4>
+<pre>&lt;!-- A holiday notice, marked up for looks instead of meaning. Choose each element by what the words ARE. --&gt;
+&lt;h2&gt;Holiday Hours&lt;/h2&gt;                         &lt;!-- TODO: center is obsolete, and this is really a heading --&gt;
+&lt;p&gt;&lt;strong&gt;Warning:&lt;/strong&gt; the book drop is closed on holidays.&lt;/p&gt;  &lt;!-- TODO: font is obsolete; the word is urgent --&gt;
+&lt;p&gt;Yes, we &lt;em&gt;do&lt;/em&gt; open on Veterans Day, from noon to 5 PM.&lt;/p&gt;    &lt;!-- TODO: someone doubted it, so stress the word &quot;do&quot; --&gt;
+&lt;p&gt;Our motto is &lt;i&gt;carpe librum&lt;/i&gt;: seize the book.&lt;/p&gt;    &lt;!-- TODO: not stress, but a phrase in another language --&gt;
+&lt;p&gt;Ask about the new &lt;b&gt;Harbor Pass&lt;/b&gt; card.&lt;/p&gt;    &lt;!-- TODO: a product name: set apart, not more important --&gt;</pre>
+<h4>Live preview</h4>
+<iframe title="Preview of Challenge 3.3: Choose elements by meaning" sandbox="" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;title&gt;Preview&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;!-- A holiday notice, marked up for looks instead of meaning. Choose each element by what the words ARE. --&gt;
+&lt;h2&gt;Holiday Hours&lt;/h2&gt;                         &lt;!-- TODO: center is obsolete, and this is really a heading --&gt;
+&lt;p&gt;&lt;strong&gt;Warning:&lt;/strong&gt; the book drop is closed on holidays.&lt;/p&gt;  &lt;!-- TODO: font is obsolete; the word is urgent --&gt;
+&lt;p&gt;Yes, we &lt;em&gt;do&lt;/em&gt; open on Veterans Day, from noon to 5 PM.&lt;/p&gt;    &lt;!-- TODO: someone doubted it, so stress the word &quot;do&quot; --&gt;
+&lt;p&gt;Our motto is &lt;i&gt;carpe librum&lt;/i&gt;: seize the book.&lt;/p&gt;    &lt;!-- TODO: not stress, but a phrase in another language --&gt;
+&lt;p&gt;Ask about the new &lt;b&gt;Harbor Pass&lt;/b&gt; card.&lt;/p&gt;    &lt;!-- TODO: a product name: set apart, not more important --&gt;
+&lt;/body&gt;
+&lt;/html&gt;"></iframe>
+</section>
+<section class="item">
+<h3>Challenge 3.4: From div soup to semantic HTML</h3>
+<p class="ok">9 of 9 checks pass</p>
+<ul class="checks"><li><span class="ok">Pass:</span> A &lt;header&gt; holds the &lt;nav&gt;</li><li><span class="ok">Pass:</span> Inside &lt;nav&gt;, a &lt;ul&gt; holds three &lt;li&gt;s, each with one link</li><li><span class="ok">Pass:</span> Exactly one &lt;h1&gt;, and it is the library&#39;s name</li><li><span class="ok">Pass:</span> Exactly one &lt;main&gt;, with both section headings as &lt;h2&gt;s inside it</li><li><span class="ok">Pass:</span> The opening hours are a &lt;ul&gt; with three &lt;li&gt;s inside &lt;main&gt;</li><li><span class="ok">Pass:</span> The photo has alt text of at least three words that describes it (not a file name)</li><li><span class="ok">Pass:</span> The story time sentence is a &lt;p&gt; inside &lt;main&gt;</li><li><span class="ok">Pass:</span> The copyright line is in a &lt;footer&gt;, and no &lt;div&gt; is left playing header, nav, main or footer</li><li><span class="ok">Pass:</span> The first element is a &quot;Skip to main content&quot; link that jumps to the &lt;main&gt; element&#39;s id</li></ul>
+<h4>HTML</h4>
+<pre>&lt;!-- Harbor Street Library home page. Every box is a div, so nothing says what it is. --&gt;
+&lt;!-- TODO: add a &quot;Skip to main content&quot; link here, as the first element, that jumps to the main content&#39;s id --&gt;
+&lt;a href=&quot;#main&quot;&gt;Skip to main content&lt;/a&gt;
+&lt;header&gt;                                 &lt;!-- TODO: the top of the page; there is an element for this --&gt;
+  &lt;h1&gt;Harbor Street Library&lt;/h1&gt;     &lt;!-- TODO: the site name is the page&#39;s one main heading --&gt;
+  &lt;nav aria-label=&quot;Main&quot;&gt;
+  &lt;ul&gt;
+    &lt;!-- One link per list item --&gt;
+    &lt;li&gt;&lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;events.html&quot;&gt;Events&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;&quot;report.html&quot;&gt;Web Report&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;                                  
+&lt;/div&gt;                                               &lt;!-- end of the top of the page --&gt;
+&lt;main id=&quot;main&quot;&gt;                                   &lt;!-- TODO: the page&#39;s main content has its own element --&gt;
+  &lt;h2&gt;Opening hours&lt;/h2&gt;
+  &lt;ul&gt;           &lt;!-- TODO: a section heading, one level below the h1 --&gt;
+  &lt;li&gt;Monday to Thursday: 9 AM to 8 PM&lt;/li&gt;        &lt;!-- TODO: these three lines are a list with no set order --&gt;
+  &lt;li&gt;Friday and Saturday: 9 AM to 5 PM&lt;/li&gt;       &lt;!-- second line of the opening hours --&gt;
+  &lt;li&gt;Sunday: closed&lt;/li&gt;                         &lt;!-- third line of the opening hours --&gt;
+  &lt;h2&gt;Story time&lt;/h2&gt;              &lt;!-- TODO: another section heading at the same level --&gt;
+  &lt;!-- The next line is a placeholder photo. Its src holds the picture itself as text, so no image file is needed. --&gt;
+  &lt;img src=&quot;data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#39;0 0 4 2&#39;%3E%3Crect width=&#39;4&#39; height=&#39;2&#39; fill=&#39;%23b9cde6&#39;/%3E%3C/svg%3E&quot; width=&quot;240&quot; height=&quot;120&quot; alt=&quot;librarian reading to children&quot;&gt;
+  &lt;!-- TODO (for the img above): it shows a librarian reading to children. Describe that with an alt attribute. --&gt;
+  &lt;p&gt;Every Saturday at 10 AM in the children&#39;s room.&lt;/p&gt;   &lt;!-- TODO: a sentence of text is a paragraph --&gt;
+&lt;/main&gt;
+&lt;footer&gt;                                               &lt;!-- end of the main content --&gt;
+  &lt;p&gt;&lt;small&gt;© 2026 Harbor Street Library&lt;/small&gt;&lt;/p&gt;  &lt;!-- TODO: the bottom of the page, with the copyright line --&gt;
+&lt;/footer&gt;</pre>
+<h4>Live preview</h4>
+<iframe title="Preview of Challenge 3.4: From div soup to semantic HTML" sandbox="" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;title&gt;Preview&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;!-- Harbor Street Library home page. Every box is a div, so nothing says what it is. --&gt;
+&lt;!-- TODO: add a &quot;Skip to main content&quot; link here, as the first element, that jumps to the main content&#39;s id --&gt;
+&lt;a href=&quot;#main&quot;&gt;Skip to main content&lt;/a&gt;
+&lt;header&gt;                                 &lt;!-- TODO: the top of the page; there is an element for this --&gt;
+  &lt;h1&gt;Harbor Street Library&lt;/h1&gt;     &lt;!-- TODO: the site name is the page&#39;s one main heading --&gt;
+  &lt;nav aria-label=&quot;Main&quot;&gt;
+  &lt;ul&gt;
+    &lt;!-- One link per list item --&gt;
+    &lt;li&gt;&lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;events.html&quot;&gt;Events&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;&quot;report.html&quot;&gt;Web Report&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;                                  
+&lt;/div&gt;                                               &lt;!-- end of the top of the page --&gt;
+&lt;main id=&quot;main&quot;&gt;                                   &lt;!-- TODO: the page&#39;s main content has its own element --&gt;
+  &lt;h2&gt;Opening hours&lt;/h2&gt;
+  &lt;ul&gt;           &lt;!-- TODO: a section heading, one level below the h1 --&gt;
+  &lt;li&gt;Monday to Thursday: 9 AM to 8 PM&lt;/li&gt;        &lt;!-- TODO: these three lines are a list with no set order --&gt;
+  &lt;li&gt;Friday and Saturday: 9 AM to 5 PM&lt;/li&gt;       &lt;!-- second line of the opening hours --&gt;
+  &lt;li&gt;Sunday: closed&lt;/li&gt;                         &lt;!-- third line of the opening hours --&gt;
+  &lt;h2&gt;Story time&lt;/h2&gt;              &lt;!-- TODO: another section heading at the same level --&gt;
+  &lt;!-- The next line is a placeholder photo. Its src holds the picture itself as text, so no image file is needed. --&gt;
+  &lt;img src=&quot;data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#39;0 0 4 2&#39;%3E%3Crect width=&#39;4&#39; height=&#39;2&#39; fill=&#39;%23b9cde6&#39;/%3E%3C/svg%3E&quot; width=&quot;240&quot; height=&quot;120&quot; alt=&quot;librarian reading to children&quot;&gt;
+  &lt;!-- TODO (for the img above): it shows a librarian reading to children. Describe that with an alt attribute. --&gt;
+  &lt;p&gt;Every Saturday at 10 AM in the children&#39;s room.&lt;/p&gt;   &lt;!-- TODO: a sentence of text is a paragraph --&gt;
+&lt;/main&gt;
+&lt;footer&gt;                                               &lt;!-- end of the main content --&gt;
+  &lt;p&gt;&lt;small&gt;© 2026 Harbor Street Library&lt;/small&gt;&lt;/p&gt;  &lt;!-- TODO: the bottom of the page, with the copyright line --&gt;
+&lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;"></iframe>
+</section>
+<section class="item">
+<h3>Challenge 3.5: Build a complete document</h3>
+<p class="ok">7 of 7 checks pass</p>
+<ul class="checks"><li><span class="ok">Pass:</span> The first line is &lt;!DOCTYPE html&gt;, so the page is in standards mode</li><li><span class="ok">Pass:</span> &lt;html&gt; declares English with lang=&quot;en&quot;</li><li><span class="ok">Pass:</span> &lt;meta charset=&quot;utf-8&quot;&gt; is the first thing in the &lt;head&gt;</li><li><span class="ok">Pass:</span> The viewport &lt;meta&gt; is in the head, with width=device-width, initial-scale=1</li><li><span class="ok">Pass:</span> The &lt;title&gt; names this page (it mentions Events)</li><li><span class="ok">Pass:</span> A &lt;meta name=&quot;description&quot;&gt; of 50 to 160 characters</li><li><span class="ok">Pass:</span> &lt;head&gt; and &lt;body&gt; are written out and closed, and the heading and paragraph are inside the &lt;body&gt;</li></ul>
+<h4>HTML</h4>
+<pre>&lt;!-- TODO: this is only the visible content. Build the complete document around it: --&gt;
+&lt;!-- the DOCTYPE, &lt;html lang=&quot;en&quot;&gt;, a &lt;head&gt; (charset first, then the viewport, a title and a description), --&gt;
+&lt;!-- and a &lt;body&gt; that holds the two lines below. --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+    &lt;title&gt;Events · Harbor Street Library&lt;/title&gt;
+    &lt;meta name=&quot;description&quot; content=&quot;Just a random post that we are trying to develop. It is very new!&quot;&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Events at Harbor Street Library&lt;/h1&gt;                       &lt;!-- the page&#39;s main heading --&gt;
+    &lt;p&gt;Story time, author talks and a coding club, all free.&lt;/p&gt;   &lt;!-- the opening paragraph --&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</pre>
+<h4>Live preview</h4>
+<iframe title="Preview of Challenge 3.5: Build a complete document" sandbox="" srcdoc="&lt;!-- TODO: this is only the visible content. Build the complete document around it: --&gt;
+&lt;!-- the DOCTYPE, &lt;html lang=&quot;en&quot;&gt;, a &lt;head&gt; (charset first, then the viewport, a title and a description), --&gt;
+&lt;!-- and a &lt;body&gt; that holds the two lines below. --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+    &lt;title&gt;Events · Harbor Street Library&lt;/title&gt;
+    &lt;meta name=&quot;description&quot; content=&quot;Just a random post that we are trying to develop. It is very new!&quot;&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Events at Harbor Street Library&lt;/h1&gt;                       &lt;!-- the page&#39;s main heading --&gt;
+    &lt;p&gt;Story time, author talks and a coding club, all free.&lt;/p&gt;   &lt;!-- the opening paragraph --&gt;
+  &lt;/body&gt;
+&lt;/html&gt;"></iframe>
+</section>
+<section class="item">
+<h3>Challenge 3.6: Fix the heading outline</h3>
+<p class="ok">5 of 5 checks pass</p>
+<ul class="checks"><li><span class="ok">Pass:</span> Exactly one &lt;h1&gt;, and it is the library&#39;s name</li><li><span class="ok">Pass:</span> &quot;Visit us&quot; and &quot;Events&quot; are &lt;h2&gt;s</li><li><span class="ok">Pass:</span> &quot;Opening hours&quot; and &quot;Parking&quot; are &lt;h3&gt;s under &quot;Visit us&quot;</li><li><span class="ok">Pass:</span> &quot;Story time&quot; and &quot;Author talks&quot; are &lt;h3&gt;s under &quot;Events&quot;</li><li><span class="ok">Pass:</span> No heading level is skipped on the way down</li></ul>
+<h4>HTML</h4>
+<pre>&lt;h1&gt;Harbor Street Library&lt;/h1&gt;                &lt;!-- the page title: the one main heading --&gt;
+&lt;h2&gt;Visit us&lt;/h2&gt;                             &lt;!-- TODO: a main section of the page, not a second page title --&gt;
+&lt;h3&gt;Opening hours&lt;/h3&gt;                        &lt;!-- TODO: a subsection of &quot;Visit us&quot;, chosen because it looked small --&gt;
+&lt;p&gt;Monday to Saturday, 9 AM to 8 PM.&lt;/p&gt;      &lt;!-- the opening hours --&gt;
+&lt;h3&gt;Parking&lt;/h3&gt;                         &lt;!-- TODO: looks like a heading but is not one. Another subsection of &quot;Visit us&quot; --&gt;
+&lt;p&gt;Free parking behind the building.&lt;/p&gt;      &lt;!-- the parking details --&gt;
+&lt;h2&gt;Events&lt;/h2&gt;                               &lt;!-- a main section of the page --&gt;
+&lt;h3&gt;Story time&lt;/h3&gt;                           &lt;!-- TODO: a subsection of &quot;Events&quot; --&gt;
+&lt;p&gt;Saturdays at 10 AM.&lt;/p&gt;                    &lt;!-- the story time details --&gt;
+&lt;h3&gt;Author talks&lt;/h3&gt;                         &lt;!-- TODO: another subsection of &quot;Events&quot; --&gt;
+&lt;p&gt;First Tuesday of the month, 7 PM.&lt;/p&gt;      &lt;!-- the author talk details --&gt;</pre>
+<h4>Live preview</h4>
+<iframe title="Preview of Challenge 3.6: Fix the heading outline" sandbox="" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;title&gt;Preview&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;Harbor Street Library&lt;/h1&gt;                &lt;!-- the page title: the one main heading --&gt;
+&lt;h2&gt;Visit us&lt;/h2&gt;                             &lt;!-- TODO: a main section of the page, not a second page title --&gt;
+&lt;h3&gt;Opening hours&lt;/h3&gt;                        &lt;!-- TODO: a subsection of &quot;Visit us&quot;, chosen because it looked small --&gt;
+&lt;p&gt;Monday to Saturday, 9 AM to 8 PM.&lt;/p&gt;      &lt;!-- the opening hours --&gt;
+&lt;h3&gt;Parking&lt;/h3&gt;                         &lt;!-- TODO: looks like a heading but is not one. Another subsection of &quot;Visit us&quot; --&gt;
+&lt;p&gt;Free parking behind the building.&lt;/p&gt;      &lt;!-- the parking details --&gt;
+&lt;h2&gt;Events&lt;/h2&gt;                               &lt;!-- a main section of the page --&gt;
+&lt;h3&gt;Story time&lt;/h3&gt;                           &lt;!-- TODO: a subsection of &quot;Events&quot; --&gt;
+&lt;p&gt;Saturdays at 10 AM.&lt;/p&gt;                    &lt;!-- the story time details --&gt;
+&lt;h3&gt;Author talks&lt;/h3&gt;                         &lt;!-- TODO: another subsection of &quot;Events&quot; --&gt;
+&lt;p&gt;First Tuesday of the month, 7 PM.&lt;/p&gt;      &lt;!-- the author talk details --&gt;
+&lt;/body&gt;
+&lt;/html&gt;"></iframe>
+</section>
+<section class="item">
+<h3>Challenge 3.7: Link the site together</h3>
+<p class="ok">9 of 9 checks pass</p>
+<ul class="checks"><li><span class="ok">Pass:</span> Home goes up one folder: ../index.html</li><li><span class="ok">Pass:</span> About is relative too: ../about.html</li><li><span class="ok">Pass:</span> Story time stays in this folder: storytime.html</li><li><span class="ok">Pass:</span> &quot;opening hours&quot; goes to the hours section of the About page</li><li><span class="ok">Pass:</span> The email address is a mailto: link</li><li><span class="ok">Pass:</span> The phone number is a tel: link in international format</li><li><span class="ok">Pass:</span> The checker link is an absolute URL to https://validator.w3.org/nu/</li><li><span class="ok">Pass:</span> &quot;Back to top&quot; is the fragment #top, and the header still has id=&quot;top&quot;</li><li><span class="ok">Pass:</span> No placeholder #, root-relative / or file-system paths are left</li></ul>
+<h4>HTML</h4>
+<pre>&lt;!-- This is events/index.html. Replace each placeholder href as its TODO says. --&gt;
+&lt;header id=&quot;top&quot;&gt;                                             &lt;!-- the top of the page, with id=&quot;top&quot; --&gt;
+  &lt;nav&gt;                                                       &lt;!-- the main menu --&gt;
+    &lt;ul&gt;                                                      &lt;!-- the menu links, as a list --&gt;
+      &lt;li&gt;&lt;a href=&quot;../index.html&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;                           &lt;!-- TODO: index.html in the site&#39;s top folder --&gt;
+      &lt;li&gt;&lt;a href=&quot;../about.html&quot;&gt;About&lt;/a&gt;&lt;/li&gt;                &lt;!-- TODO: root-relative breaks on GitHub Pages; make it relative --&gt;
+      &lt;li&gt;&lt;a href=&quot;storytime.html&quot;&gt;Story time&lt;/a&gt;&lt;/li&gt;                     &lt;!-- TODO: storytime.html, in the same folder as this page --&gt;
+    &lt;/ul&gt;                                                     &lt;!-- end of the menu list --&gt;
+  &lt;/nav&gt;                                                      &lt;!-- end of the menu --&gt;
+&lt;/header&gt;                                                     &lt;!-- end of the top of the page --&gt;
+&lt;main&gt;                                                        &lt;!-- the main content --&gt;
+  &lt;h1&gt;Events&lt;/h1&gt;                                             &lt;!-- the page&#39;s main heading --&gt;
+  &lt;p&gt;Check our &lt;a href=&quot;../about.html#hours&quot;&gt;opening hours&lt;/a&gt; before you come.&lt;/p&gt;   &lt;!-- TODO: the id=&quot;hours&quot; section of about.html --&gt;
+  &lt;p&gt;Questions? Email &lt;a href=&quot;mailto:info@example.org&quot;&gt;info@example.org&lt;/a&gt;.&lt;/p&gt;        &lt;!-- TODO: an email link to this address --&gt;
+  &lt;p&gt;Or call &lt;a href=&quot;tel:+15555550123&quot;&gt;(555) 555-0123&lt;/a&gt;.&lt;/p&gt;                   &lt;!-- TODO: a phone link: +1, then only the digits --&gt;
+  &lt;p&gt;Check your pages with the &lt;a href=&quot;https://validator.w3.org/nu/&quot;&gt;Nu Html Checker&lt;/a&gt;.&lt;/p&gt;  &lt;!-- TODO: https://validator.w3.org/nu/ --&gt;
+  &lt;p&gt;&lt;a href=&quot;#top&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;                          &lt;!-- TODO: the element with id=&quot;top&quot; on this page --&gt;
+&lt;/main&gt;                                                       &lt;!-- end of the main content --&gt;</pre>
+<h4>Live preview</h4>
+<iframe title="Preview of Challenge 3.7: Link the site together" sandbox="" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;title&gt;Preview&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;!-- This is events/index.html. Replace each placeholder href as its TODO says. --&gt;
+&lt;header id=&quot;top&quot;&gt;                                             &lt;!-- the top of the page, with id=&quot;top&quot; --&gt;
+  &lt;nav&gt;                                                       &lt;!-- the main menu --&gt;
+    &lt;ul&gt;                                                      &lt;!-- the menu links, as a list --&gt;
+      &lt;li&gt;&lt;a href=&quot;../index.html&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;                           &lt;!-- TODO: index.html in the site&#39;s top folder --&gt;
+      &lt;li&gt;&lt;a href=&quot;../about.html&quot;&gt;About&lt;/a&gt;&lt;/li&gt;                &lt;!-- TODO: root-relative breaks on GitHub Pages; make it relative --&gt;
+      &lt;li&gt;&lt;a href=&quot;storytime.html&quot;&gt;Story time&lt;/a&gt;&lt;/li&gt;                     &lt;!-- TODO: storytime.html, in the same folder as this page --&gt;
+    &lt;/ul&gt;                                                     &lt;!-- end of the menu list --&gt;
+  &lt;/nav&gt;                                                      &lt;!-- end of the menu --&gt;
+&lt;/header&gt;                                                     &lt;!-- end of the top of the page --&gt;
+&lt;main&gt;                                                        &lt;!-- the main content --&gt;
+  &lt;h1&gt;Events&lt;/h1&gt;                                             &lt;!-- the page&#39;s main heading --&gt;
+  &lt;p&gt;Check our &lt;a href=&quot;../about.html#hours&quot;&gt;opening hours&lt;/a&gt; before you come.&lt;/p&gt;   &lt;!-- TODO: the id=&quot;hours&quot; section of about.html --&gt;
+  &lt;p&gt;Questions? Email &lt;a href=&quot;mailto:info@example.org&quot;&gt;info@example.org&lt;/a&gt;.&lt;/p&gt;        &lt;!-- TODO: an email link to this address --&gt;
+  &lt;p&gt;Or call &lt;a href=&quot;tel:+15555550123&quot;&gt;(555) 555-0123&lt;/a&gt;.&lt;/p&gt;                   &lt;!-- TODO: a phone link: +1, then only the digits --&gt;
+  &lt;p&gt;Check your pages with the &lt;a href=&quot;https://validator.w3.org/nu/&quot;&gt;Nu Html Checker&lt;/a&gt;.&lt;/p&gt;  &lt;!-- TODO: https://validator.w3.org/nu/ --&gt;
+  &lt;p&gt;&lt;a href=&quot;#top&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;                          &lt;!-- TODO: the element with id=&quot;top&quot; on this page --&gt;
+&lt;/main&gt;                                                       &lt;!-- end of the main content --&gt;
+&lt;/body&gt;
+&lt;/html&gt;"></iframe>
+</section>
+<section class="item">
+<h3>Challenge 3.8: Give words their meaning</h3>
+<p class="ok">9 of 9 checks pass</p>
+<ul class="checks"><li><span class="ok">Pass:</span> &quot;ALA&quot; is an &lt;abbr&gt; whose title is &quot;American Library Association&quot;</li><li><span class="ok">Pass:</span> The date and time are a &lt;time&gt; with datetime=&quot;2026-11-14T10:30&quot;</li><li><span class="ok">Pass:</span> The book title is a &lt;cite&gt;</li><li><span class="ok">Pass:</span> The quoted words are a &lt;q&gt;, with no typed quotation marks left</li><li><span class="ok">Pass:</span> &quot;Ctrl&quot; and &quot;P&quot; are each their own &lt;kbd&gt;</li><li><span class="ok">Pass:</span> The file name is &lt;code&gt;index.html&lt;/code&gt;</li><li><span class="ok">Pass:</span> &quot;2nd&quot; is written as 2 plus a raised &lt;sup&gt;nd&lt;/sup&gt;</li><li><span class="ok">Pass:</span> &quot;CO2&quot; is written as CO plus a lowered &lt;sub&gt;2&lt;/sub&gt;</li><li><span class="ok">Pass:</span> Both matching &quot;Harbor&quot;s in the results are &lt;mark&gt;ed</li></ul>
+<h4>HTML</h4>
+<pre>&lt;h2&gt;This month at the library&lt;/h2&gt;                    &lt;!-- a section heading --&gt;
+&lt;!-- TODO: wrap the second ALA in &lt;abbr&gt; with a title that spells it out --&gt;
+&lt;p&gt;The American Library Association (&lt;abbr title=&quot;American Library Association&quot;&gt;ALA&lt;/abbr&gt;) named us a finalist for Library of the Year. ALA members get in free.&lt;/p&gt;
+&lt;!-- TODO: wrap the date and time in &lt;time&gt; with datetime=&quot;2026-11-14T10:30&quot; --&gt;
+&lt;p&gt;The author talk is on: &lt;time datetime=&quot;2026-11-14T10:30&quot;&gt;Saturday, November 14, 2026 at 10:30 AM&lt;/time&gt;.&lt;/p&gt;
+&lt;!-- TODO: the book title is a &lt;cite&gt;; the quoted words are a &lt;q&gt;, and the typed quotation marks go --&gt;
+&lt;p&gt;Our book club is reading &lt;cite&gt;The Left Hand of Darkness&lt;/cite&gt;, which one member called &lt;q&gt;the best book I read all year&lt;/q&gt;.&lt;/p&gt;
+&lt;!-- TODO: each key is its own &lt;kbd&gt; --&gt;
+&lt;p&gt;To print your reading list, press &lt;kbd&gt;Ctrl&lt;/kbd&gt; + &lt;kbd&gt;P&lt;/kbd&gt;.&lt;/p&gt;
+&lt;!-- TODO: the file name is &lt;code&gt; --&gt;
+&lt;p&gt;Save your page as &lt;code&gt;index.html&lt;/code&gt; before you upload it.&lt;/p&gt;
+&lt;!-- TODO: raise the &quot;nd&quot; with &lt;sup&gt; --&gt;
+&lt;p&gt;The computer lab is on the 2&lt;sup&gt;nd&lt;/sup&gt; floor.&lt;/p&gt;
+&lt;!-- TODO: lower the &quot;2&quot; in CO2 with &lt;sub&gt; --&gt;
+&lt;p&gt;Our new solar roof cut the building&#39;s CO&lt;sub&gt;2&lt;/sub&gt; emissions in half.&lt;/p&gt;
+&lt;!-- TODO: highlight each &quot;Harbor&quot; in the two results with &lt;mark&gt;; they match what the reader searched for --&gt;
+&lt;p&gt;You searched for harbor. Results: &lt;mark&gt;Harbor&lt;/mark&gt; Pass card, &lt;mark&gt;Harbor&lt;/mark&gt; history walk.&lt;/p&gt;</pre>
+<h4>Live preview</h4>
+<iframe title="Preview of Challenge 3.8: Give words their meaning" sandbox="" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;title&gt;Preview&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h2&gt;This month at the library&lt;/h2&gt;                    &lt;!-- a section heading --&gt;
+&lt;!-- TODO: wrap the second ALA in &lt;abbr&gt; with a title that spells it out --&gt;
+&lt;p&gt;The American Library Association (&lt;abbr title=&quot;American Library Association&quot;&gt;ALA&lt;/abbr&gt;) named us a finalist for Library of the Year. ALA members get in free.&lt;/p&gt;
+&lt;!-- TODO: wrap the date and time in &lt;time&gt; with datetime=&quot;2026-11-14T10:30&quot; --&gt;
+&lt;p&gt;The author talk is on: &lt;time datetime=&quot;2026-11-14T10:30&quot;&gt;Saturday, November 14, 2026 at 10:30 AM&lt;/time&gt;.&lt;/p&gt;
+&lt;!-- TODO: the book title is a &lt;cite&gt;; the quoted words are a &lt;q&gt;, and the typed quotation marks go --&gt;
+&lt;p&gt;Our book club is reading &lt;cite&gt;The Left Hand of Darkness&lt;/cite&gt;, which one member called &lt;q&gt;the best book I read all year&lt;/q&gt;.&lt;/p&gt;
+&lt;!-- TODO: each key is its own &lt;kbd&gt; --&gt;
+&lt;p&gt;To print your reading list, press &lt;kbd&gt;Ctrl&lt;/kbd&gt; + &lt;kbd&gt;P&lt;/kbd&gt;.&lt;/p&gt;
+&lt;!-- TODO: the file name is &lt;code&gt; --&gt;
+&lt;p&gt;Save your page as &lt;code&gt;index.html&lt;/code&gt; before you upload it.&lt;/p&gt;
+&lt;!-- TODO: raise the &quot;nd&quot; with &lt;sup&gt; --&gt;
+&lt;p&gt;The computer lab is on the 2&lt;sup&gt;nd&lt;/sup&gt; floor.&lt;/p&gt;
+&lt;!-- TODO: lower the &quot;2&quot; in CO2 with &lt;sub&gt; --&gt;
+&lt;p&gt;Our new solar roof cut the building&#39;s CO&lt;sub&gt;2&lt;/sub&gt; emissions in half.&lt;/p&gt;
+&lt;!-- TODO: highlight each &quot;Harbor&quot; in the two results with &lt;mark&gt;; they match what the reader searched for --&gt;
+&lt;p&gt;You searched for harbor. Results: &lt;mark&gt;Harbor&lt;/mark&gt; Pass card, &lt;mark&gt;Harbor&lt;/mark&gt; history walk.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;"></iframe>
+</section>
+<section class="item">
+<h3>Challenge 3.9: Images and entities</h3>
+<p class="ok">7 of 7 checks pass</p>
+<ul class="checks"><li><span class="ok">Pass:</span> The photo&#39;s alt describes what it shows: at least four words, not a file name</li><li><span class="ok">Pass:</span> The decorative wave has an empty alt=&quot;&quot;</li><li><span class="ok">Pass:</span> Both images have width and height as plain numbers</li><li><span class="ok">Pass:</span> The sentence shows &lt;nav&gt; as text, and no real &lt;nav&gt; element exists</li><li><span class="ok">Pass:</span> &quot;Mac &amp; Cheese&quot; is written with &amp;amp;</li><li><span class="ok">Pass:</span> &quot;10 AM&quot; is joined by a non-breaking space</li><li><span class="ok">Pass:</span> The copyright line uses the real © sign</li></ul>
+<h4>HTML</h4>
+<pre>&lt;h2&gt;Story time photos&lt;/h2&gt;                                      &lt;!-- a section heading --&gt;
+&lt;!-- The next img is a real photo of story time. Its src holds a placeholder picture as text. --&gt;
+&lt;img src=&quot;data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#39;0 0 4 2&#39;%3E%3Crect width=&#39;4&#39; height=&#39;2&#39; fill=&#39;%23b9cde6&#39;/%3E%3C/svg%3E&quot; alt=&quot;a librarian reading a picture book to children&quot; width=&quot;240&quot; height=&quot;120&quot;&gt;
+&lt;!-- TODO (photo above): alt that says what it shows, plus width=&quot;240&quot; and height=&quot;120&quot; --&gt;
+&lt;!-- The next img is a decorative wave line. It carries no information. --&gt;
+&lt;img src=&quot;data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#39;0 0 20 1&#39;%3E%3Crect width=&#39;20&#39; height=&#39;1&#39; fill=&#39;%237fa3c9&#39;/%3E%3C/svg%3E&quot; alt=&quot;&quot; width=&quot;240&quot; height=&quot;12&quot;&gt;
+&lt;!-- TODO (wave above): decoration gets an empty alt, plus width=&quot;240&quot; and height=&quot;12&quot; --&gt;
+&lt;p&gt;Wrap your menu in the &amp;lt;nav&amp;gt; element.&lt;/p&gt;        &lt;!-- TODO: show &lt;nav&gt; as text, not as a real element --&gt;
+&lt;p&gt;Tonight: Mac &amp;amp; Cheese Night for teens.&lt;/p&gt;      &lt;!-- TODO: write the ampersand as an entity --&gt;
+&lt;p&gt;Doors open at 10&amp;nbsp;AM sharp.&lt;/p&gt;                  &lt;!-- TODO: keep &quot;10&quot; and &quot;AM&quot; together with a non-breaking space --&gt;
+&lt;p&gt;&amp;copy; 2026 Harbor Street Library&lt;/p&gt;              &lt;!-- TODO: the real copyright sign, typed or as an entity --&gt;</pre>
+<h4>Live preview</h4>
+<iframe title="Preview of Challenge 3.9: Images and entities" sandbox="" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;title&gt;Preview&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h2&gt;Story time photos&lt;/h2&gt;                                      &lt;!-- a section heading --&gt;
+&lt;!-- The next img is a real photo of story time. Its src holds a placeholder picture as text. --&gt;
+&lt;img src=&quot;data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#39;0 0 4 2&#39;%3E%3Crect width=&#39;4&#39; height=&#39;2&#39; fill=&#39;%23b9cde6&#39;/%3E%3C/svg%3E&quot; alt=&quot;a librarian reading a picture book to children&quot; width=&quot;240&quot; height=&quot;120&quot;&gt;
+&lt;!-- TODO (photo above): alt that says what it shows, plus width=&quot;240&quot; and height=&quot;120&quot; --&gt;
+&lt;!-- The next img is a decorative wave line. It carries no information. --&gt;
+&lt;img src=&quot;data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#39;0 0 20 1&#39;%3E%3Crect width=&#39;20&#39; height=&#39;1&#39; fill=&#39;%237fa3c9&#39;/%3E%3C/svg%3E&quot; alt=&quot;&quot; width=&quot;240&quot; height=&quot;12&quot;&gt;
+&lt;!-- TODO (wave above): decoration gets an empty alt, plus width=&quot;240&quot; and height=&quot;12&quot; --&gt;
+&lt;p&gt;Wrap your menu in the &amp;lt;nav&amp;gt; element.&lt;/p&gt;        &lt;!-- TODO: show &lt;nav&gt; as text, not as a real element --&gt;
+&lt;p&gt;Tonight: Mac &amp;amp; Cheese Night for teens.&lt;/p&gt;      &lt;!-- TODO: write the ampersand as an entity --&gt;
+&lt;p&gt;Doors open at 10&amp;nbsp;AM sharp.&lt;/p&gt;                  &lt;!-- TODO: keep &quot;10&quot; and &quot;AM&quot; together with a non-breaking space --&gt;
+&lt;p&gt;&amp;copy; 2026 Harbor Street Library&lt;/p&gt;              &lt;!-- TODO: the real copyright sign, typed or as an entity --&gt;
+&lt;/body&gt;
+&lt;/html&gt;"></iframe>
+</section>
+<section class="item">
+<h3>Challenge 3.10: Three kinds of list</h3>
+<p class="no">3 of 5 checks pass</p>
+<ul class="checks"><li><span class="no">Not yet:</span> Only &lt;li&gt;s sit directly inside every &lt;ul&gt; and &lt;ol&gt;</li><li><span class="no">Not yet:</span> The borrowing list has four items, and E-books and Audiobooks are a list nested inside the Digital item</li><li><span class="ok">Pass:</span> The card steps are an &lt;ol&gt; with four &lt;li&gt;s</li><li><span class="ok">Pass:</span> No typed numbers: the &lt;ol&gt; numbers the steps itself</li><li><span class="ok">Pass:</span> The library words are a &lt;dl&gt;: three &lt;dt&gt;s, each followed by its &lt;dd&gt;</li></ul>
+<h4>HTML</h4>
+<pre>&lt;h2&gt;What you can borrow&lt;/h2&gt;                          &lt;!-- a section heading --&gt;
+&lt;ul&gt;                                                 &lt;!-- an unordered list: these items have no set order --&gt;
+ &lt;li&gt;Books&lt;/li&gt;                                     &lt;!-- item 1 --&gt;
+ &lt;li&gt;Films&lt;/li&gt;                                     &lt;!-- item 2 --&gt;
+ &lt;li&gt;Digital&lt;/li&gt;                                   &lt;!-- item 3. TODO: the nested list below belongs INSIDE this item --&gt;
+  &lt;ul&gt;                                            &lt;!-- TODO: a list may not sit directly between two items --&gt;
+    &lt;li&gt;E-books&lt;/li&gt;                                 &lt;!-- a kind of digital item --&gt;
+    &lt;li&gt;Audiobooks&lt;/li&gt;                              &lt;!-- another kind of digital item --&gt;
+  &lt;/ul&gt;
+ &lt;/li&gt;                                              &lt;!-- end of the nested list --&gt;
+ &lt;li&gt;Board games&lt;/li&gt;                               &lt;!-- item 4 --&gt;
+&lt;/ul&gt;                                                &lt;!-- end of the list --&gt;
+&lt;h2&gt;Get a library card&lt;/h2&gt;                          &lt;!-- a section heading --&gt;
+&lt;!-- TODO: these steps happen in order. Make them a list that numbers itself, and delete the typed numbers. --&gt;
+&lt;ol&gt;
+ &lt;li&gt;Bring a photo ID.&lt;/li&gt;
+ &lt;li&gt;Bring proof of your address.&lt;/li&gt;
+ &lt;li&gt;Fill in the short form at the front desk.&lt;/li&gt;
+ &lt;li&gt;Pick up your card the same day.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;Library words&lt;/h2&gt;                               &lt;!-- a section heading --&gt;
+&lt;!-- TODO: each word has its own description. Make this a description list (dl, dt, dd). --&gt;
+&lt;dl&gt;
+ &lt;dt&gt;Hold&lt;/dt&gt;
+ &lt;dd&gt;a request to save a book for you when it comes back.&lt;/dd&gt;
+ &lt;dt&gt;Renew&lt;/dt&gt;
+ &lt;dd&gt;borrow an item again for another three weeks.&lt;/dd&gt;
+ &lt;dt&gt;Branch&lt;/dt&gt;
+ &lt;dd&gt;one of the library&#39;s three buildings.&lt;/dd&gt;
+&lt;/dl&gt;</pre>
+<h4>Live preview</h4>
+<iframe title="Preview of Challenge 3.10: Three kinds of list" sandbox="" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;title&gt;Preview&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h2&gt;What you can borrow&lt;/h2&gt;                          &lt;!-- a section heading --&gt;
+&lt;ul&gt;                                                 &lt;!-- an unordered list: these items have no set order --&gt;
+ &lt;li&gt;Books&lt;/li&gt;                                     &lt;!-- item 1 --&gt;
+ &lt;li&gt;Films&lt;/li&gt;                                     &lt;!-- item 2 --&gt;
+ &lt;li&gt;Digital&lt;/li&gt;                                   &lt;!-- item 3. TODO: the nested list below belongs INSIDE this item --&gt;
+  &lt;ul&gt;                                            &lt;!-- TODO: a list may not sit directly between two items --&gt;
+    &lt;li&gt;E-books&lt;/li&gt;                                 &lt;!-- a kind of digital item --&gt;
+    &lt;li&gt;Audiobooks&lt;/li&gt;                              &lt;!-- another kind of digital item --&gt;
+  &lt;/ul&gt;
+ &lt;/li&gt;                                              &lt;!-- end of the nested list --&gt;
+ &lt;li&gt;Board games&lt;/li&gt;                               &lt;!-- item 4 --&gt;
+&lt;/ul&gt;                                                &lt;!-- end of the list --&gt;
+&lt;h2&gt;Get a library card&lt;/h2&gt;                          &lt;!-- a section heading --&gt;
+&lt;!-- TODO: these steps happen in order. Make them a list that numbers itself, and delete the typed numbers. --&gt;
+&lt;ol&gt;
+ &lt;li&gt;Bring a photo ID.&lt;/li&gt;
+ &lt;li&gt;Bring proof of your address.&lt;/li&gt;
+ &lt;li&gt;Fill in the short form at the front desk.&lt;/li&gt;
+ &lt;li&gt;Pick up your card the same day.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;Library words&lt;/h2&gt;                               &lt;!-- a section heading --&gt;
+&lt;!-- TODO: each word has its own description. Make this a description list (dl, dt, dd). --&gt;
+&lt;dl&gt;
+ &lt;dt&gt;Hold&lt;/dt&gt;
+ &lt;dd&gt;a request to save a book for you when it comes back.&lt;/dd&gt;
+ &lt;dt&gt;Renew&lt;/dt&gt;
+ &lt;dd&gt;borrow an item again for another three weeks.&lt;/dd&gt;
+ &lt;dt&gt;Branch&lt;/dt&gt;
+ &lt;dd&gt;one of the library&#39;s three buildings.&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;/body&gt;
+&lt;/html&gt;"></iframe>
+</section>
+<section class="item">
+<h3>Challenge 3.11: Structure a blog post</h3>
+<p class="ok">9 of 9 checks pass</p>
+<ul class="checks"><li><span class="ok">Pass:</span> The page has a &lt;header&gt; with the site name, and exactly one &lt;main&gt;</li><li><span class="ok">Pass:</span> The blog post is an &lt;article&gt; inside &lt;main&gt;</li><li><span class="ok">Pass:</span> The post&#39;s own &lt;header&gt; holds its &lt;h1&gt; and a &lt;time datetime=&quot;2026-10-03&quot;&gt;</li><li><span class="ok">Pass:</span> The two themed parts are &lt;section&gt;s, each starting with its &lt;h2&gt;</li><li><span class="ok">Pass:</span> The photo and its caption are a &lt;figure&gt; with a &lt;figcaption&gt;</li><li><span class="ok">Pass:</span> The question is a &lt;details&gt; with a &lt;summary&gt;, closed when the page loads</li><li><span class="ok">Pass:</span> &quot;Related posts&quot; is an &lt;aside&gt; beside the article, not inside it</li><li><span class="ok">Pass:</span> The street address and email link are in an &lt;address&gt; inside the page &lt;footer&gt;</li><li><span class="ok">Pass:</span> No &lt;div&gt; is left</li></ul>
+<h4>HTML</h4>
+<pre>&lt;header class=&quot;site-header&quot;&gt;                                &lt;!-- TODO: the page&#39;s banner at the top --&gt;
+  &lt;p class=&quot;logo&quot;&gt;Harbor Street Library&lt;/p&gt;               &lt;!-- the site name --&gt;
+&lt;/header&gt;                                                    &lt;!-- end of the banner --&gt;
+&lt;main class=&quot;content&quot;&gt;                                     &lt;!-- TODO: the page&#39;s one main area --&gt;
+  &lt;article class=&quot;post&quot;&gt;                                      &lt;!-- TODO: a self-contained blog post --&gt;
+    &lt;header class=&quot;post-top&quot;&gt;                                &lt;!-- TODO: the post&#39;s introduction: its title and date --&gt;
+      &lt;h1&gt;How We Choose New Books&lt;/h1&gt;                    &lt;!-- the post&#39;s title --&gt;
+      &lt;p&gt;Posted&lt;time datetime=&quot;2026-10-03&quot;&gt;October 3, 2026&lt;/time&gt;&lt;/p&gt;                       &lt;!-- TODO: mark the date with datetime=&quot;2026-10-03&quot; --&gt;
+    &lt;/header&gt;                                                &lt;!-- end of the post&#39;s introduction --&gt;
+    &lt;section class=&quot;part&quot;&gt;                                    &lt;!-- TODO: a themed part of the post, with its own heading --&gt;
+      &lt;h2&gt;You ask, we listen&lt;/h2&gt;                         &lt;!-- the part&#39;s heading --&gt;
+      &lt;p&gt;Every request slip in the box by the front desk is read and counted.&lt;/p&gt;  &lt;!-- the part&#39;s text --&gt;
+    &lt;/section&gt;                                                &lt;!-- end of the first part --&gt;
+    &lt;section class=&quot;part&quot;&gt;                                    &lt;!-- TODO: another themed part --&gt;
+      &lt;h2&gt;From slip to shelf&lt;/h2&gt;                         &lt;!-- the part&#39;s heading --&gt;
+      &lt;p&gt;Popular topics move to the top of the buying list.&lt;/p&gt;  &lt;!-- the part&#39;s text --&gt;
+      &lt;figure class=&quot;photo&quot;&gt;                                 &lt;!-- TODO: a photo the text refers to, with its caption --&gt;
+        &lt;!-- The next img has a placeholder picture as its src. --&gt;
+        &lt;img src=&quot;data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#39;0 0 4 2&#39;%3E%3Crect width=&#39;4&#39; height=&#39;2&#39; fill=&#39;%23d9c7a7&#39;/%3E%3C/svg%3E&quot; width=&quot;240&quot; height=&quot;120&quot; alt=&quot;Two librarians unpacking a box of new books&quot;&gt;
+        &lt;figcaption&gt;New arrivals are unpacked every Tuesday.&lt;/figcaption&gt;  &lt;!-- TODO: this is the photo&#39;s caption --&gt;
+      &lt;/figure&gt;                                              &lt;!-- end of the photo --&gt;
+    &lt;/section&gt;                                                &lt;!-- end of the second part --&gt;
+    &lt;details class=&quot;faq&quot;&gt;                                     &lt;!-- TODO: a question that opens and closes without JavaScript --&gt;
+      &lt;summary&gt;How long until my request arrives?&lt;/summary&gt;          &lt;!-- TODO: the clickable question --&gt;
+      &lt;p&gt;Usually two to four weeks.&lt;/p&gt;                   &lt;!-- the answer, hidden until the question is opened --&gt;
+    &lt;/details&gt;                                                &lt;!-- end of the question --&gt;
+  &lt;/article&gt;                                                  &lt;!-- end of the blog post --&gt;
+  &lt;aside class=&quot;related&quot;&gt;                                   &lt;!-- TODO: related links, beside the post rather than part of it --&gt;
+    &lt;h2&gt;Related posts&lt;/h2&gt;                                &lt;!-- the box&#39;s heading --&gt;
+    &lt;ul&gt;                                                  &lt;!-- the related links, as a list --&gt;
+      &lt;li&gt;&lt;a href=&quot;holds.html&quot;&gt;How holds work&lt;/a&gt;&lt;/li&gt;    &lt;!-- a related post --&gt;
+    &lt;/ul&gt;                                                 &lt;!-- end of the list --&gt;
+  &lt;/aside&gt;                                                  &lt;!-- end of the related links --&gt;
+&lt;/main&gt;                                                    &lt;!-- end of the main area --&gt;
+&lt;footer class=&quot;site-footer&quot;&gt;                                 &lt;!-- TODO: the page&#39;s footer --&gt;
+  &lt;address&gt;Harbor Street Library, 12 Harbor Street, Riverside&lt;a href=&quot;mailto:info@example.org&quot;&gt;info@example.org&lt;/a&gt;&lt;/address&gt;        &lt;!-- TODO: the contact details go in an address --&gt;
+      &lt;!-- the email link, also part of the contact details --&gt;
+&lt;/footer&gt;                                                    &lt;!-- end of the footer --&gt;</pre>
+<h4>Live preview</h4>
+<iframe title="Preview of Challenge 3.11: Structure a blog post" sandbox="" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;title&gt;Preview&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;header class=&quot;site-header&quot;&gt;                                &lt;!-- TODO: the page&#39;s banner at the top --&gt;
+  &lt;p class=&quot;logo&quot;&gt;Harbor Street Library&lt;/p&gt;               &lt;!-- the site name --&gt;
+&lt;/header&gt;                                                    &lt;!-- end of the banner --&gt;
+&lt;main class=&quot;content&quot;&gt;                                     &lt;!-- TODO: the page&#39;s one main area --&gt;
+  &lt;article class=&quot;post&quot;&gt;                                      &lt;!-- TODO: a self-contained blog post --&gt;
+    &lt;header class=&quot;post-top&quot;&gt;                                &lt;!-- TODO: the post&#39;s introduction: its title and date --&gt;
+      &lt;h1&gt;How We Choose New Books&lt;/h1&gt;                    &lt;!-- the post&#39;s title --&gt;
+      &lt;p&gt;Posted&lt;time datetime=&quot;2026-10-03&quot;&gt;October 3, 2026&lt;/time&gt;&lt;/p&gt;                       &lt;!-- TODO: mark the date with datetime=&quot;2026-10-03&quot; --&gt;
+    &lt;/header&gt;                                                &lt;!-- end of the post&#39;s introduction --&gt;
+    &lt;section class=&quot;part&quot;&gt;                                    &lt;!-- TODO: a themed part of the post, with its own heading --&gt;
+      &lt;h2&gt;You ask, we listen&lt;/h2&gt;                         &lt;!-- the part&#39;s heading --&gt;
+      &lt;p&gt;Every request slip in the box by the front desk is read and counted.&lt;/p&gt;  &lt;!-- the part&#39;s text --&gt;
+    &lt;/section&gt;                                                &lt;!-- end of the first part --&gt;
+    &lt;section class=&quot;part&quot;&gt;                                    &lt;!-- TODO: another themed part --&gt;
+      &lt;h2&gt;From slip to shelf&lt;/h2&gt;                         &lt;!-- the part&#39;s heading --&gt;
+      &lt;p&gt;Popular topics move to the top of the buying list.&lt;/p&gt;  &lt;!-- the part&#39;s text --&gt;
+      &lt;figure class=&quot;photo&quot;&gt;                                 &lt;!-- TODO: a photo the text refers to, with its caption --&gt;
+        &lt;!-- The next img has a placeholder picture as its src. --&gt;
+        &lt;img src=&quot;data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#39;0 0 4 2&#39;%3E%3Crect width=&#39;4&#39; height=&#39;2&#39; fill=&#39;%23d9c7a7&#39;/%3E%3C/svg%3E&quot; width=&quot;240&quot; height=&quot;120&quot; alt=&quot;Two librarians unpacking a box of new books&quot;&gt;
+        &lt;figcaption&gt;New arrivals are unpacked every Tuesday.&lt;/figcaption&gt;  &lt;!-- TODO: this is the photo&#39;s caption --&gt;
+      &lt;/figure&gt;                                              &lt;!-- end of the photo --&gt;
+    &lt;/section&gt;                                                &lt;!-- end of the second part --&gt;
+    &lt;details class=&quot;faq&quot;&gt;                                     &lt;!-- TODO: a question that opens and closes without JavaScript --&gt;
+      &lt;summary&gt;How long until my request arrives?&lt;/summary&gt;          &lt;!-- TODO: the clickable question --&gt;
+      &lt;p&gt;Usually two to four weeks.&lt;/p&gt;                   &lt;!-- the answer, hidden until the question is opened --&gt;
+    &lt;/details&gt;                                                &lt;!-- end of the question --&gt;
+  &lt;/article&gt;                                                  &lt;!-- end of the blog post --&gt;
+  &lt;aside class=&quot;related&quot;&gt;                                   &lt;!-- TODO: related links, beside the post rather than part of it --&gt;
+    &lt;h2&gt;Related posts&lt;/h2&gt;                                &lt;!-- the box&#39;s heading --&gt;
+    &lt;ul&gt;                                                  &lt;!-- the related links, as a list --&gt;
+      &lt;li&gt;&lt;a href=&quot;holds.html&quot;&gt;How holds work&lt;/a&gt;&lt;/li&gt;    &lt;!-- a related post --&gt;
+    &lt;/ul&gt;                                                 &lt;!-- end of the list --&gt;
+  &lt;/aside&gt;                                                  &lt;!-- end of the related links --&gt;
+&lt;/main&gt;                                                    &lt;!-- end of the main area --&gt;
+&lt;footer class=&quot;site-footer&quot;&gt;                                 &lt;!-- TODO: the page&#39;s footer --&gt;
+  &lt;address&gt;Harbor Street Library, 12 Harbor Street, Riverside&lt;a href=&quot;mailto:info@example.org&quot;&gt;info@example.org&lt;/a&gt;&lt;/address&gt;        &lt;!-- TODO: the contact details go in an address --&gt;
+      &lt;!-- the email link, also part of the contact details --&gt;
+&lt;/footer&gt;                                                    &lt;!-- end of the footer --&gt;
+&lt;/body&gt;
+&lt;/html&gt;"></iframe>
+</section>
+<section class="item">
+<h3>Challenge 3.12: Mark up a complete page</h3>
+<p class="no">12 of 14 checks pass</p>
+<ul class="checks"><li><span class="ok">Pass:</span> Starts with &lt;!DOCTYPE html&gt; (standards mode), and &lt;html&gt; has lang=&quot;en&quot;</li><li><span class="ok">Pass:</span> The &lt;head&gt; starts with the charset and holds the viewport &lt;meta&gt;</li><li><span class="ok">Pass:</span> The &lt;title&gt; and &lt;meta name=&quot;description&quot;&gt; use the text given for them</li><li><span class="ok">Pass:</span> A page &lt;header&gt; holds the site name and a &lt;nav&gt; with a &lt;ul&gt; of three relative links</li><li><span class="no">Not yet:</span> One &lt;main&gt; with one &lt;h1&gt;, and no heading level is skipped</li><li><span class="ok">Pass:</span> Each event is an &lt;article&gt; with its own &lt;h2&gt;</li><li><span class="ok">Pass:</span> Both dates are &lt;time&gt;s with correct datetime values</li><li><span class="ok">Pass:</span> The novel&#39;s title is a &lt;cite&gt;</li><li><span class="ok">Pass:</span> The photo is a &lt;figure&gt; with a &lt;figcaption&gt;, and the &lt;img&gt; has descriptive alt, width and height</li><li><span class="ok">Pass:</span> The sign-up steps are an &lt;ol&gt; of three &lt;li&gt;s with no typed numbers</li><li><span class="ok">Pass:</span> The question is a &lt;details&gt; with a &lt;summary&gt;</li><li><span class="ok">Pass:</span> The page &lt;footer&gt; holds an &lt;address&gt; with a mailto: link and a tel: link</li><li><span class="ok">Pass:</span> The copyright line is in the page &lt;footer&gt;</li><li><span class="no">Not yet:</span> Clean syntax: every element closed and correctly nested, and every attribute value in double quotes</li></ul>
+<h4>HTML</h4>
+<pre>&lt;!-- Capstone: everything below is plain text. Turn it into a complete, valid page. --&gt;
+&lt;!-- Each comment says what its line is. Keep the text, add the markup around it. --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+    &lt;title&gt;Events · Harbor Street Library&lt;/title&gt;                         &lt;!-- the text for the browser tab --&gt;
+    &lt;meta name=&quot;description&quot; content=&quot;Free story time, author talks and a coding club at Harbor Street Library, all open to everyone.&quot;&gt;&lt;!-- the search description --&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;header&gt;
+      &lt;h1&gt;Harbor Street Library&lt;/h1&gt;                  &lt;!-- the site name, at the top of every page --&gt;
+      &lt;nav&gt;
+        &lt;ul&gt;                                  
+         &lt;li&gt;&lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;                 &lt;!-- menu link to index.html --&gt;
+         &lt;li&gt;&lt;a href=&quot;events.html&quot;&gt;Events&lt;/a&gt;&lt;/li&gt;                  &lt;!-- menu link to events.html --&gt;
+         &lt;li&gt;&lt;a href=&quot;about.html&quot;&gt;About&lt;/a&gt;&lt;/li&gt;                     &lt;!-- menu link to about.html --&gt;
+        &lt;/ul&gt;
+      &lt;/nav&gt;
+    &lt;/header&gt;
+    &lt;main&gt;
+        &lt;h1&gt;Events this fall&lt;/h1&gt;                    &lt;!-- the page&#39;s main heading --&gt;
+        &lt;p&gt;Every event is free. No sign-up needed unless it says so.&lt;/p&gt;  &lt;!-- an introduction paragraph --&gt;
+        &lt;article&gt;
+         &lt;h2&gt;Story time&lt;/h2&gt;                                             &lt;!-- the first event&#39;s heading --&gt;
+         &lt;time datetime=&quot;2026-11-14T10:30&quot;&gt;Saturday, November 14, 2026, 10:30 AM&lt;/time&gt;                   &lt;!-- the first event&#39;s date and time --&gt;
+         &lt;p&gt;Stories, songs and a craft for ages 3 to 6, in the children&#39;s room.&lt;/p&gt;   &lt;!-- the first event&#39;s description --&gt;
+&lt;!-- The photo for story time. Use this as the image&#39;s src (the picture itself, written as text): --&gt;
+         &lt;figure&gt;
+           &lt;img src=data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#39;0 0 4 2&#39;%3E%3Crect width=&#39;4&#39; height=&#39;2&#39; fill=&#39;%23b9cde6&#39;/%3E%3C/svg%3E alt=&quot;A librarian reading a picture book to a circle of children&quot;&gt;&lt;!-- what the photo shows, for its alt text --&gt;
+           &lt;figcaption&gt;Story time in the children&#39;s room&lt;/figcaption&gt;                      &lt;!-- the photo&#39;s caption --&gt;
+         &lt;/figure&gt;
+        &lt;/article&gt;
+        &lt;article&gt;
+          &lt;h2&gt;Author talk&lt;/h2&gt;
+          &lt;time datetime=&quot;2026-11-17T19:00&quot;&gt;Tuesday, November 17, 2026, 7:00 PM&lt;/time&gt;                    &lt;!-- the second event&#39;s date and time --&gt;
+          &lt;p&gt;Local writer Dana Reyes reads from her new novel, &lt;cite&gt;The Harbor Lights&lt;/cite&gt;.&lt;/p&gt;   &lt;!-- the description; the novel&#39;s title is a work --&gt;
+          &lt;h3&gt;How to sign up for the author talk&lt;/h3&gt;                     &lt;!-- a heading for the steps, inside this event --&gt;
+            &lt;ol&gt;
+              &lt;li&gt;Email the front desk.&lt;/li&gt;                                  &lt;!-- step 1 --&gt;
+              &lt;li&gt;Give your name and the number of seats.&lt;/li&gt;                &lt;!-- step 2 --&gt;
+              &lt;li&gt;Wait for a confirmation email.&lt;/li&gt;                         &lt;!-- step 3 --&gt;
+            &lt;/ol&gt;
+          &lt;details&gt;
+            &lt;summary&gt;Do I need a library card?&lt;/summary&gt;                              &lt;!-- a question visitors can open --&gt;
+            &lt;p&gt;No. Every event is open to everyone.&lt;/p&gt;
+          &lt;/details&gt;                   &lt;!-- the answer, hidden until the question is opened --&gt;
+        &lt;/article&gt;
+    &lt;/main&gt;
+    &lt;footer&gt;  
+      &lt;address&gt;
+        &lt;p&gt;Harbor Street Library,&lt;br&gt;12 Harbor Street,&lt;br&gt;Riverside&lt;p&gt;     &lt;!-- the library&#39;s contact details start here --&gt;
+        &lt;a href=&quot;mailto:info@example.org&quot;&gt;info@example.org&lt;/a&gt;                                       &lt;!-- the email address, as an email link --&gt;
+        &lt;br&gt;&lt;a href=&quot;tel:+15555550123&quot;&gt;(555) 555-0123&lt;/a&gt;                                         &lt;!-- the phone number, as a phone link (+15555550123) --&gt;
+      &lt;/address&gt;
+      &amp;copy;2026 Harbor Street Library                           &lt;!-- the copyright line, at the very bottom --&gt;
+    &lt;/footer&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</pre>
+<h4>Live preview</h4>
+<iframe title="Preview of Challenge 3.12: Mark up a complete page" sandbox="" srcdoc="&lt;!-- Capstone: everything below is plain text. Turn it into a complete, valid page. --&gt;
+&lt;!-- Each comment says what its line is. Keep the text, add the markup around it. --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+    &lt;title&gt;Events · Harbor Street Library&lt;/title&gt;                         &lt;!-- the text for the browser tab --&gt;
+    &lt;meta name=&quot;description&quot; content=&quot;Free story time, author talks and a coding club at Harbor Street Library, all open to everyone.&quot;&gt;&lt;!-- the search description --&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;header&gt;
+      &lt;h1&gt;Harbor Street Library&lt;/h1&gt;                  &lt;!-- the site name, at the top of every page --&gt;
+      &lt;nav&gt;
+        &lt;ul&gt;                                  
+         &lt;li&gt;&lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;                 &lt;!-- menu link to index.html --&gt;
+         &lt;li&gt;&lt;a href=&quot;events.html&quot;&gt;Events&lt;/a&gt;&lt;/li&gt;                  &lt;!-- menu link to events.html --&gt;
+         &lt;li&gt;&lt;a href=&quot;about.html&quot;&gt;About&lt;/a&gt;&lt;/li&gt;                     &lt;!-- menu link to about.html --&gt;
+        &lt;/ul&gt;
+      &lt;/nav&gt;
+    &lt;/header&gt;
+    &lt;main&gt;
+        &lt;h1&gt;Events this fall&lt;/h1&gt;                    &lt;!-- the page&#39;s main heading --&gt;
+        &lt;p&gt;Every event is free. No sign-up needed unless it says so.&lt;/p&gt;  &lt;!-- an introduction paragraph --&gt;
+        &lt;article&gt;
+         &lt;h2&gt;Story time&lt;/h2&gt;                                             &lt;!-- the first event&#39;s heading --&gt;
+         &lt;time datetime=&quot;2026-11-14T10:30&quot;&gt;Saturday, November 14, 2026, 10:30 AM&lt;/time&gt;                   &lt;!-- the first event&#39;s date and time --&gt;
+         &lt;p&gt;Stories, songs and a craft for ages 3 to 6, in the children&#39;s room.&lt;/p&gt;   &lt;!-- the first event&#39;s description --&gt;
+&lt;!-- The photo for story time. Use this as the image&#39;s src (the picture itself, written as text): --&gt;
+         &lt;figure&gt;
+           &lt;img src=data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#39;0 0 4 2&#39;%3E%3Crect width=&#39;4&#39; height=&#39;2&#39; fill=&#39;%23b9cde6&#39;/%3E%3C/svg%3E alt=&quot;A librarian reading a picture book to a circle of children&quot;&gt;&lt;!-- what the photo shows, for its alt text --&gt;
+           &lt;figcaption&gt;Story time in the children&#39;s room&lt;/figcaption&gt;                      &lt;!-- the photo&#39;s caption --&gt;
+         &lt;/figure&gt;
+        &lt;/article&gt;
+        &lt;article&gt;
+          &lt;h2&gt;Author talk&lt;/h2&gt;
+          &lt;time datetime=&quot;2026-11-17T19:00&quot;&gt;Tuesday, November 17, 2026, 7:00 PM&lt;/time&gt;                    &lt;!-- the second event&#39;s date and time --&gt;
+          &lt;p&gt;Local writer Dana Reyes reads from her new novel, &lt;cite&gt;The Harbor Lights&lt;/cite&gt;.&lt;/p&gt;   &lt;!-- the description; the novel&#39;s title is a work --&gt;
+          &lt;h3&gt;How to sign up for the author talk&lt;/h3&gt;                     &lt;!-- a heading for the steps, inside this event --&gt;
+            &lt;ol&gt;
+              &lt;li&gt;Email the front desk.&lt;/li&gt;                                  &lt;!-- step 1 --&gt;
+              &lt;li&gt;Give your name and the number of seats.&lt;/li&gt;                &lt;!-- step 2 --&gt;
+              &lt;li&gt;Wait for a confirmation email.&lt;/li&gt;                         &lt;!-- step 3 --&gt;
+            &lt;/ol&gt;
+          &lt;details&gt;
+            &lt;summary&gt;Do I need a library card?&lt;/summary&gt;                              &lt;!-- a question visitors can open --&gt;
+            &lt;p&gt;No. Every event is open to everyone.&lt;/p&gt;
+          &lt;/details&gt;                   &lt;!-- the answer, hidden until the question is opened --&gt;
+        &lt;/article&gt;
+    &lt;/main&gt;
+    &lt;footer&gt;  
+      &lt;address&gt;
+        &lt;p&gt;Harbor Street Library,&lt;br&gt;12 Harbor Street,&lt;br&gt;Riverside&lt;p&gt;     &lt;!-- the library&#39;s contact details start here --&gt;
+        &lt;a href=&quot;mailto:info@example.org&quot;&gt;info@example.org&lt;/a&gt;                                       &lt;!-- the email address, as an email link --&gt;
+        &lt;br&gt;&lt;a href=&quot;tel:+15555550123&quot;&gt;(555) 555-0123&lt;/a&gt;                                         &lt;!-- the phone number, as a phone link (+15555550123) --&gt;
+      &lt;/address&gt;
+      &amp;copy;2026 Harbor Street Library                           &lt;!-- the copyright line, at the very bottom --&gt;
+    &lt;/footer&gt;
+  &lt;/body&gt;
+&lt;/html&gt;"></iframe>
+</section>
+<h2>Quizzes</h2>
+<table><thead><tr><th scope="col">Quiz</th><th scope="col">Latest score</th><th scope="col">Best score</th></tr></thead><tbody>
+<tr><td>Quiz: what HTML is</td><td>6 of 6</td><td>6 of 6</td></tr>
+<tr><td>Quiz: syntax</td><td>7 of 7</td><td>7 of 7</td></tr>
+<tr><td>Quiz: semantic markup</td><td>5 of 5</td><td>5 of 5</td></tr>
+<tr><td>Quiz: document structure</td><td>7 of 7</td><td>7 of 7</td></tr>
+<tr><td>Quiz: the elements tour</td><td>8 of 8</td><td>8 of 8</td></tr>
+<tr><td>Quiz: structure elements</td><td>5 of 6</td><td>5 of 6</td></tr>
+</tbody></table>
+<h2>Practice activities</h2>
+<table><thead><tr><th scope="col">Activity</th><th scope="col">Result</th></tr></thead><tbody>
+<tr><td>Which layer does the job?</td><td>Completed (All 8 sorted correctly!)</td></tr>
+<tr><td>Void, or needs a closing tag?</td><td>Completed (All 12 sorted correctly!)</td></tr>
+<tr><td>Choose by meaning, not by looks</td><td>Completed (All matched · 3 misses)</td></tr>
+<tr><td>Put the skeleton in order</td><td>Completed (Perfect order!)</td></tr>
+<tr><td>What kind of link is each href?</td><td>Completed (All matched · 3 misses)</td></tr>
+<tr><td>Write the character entities</td><td>Completed (All blanks correct!)</td></tr>
+<tr><td>Which kind of list?</td><td>Completed (All 8 sorted correctly!)</td></tr>
+<tr><td>article, section, aside or div?</td><td>Completed (All 8 sorted correctly!)</td></tr>
+<tr><td>Predict the family tree</td><td>Completed (5 or more correct answers)</td></tr>
+</tbody></table>
+<h2>Written answers</h2>
+<section class="item">
+<h3>Explain it 1</h3>
+<p class="question">Browsers quietly repair broken HTML instead of showing an error. Explain why the HTML standard chose to be forgiving, why that is still a problem for you as the author, and which tool shows you the mistakes the browser hides.</p>
+<p class="answer">The HTML standard chose to be forgiving because users were blaming the browser not the Author. That is a problem for Author becasue the mistakes are not caught until the browser guesses wrong. Then you have a collection of mistakes in the NU HTML checker that you believed were correct. Now you have to go through and change alot more than you thought was broken.</p>
+</section>
+<section class="item">
+<h3>Explain it 2</h3>
+<p class="question">In your own words, explain why checked=&quot;false&quot; still ticks a checkbox, and the only way to write &quot;off&quot; for a boolean attribute such as checked, hidden or disabled.</p>
+<p class="answer">Checked, hidden and disabled are boolean values that are true because the browser only asks whether the attribute exists. To turn it off, remove the attribute.</p>
+</section>
+<section class="item">
+<h3>Explain it 3</h3>
+<p class="question">The div version and your semantic version of the home page can look exactly the same in a browser. Explain why the semantic version is still better, and name at least two people or programs that benefit from it.</p>
+<p class="answer">The semantic version is better because its more organized and understandable. A coder, a web developer or someone who is assigned to the project can look at the semantic version and understand what is doing what alot faster.</p>
+</section>
+<section class="item">
+<h3>Explain it 4</h3>
+<p class="question">Explain the difference between &lt;head&gt; and &lt;header&gt;, and between &lt;title&gt; and &lt;h1&gt;. Where does each one appear, and who or what reads it?</p>
+<p class="answer">The difference between head and header, head holds the invisible data about the page and header is the introductory content for the whole page or articles/sections. title is the page&#39;s name in tabs, bookmarks, history and search results. h1 is the heading element for page titles.</p>
+</section>
+<section class="item">
+<h3>Explain it 5</h3>
+<p class="question">The events page lives at events/index.html. Explain why href=&quot;../about.html&quot; works when you open the site from your laptop and on GitHub Pages, while href=&quot;/about.html&quot; breaks in both places.</p>
+<p class="answer">The .. represents the level of the folder so the browser recognizes it and the other one doesn&#39;t fully capture the directory of the folder.</p>
+</section>
+<section class="item">
+<h3>Explain it 6</h3>
+<p class="question">Choose one example each of &lt;article&gt;, &lt;section&gt;, &lt;aside&gt; and &lt;div&gt; from a library&#39;s website, and explain the question you asked yourself to pick each one.</p>
+<p class="no">No answer yet.</p>
+</section>
+</main>
+</body>
+</html>
