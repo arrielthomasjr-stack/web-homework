@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Homework 4 · Arrie Thomas Jr</title>
+<style>
+body{margin:0;padding:24px 16px;background:#fff;color:#1d2330;font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header,main{max-width:980px;margin:0 auto}
+h1{font-size:1.9rem;line-height:1.2;margin:0 0 .3em}
+h2{font-size:1.4rem;margin:2.2em 0 .7em;padding-bottom:.3em;border-bottom:2px solid #d5dae3}
+h3{font-size:1.15rem;margin:0 0 .3em}
+h4{font-size:.95rem;margin:1.2em 0 .4em;color:#4a5262}
+.meta{margin:0;color:#4a5262}
+.card{border:1px solid #d5dae3;border-radius:10px;padding:16px 18px;margin:0 0 22px}
+.st{font-weight:700;margin:0 0 8px}.st.ok{color:#1b7a3a}.st.no{color:#b3261e}
+ul.checks{list-style:none;padding:0;margin:0}ul.checks li{padding:3px 0}
+.mk{display:inline-block;min-width:6.5em;font-weight:700}.ok .mk{color:#1b7a3a}.no .mk{color:#b3261e}
+pre{margin:0;background:#f4f6f9;border:1px solid #d5dae3;border-radius:8px;padding:12px;overflow:auto;max-height:440px;font:13px/1.5 ui-monospace,Menlo,Consolas,monospace;white-space:pre}
+code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.92em}
+iframe{display:block;width:100%;height:420px;border:1px solid #c3c9d4;border-radius:8px;background:#fff}
+table{border-collapse:collapse;width:100%}caption{text-align:left;font-weight:700;padding-bottom:6px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid #d5dae3;vertical-align:top}thead th{background:#eef1f6}
+.q{font-weight:700;margin:0 0 6px}
+.answer{white-space:pre-wrap;overflow-wrap:anywhere;background:#f4f6f9;border-left:4px solid #237089;padding:10px 14px;border-radius:6px;margin:0}
+.empty{color:#8a5a00;font-style:italic}
+.sum li{margin:2px 0}
+</style>
+</head>
+<body>
+<header>
+<h1>Homework 4: Module 4</h1>
+<p class="meta">Name: <strong>Arrie Thomas Jr</strong></p>
+<p class="meta">Downloaded: October 15, 2026 at 12:57 PM</p>
+</header>
+<main>
+<h2>Summary</h2>
+<ul class="sum">
+<li>Challenges complete: 12 of 12</li>
+<li>Quizzes finished: 8 of 8</li>
+<li>Written answers: 5 of 5</li>
+</ul>
+<h2>Challenges</h2>
+<section class="card" id="challenge-1">
+<h3>Challenge 4.1: Fix a broken stylesheet</h3>
+<p class="st ok">6 of 6 checks pass</p>
+<ul class="checks"><li class="ok"><span class="mk">&#10003; Pass</span> The title is brand green (<code>#2f6f4e</code>) and <code>2.25rem</code> (36px)</li><li class="ok"><span class="mk">&#10003; Pass</span> The details line (<code>.meta</code>) is <code>0.875rem</code> (14px) and keeps its gray color</li><li class="ok"><span class="mk">&#10003; Pass</span> The facts list is indented <code>24px</code> from the left</li><li class="ok"><span class="mk">&#10003; Pass</span> The link inside the paragraph is brand green</li><li class="ok"><span class="mk">&#10003; Pass</span> The button has a brand green background</li><li class="ok"><span class="mk">&#10003; Pass</span> The footer has a 2px solid brand green line above it</li></ul>
+<h4>HTML</h4>
+<pre><code>&lt;main&gt; &lt;!-- the page&#39;s main content --&gt;
+  &lt;h1&gt;Autumn Ridge Walk&lt;/h1&gt; &lt;!-- the page title: the h1 rule styles it --&gt;
+  &lt;p class=&quot;meta&quot;&gt;Saturday · 6 miles · moderate&lt;/p&gt; &lt;!-- the details line: the .meta rule styles it --&gt;
+  &lt;p&gt;The leaves are turning and the views are at their best. &lt;a href=&quot;join.html&quot;&gt;Save your spot&lt;/a&gt; before Friday.&lt;/p&gt; &lt;!-- a paragraph with a link: the main a rule styles the link --&gt;
+  &lt;ul class=&quot;facts&quot;&gt; &lt;!-- two quick facts: the .facts rule indents the list --&gt;
+    &lt;li&gt;Meet at the north trailhead&lt;/li&gt; &lt;!-- fact 1 --&gt;
+    &lt;li&gt;Start at 8:30 a.m.&lt;/li&gt; &lt;!-- fact 2 --&gt;
+  &lt;/ul&gt; &lt;!-- end of the facts list --&gt;
+  &lt;a class=&quot;button&quot; href=&quot;join.html&quot;&gt;Join the walk&lt;/a&gt; &lt;!-- a link styled as a button by the .button rule --&gt;
+&lt;/main&gt; &lt;!-- end of the main content --&gt;
+&lt;footer&gt; &lt;!-- the bottom of the page --&gt;
+  &lt;p&gt;Riverside Hiking Club · walks every weekend&lt;/p&gt; &lt;!-- the footer line; the footer rule draws a line above it --&gt;
+&lt;/footer&gt; &lt;!-- end of the footer --&gt;</code></pre>
+<h4>CSS</h4>
+<pre><code>body { /* the whole page: this rule has no bugs */
+  font-family: Georgia, &quot;Times New Roman&quot;, serif; /* a font stack that ends with a generic family */
+  line-height: 1.5; /* comfortable space between lines */
+  margin: 16px; /* space between the page edge and the content */
+} /* end of the body rule */
+
+h1 { /* the page title */
+  color: #2f6f4e; /* brand green */
+  font-size: 2.25rem; /* 36px when the root font size is 16px */
+} /* end of the h1 rule */
+
+.meta { /* the details line */
+  font-size: 0.875rem; /* 14px: smaller than the body text */
+  color: #4a5262; /* a quieter gray */
+} /* end of the .meta rule */
+
+.facts { /* the facts list */
+  margin-left: 24px; /* indent the list from the left */
+} /* end of the .facts rule */
+
+/* the links in the paragraphs are brand green*/
+main a { /* links inside main */
+  color: #2f6f4e; /* brand green */
+} /* end of the main a rule */
+
+.button { /* the link that looks like a button */
+  display: inline-block; /* a box that sits in the line of text (4.6) */
+  background-color: #2f6f4e; /* brand green background */
+  color: white; /* white text on the green */
+  padding: 0.5em 1em; /* room around the words */
+  text-decoration: none; /* no underline on a button */
+  }
+
+footer { /* the bottom of the page */
+  border-top: 2px solid #2f6f4e; /* a brand green line above the footer */
+  margin-top: 24px; /* space above the line */
+} /* end of the footer rule */</code></pre>
+<h4>Preview</h4>
+<iframe title="Preview of Challenge 4.1: Fix a broken stylesheet" sandbox="" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;title&gt;Preview&lt;/title&gt;&lt;style&gt;
+body { /* the whole page: this rule has no bugs */
+  font-family: Georgia, &quot;Times New Roman&quot;, serif; /* a font stack that ends with a generic family */
+  line-height: 1.5; /* comfortable space between lines */
+  margin: 16px; /* space between the page edge and the content */
+} /* end of the body rule */
+
+h1 { /* the page title */
+  color: #2f6f4e; /* brand green */
+  font-size: 2.25rem; /* 36px when the root font size is 16px */
+} /* end of the h1 rule */
+
+.meta { /* the details line */
+  font-size: 0.875rem; /* 14px: smaller than the body text */
+  color: #4a5262; /* a quieter gray */
+} /* end of the .meta rule */
+
+.facts { /* the facts list */
+  margin-left: 24px; /* indent the list from the left */
+} /* end of the .facts rule */
+
+/* the links in the paragraphs are brand green*/
+main a { /* links inside main */
+  color: #2f6f4e; /* brand green */
+} /* end of the main a rule */
+
+.button { /* the link that looks like a button */
+  display: inline-block; /* a box that sits in the line of text (4.6) */
+  background-color: #2f6f4e; /* brand green background */
+  color: white; /* white text on the green */
+  padding: 0.5em 1em; /* room around the words */
+  text-decoration: none; /* no underline on a button */
+  }
+
+footer { /* the bottom of the page */
+  border-top: 2px solid #2f6f4e; /* a brand green line above the footer */
+  margin-top: 24px; /* space above the line */
+} /* end of the footer rule */
+&lt;/style&gt;&lt;/head&gt;&lt;body&gt;
+&lt;main&gt; &lt;!-- the page&#39;s main content --&gt;
+  &lt;h1&gt;Autumn Ridge Walk&lt;/h1&gt; &lt;!-- the page title: the h1 rule styles it --&gt;
+  &lt;p class=&quot;meta&quot;&gt;Saturday · 6 miles · moderate&lt;/p&gt; &lt;!-- the details line: the .meta rule styles it --&gt;
+  &lt;p&gt;The leaves are turning and the views are at their best. &lt;a href=&quot;join.html&quot;&gt;Save your spot&lt;/a&gt; before Friday.&lt;/p&gt; &lt;!-- a paragraph with a link: the main a rule styles the link --&gt;
+  &lt;ul class=&quot;facts&quot;&gt; &lt;!-- two quick facts: the .facts rule indents the list --&gt;
+    &lt;li&gt;Meet at the north trailhead&lt;/li&gt; &lt;!-- fact 1 --&gt;
+    &lt;li&gt;Start at 8:30 a.m.&lt;/li&gt; &lt;!-- fact 2 --&gt;
+  &lt;/ul&gt; &lt;!-- end of the facts list --&gt;
+  &lt;a class=&quot;button&quot; href=&quot;join.html&quot;&gt;Join the walk&lt;/a&gt; &lt;!-- a link styled as a button by the .button rule --&gt;
+&lt;/main&gt; &lt;!-- end of the main content --&gt;
+&lt;footer&gt; &lt;!-- the bottom of the page --&gt;
+  &lt;p&gt;Riverside Hiking Club · walks every weekend&lt;/p&gt; &lt;!-- the footer line; the footer rule draws a line above it --&gt;
+&lt;/footer&gt; &lt;!-- end of the footer --&gt;
+&lt;/body&gt;&lt;/html&gt;"></iframe>
+</section>
+<section class="card" id="challenge-2">
+<h3>Challenge 4.2: Color a trail notice</h3>
+<p class="st ok">5 of 5 checks pass</p>
+<ul class="checks"><li class="ok"><span class="mk">&#10003; Pass</span> The notice background is the pale tint <code>hsl(150 40% 94%)</code>, written with <code>hsl()</code></li><li class="ok"><span class="mk">&#10003; Pass</span> The heading is the brand green, written in hex as <code>#2f6f4e</code></li><li class="ok"><span class="mk">&#10003; Pass</span> The message text has at least 4.5 : 1 contrast against the notice background</li><li class="ok"><span class="mk">&#10003; Pass</span> The Open badge is the brand green, written with <code>rgb()</code></li><li class="ok"><span class="mk">&#10003; Pass</span> The notice&#39;s left border is solid, at least 4px, in the brand green at 50% opacity</li></ul>
+<h4>HTML</h4>
+<pre><code>&lt;section class=&quot;notice&quot;&gt; &lt;!-- a trail notice box --&gt;
+  &lt;h2&gt;Trail update&lt;/h2&gt; &lt;!-- the notice heading --&gt;
+  &lt;p&gt;The lower bridge on the Lake Loop is closed until Friday. Use the upper crossing instead.&lt;/p&gt; &lt;!-- the message --&gt;
+  &lt;p&gt;&lt;span class=&quot;badge&quot;&gt;Open&lt;/span&gt; Ridge Walk &lt;span class=&quot;badge closed&quot;&gt;Closed&lt;/span&gt; Lake Loop bridge&lt;/p&gt; &lt;!-- two status badges --&gt;
+&lt;/section&gt; &lt;!-- end of the notice --&gt;</code></pre>
+<h4>CSS</h4>
+<pre><code>body { /* the whole page */
+  font-family: system-ui, sans-serif; /* a clean sans-serif font stack */
+  margin: 16px; /* space around the page */
+  background-color: white; /* a white page */
+} /* end of the body rule */
+.notice { /* the notice box */
+  padding: 16px; /* room inside the box */
+  background-color: hsl(150 40% 94%); /* TODO 1: the pale club-green tint, hsl(150 40% 94%) */
+  border-left: 4px solid rgb(47 111 78 / 50%); /* TODO 5: the brand green at 50% opacity */
+} /* end of the .notice rule */
+.notice h2 { /* the notice heading */
+  margin-top: 0; /* no gap above the heading */
+  color: #2f6f4e; /* TODO 2: the brand green, written in hex */
+} /* end of the heading rule */
+.notice p { /* the message and the badge line */
+  color: #1f4fd1; /* TODO 3: far too pale to read; choose a color with at least 4.5 : 1 contrast */
+} /* end of the paragraph rule */
+.badge { /* the status labels */
+  display: inline-block; /* a small box that sits in the line (4.6) */
+  padding: 0.1em 0.5em; /* room around the word */
+  border-radius: 999px; /* pill-shaped ends */
+  background-color: rgb(47 111 78); /* TODO 4: the brand green, written with rgb() */
+  color: white; /* white text on the badge */
+} /* end of the .badge rule */
+.badge.closed { /* the Closed badge (both classes) */
+  background-color: #c62828; /* red, dark enough for white text */
+} /* end of the .badge.closed rule */</code></pre>
+<h4>Preview</h4>
+<iframe title="Preview of Challenge 4.2: Color a trail notice" sandbox="" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;title&gt;Preview&lt;/title&gt;&lt;style&gt;
+body { /* the whole page */
+  font-family: system-ui, sans-serif; /* a clean sans-serif font stack */
+  margin: 16px; /* space around the page */
+  background-color: white; /* a white page */
+} /* end of the body rule */
+.notice { /* the notice box */
+  padding: 16px; /* room inside the box */
+  background-color: hsl(150 40% 94%); /* TODO 1: the pale club-green tint, hsl(150 40% 94%) */
+  border-left: 4px solid rgb(47 111 78 / 50%); /* TODO 5: the brand green at 50% opacity */
+} /* end of the .notice rule */
+.notice h2 { /* the notice heading */
+  margin-top: 0; /* no gap above the heading */
+  color: #2f6f4e; /* TODO 2: the brand green, written in hex */
+} /* end of the heading rule */
+.notice p { /* the message and the badge line */
+  color: #1f4fd1; /* TODO 3: far too pale to read; choose a color with at least 4.5 : 1 contrast */
+} /* end of the paragraph rule */
+.badge { /* the status labels */
+  display: inline-block; /* a small box that sits in the line (4.6) */
+  padding: 0.1em 0.5em; /* room around the word */
+  border-radius: 999px; /* pill-shaped ends */
+  background-color: rgb(47 111 78); /* TODO 4: the brand green, written with rgb() */
+  color: white; /* white text on the badge */
+} /* end of the .badge rule */
+.badge.closed { /* the Closed badge (both classes) */
+  background-color: #c62828; /* red, dark enough for white text */
+} /* end of the .badge.closed rule */
+&lt;/style&gt;&lt;/head&gt;&lt;body&gt;
+&lt;section class=&quot;notice&quot;&gt; &lt;!-- a trail notice box --&gt;
+  &lt;h2&gt;Trail update&lt;/h2&gt; &lt;!-- the notice heading --&gt;
+  &lt;p&gt;The lower bridge on the Lake Loop is closed until Friday. Use the upper crossing instead.&lt;/p&gt; &lt;!-- the message --&gt;
+  &lt;p&gt;&lt;span class=&quot;badge&quot;&gt;Open&lt;/span&gt; Ridge Walk &lt;span class=&quot;badge closed&quot;&gt;Closed&lt;/span&gt; Lake Loop bridge&lt;/p&gt; &lt;!-- two status badges --&gt;
+&lt;/section&gt; &lt;!-- end of the notice --&gt;
+&lt;/body&gt;&lt;/html&gt;"></iframe>
+</section>
+<section class="card" id="challenge-3">
+<h3>Challenge 4.3: Pick the right unit</h3>
+<p class="st ok">5 of 5 checks pass</p>
+<ul class="checks"><li class="ok"><span class="mk">&#10003; Pass</span> The headline is <code>2.25rem</code>: 36px now, and it grows when the reader&#39;s text size grows</li><li class="ok"><span class="mk">&#10003; Pass</span> The button&#39;s padding is <code>0.5em 1em</code>, so it grows with the button&#39;s text</li><li class="ok"><span class="mk">&#10003; Pass</span> The card is always half as wide as <code>.wrap</code>, whatever width <code>.wrap</code> has</li><li class="ok"><span class="mk">&#10003; Pass</span> The story is limited to a readable measure in <code>ch</code> (45 to 75 characters per line)</li><li class="ok"><span class="mk">&#10003; Pass</span> The banner is at least half as tall as the browser window (<code>50vh</code>)</li></ul>
+<h4>HTML</h4>
+<pre><code>&lt;div class=&quot;hero&quot;&gt; &lt;!-- the welcome banner --&gt;
+  &lt;h1&gt;Riverside Hiking Club&lt;/h1&gt; &lt;!-- the banner headline --&gt;
+  &lt;a class=&quot;button&quot; href=&quot;join.html&quot;&gt;Join a walk&lt;/a&gt; &lt;!-- a link styled as a button --&gt;
+&lt;/div&gt; &lt;!-- end of the banner --&gt;
+&lt;div class=&quot;wrap&quot;&gt; &lt;!-- a box around the card; the checks change its width --&gt;
+  &lt;div class=&quot;card&quot;&gt;Half as wide as the dashed box&lt;/div&gt; &lt;!-- a card that should always be half the width of .wrap --&gt;
+&lt;/div&gt; &lt;!-- end of the wrap box --&gt;
+&lt;p class=&quot;story&quot;&gt;Every walk starts at a trailhead with a map board and ends, if the weather is kind, somewhere with a view. Our leaders pick routes for every pace, from flat lake loops to steep ridge climbs, and they always wait for the last walker at every junction.&lt;/p&gt; &lt;!-- a long paragraph that needs a readable line length --&gt;</code></pre>
+<h4>CSS</h4>
+<pre><code>body { /* the whole page */
+  font-family: system-ui, sans-serif; /* a clean sans-serif font stack */
+  margin: 16px; /* space around the page */
+} /* end of the body rule */
+.hero { /* the welcome banner */
+  background-color: #2f6f4e; /* brand green */
+  color: white; /* white text on the green */
+  padding: 16px; /* room inside the banner */
+  min-height: 50vh; /* TODO 5: at least half the height of the browser window, in vh */
+} /* end of the .hero rule */
+.hero h1 { /* the headline */
+  margin-top: 0; /* no gap above the headline */
+  font-size: 2.25rem; /* TODO 1: 2.25rem, so it follows the reader&#39;s text-size setting */
+} /* end of the headline rule */
+.button { /* the link button */
+  display: inline-block; /* a box that sits in the line (4.6) */
+  background-color: white; /* a white button */
+  color: #2f6f4e; /* green text */
+  font-size: 1.25rem; /* 20px text */
+  padding: 0.5em 1em; /* TODO 2: 0.5em 1em, so the padding grows with the text */
+} /* end of the .button rule */
+.wrap { /* the box around the card */
+  border: 1px dashed #8a93a3; /* a dashed line so you can see the box */
+  margin: 16px 0; /* space above and below */
+} /* end of the .wrap rule */
+.card { /* the card */
+  box-sizing: border-box; /* the width includes padding and border (4.6) */
+  background-color: #eaf6f0; /* pale green */
+  padding: 12px; /* room inside the card */
+  width: 50%; /* TODO 3: always half the width of .wrap */
+} /* end of the .card rule */
+.story { /* the long paragraph */
+  line-height: 1.5; /* comfortable line spacing */
+  max-width: 60ch; /* TODO 4: a readable line length, max-width: 60ch */
+} /* end of the .story rule */</code></pre>
+<h4>Preview</h4>
+<iframe title="Preview of Challenge 4.3: Pick the right unit" sandbox="" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;title&gt;Preview&lt;/title&gt;&lt;style&gt;
+body { /* the whole page */
+  font-family: system-ui, sans-serif; /* a clean sans-serif font stack */
+  margin: 16px; /* space around the page */
+} /* end of the body rule */
+.hero { /* the welcome banner */
+  background-color: #2f6f4e; /* brand green */
+  color: white; /* white text on the green */
+  padding: 16px; /* room inside the banner */
+  min-height: 50vh; /* TODO 5: at least half the height of the browser window, in vh */
+} /* end of the .hero rule */
+.hero h1 { /* the headline */
+  margin-top: 0; /* no gap above the headline */
+  font-size: 2.25rem; /* TODO 1: 2.25rem, so it follows the reader&#39;s text-size setting */
+} /* end of the headline rule */
+.button { /* the link button */
+  display: inline-block; /* a box that sits in the line (4.6) */
+  background-color: white; /* a white button */
+  color: #2f6f4e; /* green text */
+  font-size: 1.25rem; /* 20px text */
+  padding: 0.5em 1em; /* TODO 2: 0.5em 1em, so the padding grows with the text */
+} /* end of the .button rule */
+.wrap { /* the box around the card */
+  border: 1px dashed #8a93a3; /* a dashed line so you can see the box */
+  margin: 16px 0; /* space above and below */
+} /* end of the .wrap rule */
+.card { /* the card */
+  box-sizing: border-box; /* the width includes padding and border (4.6) */
+  background-color: #eaf6f0; /* pale green */
+  padding: 12px; /* room inside the card */
+  width: 50%; /* TODO 3: always half the width of .wrap */
+} /* end of the .card rule */
+.story { /* the long paragraph */
+  line-height: 1.5; /* comfortable line spacing */
+  max-width: 60ch; /* TODO 4: a readable line length, max-width: 60ch */
+} /* end of the .story rule */
+&lt;/style&gt;&lt;/head&gt;&lt;body&gt;
+&lt;div class=&quot;hero&quot;&gt; &lt;!-- the welcome banner --&gt;
+  &lt;h1&gt;Riverside Hiking Club&lt;/h1&gt; &lt;!-- the banner headline --&gt;
+  &lt;a class=&quot;button&quot; href=&quot;join.html&quot;&gt;Join a walk&lt;/a&gt; &lt;!-- a link styled as a button --&gt;
+&lt;/div&gt; &lt;!-- end of the banner --&gt;
+&lt;div class=&quot;wrap&quot;&gt; &lt;!-- a box around the card; the checks change its width --&gt;
+  &lt;div class=&quot;card&quot;&gt;Half as wide as the dashed box&lt;/div&gt; &lt;!-- a card that should always be half the width of .wrap --&gt;
+&lt;/div&gt; &lt;!-- end of the wrap box --&gt;
+&lt;p class=&quot;story&quot;&gt;Every walk starts at a trailhead with a map board and ends, if the weather is kind, somewhere with a view. Our leaders pick routes for every pace, from flat lake loops to steep ridge climbs, and they always wait for the last walker at every junction.&lt;/p&gt; &lt;!-- a long paragraph that needs a readable line length --&gt;
+&lt;/body&gt;&lt;/html&gt;"></iframe>
+</section>
+<section class="card" id="challenge-4">
+<h3>Challenge 4.4: Move the styles into the stylesheet</h3>
+<p class="st ok">6 of 6 checks pass</p>
+<ul class="checks"><li class="ok"><span class="mk">&#10003; Pass</span> No <code>style</code> attributes are left in the HTML</li><li class="ok"><span class="mk">&#10003; Pass</span> No <code>&lt;style&gt;</code> element is left in the HTML</li><li class="ok"><span class="mk">&#10003; Pass</span> The title is still brand green with <code>0.02em</code> letter-spacing, now from the stylesheet</li><li class="ok"><span class="mk">&#10003; Pass</span> Both trip boxes still have their 1px border, <code>12px</code> padding and <code>12px</code> below them, now from the stylesheet</li><li class="ok"><span class="mk">&#10003; Pass</span> The deadline paragraph is still crimson and bold, styled with a class instead of an inline style</li><li class="ok"><span class="mk">&#10003; Pass</span> Both trip headings still have no space above them, with no inline styles</li></ul>
+<h4>HTML</h4>
+<pre><code>
+&lt;!-- href is the path from THIS HTML file to the CSS file --&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;css/styles.css&quot;&gt;
+&lt;h1&gt;Weekend trips&lt;/h1&gt; &lt;!-- the page title --&gt;
+&lt;p class=&quot;deadline&quot;&gt;Registration closes Friday.&lt;/p&gt; &lt;!-- an inline style: crimson and bold --&gt;
+&lt;div class=&quot;trip&quot;&gt; &lt;!-- the first trip box --&gt;
+  &lt;h2&gt;Ridge Walk&lt;/h2&gt; &lt;!-- an inline style removes the space above this heading --&gt;
+  &lt;p&gt;Saturday, 6 miles.&lt;/p&gt; &lt;!-- the trip details --&gt;
+&lt;/div&gt; &lt;!-- end of the first trip --&gt;
+&lt;div class=&quot;trip&quot;&gt; &lt;!-- the second trip box --&gt;
+  &lt;h2&gt;Lake Loop&lt;/h2&gt; &lt;!-- the same inline style, written a second time --&gt;
+  &lt;p&gt;Sunday, 3 miles.&lt;/p&gt; &lt;!-- the trip details --&gt;
+&lt;/div&gt; &lt;!-- end of the second trip --&gt;</code></pre>
+<h4>CSS</h4>
+<pre><code>
+body { /* the whole page */
+  font-family: system-ui, sans-serif; /* a clean sans-serif font stack */
+  margin: 16px; /* space around the page */
+} /* end of the body rule */
+h1 { color: #2f6f4e; letter-spacing: 0.02em; } /* TODO 1: the two rules from the &lt;style&gt; element in the HTML go here */
+h2 {margin-top: 0; }
+.deadline {color: crimson; font-weight: bold; }/* TODO 2: a class rule for the deadline paragraph, replacing its inline style */
+.trip { border: 1px solid #c8d3cc; padding: 12px; margin-bottom: 12px; }/* TODO 3: ONE rule for every heading inside a .trip, replacing both inline margin-top styles */</code></pre>
+<h4>Preview</h4>
+<iframe title="Preview of Challenge 4.4: Move the styles into the stylesheet" sandbox="" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;title&gt;Preview&lt;/title&gt;&lt;style&gt;
+
+body { /* the whole page */
+  font-family: system-ui, sans-serif; /* a clean sans-serif font stack */
+  margin: 16px; /* space around the page */
+} /* end of the body rule */
+h1 { color: #2f6f4e; letter-spacing: 0.02em; } /* TODO 1: the two rules from the &lt;style&gt; element in the HTML go here */
+h2 {margin-top: 0; }
+.deadline {color: crimson; font-weight: bold; }/* TODO 2: a class rule for the deadline paragraph, replacing its inline style */
+.trip { border: 1px solid #c8d3cc; padding: 12px; margin-bottom: 12px; }/* TODO 3: ONE rule for every heading inside a .trip, replacing both inline margin-top styles */
+&lt;/style&gt;&lt;/head&gt;&lt;body&gt;
+
+&lt;!-- href is the path from THIS HTML file to the CSS file --&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;css/styles.css&quot;&gt;
+&lt;h1&gt;Weekend trips&lt;/h1&gt; &lt;!-- the page title --&gt;
+&lt;p class=&quot;deadline&quot;&gt;Registration closes Friday.&lt;/p&gt; &lt;!-- an inline style: crimson and bold --&gt;
+&lt;div class=&quot;trip&quot;&gt; &lt;!-- the first trip box --&gt;
+  &lt;h2&gt;Ridge Walk&lt;/h2&gt; &lt;!-- an inline style removes the space above this heading --&gt;
+  &lt;p&gt;Saturday, 6 miles.&lt;/p&gt; &lt;!-- the trip details --&gt;
+&lt;/div&gt; &lt;!-- end of the first trip --&gt;
+&lt;div class=&quot;trip&quot;&gt; &lt;!-- the second trip box --&gt;
+  &lt;h2&gt;Lake Loop&lt;/h2&gt; &lt;!-- the same inline style, written a second time --&gt;
+  &lt;p&gt;Sunday, 3 miles.&lt;/p&gt; &lt;!-- the trip details --&gt;
+&lt;/div&gt; &lt;!-- end of the second trip --&gt;
+&lt;/body&gt;&lt;/html&gt;"></iframe>
+</section>
+<section class="card" id="challenge-5">
+<h3>Challenge 4.5: Style exactly the right elements</h3>
+<p class="st ok">8 of 8 checks pass</p>
+<ul class="checks"><li class="ok"><span class="mk">&#10003; Pass</span> Element selector: both <code>h2</code> headings are brand green, and no paragraph or link is</li><li class="ok"><span class="mk">&#10003; Pass</span> Class selector: the <code>.note</code> paragraph is italic, and no other paragraph is</li><li class="ok"><span class="mk">&#10003; Pass</span> Id selector: only the <code>#featured</code> heading has a 3px solid bottom border</li><li class="ok"><span class="mk">&#10003; Pass</span> Selector list: one rule makes both the logo and the footer paragraph uppercase, and no paragraph in <code>main</code> is</li><li class="ok"><span class="mk">&#10003; Pass</span> Descendant combinator: all five menu links lose their underline, and the link in <code>main</code> keeps it</li><li class="ok"><span class="mk">&#10003; Pass</span> Child combinator: the three top-level menu items have a 3px solid left border, and the two sub-menu items do not</li><li class="ok"><span class="mk">&#10003; Pass</span> Adjacent sibling combinator: only the paragraph right after each <code>h2</code> is bold</li><li class="ok"><span class="mk">&#10003; Pass</span> General sibling combinator: the three paragraphs after <code>#featured</code> have the background <code>#fff4d6</code>, and the two before it do not</li></ul>
+<h4>HTML</h4>
+<pre><code>&lt;header class=&quot;site-header&quot;&gt; &lt;!-- the banner at the top --&gt;
+  &lt;p class=&quot;logo&quot;&gt;Riverside Hiking Club&lt;/p&gt; &lt;!-- the club name: class logo --&gt;
+  &lt;nav&gt; &lt;!-- the main menu --&gt;
+    &lt;ul class=&quot;menu&quot;&gt; &lt;!-- the top-level list of links: class menu --&gt;
+      &lt;li&gt;&lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;&lt;/li&gt; &lt;!-- top-level item 1 --&gt;
+      &lt;li&gt;&lt;a href=&quot;trips.html&quot;&gt;Trips&lt;/a&gt; &lt;!-- top-level item 2, which holds a sub-menu --&gt;
+        &lt;ul&gt; &lt;!-- the sub-menu: a list nested inside an item --&gt;
+          &lt;li&gt;&lt;a href=&quot;ridge.html&quot;&gt;Ridge Walk&lt;/a&gt;&lt;/li&gt; &lt;!-- sub-menu item 1 --&gt;
+          &lt;li&gt;&lt;a href=&quot;lake.html&quot;&gt;Lake Loop&lt;/a&gt;&lt;/li&gt; &lt;!-- sub-menu item 2 --&gt;
+        &lt;/ul&gt; &lt;!-- end of the sub-menu --&gt;
+      &lt;/li&gt; &lt;!-- end of top-level item 2 --&gt;
+      &lt;li&gt;&lt;a href=&quot;join.html&quot;&gt;Join&lt;/a&gt;&lt;/li&gt; &lt;!-- top-level item 3 --&gt;
+    &lt;/ul&gt; &lt;!-- end of the menu list --&gt;
+  &lt;/nav&gt; &lt;!-- end of the menu --&gt;
+&lt;/header&gt; &lt;!-- end of the banner --&gt;
+&lt;main&gt; &lt;!-- the page&#39;s content --&gt;
+  &lt;h2&gt;Lake Loop&lt;/h2&gt; &lt;!-- the first heading --&gt;
+  &lt;p&gt;Sunday, 3 miles, easy.&lt;/p&gt; &lt;!-- the paragraph right after the first heading --&gt;
+  &lt;p&gt;Meet at the boat ramp at 8:00.&lt;/p&gt; &lt;!-- a second paragraph --&gt;
+  &lt;h2 id=&quot;featured&quot;&gt;Ridge Walk&lt;/h2&gt; &lt;!-- the second heading: id featured --&gt;
+  &lt;p&gt;Saturday, 6 miles, moderate.&lt;/p&gt; &lt;!-- the paragraph right after the featured heading --&gt;
+  &lt;p class=&quot;note&quot;&gt;Bring trekking poles.&lt;/p&gt; &lt;!-- a paragraph with class note --&gt;
+  &lt;p&gt;See the &lt;a href=&quot;trips.html&quot;&gt;full schedule&lt;/a&gt;.&lt;/p&gt; &lt;!-- a paragraph with a link that is not in the nav --&gt;
+&lt;/main&gt; &lt;!-- end of the content --&gt;
+&lt;footer&gt; &lt;!-- the bottom of the page --&gt;
+  &lt;p&gt;Questions? Ask a trip leader.&lt;/p&gt; &lt;!-- the footer paragraph --&gt;
+&lt;/footer&gt; &lt;!-- end of the footer --&gt;</code></pre>
+<h4>CSS</h4>
+<pre><code>body { /* the whole page */
+  font-family: system-ui, sans-serif; /* a clean sans-serif font stack */
+  margin: 16px; /* space around the page */
+} /* end of the body rule */
+h2 {color: #2f6f4e; }/* TODO 1 (element): every h2 is brand green, #2f6f4e */
+.note {font-style: italic; }/* TODO 2 (class): the note paragraph is italic */
+#featured {border-bottom: 3px solid; }/* TODO 3 (id): the featured heading gets a 3px solid bottom border */
+.logo, footer p {text-transform: uppercase; }/* TODO 4 (selector list): ONE rule makes the logo and the footer paragraph uppercase */
+nav a {text-decoration: none; }/* TODO 5 (descendant): links inside the nav lose their underline */
+.menu &gt; li {border-left: 3px solid; }/* TODO 6 (child): only the top-level menu items get a 3px solid left border */
+h2+p {font-weight: bold; }/* TODO 7 (adjacent sibling): the paragraph right after each h2 is bold */
+#featured ~ p {background: #fff4d6; } /* TODO 8 (general sibling): every paragraph after the featured heading gets the background #fff4d6 */</code></pre>
+<h4>Preview</h4>
+<iframe title="Preview of Challenge 4.5: Style exactly the right elements" sandbox="" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;title&gt;Preview&lt;/title&gt;&lt;style&gt;
+body { /* the whole page */
+  font-family: system-ui, sans-serif; /* a clean sans-serif font stack */
+  margin: 16px; /* space around the page */
+} /* end of the body rule */
+h2 {color: #2f6f4e; }/* TODO 1 (element): every h2 is brand green, #2f6f4e */
+.note {font-style: italic; }/* TODO 2 (class): the note paragraph is italic */
+#featured {border-bottom: 3px solid; }/* TODO 3 (id): the featured heading gets a 3px solid bottom border */
+.logo, footer p {text-transform: uppercase; }/* TODO 4 (selector list): ONE rule makes the logo and the footer paragraph uppercase */
+nav a {text-decoration: none; }/* TODO 5 (descendant): links inside the nav lose their underline */
+.menu &gt; li {border-left: 3px solid; }/* TODO 6 (child): only the top-level menu items get a 3px solid left border */
+h2+p {font-weight: bold; }/* TODO 7 (adjacent sibling): the paragraph right after each h2 is bold */
+#featured ~ p {background: #fff4d6; } /* TODO 8 (general sibling): every paragraph after the featured heading gets the background #fff4d6 */
+&lt;/style&gt;&lt;/head&gt;&lt;body&gt;
+&lt;header class=&quot;site-header&quot;&gt; &lt;!-- the banner at the top --&gt;
+  &lt;p class=&quot;logo&quot;&gt;Riverside Hiking Club&lt;/p&gt; &lt;!-- the club name: class logo --&gt;
+  &lt;nav&gt; &lt;!-- the main menu --&gt;
+    &lt;ul class=&quot;menu&quot;&gt; &lt;!-- the top-level list of links: class menu --&gt;
+      &lt;li&gt;&lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;&lt;/li&gt; &lt;!-- top-level item 1 --&gt;
+      &lt;li&gt;&lt;a href=&quot;trips.html&quot;&gt;Trips&lt;/a&gt; &lt;!-- top-level item 2, which holds a sub-menu --&gt;
+        &lt;ul&gt; &lt;!-- the sub-menu: a list nested inside an item --&gt;
+          &lt;li&gt;&lt;a href=&quot;ridge.html&quot;&gt;Ridge Walk&lt;/a&gt;&lt;/li&gt; &lt;!-- sub-menu item 1 --&gt;
+          &lt;li&gt;&lt;a href=&quot;lake.html&quot;&gt;Lake Loop&lt;/a&gt;&lt;/li&gt; &lt;!-- sub-menu item 2 --&gt;
+        &lt;/ul&gt; &lt;!-- end of the sub-menu --&gt;
+      &lt;/li&gt; &lt;!-- end of top-level item 2 --&gt;
+      &lt;li&gt;&lt;a href=&quot;join.html&quot;&gt;Join&lt;/a&gt;&lt;/li&gt; &lt;!-- top-level item 3 --&gt;
+    &lt;/ul&gt; &lt;!-- end of the menu list --&gt;
+  &lt;/nav&gt; &lt;!-- end of the menu --&gt;
+&lt;/header&gt; &lt;!-- end of the banner --&gt;
+&lt;main&gt; &lt;!-- the page&#39;s content --&gt;
+  &lt;h2&gt;Lake Loop&lt;/h2&gt; &lt;!-- the first heading --&gt;
+  &lt;p&gt;Sunday, 3 miles, easy.&lt;/p&gt; &lt;!-- the paragraph right after the first heading --&gt;
+  &lt;p&gt;Meet at the boat ramp at 8:00.&lt;/p&gt; &lt;!-- a second paragraph --&gt;
+  &lt;h2 id=&quot;featured&quot;&gt;Ridge Walk&lt;/h2&gt; &lt;!-- the second heading: id featured --&gt;
+  &lt;p&gt;Saturday, 6 miles, moderate.&lt;/p&gt; &lt;!-- the paragraph right after the featured heading --&gt;
+  &lt;p class=&quot;note&quot;&gt;Bring trekking poles.&lt;/p&gt; &lt;!-- a paragraph with class note --&gt;
+  &lt;p&gt;See the &lt;a href=&quot;trips.html&quot;&gt;full schedule&lt;/a&gt;.&lt;/p&gt; &lt;!-- a paragraph with a link that is not in the nav --&gt;
+&lt;/main&gt; &lt;!-- end of the content --&gt;
+&lt;footer&gt; &lt;!-- the bottom of the page --&gt;
+  &lt;p&gt;Questions? Ask a trip leader.&lt;/p&gt; &lt;!-- the footer paragraph --&gt;
+&lt;/footer&gt; &lt;!-- end of the footer --&gt;
+&lt;/body&gt;&lt;/html&gt;"></iframe>
+</section>
+<section class="card" id="challenge-6">
+<h3>Challenge 4.6: Attributes, states and parts</h3>
+<p class="st ok">7 of 7 checks pass</p>
+<ul class="checks"><li class="ok"><span class="mk">&#10003; Pass</span> Attribute selector (<code>$=</code>): the PDF link is bold, and the other links are not</li><li class="ok"><span class="mk">&#10003; Pass</span> Attribute selector (<code>^=</code>): the link that starts with https has a dotted underline, and the others stay solid</li><li class="ok"><span class="mk">&#10003; Pass</span> <code>:nth-child()</code>: gear items 1, 3 and 5 have the background <code>#eaf6f0</code>, and items 2 and 4 do not</li><li class="ok"><span class="mk">&#10003; Pass</span> <code>:not()</code>: every gear item except the last has a 1px solid bottom border</li><li class="ok"><span class="mk">&#10003; Pass</span> <code>::first-letter</code>: the first letter of <code>.intro</code> is twice its text size and brand green</li><li class="ok"><span class="mk">&#10003; Pass</span> <code>::before</code>: the <code>.tip</code> paragraph starts with the generated text &quot;Tip: &quot;</li><li class="ok"><span class="mk">&#10003; Pass</span> <code>:hover</code> and <code>:focus-visible</code>: links have a style for the pointer and one for keyboard focus</li></ul>
+<h4>HTML</h4>
+<pre><code>&lt;h2&gt;Gear list&lt;/h2&gt; &lt;!-- the heading --&gt;
+&lt;ul class=&quot;gear&quot;&gt; &lt;!-- the gear list: class gear --&gt;
+  &lt;li&gt;Boots&lt;/li&gt; &lt;!-- item 1 --&gt;
+  &lt;li&gt;Water&lt;/li&gt; &lt;!-- item 2 --&gt;
+  &lt;li&gt;Map&lt;/li&gt; &lt;!-- item 3 --&gt;
+  &lt;li&gt;Rain jacket&lt;/li&gt; &lt;!-- item 4 --&gt;
+  &lt;li&gt;Snacks&lt;/li&gt; &lt;!-- item 5, the last one --&gt;
+&lt;/ul&gt; &lt;!-- end of the gear list --&gt;
+&lt;p class=&quot;intro&quot;&gt;Every trip report starts with a story. Ours began before sunrise at the north trailhead.&lt;/p&gt; &lt;!-- the opening paragraph: class intro --&gt;
+&lt;p&gt;Links for this trip: &lt;!-- a paragraph of three links --&gt;
+  &lt;a href=&quot;maps/ridge.pdf&quot;&gt;Trail map (PDF)&lt;/a&gt;, &lt;!-- the address ends with .pdf --&gt;
+  &lt;a href=&quot;https://www.nps.gov&quot;&gt;Park info&lt;/a&gt; and &lt;!-- the address starts with https --&gt;
+  &lt;a href=&quot;trips.html&quot;&gt;All trips&lt;/a&gt;. &lt;!-- a relative address: neither --&gt;
+&lt;/p&gt; &lt;!-- end of the links paragraph --&gt;
+&lt;p class=&quot;tip&quot;&gt;Bring two liters of water.&lt;/p&gt; &lt;!-- a tip: class tip --&gt;</code></pre>
+<h4>CSS</h4>
+<pre><code>body { /* the whole page */
+  font-family: system-ui, sans-serif; /* a clean sans-serif font stack */
+  margin: 16px; /* space around the page */
+} /* end of the body rule */
+.gear { /* the gear list */
+  padding-left: 0; /* no indent */
+  list-style: none; /* no bullets */
+} /* end of the .gear rule */
+.gear li { /* every gear item */
+  padding: 6px 8px; /* room inside each item */
+} /* end of the .gear li rule */
+a[href$=&quot;.pdf&quot;] {font-weight: bold; }/* TODO 1 ($=): links whose address ends with .pdf are bold */
+a[href^=&quot;https&quot;] {text-decoration-style: dotted; }/* TODO 2 (^=): links whose address starts with https get text-decoration-style: dotted */
+.gear li:nth-child(odd) {background: #eaf6f0; }/* TODO 3 (:nth-child): gear items 1, 3 and 5 get the background #eaf6f0 */
+.gear li:not(:last-child) {border-bottom: 1px solid; }/* TODO 4 (:not): every gear item except the last gets a 1px solid bottom border */
+.intro::first-letter {font-size: 2em; color: #2f6f4e; }/* TODO 5 (::first-letter): the first letter of .intro is 2em and brand green */
+.tip::before {content: &quot;Tip: &quot;; }/* TODO 6 (::before): .tip starts with the generated text &quot;Tip: &quot; */
+a:hover {
+  color: white;
+  background: crimson;
+}
+
+a:focus-visible {
+  outline: 3px solid orange;
+}/* TODO 7 (:hover and :focus-visible): links change under the pointer and with keyboard focus */</code></pre>
+<h4>Preview</h4>
+<iframe title="Preview of Challenge 4.6: Attributes, states and parts" sandbox="" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;title&gt;Preview&lt;/title&gt;&lt;style&gt;
+body { /* the whole page */
+  font-family: system-ui, sans-serif; /* a clean sans-serif font stack */
+  margin: 16px; /* space around the page */
+} /* end of the body rule */
+.gear { /* the gear list */
+  padding-left: 0; /* no indent */
+  list-style: none; /* no bullets */
+} /* end of the .gear rule */
+.gear li { /* every gear item */
+  padding: 6px 8px; /* room inside each item */
+} /* end of the .gear li rule */
+a[href$=&quot;.pdf&quot;] {font-weight: bold; }/* TODO 1 ($=): links whose address ends with .pdf are bold */
+a[href^=&quot;https&quot;] {text-decoration-style: dotted; }/* TODO 2 (^=): links whose address starts with https get text-decoration-style: dotted */
+.gear li:nth-child(odd) {background: #eaf6f0; }/* TODO 3 (:nth-child): gear items 1, 3 and 5 get the background #eaf6f0 */
+.gear li:not(:last-child) {border-bottom: 1px solid; }/* TODO 4 (:not): every gear item except the last gets a 1px solid bottom border */
+.intro::first-letter {font-size: 2em; color: #2f6f4e; }/* TODO 5 (::first-letter): the first letter of .intro is 2em and brand green */
+.tip::before {content: &quot;Tip: &quot;; }/* TODO 6 (::before): .tip starts with the generated text &quot;Tip: &quot; */
+a:hover {
+  color: white;
+  background: crimson;
+}
+
+a:focus-visible {
+  outline: 3px solid orange;
+}/* TODO 7 (:hover and :focus-visible): links change under the pointer and with keyboard focus */
+&lt;/style&gt;&lt;/head&gt;&lt;body&gt;
+&lt;h2&gt;Gear list&lt;/h2&gt; &lt;!-- the heading --&gt;
+&lt;ul class=&quot;gear&quot;&gt; &lt;!-- the gear list: class gear --&gt;
+  &lt;li&gt;Boots&lt;/li&gt; &lt;!-- item 1 --&gt;
+  &lt;li&gt;Water&lt;/li&gt; &lt;!-- item 2 --&gt;
+  &lt;li&gt;Map&lt;/li&gt; &lt;!-- item 3 --&gt;
+  &lt;li&gt;Rain jacket&lt;/li&gt; &lt;!-- item 4 --&gt;
+  &lt;li&gt;Snacks&lt;/li&gt; &lt;!-- item 5, the last one --&gt;
+&lt;/ul&gt; &lt;!-- end of the gear list --&gt;
+&lt;p class=&quot;intro&quot;&gt;Every trip report starts with a story. Ours began before sunrise at the north trailhead.&lt;/p&gt; &lt;!-- the opening paragraph: class intro --&gt;
+&lt;p&gt;Links for this trip: &lt;!-- a paragraph of three links --&gt;
+  &lt;a href=&quot;maps/ridge.pdf&quot;&gt;Trail map (PDF)&lt;/a&gt;, &lt;!-- the address ends with .pdf --&gt;
+  &lt;a href=&quot;https://www.nps.gov&quot;&gt;Park info&lt;/a&gt; and &lt;!-- the address starts with https --&gt;
+  &lt;a href=&quot;trips.html&quot;&gt;All trips&lt;/a&gt;. &lt;!-- a relative address: neither --&gt;
+&lt;/p&gt; &lt;!-- end of the links paragraph --&gt;
+&lt;p class=&quot;tip&quot;&gt;Bring two liters of water.&lt;/p&gt; &lt;!-- a tip: class tip --&gt;
+&lt;/body&gt;&lt;/html&gt;"></iframe>
+</section>
+<section class="card" id="challenge-7">
+<h3>Challenge 4.7: Win the cascade without !important</h3>
+<p class="st ok">4 of 4 checks pass</p>
+<ul class="checks"><li class="ok"><span class="mk">&#10003; Pass</span> The highlighted title is orange (<code>#b3541e</code>), the other title stays gray (<code>#6b7280</code>), with no <code>!important</code></li><li class="ok"><span class="mk">&#10003; Pass</span> Both Details buttons have white text, and the trip report link stays navy, with no <code>!important</code></li><li class="ok"><span class="mk">&#10003; Pass</span> Both dates are brand green, and the other paragraph stays <code>#333333</code>, with no <code>!important</code></li><li class="ok"><span class="mk">&#10003; Pass</span> Both Save buttons use the card&#39;s font, through the <code>inherit</code> keyword</li></ul>
+<h4>HTML</h4>
+<pre><code>&lt;section id=&quot;trips&quot;&gt; &lt;!-- the trips section: id trips --&gt;
+  &lt;article class=&quot;card&quot;&gt; &lt;!-- the first trip card --&gt;
+    &lt;h3 class=&quot;title&quot;&gt;Lake Loop&lt;/h3&gt; &lt;!-- an ordinary title: should stay gray --&gt;
+    &lt;p class=&quot;date&quot;&gt;Sunday, May 4&lt;/p&gt; &lt;!-- a date: should be brand green --&gt;
+    &lt;a class=&quot;button&quot; href=&quot;lake.html&quot;&gt;Details&lt;/a&gt; &lt;!-- a button-style link: text should be white --&gt;
+    &lt;button type=&quot;button&quot; class=&quot;save&quot;&gt;Save&lt;/button&gt; &lt;!-- a real button: should use the card&#39;s font --&gt;
+  &lt;/article&gt; &lt;!-- end of the first card --&gt;
+  &lt;article class=&quot;card&quot;&gt; &lt;!-- the second trip card --&gt;
+    &lt;h3 class=&quot;title highlight&quot;&gt;Ridge Walk&lt;/h3&gt; &lt;!-- the highlighted title: should be orange --&gt;
+    &lt;p class=&quot;date&quot;&gt;Saturday, May 10&lt;/p&gt; &lt;!-- a date: should be brand green --&gt;
+    &lt;p&gt;Read the &lt;a href=&quot;report.html&quot;&gt;trip report&lt;/a&gt;.&lt;/p&gt; &lt;!-- an ordinary paragraph and link: stays #333333, link stays navy --&gt;
+    &lt;a class=&quot;button&quot; href=&quot;ridge.html&quot;&gt;Details&lt;/a&gt; &lt;!-- a button-style link: text should be white --&gt;
+    &lt;button type=&quot;button&quot; class=&quot;save&quot;&gt;Save&lt;/button&gt; &lt;!-- a real button: should use the card&#39;s font --&gt;
+  &lt;/article&gt; &lt;!-- end of the second card --&gt;
+&lt;/section&gt; &lt;!-- end of the trips section --&gt;</code></pre>
+<h4>CSS</h4>
+<pre><code>body { /* the whole page */
+  font-family: system-ui, sans-serif; /* the page font */
+  margin: 16px; /* space around the page */
+} /* end of the body rule */
+.card { /* each trip card (0-1-0) */
+  font-family: Georgia, &quot;Times New Roman&quot;, serif; /* the cards use a serif font */
+  color: #333333; /* dark gray text */
+  border: 1px solid #c8d3cc; /* a light outline */
+  padding: 12px; /* room inside the card */
+  margin-bottom: 12px; /* space between the cards */
+} /* end of the .card rule */
+.card .title { /* titles inside cards (0-2-0) */
+  color: #6b7280; /* gray */
+  margin-top: 0; /* no gap above the title */
+} /* end of the .card .title rule */
+.card .highlight { /* the highlighted title (0-1-0): meant to be orange, but it loses */
+  color: #b3541e; /* orange */
+} /* end of the .highlight rule */
+#trips , a { /* every link in the trips section (1-0-1)  */
+  color: navy; /* navy links */
+} /* end of the #trips a rule */
+
+.button { /* the Details links (0-1-0) */
+  display: inline-block; /* a box that sits in the line */
+  background-color: #2f6f4e; /* brand green */
+  color: white; /* meant to be white, but it loses */
+  padding: 0.4em 0.9em; /* room around the word */
+  text-decoration: none; /* no underline */
+} /* end of the .button rule */
+.date { /* the dates (0-1-1)-(0-1-0): meant to be brand green, but they lose */
+  color: #2f6f4e; /* brand green */
+} /* end of the p.date rule */
+p { /* every paragraph in a card (0-1-1)-(0-0-1)*/
+  color: #333333; /* dark gray */
+} /* end of the .card p rule */
+.save { /* the Save buttons */
+  margin-left: 8px; /* a gap after the Details link */
+  font: inherit;
+}/* TODO 4: make the buttons use the card&#39;s font with the inherit keyword */
+} /* end of the .save rule */</code></pre>
+<h4>Preview</h4>
+<iframe title="Preview of Challenge 4.7: Win the cascade without !important" sandbox="" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;title&gt;Preview&lt;/title&gt;&lt;style&gt;
+body { /* the whole page */
+  font-family: system-ui, sans-serif; /* the page font */
+  margin: 16px; /* space around the page */
+} /* end of the body rule */
+.card { /* each trip card (0-1-0) */
+  font-family: Georgia, &quot;Times New Roman&quot;, serif; /* the cards use a serif font */
+  color: #333333; /* dark gray text */
+  border: 1px solid #c8d3cc; /* a light outline */
+  padding: 12px; /* room inside the card */
+  margin-bottom: 12px; /* space between the cards */
+} /* end of the .card rule */
+.card .title { /* titles inside cards (0-2-0) */
+  color: #6b7280; /* gray */
+  margin-top: 0; /* no gap above the title */
+} /* end of the .card .title rule */
+.card .highlight { /* the highlighted title (0-1-0): meant to be orange, but it loses */
+  color: #b3541e; /* orange */
+} /* end of the .highlight rule */
+#trips , a { /* every link in the trips section (1-0-1)  */
+  color: navy; /* navy links */
+} /* end of the #trips a rule */
+
+.button { /* the Details links (0-1-0) */
+  display: inline-block; /* a box that sits in the line */
+  background-color: #2f6f4e; /* brand green */
+  color: white; /* meant to be white, but it loses */
+  padding: 0.4em 0.9em; /* room around the word */
+  text-decoration: none; /* no underline */
+} /* end of the .button rule */
+.date { /* the dates (0-1-1)-(0-1-0): meant to be brand green, but they lose */
+  color: #2f6f4e; /* brand green */
+} /* end of the p.date rule */
+p { /* every paragraph in a card (0-1-1)-(0-0-1)*/
+  color: #333333; /* dark gray */
+} /* end of the .card p rule */
+.save { /* the Save buttons */
+  margin-left: 8px; /* a gap after the Details link */
+  font: inherit;
+}/* TODO 4: make the buttons use the card&#39;s font with the inherit keyword */
+} /* end of the .save rule */
+&lt;/style&gt;&lt;/head&gt;&lt;body&gt;
+&lt;section id=&quot;trips&quot;&gt; &lt;!-- the trips section: id trips --&gt;
+  &lt;article class=&quot;card&quot;&gt; &lt;!-- the first trip card --&gt;
+    &lt;h3 class=&quot;title&quot;&gt;Lake Loop&lt;/h3&gt; &lt;!-- an ordinary title: should stay gray --&gt;
+    &lt;p class=&quot;date&quot;&gt;Sunday, May 4&lt;/p&gt; &lt;!-- a date: should be brand green --&gt;
+    &lt;a class=&quot;button&quot; href=&quot;lake.html&quot;&gt;Details&lt;/a&gt; &lt;!-- a button-style link: text should be white --&gt;
+    &lt;button type=&quot;button&quot; class=&quot;save&quot;&gt;Save&lt;/button&gt; &lt;!-- a real button: should use the card&#39;s font --&gt;
+  &lt;/article&gt; &lt;!-- end of the first card --&gt;
+  &lt;article class=&quot;card&quot;&gt; &lt;!-- the second trip card --&gt;
+    &lt;h3 class=&quot;title highlight&quot;&gt;Ridge Walk&lt;/h3&gt; &lt;!-- the highlighted title: should be orange --&gt;
+    &lt;p class=&quot;date&quot;&gt;Saturday, May 10&lt;/p&gt; &lt;!-- a date: should be brand green --&gt;
+    &lt;p&gt;Read the &lt;a href=&quot;report.html&quot;&gt;trip report&lt;/a&gt;.&lt;/p&gt; &lt;!-- an ordinary paragraph and link: stays #333333, link stays navy --&gt;
+    &lt;a class=&quot;button&quot; href=&quot;ridge.html&quot;&gt;Details&lt;/a&gt; &lt;!-- a button-style link: text should be white --&gt;
+    &lt;button type=&quot;button&quot; class=&quot;save&quot;&gt;Save&lt;/button&gt; &lt;!-- a real button: should use the card&#39;s font --&gt;
+  &lt;/article&gt; &lt;!-- end of the second card --&gt;
+&lt;/section&gt; &lt;!-- end of the trips section --&gt;
+&lt;/body&gt;&lt;/html&gt;"></iframe>
+</section>
+<section class="card" id="challenge-8">
+<h3>Challenge 4.8: A card that is exactly the right size</h3>
+<p class="st ok">6 of 6 checks pass</p>
+<ul class="checks"><li class="ok"><span class="mk">&#10003; Pass</span> <code>.page</code> has <code>max-width: 40rem</code> (640px) and is centered with <code>auto</code> margins</li><li class="ok"><span class="mk">&#10003; Pass</span> The card is exactly <code>320px</code> wide on screen, padding and border included</li><li class="ok"><span class="mk">&#10003; Pass</span> The card has <code>24px</code> of padding and a <code>4px</code> solid border on every side</li><li class="ok"><span class="mk">&#10003; Pass</span> The card is centered inside <code>.page</code></li><li class="ok"><span class="mk">&#10003; Pass</span> The card has a white background and corners rounded by at least <code>8px</code></li><li class="ok"><span class="mk">&#10003; Pass</span> The long line of coordinates scrolls sideways inside the card instead of spilling out</li></ul>
+<h4>HTML</h4>
+<pre><code>&lt;main class=&quot;page&quot;&gt; &lt;!-- the page column --&gt;
+  &lt;article class=&quot;card&quot;&gt; &lt;!-- one trip card --&gt;
+    &lt;h2&gt;Ridge Walk&lt;/h2&gt; &lt;!-- the card&#39;s heading --&gt;
+    &lt;p&gt;Saturday, 6 miles. The views from the summit are worth every step.&lt;/p&gt; &lt;!-- the card&#39;s text --&gt;
+    &lt;pre class=&quot;coords&quot;&gt;Trailhead GPS: 34.2853, -82.4012 · Summit GPS: 34.3011, -82.3867 · Parking: north lot&lt;/pre&gt; &lt;!-- one long line that must stay inside the card --&gt;
+  &lt;/article&gt; &lt;!-- end of the card --&gt;
+&lt;/main&gt; &lt;!-- end of the page column --&gt;</code></pre>
+<h4>CSS</h4>
+<pre><code>body { /* the whole page */
+  font-family: system-ui, sans-serif; /* a clean sans-serif font stack */
+  margin: 16px; /* space around the page */
+  background-color: #f7f5ef; /* a warm off-white page */
+} /* end of the body rule */
+.page { /* the page column */
+  max-width: 40rem;
+  margin: auto/* TODO 1: max-width 40rem, centered with margin: 0 auto */
+} /* end of the .page rule */
+.card { /* the trip card */
+  width: 320px; /* the width the design asks for, on screen */
+  padding: 24px; /* TODO 3: 24px on every side */
+  border: 4px solid #2f6f4e; /* TODO 3: 4px thick */
+  box-sizing: border-box;/* TODO 2: box-sizing, so the card is exactly 320px wide on screen */
+  margin: auto;/* TODO 4: center the card inside .page */
+  background-color: white;/* TODO 5: a white background and corners rounded by at least 8px */
+  border-radius: 8px;
+} /* end of the .card rule */
+.card h2 { /* the card heading */
+  margin-top: 0; /* no gap above the heading */
+} /* end of the .card h2 rule */
+.coords { /* the long line of coordinates */
+  font-size: 0.875rem; /* small text */
+  overflow-x: auto;/* TODO 6: scroll sideways inside the card instead of spilling out (overflow-x) */
+} /* end of the .coords rule */</code></pre>
+<h4>Preview</h4>
+<iframe title="Preview of Challenge 4.8: A card that is exactly the right size" sandbox="" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;title&gt;Preview&lt;/title&gt;&lt;style&gt;
+body { /* the whole page */
+  font-family: system-ui, sans-serif; /* a clean sans-serif font stack */
+  margin: 16px; /* space around the page */
+  background-color: #f7f5ef; /* a warm off-white page */
+} /* end of the body rule */
+.page { /* the page column */
+  max-width: 40rem;
+  margin: auto/* TODO 1: max-width 40rem, centered with margin: 0 auto */
+} /* end of the .page rule */
+.card { /* the trip card */
+  width: 320px; /* the width the design asks for, on screen */
+  padding: 24px; /* TODO 3: 24px on every side */
+  border: 4px solid #2f6f4e; /* TODO 3: 4px thick */
+  box-sizing: border-box;/* TODO 2: box-sizing, so the card is exactly 320px wide on screen */
+  margin: auto;/* TODO 4: center the card inside .page */
+  background-color: white;/* TODO 5: a white background and corners rounded by at least 8px */
+  border-radius: 8px;
+} /* end of the .card rule */
+.card h2 { /* the card heading */
+  margin-top: 0; /* no gap above the heading */
+} /* end of the .card h2 rule */
+.coords { /* the long line of coordinates */
+  font-size: 0.875rem; /* small text */
+  overflow-x: auto;/* TODO 6: scroll sideways inside the card instead of spilling out (overflow-x) */
+} /* end of the .coords rule */
+&lt;/style&gt;&lt;/head&gt;&lt;body&gt;
+&lt;main class=&quot;page&quot;&gt; &lt;!-- the page column --&gt;
+  &lt;article class=&quot;card&quot;&gt; &lt;!-- one trip card --&gt;
+    &lt;h2&gt;Ridge Walk&lt;/h2&gt; &lt;!-- the card&#39;s heading --&gt;
+    &lt;p&gt;Saturday, 6 miles. The views from the summit are worth every step.&lt;/p&gt; &lt;!-- the card&#39;s text --&gt;
+    &lt;pre class=&quot;coords&quot;&gt;Trailhead GPS: 34.2853, -82.4012 · Summit GPS: 34.3011, -82.3867 · Parking: north lot&lt;/pre&gt; &lt;!-- one long line that must stay inside the card --&gt;
+  &lt;/article&gt; &lt;!-- end of the card --&gt;
+&lt;/main&gt; &lt;!-- end of the page column --&gt;
+&lt;/body&gt;&lt;/html&gt;"></iframe>
+</section>
+<section class="card" id="challenge-9">
+<h3>Challenge 4.9: Block, inline-block and collapsing margins</h3>
+<p class="st ok">5 of 5 checks pass</p>
+<ul class="checks"><li class="ok"><span class="mk">&#10003; Pass</span> Each menu link is a block that fills the menu&#39;s whole width</li><li class="ok"><span class="mk">&#10003; Pass</span> The links&#39; top and bottom padding takes up real space: each row sits fully below the one before</li><li class="ok"><span class="mk">&#10003; Pass</span> The tags are <code>inline-block</code>, so their <code>6rem</code> width applies, and they stay on the heading&#39;s line</li><li class="ok"><span class="mk">&#10003; Pass</span> The tags have fully rounded ends (a radius of at least half their height)</li><li class="ok"><span class="mk">&#10003; Pass</span> The steps are exactly <code>20px</code> apart</li></ul>
+<h4>HTML</h4>
+<pre><code>&lt;nav class=&quot;side-menu&quot;&gt; &lt;!-- a narrow vertical menu --&gt;
+  &lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt; &lt;!-- menu link 1 --&gt;
+  &lt;a href=&quot;trips.html&quot;&gt;Trips&lt;/a&gt; &lt;!-- menu link 2 --&gt;
+  &lt;a href=&quot;join.html&quot;&gt;Join&lt;/a&gt; &lt;!-- menu link 3 --&gt;
+&lt;/nav&gt; &lt;!-- end of the menu --&gt;
+&lt;h2&gt;Ridge Walk &lt;span class=&quot;tag&quot;&gt;Moderate&lt;/span&gt; &lt;span class=&quot;tag&quot;&gt;6 mi&lt;/span&gt;&lt;/h2&gt; &lt;!-- a heading with two tags in its line --&gt;
+&lt;p class=&quot;step&quot;&gt;Step 1: Meet at the north trailhead.&lt;/p&gt; &lt;!-- step 1 --&gt;
+&lt;p class=&quot;step&quot;&gt;Step 2: Climb to the ridge.&lt;/p&gt; &lt;!-- step 2 --&gt;
+&lt;p class=&quot;step&quot;&gt;Step 3: Lunch at the summit.&lt;/p&gt; &lt;!-- step 3 --&gt;</code></pre>
+<h4>CSS</h4>
+<pre><code>body { /* the whole page */
+  font-family: system-ui, sans-serif; /* a clean sans-serif font stack */
+  margin: 16px; /* space around the page */
+} /* end of the body rule */
+.side-menu { /* the menu */
+  width: 12rem; /* a narrow column */
+  background-color: #eaf6f0; /* pale green */
+} /* end of the .side-menu rule */
+.side-menu a { /* each menu link */
+  padding: 8px 12px; /* room around each link; on an inline element the top and bottom padding takes no space */
+  display: block;/* TODO 1: make each link a block */
+} /* end of the menu link rule */
+.tag { /* the small labels in the heading */
+  font-size: 0.875rem; /* smaller than the heading text */
+  background-color: #2f6f4e; /* brand green */
+  color: white; /* white text */
+  padding: 0.15em 0.6em; /* room around the word */
+  width: 6rem; /* the design wants each tag 6rem wide; ignored while the tag is inline */
+  text-align: center; /* center the word inside the tag */
+  display: inline-block;/* TODO 2: inline-block, so the width applies and the tags stay in the line */
+  border-radius: 50%;/* TODO 3: fully rounded ends */
+} /* end of the .tag rule */
+.step { /* each step */
+  margin: 20px 0; /* TODO 4: the steps should be exactly 20px apart */
+  padding: 8px; /* room inside each step */
+  background-color: #f3f5f8; /* a pale panel, so you can see the gaps */
+} /* end of the .step rule */</code></pre>
+<h4>Preview</h4>
+<iframe title="Preview of Challenge 4.9: Block, inline-block and collapsing margins" sandbox="" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;title&gt;Preview&lt;/title&gt;&lt;style&gt;
+body { /* the whole page */
+  font-family: system-ui, sans-serif; /* a clean sans-serif font stack */
+  margin: 16px; /* space around the page */
+} /* end of the body rule */
+.side-menu { /* the menu */
+  width: 12rem; /* a narrow column */
+  background-color: #eaf6f0; /* pale green */
+} /* end of the .side-menu rule */
+.side-menu a { /* each menu link */
+  padding: 8px 12px; /* room around each link; on an inline element the top and bottom padding takes no space */
+  display: block;/* TODO 1: make each link a block */
+} /* end of the menu link rule */
+.tag { /* the small labels in the heading */
+  font-size: 0.875rem; /* smaller than the heading text */
+  background-color: #2f6f4e; /* brand green */
+  color: white; /* white text */
+  padding: 0.15em 0.6em; /* room around the word */
+  width: 6rem; /* the design wants each tag 6rem wide; ignored while the tag is inline */
+  text-align: center; /* center the word inside the tag */
+  display: inline-block;/* TODO 2: inline-block, so the width applies and the tags stay in the line */
+  border-radius: 50%;/* TODO 3: fully rounded ends */
+} /* end of the .tag rule */
+.step { /* each step */
+  margin: 20px 0; /* TODO 4: the steps should be exactly 20px apart */
+  padding: 8px; /* room inside each step */
+  background-color: #f3f5f8; /* a pale panel, so you can see the gaps */
+} /* end of the .step rule */
+&lt;/style&gt;&lt;/head&gt;&lt;body&gt;
+&lt;nav class=&quot;side-menu&quot;&gt; &lt;!-- a narrow vertical menu --&gt;
+  &lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt; &lt;!-- menu link 1 --&gt;
+  &lt;a href=&quot;trips.html&quot;&gt;Trips&lt;/a&gt; &lt;!-- menu link 2 --&gt;
+  &lt;a href=&quot;join.html&quot;&gt;Join&lt;/a&gt; &lt;!-- menu link 3 --&gt;
+&lt;/nav&gt; &lt;!-- end of the menu --&gt;
+&lt;h2&gt;Ridge Walk &lt;span class=&quot;tag&quot;&gt;Moderate&lt;/span&gt; &lt;span class=&quot;tag&quot;&gt;6 mi&lt;/span&gt;&lt;/h2&gt; &lt;!-- a heading with two tags in its line --&gt;
+&lt;p class=&quot;step&quot;&gt;Step 1: Meet at the north trailhead.&lt;/p&gt; &lt;!-- step 1 --&gt;
+&lt;p class=&quot;step&quot;&gt;Step 2: Climb to the ridge.&lt;/p&gt; &lt;!-- step 2 --&gt;
+&lt;p class=&quot;step&quot;&gt;Step 3: Lunch at the summit.&lt;/p&gt; &lt;!-- step 3 --&gt;
+&lt;/body&gt;&lt;/html&gt;"></iframe>
+</section>
+<section class="card" id="challenge-10">
+<h3>Challenge 4.10: Set a trip report for reading</h3>
+<p class="st ok">7 of 7 checks pass</p>
+<ul class="checks"><li class="ok"><span class="mk">&#10003; Pass</span> The body font stack has two or more fonts and ends with an unquoted generic family</li><li class="ok"><span class="mk">&#10003; Pass</span> Line height is a plain number between 1.4 and 1.6, so the bigger pull quote gets proportionally taller lines</li><li class="ok"><span class="mk">&#10003; Pass</span> The story has a readable measure (45 to 75 characters per line) and is centered</li><li class="ok"><span class="mk">&#10003; Pass</span> The label is uppercase, with letter-spacing in <code>em</code> (0.05em to 0.15em) that grows with its text</li><li class="ok"><span class="mk">&#10003; Pass</span> The title is <code>2.25rem</code>: 36px now, and it grows when the reader&#39;s text size grows</li><li class="ok"><span class="mk">&#10003; Pass</span> The title is centered, and the paragraphs stay left-aligned</li><li class="ok"><span class="mk">&#10003; Pass</span> The byline is italic and <code>0.875rem</code> (14px)</li></ul>
+<h4>HTML</h4>
+<pre><code>&lt;article class=&quot;story&quot;&gt; &lt;!-- the trip report --&gt;
+  &lt;p class=&quot;label&quot;&gt;Trip report&lt;/p&gt; &lt;!-- a small label above the title --&gt;
+  &lt;h1&gt;Sunrise on the ridge&lt;/h1&gt; &lt;!-- the title --&gt;
+  &lt;p class=&quot;byline&quot;&gt;By Sam Rivera · Photos by Ana Ruiz&lt;/p&gt; &lt;!-- who wrote it --&gt;
+  &lt;p&gt;We left the trailhead in the dark, headlamps bobbing, and reached the ridge just as the sky turned orange. Below us, fog filled the valley like a slow white river.&lt;/p&gt; &lt;!-- paragraph 1 --&gt;
+  &lt;p class=&quot;pull&quot;&gt;Nobody said much. Nobody needed to.&lt;/p&gt; &lt;!-- a large pull quote --&gt;
+  &lt;p&gt;On the way down we counted eleven kinds of mushrooms and one very surprised deer. Next month we walk the Lake Loop, so bring a friend.&lt;/p&gt; &lt;!-- paragraph 2 --&gt;
+&lt;/article&gt; &lt;!-- end of the trip report --&gt;</code></pre>
+<h4>CSS</h4>
+<pre><code>body { /* the whole page */
+  font-family: Helvetica, Arial, sans-serif; /* TODO 1: a font stack of two or more fonts, ending with an unquoted generic family */
+  line-height: 1.6; /* TODO 2: a unitless line-height between 1.4 and 1.6 */
+  margin: 16px; /* space around the page */
+  color: #1f2a24; /* dark text */
+} /* end of the body rule */
+.story { /* the article */
+  max-width: 60ch;
+  margin: 0 auto;/* TODO 3: a readable measure of about 60ch, centered with auto margins */
+} /* end of the .story rule */
+.label { /* the small label */
+  font-size: 0.875rem; /* 14px */
+  font-weight: bold; /* heavier, so it stands out */
+  text-transform: uppercase;
+  letter-spacing: 0.1em;/* TODO 4: capitals with text-transform, and letter-spacing of about 0.1em */
+} /* end of the .label rule */
+h1 { /* the title */
+  font-size: 2.25rem; /* TODO 5: 2.25rem, so it follows the reader&#39;s text-size setting */
+  text-align: center;/* TODO 5: center the title */
+} /* end of the h1 rule */
+.byline { /* the author line */
+  color: #4a5262; /* a quieter gray */
+  font-style: italic;/* TODO 6: italic, and 0.875rem */
+  font-size: 0.875rem;
+} /* end of the .byline rule */
+.pull { /* the pull quote */
+  font-size: 1.5rem; /* bigger text */
+  color: #2f6f4e; /* brand green */
+  /* leave line-height alone here: it should come from body */
+} /* end of the .pull rule */</code></pre>
+<h4>Preview</h4>
+<iframe title="Preview of Challenge 4.10: Set a trip report for reading" sandbox="" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;title&gt;Preview&lt;/title&gt;&lt;style&gt;
+body { /* the whole page */
+  font-family: Helvetica, Arial, sans-serif; /* TODO 1: a font stack of two or more fonts, ending with an unquoted generic family */
+  line-height: 1.6; /* TODO 2: a unitless line-height between 1.4 and 1.6 */
+  margin: 16px; /* space around the page */
+  color: #1f2a24; /* dark text */
+} /* end of the body rule */
+.story { /* the article */
+  max-width: 60ch;
+  margin: 0 auto;/* TODO 3: a readable measure of about 60ch, centered with auto margins */
+} /* end of the .story rule */
+.label { /* the small label */
+  font-size: 0.875rem; /* 14px */
+  font-weight: bold; /* heavier, so it stands out */
+  text-transform: uppercase;
+  letter-spacing: 0.1em;/* TODO 4: capitals with text-transform, and letter-spacing of about 0.1em */
+} /* end of the .label rule */
+h1 { /* the title */
+  font-size: 2.25rem; /* TODO 5: 2.25rem, so it follows the reader&#39;s text-size setting */
+  text-align: center;/* TODO 5: center the title */
+} /* end of the h1 rule */
+.byline { /* the author line */
+  color: #4a5262; /* a quieter gray */
+  font-style: italic;/* TODO 6: italic, and 0.875rem */
+  font-size: 0.875rem;
+} /* end of the .byline rule */
+.pull { /* the pull quote */
+  font-size: 1.5rem; /* bigger text */
+  color: #2f6f4e; /* brand green */
+  /* leave line-height alone here: it should come from body */
+} /* end of the .pull rule */
+&lt;/style&gt;&lt;/head&gt;&lt;body&gt;
+&lt;article class=&quot;story&quot;&gt; &lt;!-- the trip report --&gt;
+  &lt;p class=&quot;label&quot;&gt;Trip report&lt;/p&gt; &lt;!-- a small label above the title --&gt;
+  &lt;h1&gt;Sunrise on the ridge&lt;/h1&gt; &lt;!-- the title --&gt;
+  &lt;p class=&quot;byline&quot;&gt;By Sam Rivera · Photos by Ana Ruiz&lt;/p&gt; &lt;!-- who wrote it --&gt;
+  &lt;p&gt;We left the trailhead in the dark, headlamps bobbing, and reached the ridge just as the sky turned orange. Below us, fog filled the valley like a slow white river.&lt;/p&gt; &lt;!-- paragraph 1 --&gt;
+  &lt;p class=&quot;pull&quot;&gt;Nobody said much. Nobody needed to.&lt;/p&gt; &lt;!-- a large pull quote --&gt;
+  &lt;p&gt;On the way down we counted eleven kinds of mushrooms and one very surprised deer. Next month we walk the Lake Loop, so bring a friend.&lt;/p&gt; &lt;!-- paragraph 2 --&gt;
+&lt;/article&gt; &lt;!-- end of the trip report --&gt;
+&lt;/body&gt;&lt;/html&gt;"></iframe>
+</section>
+<section class="card" id="challenge-11">
+<h3>Challenge 4.11: Turn repeated values into tokens</h3>
+<p class="st ok">6 of 6 checks pass</p>
+<ul class="checks"><li class="ok"><span class="mk">&#10003; Pass</span> <code>:root</code> defines <code>--brand</code>, <code>--ink</code>, <code>--paper</code> and <code>--space</code></li><li class="ok"><span class="mk">&#10003; Pass</span> The brand green <code>#2f6f4e</code> is written only once in the stylesheet, as the value of <code>--brand</code></li><li class="ok"><span class="mk">&#10003; Pass</span> Changing <code>--brand</code> once recolors the banner, the first card&#39;s border and heading, and its button</li><li class="ok"><span class="mk">&#10003; Pass</span> The page&#39;s text and background colors come from <code>--ink</code> and <code>--paper</code></li><li class="ok"><span class="mk">&#10003; Pass</span> The banner&#39;s and the cards&#39; padding come from <code>--space</code></li><li class="ok"><span class="mk">&#10003; Pass</span> <code>.promo</code> redefines <code>--brand</code> as orange (<code>#b3541e</code>): its border, heading and button turn orange, and the first card stays green</li></ul>
+<h4>HTML</h4>
+<pre><code>&lt;header class=&quot;banner&quot;&gt; &lt;!-- the banner at the top --&gt;
+  &lt;p class=&quot;logo&quot;&gt;Riverside Hiking Club&lt;/p&gt; &lt;!-- the club name --&gt;
+&lt;/header&gt; &lt;!-- end of the banner --&gt;
+&lt;main&gt; &lt;!-- the page&#39;s content --&gt;
+  &lt;article class=&quot;card&quot;&gt; &lt;!-- the first trip card --&gt;
+    &lt;h2&gt;Ridge Walk&lt;/h2&gt; &lt;!-- its heading --&gt;
+    &lt;p&gt;Saturday · 6 miles&lt;/p&gt; &lt;!-- its details --&gt;
+    &lt;a class=&quot;button&quot; href=&quot;ridge.html&quot;&gt;Sign up&lt;/a&gt; &lt;!-- its button --&gt;
+  &lt;/article&gt; &lt;!-- end of the first card --&gt;
+  &lt;article class=&quot;card promo&quot;&gt; &lt;!-- the second card: also class promo --&gt;
+    &lt;h2&gt;Lake Loop&lt;/h2&gt; &lt;!-- its heading --&gt;
+    &lt;p&gt;Sunday · 3 miles&lt;/p&gt; &lt;!-- its details --&gt;
+    &lt;a class=&quot;button&quot; href=&quot;lake.html&quot;&gt;Sign up&lt;/a&gt; &lt;!-- its button --&gt;
+  &lt;/article&gt; &lt;!-- end of the second card --&gt;
+&lt;/main&gt; &lt;!-- end of the content --&gt;</code></pre>
+<h4>CSS</h4>
+<pre><code>/* TODO 1: a :root rule that defines --brand, --ink, --paper and --space */
+:root {
+  --brand: #2f6f4e;
+  --ink: #1f2a24;
+  --paper: #f7f5ef;
+  --space: 16px;
+}
+body { /* the whole page */
+  font-family: system-ui, sans-serif; /* a clean sans-serif font stack */
+  margin: 0; /* no gap around the page */
+  color: var(--ink); /* TODO 3: var(--ink) */
+  background-color: var(--paper); /* TODO 3: var(--paper) */
+} /* end of the body rule */
+.banner { /* the banner */
+  background-color: var(--brand); /* TODO 2: brand green, from var(--brand) */
+  color: white; /* white text on the green */
+  padding: var(--space) /* TODO 4: var(--space) */
+} /* end of the .banner rule */
+.logo { /* the club name */
+  margin: 0; /* no extra space around it */
+  font-weight: bold; /* heavier text */
+} /* end of the .logo rule */
+main { /* the content area */
+  padding: 16px; /* space around the cards */
+} /* end of the main rule */
+.card { /* each trip card */
+  background-color: white; /* a white card on the off-white page */
+  border-left: 6px solid var(--brand); /* TODO 2: a brand-green accent bar, from var(--brand) */
+  padding: var(--space); /* TODO 4: var(--space) */
+  margin-bottom: 16px; /* space between the cards */
+} /* end of the .card rule */
+.card h2 { /* the card headings */
+  color: var(--brand); /* TODO 2: var(--brand) */
+  margin-top: 0; /* no gap above the heading */
+} /* end of the .card h2 rule */
+.button { /* the Sign up buttons */
+  display: inline-block; /* a box that sits in the line */
+  background-color: var(--brand); /* TODO 2: var(--brand) */
+  color: white; /* white text */
+  padding: 0.4em 0.9em; /* room around the words */
+  border-radius: 6px; /* rounded corners */
+  text-decoration: none; /* no underline */
+} /* end of the .button rule */
+.promo {--brand: #b3541e; }/* TODO 5: a .promo rule that redefines --brand as #b3541e */</code></pre>
+<h4>Preview</h4>
+<iframe title="Preview of Challenge 4.11: Turn repeated values into tokens" sandbox="" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;title&gt;Preview&lt;/title&gt;&lt;style&gt;
+/* TODO 1: a :root rule that defines --brand, --ink, --paper and --space */
+:root {
+  --brand: #2f6f4e;
+  --ink: #1f2a24;
+  --paper: #f7f5ef;
+  --space: 16px;
+}
+body { /* the whole page */
+  font-family: system-ui, sans-serif; /* a clean sans-serif font stack */
+  margin: 0; /* no gap around the page */
+  color: var(--ink); /* TODO 3: var(--ink) */
+  background-color: var(--paper); /* TODO 3: var(--paper) */
+} /* end of the body rule */
+.banner { /* the banner */
+  background-color: var(--brand); /* TODO 2: brand green, from var(--brand) */
+  color: white; /* white text on the green */
+  padding: var(--space) /* TODO 4: var(--space) */
+} /* end of the .banner rule */
+.logo { /* the club name */
+  margin: 0; /* no extra space around it */
+  font-weight: bold; /* heavier text */
+} /* end of the .logo rule */
+main { /* the content area */
+  padding: 16px; /* space around the cards */
+} /* end of the main rule */
+.card { /* each trip card */
+  background-color: white; /* a white card on the off-white page */
+  border-left: 6px solid var(--brand); /* TODO 2: a brand-green accent bar, from var(--brand) */
+  padding: var(--space); /* TODO 4: var(--space) */
+  margin-bottom: 16px; /* space between the cards */
+} /* end of the .card rule */
+.card h2 { /* the card headings */
+  color: var(--brand); /* TODO 2: var(--brand) */
+  margin-top: 0; /* no gap above the heading */
+} /* end of the .card h2 rule */
+.button { /* the Sign up buttons */
+  display: inline-block; /* a box that sits in the line */
+  background-color: var(--brand); /* TODO 2: var(--brand) */
+  color: white; /* white text */
+  padding: 0.4em 0.9em; /* room around the words */
+  border-radius: 6px; /* rounded corners */
+  text-decoration: none; /* no underline */
+} /* end of the .button rule */
+.promo {--brand: #b3541e; }/* TODO 5: a .promo rule that redefines --brand as #b3541e */
+&lt;/style&gt;&lt;/head&gt;&lt;body&gt;
+&lt;header class=&quot;banner&quot;&gt; &lt;!-- the banner at the top --&gt;
+  &lt;p class=&quot;logo&quot;&gt;Riverside Hiking Club&lt;/p&gt; &lt;!-- the club name --&gt;
+&lt;/header&gt; &lt;!-- end of the banner --&gt;
+&lt;main&gt; &lt;!-- the page&#39;s content --&gt;
+  &lt;article class=&quot;card&quot;&gt; &lt;!-- the first trip card --&gt;
+    &lt;h2&gt;Ridge Walk&lt;/h2&gt; &lt;!-- its heading --&gt;
+    &lt;p&gt;Saturday · 6 miles&lt;/p&gt; &lt;!-- its details --&gt;
+    &lt;a class=&quot;button&quot; href=&quot;ridge.html&quot;&gt;Sign up&lt;/a&gt; &lt;!-- its button --&gt;
+  &lt;/article&gt; &lt;!-- end of the first card --&gt;
+  &lt;article class=&quot;card promo&quot;&gt; &lt;!-- the second card: also class promo --&gt;
+    &lt;h2&gt;Lake Loop&lt;/h2&gt; &lt;!-- its heading --&gt;
+    &lt;p&gt;Sunday · 3 miles&lt;/p&gt; &lt;!-- its details --&gt;
+    &lt;a class=&quot;button&quot; href=&quot;lake.html&quot;&gt;Sign up&lt;/a&gt; &lt;!-- its button --&gt;
+  &lt;/article&gt; &lt;!-- end of the second card --&gt;
+&lt;/main&gt; &lt;!-- end of the content --&gt;
+&lt;/body&gt;&lt;/html&gt;"></iframe>
+</section>
+<section class="card" id="challenge-12">
+<h3>Challenge 4.12: The Autumn Ridge Walk page</h3>
+<p class="st ok">13 of 13 checks pass</p>
+<ul class="checks"><li class="ok"><span class="mk">&#10003; Pass</span> Tokens: at least three custom properties defined on <code>:root</code></li><li class="ok"><span class="mk">&#10003; Pass</span> <code>--brand</code> colors both the title and the button: change it once and both follow</li><li class="ok"><span class="mk">&#10003; Pass</span> Every element uses <code>box-sizing: border-box</code></li><li class="ok"><span class="mk">&#10003; Pass</span> The body font stack has two or more fonts and ends with an unquoted generic family</li><li class="ok"><span class="mk">&#10003; Pass</span> Paragraphs have a line-height between 1.4 and 1.7 times their text size</li><li class="ok"><span class="mk">&#10003; Pass</span> <code>main</code> has a readable width (400px to 800px) and is centered with <code>auto</code> margins</li><li class="ok"><span class="mk">&#10003; Pass</span> An <code>h1</code> rule sizes the title in <code>rem</code>, larger than <code>1.5rem</code>, so it grows with the reader&#39;s text size</li><li class="ok"><span class="mk">&#10003; Pass</span> Navigation: no bullets, no underlines, and the items sit side by side</li><li class="ok"><span class="mk">&#10003; Pass</span> Links have a <code>:hover</code> style and a <code>:focus-visible</code> style</li><li class="ok"><span class="mk">&#10003; Pass</span> <code>.meta</code> is smaller than the paragraph text and still has at least 4.5 : 1 contrast</li><li class="ok"><span class="mk">&#10003; Pass</span> <code>.button</code> looks like a button: <code>inline-block</code>, padding, rounded corners, a background, and text with at least 4.5 : 1 contrast on it</li><li class="ok"><span class="mk">&#10003; Pass</span> The page has a background color of its own, and the paragraph text has at least 4.5 : 1 contrast on it</li><li class="ok"><span class="mk">&#10003; Pass</span> At least five kinds of selector (element, class, id, descendant, child, sibling, attribute, pseudo-class, pseudo-element, universal), and no <code>!important</code></li></ul>
+<h4>HTML</h4>
+<pre><code>&lt;header&gt; &lt;!-- the banner at the top of the page --&gt;
+  &lt;p class=&quot;site-name&quot;&gt;Riverside Hiking Club&lt;/p&gt; &lt;!-- the club name; a p, because the page&#39;s one h1 is the walk --&gt;
+  &lt;nav&gt; &lt;!-- the main menu --&gt;
+    &lt;ul&gt; &lt;!-- the menu is a list of links --&gt;
+      &lt;li&gt;&lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;&lt;/li&gt; &lt;!-- link to the home page --&gt;
+      &lt;li&gt;&lt;a href=&quot;trips.html&quot;&gt;Trips&lt;/a&gt;&lt;/li&gt; &lt;!-- link to every trip --&gt;
+      &lt;li&gt;&lt;a href=&quot;join.html&quot;&gt;Join&lt;/a&gt;&lt;/li&gt; &lt;!-- link to the membership page --&gt;
+    &lt;/ul&gt; &lt;!-- end of the list of links --&gt;
+  &lt;/nav&gt; &lt;!-- end of the menu --&gt;
+&lt;/header&gt; &lt;!-- end of the banner --&gt;
+&lt;main&gt; &lt;!-- the content that belongs to this page only --&gt;
+  &lt;h1&gt;Autumn Ridge Walk&lt;/h1&gt; &lt;!-- the page&#39;s one top-level heading --&gt;
+  &lt;p class=&quot;meta&quot;&gt;Saturday · 6 miles · moderate&lt;/p&gt; &lt;!-- a short details line: class meta --&gt;
+  &lt;p&gt;The leaves are turning and the ridge views are at their best. Bring water, warm layers and a snack for the summit.&lt;/p&gt; &lt;!-- the description --&gt;
+  &lt;ul class=&quot;facts&quot;&gt; &lt;!-- two quick facts --&gt;
+    &lt;li&gt;Meet at the north trailhead&lt;/li&gt; &lt;!-- where to meet --&gt;
+    &lt;li&gt;Start at 8:30 a.m.&lt;/li&gt; &lt;!-- when to arrive --&gt;
+  &lt;/ul&gt; &lt;!-- end of the facts list --&gt;
+  &lt;a class=&quot;button&quot; href=&quot;join.html&quot;&gt;Save my spot&lt;/a&gt; &lt;!-- a link that CSS will make look like a button --&gt;
+&lt;/main&gt; &lt;!-- end of this page&#39;s content --&gt;
+&lt;footer&gt; &lt;!-- the bottom of the page --&gt;
+  &lt;p&gt;Riverside Hiking Club · walks every weekend&lt;/p&gt; &lt;!-- a single line about the club --&gt;
+&lt;/footer&gt; &lt;!-- end of the footer --&gt;</code></pre>
+<h4>CSS</h4>
+<pre><code>/* 1. Tokens: at least three custom properties on :root, including --brand */
+:root {--brand: #2f6f4e;
+  --ink: #1f2a24;
+  --paper: #f7f5ef;
+  --space: 16px;
+  }
+/* 2. Every element uses box-sizing: border-box */
+* {
+  box-sizing: border-box;
+  }
+/* 3. body: font stack, background color, text color, line-height */
+body { /* the whole page */
+  font-family: system-ui, sans-serif; /* a clean sans-serif font stack */
+  color:  var(--ink);/* space around the page */
+  line-height: 1.6;
+  background-color: #f7f5ef; /* a warm off-white page */
+} /* end of the body rule */
+/* 4. main: a readable width, centered */
+main {
+  max-width: 60ch;
+  margin: 0 auto;
+  }
+/* 5. The title: sized in rem, colored with var(--brand) */
+h1 {
+  font-size: 1.8rem;
+  color: var(--brand);
+  }
+/* 6. Navigation: no bullets, no underlines, items side by side */
+nav ul { 
+  list-style: none;
+  }
+nav li {
+  display: inline-block;
+  }
+nav a {
+  text-decoration: none;
+  }
+/* 7. Links: a :hover style and a :focus-visible style */
+a:hover, a:focus-visible {
+  color: white;
+  background: crimson;
+  outline: 3px solid orange;
+}
+/* 8. .meta: smaller, still readable */
+.meta {
+  font-size: 0.875rem;
+  }
+/* 9. .button: inline-block, padding, rounded corners, var(--brand) background, readable text */
+.button {
+  display: inline-block;
+  padding: 0.5em 1em;
+  background-color: var(--brand);
+  color: white;
+  border-radius: 8px;</code></pre>
+<h4>Preview</h4>
+<iframe title="Preview of Challenge 4.12: The Autumn Ridge Walk page" sandbox="" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;title&gt;Preview&lt;/title&gt;&lt;style&gt;
+/* 1. Tokens: at least three custom properties on :root, including --brand */
+:root {--brand: #2f6f4e;
+  --ink: #1f2a24;
+  --paper: #f7f5ef;
+  --space: 16px;
+  }
+/* 2. Every element uses box-sizing: border-box */
+* {
+  box-sizing: border-box;
+  }
+/* 3. body: font stack, background color, text color, line-height */
+body { /* the whole page */
+  font-family: system-ui, sans-serif; /* a clean sans-serif font stack */
+  color:  var(--ink);/* space around the page */
+  line-height: 1.6;
+  background-color: #f7f5ef; /* a warm off-white page */
+} /* end of the body rule */
+/* 4. main: a readable width, centered */
+main {
+  max-width: 60ch;
+  margin: 0 auto;
+  }
+/* 5. The title: sized in rem, colored with var(--brand) */
+h1 {
+  font-size: 1.8rem;
+  color: var(--brand);
+  }
+/* 6. Navigation: no bullets, no underlines, items side by side */
+nav ul { 
+  list-style: none;
+  }
+nav li {
+  display: inline-block;
+  }
+nav a {
+  text-decoration: none;
+  }
+/* 7. Links: a :hover style and a :focus-visible style */
+a:hover, a:focus-visible {
+  color: white;
+  background: crimson;
+  outline: 3px solid orange;
+}
+/* 8. .meta: smaller, still readable */
+.meta {
+  font-size: 0.875rem;
+  }
+/* 9. .button: inline-block, padding, rounded corners, var(--brand) background, readable text */
+.button {
+  display: inline-block;
+  padding: 0.5em 1em;
+  background-color: var(--brand);
+  color: white;
+  border-radius: 8px;
+&lt;/style&gt;&lt;/head&gt;&lt;body&gt;
+&lt;header&gt; &lt;!-- the banner at the top of the page --&gt;
+  &lt;p class=&quot;site-name&quot;&gt;Riverside Hiking Club&lt;/p&gt; &lt;!-- the club name; a p, because the page&#39;s one h1 is the walk --&gt;
+  &lt;nav&gt; &lt;!-- the main menu --&gt;
+    &lt;ul&gt; &lt;!-- the menu is a list of links --&gt;
+      &lt;li&gt;&lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;&lt;/li&gt; &lt;!-- link to the home page --&gt;
+      &lt;li&gt;&lt;a href=&quot;trips.html&quot;&gt;Trips&lt;/a&gt;&lt;/li&gt; &lt;!-- link to every trip --&gt;
+      &lt;li&gt;&lt;a href=&quot;join.html&quot;&gt;Join&lt;/a&gt;&lt;/li&gt; &lt;!-- link to the membership page --&gt;
+    &lt;/ul&gt; &lt;!-- end of the list of links --&gt;
+  &lt;/nav&gt; &lt;!-- end of the menu --&gt;
+&lt;/header&gt; &lt;!-- end of the banner --&gt;
+&lt;main&gt; &lt;!-- the content that belongs to this page only --&gt;
+  &lt;h1&gt;Autumn Ridge Walk&lt;/h1&gt; &lt;!-- the page&#39;s one top-level heading --&gt;
+  &lt;p class=&quot;meta&quot;&gt;Saturday · 6 miles · moderate&lt;/p&gt; &lt;!-- a short details line: class meta --&gt;
+  &lt;p&gt;The leaves are turning and the ridge views are at their best. Bring water, warm layers and a snack for the summit.&lt;/p&gt; &lt;!-- the description --&gt;
+  &lt;ul class=&quot;facts&quot;&gt; &lt;!-- two quick facts --&gt;
+    &lt;li&gt;Meet at the north trailhead&lt;/li&gt; &lt;!-- where to meet --&gt;
+    &lt;li&gt;Start at 8:30 a.m.&lt;/li&gt; &lt;!-- when to arrive --&gt;
+  &lt;/ul&gt; &lt;!-- end of the facts list --&gt;
+  &lt;a class=&quot;button&quot; href=&quot;join.html&quot;&gt;Save my spot&lt;/a&gt; &lt;!-- a link that CSS will make look like a button --&gt;
+&lt;/main&gt; &lt;!-- end of this page&#39;s content --&gt;
+&lt;footer&gt; &lt;!-- the bottom of the page --&gt;
+  &lt;p&gt;Riverside Hiking Club · walks every weekend&lt;/p&gt; &lt;!-- a single line about the club --&gt;
+&lt;/footer&gt; &lt;!-- end of the footer --&gt;
+&lt;/body&gt;&lt;/html&gt;"></iframe>
+</section>
+<h2>Quizzes</h2>
+<table>
+<caption>Quiz results recorded in the browser</caption>
+<thead><tr><th scope="col">Quiz</th><th scope="col">Latest</th><th scope="col">Best</th><th scope="col">Attempts</th></tr></thead>
+<tbody>
+<tr><th scope="row">Quiz: syntax, colors and units</th><td>8 of 8</td><td>8 of 8</td><td>2</td></tr>
+<tr><th scope="row">Quiz: where styles live</th><td>4 of 4</td><td>4 of 4</td><td>1</td></tr>
+<tr><th scope="row">Which elements match?</th><td>7 of 8</td><td>7 of 8</td><td>2</td></tr>
+<tr><th scope="row">Quiz: selectors</th><td>5 of 5</td><td>5 of 5</td><td>1</td></tr>
+<tr><th scope="row">Quiz: the cascade</th><td>7 of 7</td><td>7 of 7</td><td>2</td></tr>
+<tr><th scope="row">Quiz: the box model</th><td>6 of 6</td><td>6 of 6</td><td>2</td></tr>
+<tr><th scope="row">Quiz: text styling</th><td>5 of 5</td><td>5 of 5</td><td>1</td></tr>
+<tr><th scope="row">Quiz: custom properties and frameworks</th><td>5 of 5</td><td>5 of 5</td><td>1</td></tr>
+</tbody>
+</table>
+<h2>Written answers</h2>
+<div class="card">
+<p class="q">Nothing on the page warned you about the bugs in Challenge 4.1. Explain what a browser does with CSS it cannot understand, and describe how you would track down a rule that &quot;does nothing&quot; on a real site.</p>
+<p class="answer">When a browser doesn&#39;t understand syntax in CSS it skips that declaration with no errors shown. Meaning if your missing a letter from a value it will get rid of that piece of code pair only. To track down a rule that does nothing on a real site you can use the validator or inspect the code on the browser through the dev tool settings.</p>
+</div>
+<div class="card">
+<p class="q">Why do real sites keep their CSS in one external stylesheet instead of inline styles or a &lt;style&gt; element on every page? Give at least two reasons, and name one situation where an inline style is still acceptable.</p>
+<p class="answer">Real sites keep their CSS in one external stylesheet because a redesign means editing one stylesheet, not 200 HTML files and it makes downloading site pages faster by downloading the stylesheet once. The few times it can be acceptable is for a quick test (&quot;does red work here?&quot;),  and in values that a script sets while the page runs.</p>
+</div>
+<div class="card">
+<p class="q">Pick two of the conflicts you fixed in Challenge 4.7. For each, give the specificity of the two competing selectors as A-B-C and explain why your fix wins. Then explain why adding !important would have been a worse fix.</p>
+<p class="answer">&quot;Both Details buttons have white text(0-1-0), while the trip report link stays navy (1-0-1). In this situation the Trip report style was winning, so I had to add a after trips with a comma to make(.bu- a.button).&quot; Both dates are brand green, while the other paragraph stays #333333. Here the two competing selectors were dates(0-1-1 ) vs paragraphs(0-1-1) which were tied and the last was winning so I changed the dates to 0-1-0 and paragraphs to 0-0-1 which now the dates won. If i used !important I would had to use it in many different places afterwards.</p>
+</div>
+<div class="card">
+<p class="q">In Challenge 4.8 the card started out wider than 320px, even though its CSS said width: 320px. Explain why, using the words content, padding and border, and explain what box-sizing: border-box changes.</p>
+<p class="answer">That happen because by default (box-sizing: content-box), width sets only the content area which was 320px. Padding and border are added on top which expands in outside of the 320px. Meaning the contents (text or image) sets the size (width and height) by default. The padding is the space between the content and the border comes after that is set. On the other hand, with box-sizing: border-box, width includes the padding and border, and the content area shrinks to fit.</p>
+</div>
+<div class="card">
+<p class="q">The club decides to change its brand green. Describe what you would have had to edit in Challenge 4.11&#39;s stylesheet before you added custom properties, and what you edit now. Then explain how the .promo card gets its own color without separate rules for its border, heading and button.</p>
+<p class="answer">I would have to change every color where the brand green was located which 4 location but now all I have to do is redefine brand in the : root which is 1 location. The reason why .promo gets its own color without separate rules is because redefining a variable on an element changes for that element and its descendants only where that variable is found in the CSS.</p>
+</div>
+</main>
+</body>
+</html>
