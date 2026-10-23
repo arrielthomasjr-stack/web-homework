@@ -1,0 +1,1726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Homework 5 · Arrie Thomas Jr</title>
+<style>
+body{margin:0;padding:24px 16px;background:#fff;color:#1d2330;font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header,main{max-width:980px;margin:0 auto}
+h1{font-size:1.9rem;line-height:1.2;margin:0 0 .3em}
+h2{font-size:1.4rem;margin:2.2em 0 .7em;padding-bottom:.3em;border-bottom:2px solid #d5dae3}
+h3{font-size:1.15rem;margin:0 0 .3em}
+h4{font-size:.95rem;margin:1.2em 0 .4em;color:#4a5262}
+.meta{margin:0;color:#4a5262}
+.card{border:1px solid #d5dae3;border-radius:10px;padding:16px 18px;margin:0 0 22px}
+.st{font-weight:700;margin:0 0 8px}.st.ok{color:#1b7a3a}.st.no{color:#b3261e}
+ul.checks{list-style:none;padding:0;margin:0}ul.checks li{padding:3px 0}
+.mk{display:inline-block;min-width:6.5em;font-weight:700}.ok .mk{color:#1b7a3a}.no .mk{color:#b3261e}
+pre{margin:0;background:#f4f6f9;border:1px solid #d5dae3;border-radius:8px;padding:12px;overflow:auto;max-height:440px;font:13px/1.5 ui-monospace,Menlo,Consolas,monospace;white-space:pre}
+code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.92em}
+iframe{display:block;width:100%;height:420px;border:1px solid #c3c9d4;border-radius:8px;background:#fff}
+table{border-collapse:collapse;width:100%}caption{text-align:left;font-weight:700;padding-bottom:6px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid #d5dae3;vertical-align:top}thead th{background:#eef1f6}
+.q{font-weight:700;margin:0 0 6px}
+.answer{white-space:pre-wrap;overflow-wrap:anywhere;background:#f4f6f9;border-left:4px solid #b3384a;padding:10px 14px;border-radius:6px;margin:0}
+.empty{color:#8a5a00;font-style:italic}
+.sum li{margin:2px 0}
+</style>
+</head>
+<body>
+<header>
+<h1>Homework 5: Modules 6 and 7</h1>
+<p class="meta">Name: <strong>Arrie Thomas Jr</strong></p>
+<p class="meta">Downloaded: October 23, 2026 at 10:52 AM</p>
+</header>
+<main>
+<h2>Summary</h2>
+<ul class="sum">
+<li>Challenges complete: 13 of 13</li>
+<li>Quizzes finished: 11 of 11</li>
+<li>Written answers: 6 of 6</li>
+</ul>
+<h2>Challenges</h2>
+<section class="card" id="challenge-1">
+<h3>Challenge 6.1: Show the poster at the right size</h3>
+<p class="st ok">6 of 6 checks pass</p>
+<ul class="checks"><li class="ok"><span class="mk">&#10003; Pass</span> The poster has <code>width=&quot;800&quot;</code> and <code>height=&quot;1200&quot;</code>, its real dimensions, so the browser can reserve its space before the file arrives</li><li class="ok"><span class="mk">&#10003; Pass</span> In a 300px column the poster shrinks to 300 × 450: it fits, and it keeps its 2 : 3 shape</li><li class="ok"><span class="mk">&#10003; Pass</span> Images shrink but never stretch: in a 1000px column the poster stays 800 × 1200, and in a 300px column the wave line fits inside</li><li class="ok"><span class="mk">&#10003; Pass</span> Each still is a 120 × 120 square, cropped with <code>object-fit: cover</code> instead of squashed</li><li class="ok"><span class="mk">&#10003; Pass</span> The poster and the three stills have alt text that says what they show (not empty, no &quot;image of&quot;, no file name)</li><li class="ok"><span class="mk">&#10003; Pass</span> The decorative wave line has an empty <code>alt=&quot;&quot;</code>, so screen readers skip it</li></ul>
+<h4>HTML</h4>
+<pre><code>&lt;article class=&quot;film&quot;&gt; &lt;!-- the film&#39;s page; the checks change this column&#39;s width --&gt;
+  &lt;h1&gt;Night Swim&lt;/h1&gt; &lt;!-- the film&#39;s title --&gt;
+  &lt;img class=&quot;poster&quot; src=&quot;data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;800&#39; height=&#39;1200&#39; viewBox=&#39;0 0 800 1200&#39; preserveAspectRatio=&#39;none&#39;%3E%3Crect width=&#39;800&#39; height=&#39;1200&#39; fill=&#39;%232b2350&#39;/%3E%3Ccircle cx=&#39;400&#39; cy=&#39;430&#39; r=&#39;210&#39; fill=&#39;%23f2b457&#39;/%3E%3Crect y=&#39;760&#39; width=&#39;800&#39; height=&#39;440&#39; fill=&#39;%231f6f8b&#39;/%3E%3C/svg%3E&quot; width=&quot;800&quot; height=&quot;1200&quot; alt=&quot;a yellow sun setting over a dark blue pool&quot;&gt; &lt;!-- the poster file is 800 × 1200 (2 : 3); it shows a yellow sun setting over a dark blue pool; TODO 1 and TODO 4 --&gt;
+  &lt;p&gt;A lifeguard and a night janitor share one summer at a closed city pool. 92 minutes, in English with captions.&lt;/p&gt; &lt;!-- the film&#39;s description --&gt;
+  &lt;img class=&quot;divider&quot; src=&quot;data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;1200&#39; height=&#39;40&#39; viewBox=&#39;0 0 1200 40&#39; preserveAspectRatio=&#39;none&#39;%3E%3Cpath d=&#39;M0 20 Q150 0 300 20 T600 20 T900 20 T1200 20&#39; fill=&#39;none&#39; stroke=&#39;%237a6bb0&#39; stroke-width=&#39;4&#39;/%3E%3C/svg%3E&quot; alt=&quot;&quot;&gt; &lt;!-- a decorative wave line, 1200 × 40; TODO 5 --&gt;
+  &lt;h2&gt;Stills&lt;/h2&gt; &lt;!-- heading for the stills --&gt;
+  &lt;div class=&quot;stills&quot;&gt; &lt;!-- three stills from the film; each file is 1200 × 800 (3 : 2) --&gt;
+    &lt;img src=&quot;data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;1200&#39; height=&#39;800&#39; viewBox=&#39;0 0 1200 800&#39; preserveAspectRatio=&#39;none&#39;%3E%3Crect width=&#39;1200&#39; height=&#39;800&#39; fill=&#39;%23243f6b&#39;/%3E%3Ccircle cx=&#39;600&#39; cy=&#39;400&#39; r=&#39;250&#39; fill=&#39;%23f2b457&#39;/%3E%3C/svg%3E&quot; alt=&quot;empty pool at dusk under the lights&quot;&gt; &lt;!-- still 1 shows the empty pool at dusk under the lights; TODO 4 --&gt;
+    &lt;img src=&quot;data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;1200&#39; height=&#39;800&#39; viewBox=&#39;0 0 1200 800&#39; preserveAspectRatio=&#39;none&#39;%3E%3Crect width=&#39;1200&#39; height=&#39;800&#39; fill=&#39;%236b2443&#39;/%3E%3Ccircle cx=&#39;600&#39; cy=&#39;400&#39; r=&#39;250&#39; fill=&#39;%23f2b457&#39;/%3E%3C/svg%3E&quot; alt=&quot;janitor mopping the deck at midnight&quot;&gt; &lt;!-- still 2 shows the janitor mopping the deck at midnight; TODO 4 --&gt;
+    &lt;img src=&quot;data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;1200&#39; height=&#39;800&#39; viewBox=&#39;0 0 1200 800&#39; preserveAspectRatio=&#39;none&#39;%3E%3Crect width=&#39;1200&#39; height=&#39;800&#39; fill=&#39;%231f5e4a&#39;/%3E%3Ccircle cx=&#39;600&#39; cy=&#39;400&#39; r=&#39;250&#39; fill=&#39;%23f2b457&#39;/%3E%3C/svg%3E&quot; alt=&quot;the two of them diving in at sunrise&quot; &gt; &lt;!-- still 3 shows the two of them diving in at sunrise; TODO 4 --&gt;
+  &lt;/div&gt; &lt;!-- end of the stills --&gt;
+&lt;/article&gt; &lt;!-- end of the film&#39;s page --&gt;</code></pre>
+<h4>CSS</h4>
+<pre><code>body { /* the whole page */
+  font-family: system-ui, sans-serif; /* a clean sans-serif font stack */
+  margin: 16px; /* space around the page */
+} /* end of the body rule */
+.film { /* the film&#39;s column */
+  max-width: 640px; /* a readable width; the checks also try 300px and 1000px */
+} /* end of the .film rule */
+img { /* every image on the page */
+  max-width: 100%;/* TODO 2: shrink to fit the column (never wider than it), and keep the shape */
+  height: auto;
+} /* end of the img rule */
+.stills img { /* each still */
+  width: 120px; /* a square thumbnail, 120px wide ... */
+  height: 120px; /* ... and 120px tall: a different shape from the 3 : 2 file */
+  margin-right: 8px; /* space between the stills */
+  object-fit: cover;/* TODO 3: crop the still to fill its square instead of squashing it */
+} /* end of the .stills img rule */
+.divider { /* the wave line */
+  display: block; /* on a line of its own */
+  margin: 16px 0; /* space above and below */
+} /* end of the .divider rule */</code></pre>
+<h4>Preview</h4>
+<iframe title="Preview of Challenge 6.1: Show the poster at the right size" sandbox="" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;title&gt;Preview&lt;/title&gt;&lt;style&gt;
+body { /* the whole page */
+  font-family: system-ui, sans-serif; /* a clean sans-serif font stack */
+  margin: 16px; /* space around the page */
+} /* end of the body rule */
+.film { /* the film&#39;s column */
+  max-width: 640px; /* a readable width; the checks also try 300px and 1000px */
+} /* end of the .film rule */
+img { /* every image on the page */
+  max-width: 100%;/* TODO 2: shrink to fit the column (never wider than it), and keep the shape */
+  height: auto;
+} /* end of the img rule */
+.stills img { /* each still */
+  width: 120px; /* a square thumbnail, 120px wide ... */
+  height: 120px; /* ... and 120px tall: a different shape from the 3 : 2 file */
+  margin-right: 8px; /* space between the stills */
+  object-fit: cover;/* TODO 3: crop the still to fill its square instead of squashing it */
+} /* end of the .stills img rule */
+.divider { /* the wave line */
+  display: block; /* on a line of its own */
+  margin: 16px 0; /* space above and below */
+} /* end of the .divider rule */
+&lt;/style&gt;&lt;/head&gt;&lt;body&gt;
+&lt;article class=&quot;film&quot;&gt; &lt;!-- the film&#39;s page; the checks change this column&#39;s width --&gt;
+  &lt;h1&gt;Night Swim&lt;/h1&gt; &lt;!-- the film&#39;s title --&gt;
+  &lt;img class=&quot;poster&quot; src=&quot;data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;800&#39; height=&#39;1200&#39; viewBox=&#39;0 0 800 1200&#39; preserveAspectRatio=&#39;none&#39;%3E%3Crect width=&#39;800&#39; height=&#39;1200&#39; fill=&#39;%232b2350&#39;/%3E%3Ccircle cx=&#39;400&#39; cy=&#39;430&#39; r=&#39;210&#39; fill=&#39;%23f2b457&#39;/%3E%3Crect y=&#39;760&#39; width=&#39;800&#39; height=&#39;440&#39; fill=&#39;%231f6f8b&#39;/%3E%3C/svg%3E&quot; width=&quot;800&quot; height=&quot;1200&quot; alt=&quot;a yellow sun setting over a dark blue pool&quot;&gt; &lt;!-- the poster file is 800 × 1200 (2 : 3); it shows a yellow sun setting over a dark blue pool; TODO 1 and TODO 4 --&gt;
+  &lt;p&gt;A lifeguard and a night janitor share one summer at a closed city pool. 92 minutes, in English with captions.&lt;/p&gt; &lt;!-- the film&#39;s description --&gt;
+  &lt;img class=&quot;divider&quot; src=&quot;data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;1200&#39; height=&#39;40&#39; viewBox=&#39;0 0 1200 40&#39; preserveAspectRatio=&#39;none&#39;%3E%3Cpath d=&#39;M0 20 Q150 0 300 20 T600 20 T900 20 T1200 20&#39; fill=&#39;none&#39; stroke=&#39;%237a6bb0&#39; stroke-width=&#39;4&#39;/%3E%3C/svg%3E&quot; alt=&quot;&quot;&gt; &lt;!-- a decorative wave line, 1200 × 40; TODO 5 --&gt;
+  &lt;h2&gt;Stills&lt;/h2&gt; &lt;!-- heading for the stills --&gt;
+  &lt;div class=&quot;stills&quot;&gt; &lt;!-- three stills from the film; each file is 1200 × 800 (3 : 2) --&gt;
+    &lt;img src=&quot;data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;1200&#39; height=&#39;800&#39; viewBox=&#39;0 0 1200 800&#39; preserveAspectRatio=&#39;none&#39;%3E%3Crect width=&#39;1200&#39; height=&#39;800&#39; fill=&#39;%23243f6b&#39;/%3E%3Ccircle cx=&#39;600&#39; cy=&#39;400&#39; r=&#39;250&#39; fill=&#39;%23f2b457&#39;/%3E%3C/svg%3E&quot; alt=&quot;empty pool at dusk under the lights&quot;&gt; &lt;!-- still 1 shows the empty pool at dusk under the lights; TODO 4 --&gt;
+    &lt;img src=&quot;data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;1200&#39; height=&#39;800&#39; viewBox=&#39;0 0 1200 800&#39; preserveAspectRatio=&#39;none&#39;%3E%3Crect width=&#39;1200&#39; height=&#39;800&#39; fill=&#39;%236b2443&#39;/%3E%3Ccircle cx=&#39;600&#39; cy=&#39;400&#39; r=&#39;250&#39; fill=&#39;%23f2b457&#39;/%3E%3C/svg%3E&quot; alt=&quot;janitor mopping the deck at midnight&quot;&gt; &lt;!-- still 2 shows the janitor mopping the deck at midnight; TODO 4 --&gt;
+    &lt;img src=&quot;data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;1200&#39; height=&#39;800&#39; viewBox=&#39;0 0 1200 800&#39; preserveAspectRatio=&#39;none&#39;%3E%3Crect width=&#39;1200&#39; height=&#39;800&#39; fill=&#39;%231f5e4a&#39;/%3E%3Ccircle cx=&#39;600&#39; cy=&#39;400&#39; r=&#39;250&#39; fill=&#39;%23f2b457&#39;/%3E%3C/svg%3E&quot; alt=&quot;the two of them diving in at sunrise&quot; &gt; &lt;!-- still 3 shows the two of them diving in at sunrise; TODO 4 --&gt;
+  &lt;/div&gt; &lt;!-- end of the stills --&gt;
+&lt;/article&gt; &lt;!-- end of the film&#39;s page --&gt;
+&lt;/body&gt;&lt;/html&gt;"></iframe>
+</section>
+<section class="card" id="challenge-2">
+<h3>Challenge 6.2: Serve the right file to every screen</h3>
+<p class="st ok">5 of 5 checks pass</p>
+<ul class="checks"><li class="ok"><span class="mk">&#10003; Pass</span> The logo offers <code>logo-200.png 1x</code> and <code>logo-400.png 2x</code>, keeps <code>src=&quot;logo-200.png&quot;</code>, and has <code>width=&quot;200&quot;</code> and <code>height=&quot;60&quot;</code></li><li class="ok"><span class="mk">&#10003; Pass</span> The hero&#39;s <code>srcset</code> lists all three files, each with its real pixel width as a <code>w</code> descriptor</li><li class="ok"><span class="mk">&#10003; Pass</span> The hero&#39;s <code>sizes</code> matches the CSS: <code>(min-width: 900px) 50vw, 100vw</code></li><li class="ok"><span class="mk">&#10003; Pass</span> The hero is not lazy-loaded (it is at the top of the page) and has <code>width</code> and <code>height</code> in its 16 : 9 shape</li><li class="ok"><span class="mk">&#10003; Pass</span> All four gallery photos are <code>loading=&quot;lazy&quot;</code>, with <code>width=&quot;1200&quot;</code> and <code>height=&quot;800&quot;</code></li></ul>
+<h4>HTML</h4>
+<pre><code>&lt;header class=&quot;top&quot;&gt; &lt;!-- the banner at the top of the page --&gt;
+  &lt;img class=&quot;logo&quot; src=&quot;logo-200.png&quot; srcset=&quot;logo-200.png 1x, logo-400.png 2x&quot; width=&quot;200&quot; height=&quot;60&quot; alt=&quot;Lakeside Film Festival&quot;&gt; &lt;!-- always shown 200 × 60; files: logo-200.png (200 × 60) and logo-400.png (400 × 120); TODO 1 --&gt;
+&lt;/header&gt; &lt;!-- end of the banner --&gt;
+&lt;img class=&quot;hero&quot; src=&quot;hero-1920.jpg&quot; srcset=&quot;hero-640.jpg 640w, hero-1280.jpg 1280w, hero-1920.jpg 1920w&quot; sizes=&quot;(min-width: 900px) 50vw, 100vw&quot; alt=&quot;The outdoor screen on the lake shore at sunset&quot; width=&quot;1600&quot; height=&quot;900&quot;&gt; &lt;!-- full width on phones, half the window from 900px; files: hero-640.jpg (640 × 360), hero-1280.jpg (1280 × 720), hero-1920.jpg (1920 × 1080); TODO 2, 3 and 4 --&gt;
+&lt;p&gt;Four nights of new films on a screen by the water, June 18 to 21.&lt;/p&gt; &lt;!-- a short introduction --&gt;
+&lt;h2&gt;From last year&lt;/h2&gt; &lt;!-- the gallery heading, far down a real page --&gt;
+&lt;div class=&quot;gallery&quot;&gt; &lt;!-- four photos, each file 1200 × 800; TODO 5 on every one --&gt;
+  &lt;img src=&quot;crowd.jpg&quot; alt=&quot;Hundreds of people on blankets facing the screen&quot; width=&quot;1200&quot; height=&quot;800&quot; loading=&quot;lazy&quot;&gt; &lt;!-- photo 1 --&gt;
+  &lt;img src=&quot;stage.jpg&quot; alt=&quot;The festival director welcoming the audience from the stage&quot; width=&quot;1200&quot; height=&quot;800&quot; loading=&quot;lazy&quot;&gt; &lt;!-- photo 2 --&gt;
+  &lt;img src=&quot;q-and-a.jpg&quot; alt=&quot;A filmmaker answering questions after a screening&quot;width=&quot;1200&quot; height=&quot;800&quot; loading=&quot;lazy&quot;&gt; &lt;!-- photo 3 --&gt;
+  &lt;img src=&quot;awards.jpg&quot; alt=&quot;The audience award trophy on a table by the water&quot; width=&quot;1200&quot; height=&quot;800&quot; loading=&quot;lazy&quot;&gt; &lt;!-- photo 4 --&gt;
+&lt;/div&gt; &lt;!-- end of the gallery --&gt;</code></pre>
+<h4>CSS</h4>
+<pre><code>body { /* the whole page */
+  font-family: system-ui, sans-serif; /* a clean sans-serif font stack */
+  margin: 16px; /* space around the page */
+} /* end of the body rule */
+img { /* every image */
+  max-width: 100%; /* never wider than its container */
+  height: auto; /* keep the shape when the width shrinks */
+} /* end of the img rule */
+.hero { /* the big photo */
+  width: 100%; /* the full width of the window on phones ... */
+} /* end of the .hero rule */
+@media (min-width: 900px) { /* ... and from 900px wide ... */
+  .hero { width: 50vw; } /* ... half the window: this is what sizes must describe */
+} /* end of the media query */
+.gallery img { /* each gallery photo */
+  width: 48%; /* two photos per row */
+} /* end of the .gallery img rule */</code></pre>
+<h4>Preview</h4>
+<iframe title="Preview of Challenge 6.2: Serve the right file to every screen" sandbox="" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;title&gt;Preview&lt;/title&gt;&lt;style&gt;
+body { /* the whole page */
+  font-family: system-ui, sans-serif; /* a clean sans-serif font stack */
+  margin: 16px; /* space around the page */
+} /* end of the body rule */
+img { /* every image */
+  max-width: 100%; /* never wider than its container */
+  height: auto; /* keep the shape when the width shrinks */
+} /* end of the img rule */
+.hero { /* the big photo */
+  width: 100%; /* the full width of the window on phones ... */
+} /* end of the .hero rule */
+@media (min-width: 900px) { /* ... and from 900px wide ... */
+  .hero { width: 50vw; } /* ... half the window: this is what sizes must describe */
+} /* end of the media query */
+.gallery img { /* each gallery photo */
+  width: 48%; /* two photos per row */
+} /* end of the .gallery img rule */
+&lt;/style&gt;&lt;/head&gt;&lt;body&gt;
+&lt;header class=&quot;top&quot;&gt; &lt;!-- the banner at the top of the page --&gt;
+  &lt;img class=&quot;logo&quot; src=&quot;logo-200.png&quot; srcset=&quot;logo-200.png 1x, logo-400.png 2x&quot; width=&quot;200&quot; height=&quot;60&quot; alt=&quot;Lakeside Film Festival&quot;&gt; &lt;!-- always shown 200 × 60; files: logo-200.png (200 × 60) and logo-400.png (400 × 120); TODO 1 --&gt;
+&lt;/header&gt; &lt;!-- end of the banner --&gt;
+&lt;img class=&quot;hero&quot; src=&quot;hero-1920.jpg&quot; srcset=&quot;hero-640.jpg 640w, hero-1280.jpg 1280w, hero-1920.jpg 1920w&quot; sizes=&quot;(min-width: 900px) 50vw, 100vw&quot; alt=&quot;The outdoor screen on the lake shore at sunset&quot; width=&quot;1600&quot; height=&quot;900&quot;&gt; &lt;!-- full width on phones, half the window from 900px; files: hero-640.jpg (640 × 360), hero-1280.jpg (1280 × 720), hero-1920.jpg (1920 × 1080); TODO 2, 3 and 4 --&gt;
+&lt;p&gt;Four nights of new films on a screen by the water, June 18 to 21.&lt;/p&gt; &lt;!-- a short introduction --&gt;
+&lt;h2&gt;From last year&lt;/h2&gt; &lt;!-- the gallery heading, far down a real page --&gt;
+&lt;div class=&quot;gallery&quot;&gt; &lt;!-- four photos, each file 1200 × 800; TODO 5 on every one --&gt;
+  &lt;img src=&quot;crowd.jpg&quot; alt=&quot;Hundreds of people on blankets facing the screen&quot; width=&quot;1200&quot; height=&quot;800&quot; loading=&quot;lazy&quot;&gt; &lt;!-- photo 1 --&gt;
+  &lt;img src=&quot;stage.jpg&quot; alt=&quot;The festival director welcoming the audience from the stage&quot; width=&quot;1200&quot; height=&quot;800&quot; loading=&quot;lazy&quot;&gt; &lt;!-- photo 2 --&gt;
+  &lt;img src=&quot;q-and-a.jpg&quot; alt=&quot;A filmmaker answering questions after a screening&quot;width=&quot;1200&quot; height=&quot;800&quot; loading=&quot;lazy&quot;&gt; &lt;!-- photo 3 --&gt;
+  &lt;img src=&quot;awards.jpg&quot; alt=&quot;The audience award trophy on a table by the water&quot; width=&quot;1200&quot; height=&quot;800&quot; loading=&quot;lazy&quot;&gt; &lt;!-- photo 4 --&gt;
+&lt;/div&gt; &lt;!-- end of the gallery --&gt;
+&lt;/body&gt;&lt;/html&gt;"></iframe>
+</section>
+<section class="card" id="challenge-3">
+<h3>Challenge 6.3: New formats, a fallback, and a different crop</h3>
+<p class="st ok">5 of 5 checks pass</p>
+<ul class="checks"><li class="ok"><span class="mk">&#10003; Pass</span> The crowd photo is a <code>&lt;picture&gt;</code> whose <code>&lt;img&gt;</code> is unchanged: <code>crowd.jpg</code>, the same alt text, <code>width=&quot;1600&quot;</code> and <code>height=&quot;1067&quot;</code></li><li class="ok"><span class="mk">&#10003; Pass</span> Inside it, an AVIF <code>&lt;source&gt;</code> comes first and a WebP <code>&lt;source&gt;</code> second, each with its exact <code>type</code></li><li class="ok"><span class="mk">&#10003; Pass</span> Every <code>&lt;source&gt;</code> uses <code>srcset</code> (never <code>src</code>), and each <code>&lt;picture&gt;</code> ends with its <code>&lt;img&gt;</code></li><li class="ok"><span class="mk">&#10003; Pass</span> The screen banner has a <code>&lt;source media=&quot;(min-width: 800px)&quot; srcset=&quot;screen-wide.jpg&quot;&gt;</code></li><li class="ok"><span class="mk">&#10003; Pass</span> The banner&#39;s <code>&lt;img&gt;</code> is the square close-up <code>screen-square.jpg</code>, with the same alt text, <code>width=&quot;800&quot;</code> and <code>height=&quot;800&quot;</code></li></ul>
+<h4>HTML</h4>
+<pre><code>&lt;h2&gt;Opening night&lt;/h2&gt; &lt;!-- a heading for the first photo --&gt;
+&lt;picture&gt;
+  &lt;source type=&quot;image/avif&quot; srcset=&quot;crowd.avif&quot;&gt;
+  &lt;source type=&quot;image/webp&quot; srcset=&quot;crowd.webp&quot;&gt;
+  &lt;img src=&quot;crowd.jpg&quot; alt=&quot;Hundreds of people on blankets facing the screen at dusk&quot; width=&quot;1600&quot; height=&quot;1067&quot;&gt; &lt;!-- the same crop on every screen; files: crowd.avif, crowd.webp and crowd.jpg; TODO 1 and 2 --&gt;
+&lt;/picture&gt;
+&lt;h2&gt;The big screen&lt;/h2&gt; &lt;!-- a heading for the second photo --&gt;
+&lt;picture&gt;
+  &lt;source media=&quot;(min-width: 800px)&quot; srcset=&quot;screen-wide.jpg&quot;&gt;
+  &lt;img src=&quot;screen-square.jpg&quot; alt=&quot;The outdoor screen standing in the shallow water of the lake&quot; width=&quot;800&quot; height=&quot;800&quot;&gt; &lt;!-- a wide crop (screen-wide.jpg, 1600 × 600) for 800px and up, and a square close-up (screen-square.jpg, 800 × 800) below that; TODO 3 and 4 --&gt;
+&lt;/picture&gt;</code></pre>
+<h4>CSS</h4>
+<pre><code>body { /* the whole page */
+  font-family: system-ui, sans-serif; /* a clean sans-serif font stack */
+  margin: 16px; /* space around the page */
+} /* end of the body rule */
+img { /* style the img, never the picture around it */
+  max-width: 100%; /* never wider than its container */
+  height: auto; /* keep the shape */
+} /* end of the img rule */</code></pre>
+<h4>Preview</h4>
+<iframe title="Preview of Challenge 6.3: New formats, a fallback, and a different crop" sandbox="" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;title&gt;Preview&lt;/title&gt;&lt;style&gt;
+body { /* the whole page */
+  font-family: system-ui, sans-serif; /* a clean sans-serif font stack */
+  margin: 16px; /* space around the page */
+} /* end of the body rule */
+img { /* style the img, never the picture around it */
+  max-width: 100%; /* never wider than its container */
+  height: auto; /* keep the shape */
+} /* end of the img rule */
+&lt;/style&gt;&lt;/head&gt;&lt;body&gt;
+&lt;h2&gt;Opening night&lt;/h2&gt; &lt;!-- a heading for the first photo --&gt;
+&lt;picture&gt;
+  &lt;source type=&quot;image/avif&quot; srcset=&quot;crowd.avif&quot;&gt;
+  &lt;source type=&quot;image/webp&quot; srcset=&quot;crowd.webp&quot;&gt;
+  &lt;img src=&quot;crowd.jpg&quot; alt=&quot;Hundreds of people on blankets facing the screen at dusk&quot; width=&quot;1600&quot; height=&quot;1067&quot;&gt; &lt;!-- the same crop on every screen; files: crowd.avif, crowd.webp and crowd.jpg; TODO 1 and 2 --&gt;
+&lt;/picture&gt;
+&lt;h2&gt;The big screen&lt;/h2&gt; &lt;!-- a heading for the second photo --&gt;
+&lt;picture&gt;
+  &lt;source media=&quot;(min-width: 800px)&quot; srcset=&quot;screen-wide.jpg&quot;&gt;
+  &lt;img src=&quot;screen-square.jpg&quot; alt=&quot;The outdoor screen standing in the shallow water of the lake&quot; width=&quot;800&quot; height=&quot;800&quot;&gt; &lt;!-- a wide crop (screen-wide.jpg, 1600 × 600) for 800px and up, and a square close-up (screen-square.jpg, 800 × 800) below that; TODO 3 and 4 --&gt;
+&lt;/picture&gt;
+&lt;/body&gt;&lt;/html&gt;"></iframe>
+</section>
+<section class="card" id="challenge-4">
+<h3>Challenge 6.4: A trailer, a silent loop and a podcast</h3>
+<p class="st ok">8 of 8 checks pass</p>
+<ul class="checks"><li class="ok"><span class="mk">&#10003; Pass</span> The trailer has <code>controls</code>, <code>poster=&quot;trailer-poster.jpg&quot;</code>, <code>preload=&quot;metadata&quot;</code>, <code>width=&quot;1280&quot;</code> and <code>height=&quot;720&quot;</code></li><li class="ok"><span class="mk">&#10003; Pass</span> The trailer offers <code>trailer.webm</code> first and <code>trailer.mp4</code> second, as <code>&lt;source&gt;</code> elements with exact <code>type</code>s, and the <code>&lt;video&gt;</code> itself has no <code>src</code></li><li class="ok"><span class="mk">&#10003; Pass</span> A <code>&lt;track&gt;</code> adds English captions: <code>kind=&quot;captions&quot;</code>, <code>src=&quot;trailer-en.vtt&quot;</code>, <code>srclang=&quot;en&quot;</code>, a <code>label</code>, and <code>default</code></li><li class="ok"><span class="mk">&#10003; Pass</span> Fallback content inside the trailer links to <code>trailer.mp4</code> so the file can be downloaded</li><li class="ok"><span class="mk">&#10003; Pass</span> The waves loop is <code>autoplay muted loop playsinline</code>, and keeps <code>controls</code> so it can be paused</li><li class="ok"><span class="mk">&#10003; Pass</span> Nothing with sound plays by itself: the trailer and the podcast have no <code>autoplay</code>, and anything that autoplays is <code>muted</code></li><li class="ok"><span class="mk">&#10003; Pass</span> The podcast <code>&lt;audio&gt;</code> has <code>controls</code>, <code>episode1.ogg</code> (<code>audio/ogg</code>) first and <code>episode1.mp3</code> (<code>audio/mpeg</code>) last, and no <code>src</code> of its own</li><li class="ok"><span class="mk">&#10003; Pass</span> The paragraph right under the player links to <code>episode1-transcript.html</code></li></ul>
+<h4>HTML</h4>
+<pre><code>&lt;h2&gt;Trailer&lt;/h2&gt; &lt;!-- the film&#39;s trailer, with sound --&gt;
+&lt;video class=&quot;trailer&quot; controls poster=&quot;trailer-poster.jpg&quot; preload=&quot;metadata&quot; width=&quot;1280&quot; height=&quot;720&quot;&gt; &lt;!-- files: trailer.webm, trailer.mp4, captions in trailer-en.vtt, poster trailer-poster.jpg; TODO 1 to 4 --&gt;
+  &lt;source src=&quot;trailer.webm&quot; type=&quot;video/webm&quot;&gt;
+  &lt;source src=&quot;trailer.mp4&quot; type=&quot;video/mp4&quot;&gt;
+  &lt;track kind=&quot;captions&quot; src=&quot;trailer-en.vtt&quot; srclang=&quot;en&quot; label=&quot;English&quot; default&gt;
+  &lt;p&gt;Your browser can&#39;t play this video. &lt;a href=&quot;trailer.mp4&quot;&gt;Download the trailer&lt;/a&gt;.&lt;/p&gt;
+&lt;/video&gt;
+  
+&lt;h2&gt;At the lake&lt;/h2&gt; &lt;!-- a silent, decorative clip of waves --&gt;
+&lt;video class=&quot;waves&quot; src=&quot;waves.mp4&quot; autoplay muted loop playsinline controls&gt;&lt;/video&gt; &lt;!-- a 6-second loop with no sound; TODO 5 --&gt;
+
+&lt;h2&gt;Podcast&lt;/h2&gt; &lt;!-- the festival podcast --&gt;
+&lt;audio controls&gt;
+  &lt;source src=&quot;episode1.ogg&quot; type=&quot;audio/ogg&quot;&gt;
+  &lt;source src=&quot;episode1.mp3&quot; type=&quot;audio/mpeg&quot;&gt; &lt;!-- files: episode1.ogg (Opus) and episode1.mp3; TODO 6 --&gt;
+&lt;/audio&gt;  
+&lt;p&gt;Episode 1: meet this year&#39;s directors.&lt;a href=&quot;episode1-transcript.html&quot;&gt;Link to transcript&lt;/a&gt;.&lt;/p&gt; &lt;!-- the episode title; TODO 7: add the transcript link here --&gt;</code></pre>
+<h4>CSS</h4>
+<pre><code>body { /* the whole page */
+  font-family: system-ui, sans-serif; /* a clean sans-serif font stack */
+  margin: 16px; /* space around the page */
+} /* end of the body rule */
+video { /* every video player */
+  max-width: 100%; /* never wider than the page */
+  height: auto; /* keep the shape */
+  background-color: #1d2330; /* a dark box until a frame is shown */
+} /* end of the video rule */</code></pre>
+<h4>Preview</h4>
+<iframe title="Preview of Challenge 6.4: A trailer, a silent loop and a podcast" sandbox="" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;title&gt;Preview&lt;/title&gt;&lt;style&gt;
+body { /* the whole page */
+  font-family: system-ui, sans-serif; /* a clean sans-serif font stack */
+  margin: 16px; /* space around the page */
+} /* end of the body rule */
+video { /* every video player */
+  max-width: 100%; /* never wider than the page */
+  height: auto; /* keep the shape */
+  background-color: #1d2330; /* a dark box until a frame is shown */
+} /* end of the video rule */
+&lt;/style&gt;&lt;/head&gt;&lt;body&gt;
+&lt;h2&gt;Trailer&lt;/h2&gt; &lt;!-- the film&#39;s trailer, with sound --&gt;
+&lt;video class=&quot;trailer&quot; controls poster=&quot;trailer-poster.jpg&quot; preload=&quot;metadata&quot; width=&quot;1280&quot; height=&quot;720&quot;&gt; &lt;!-- files: trailer.webm, trailer.mp4, captions in trailer-en.vtt, poster trailer-poster.jpg; TODO 1 to 4 --&gt;
+  &lt;source src=&quot;trailer.webm&quot; type=&quot;video/webm&quot;&gt;
+  &lt;source src=&quot;trailer.mp4&quot; type=&quot;video/mp4&quot;&gt;
+  &lt;track kind=&quot;captions&quot; src=&quot;trailer-en.vtt&quot; srclang=&quot;en&quot; label=&quot;English&quot; default&gt;
+  &lt;p&gt;Your browser can&#39;t play this video. &lt;a href=&quot;trailer.mp4&quot;&gt;Download the trailer&lt;/a&gt;.&lt;/p&gt;
+&lt;/video&gt;
+  
+&lt;h2&gt;At the lake&lt;/h2&gt; &lt;!-- a silent, decorative clip of waves --&gt;
+&lt;video class=&quot;waves&quot; src=&quot;waves.mp4&quot; autoplay muted loop playsinline controls&gt;&lt;/video&gt; &lt;!-- a 6-second loop with no sound; TODO 5 --&gt;
+
+&lt;h2&gt;Podcast&lt;/h2&gt; &lt;!-- the festival podcast --&gt;
+&lt;audio controls&gt;
+  &lt;source src=&quot;episode1.ogg&quot; type=&quot;audio/ogg&quot;&gt;
+  &lt;source src=&quot;episode1.mp3&quot; type=&quot;audio/mpeg&quot;&gt; &lt;!-- files: episode1.ogg (Opus) and episode1.mp3; TODO 6 --&gt;
+&lt;/audio&gt;  
+&lt;p&gt;Episode 1: meet this year&#39;s directors.&lt;a href=&quot;episode1-transcript.html&quot;&gt;Link to transcript&lt;/a&gt;.&lt;/p&gt; &lt;!-- the episode title; TODO 7: add the transcript link here --&gt;
+&lt;/body&gt;&lt;/html&gt;"></iframe>
+</section>
+<section class="card" id="challenge-5">
+<h3>Challenge 6.5: A whole color scheme from one number</h3>
+<p class="st ok">5 of 5 checks pass</p>
+<ul class="checks"><li class="ok"><span class="mk">&#10003; Pass</span> <code>--brand</code> is <code>hsl()</code> built from <code>--hue</code>, with 45% saturation and 30% lightness: the heading follows <code>--hue</code> (tested at 265, 120 and 200) and keeps 4.5 : 1 contrast on the panel</li><li class="ok"><span class="mk">&#10003; Pass</span> <code>--tint</code> is a very light tint of the same hue: the panel background changes with <code>--hue</code>, keeps that hue, and has 90% lightness or more</li><li class="ok"><span class="mk">&#10003; Pass</span> The paragraph text has at least 4.5 : 1 contrast on the panel, at hue 265 and at hue 60</li><li class="ok"><span class="mk">&#10003; Pass</span> <code>--accent</code> is built from <code>--hue</code> and is always its complement: the button is 180° around the wheel at hues 265, 120, 30 and 200</li><li class="ok"><span class="mk">&#10003; Pass</span> The button text has at least 4.5 : 1 contrast on the accent, at every one of those hues</li></ul>
+<h4>HTML</h4>
+<pre><code>&lt;section class=&quot;panel&quot;&gt; &lt;!-- a screening announcement; the tint is its background --&gt;
+  &lt;h2&gt;Night Swim · Saturday 9 p.m.&lt;/h2&gt; &lt;!-- the heading, in the brand color --&gt;
+  &lt;p&gt;Outdoor screening by the lake. Bring a blanket; the lifeguards bring popcorn.&lt;/p&gt; &lt;!-- the message, in the text color --&gt;
+  &lt;a class=&quot;button&quot; href=&quot;tickets.html&quot;&gt;Buy tickets&lt;/a&gt; &lt;!-- the call to action, in the accent color --&gt;
+&lt;/section&gt; &lt;!-- end of the panel --&gt;</code></pre>
+<h4>CSS</h4>
+<pre><code>:root { /* the color tokens: every color on the page comes from here */
+  --hue: 265; /* the festival&#39;s base hue, an angle on the color wheel (265 is a blue-violet) */
+  --brand: hsl(var(--hue) 45% 30%); /* TODO 1: hsl() made from var(--hue), 45% saturation, 30% lightness */
+  --tint: hsl(var(--hue) 45% 90%); /* TODO 2: the same hue, very light: lightness 90% or more */
+  --text: hsl(265 45% 40%); /* TODO 3: far too pale to read on the tint; needs 4.5 : 1 */
+  --accent: hsl(calc(var(--hue) + 180) 70% 25%); /* TODO 4: the complementary hue, 180 degrees around the wheel */
+  --on-accent: #dedede; /* TODO 5: the button text; check its contrast on the accent */
+} /* end of the :root rule */
+body { /* the whole page */
+  font-family: system-ui, sans-serif; /* a clean sans-serif font stack */
+  margin: 16px; /* space around the page */
+} /* end of the body rule */
+.panel { /* the announcement box */
+  background-color: var(--tint); /* the light tint */
+  color: var(--text); /* the text color */
+  padding: 20px; /* room inside the box */
+  border-radius: 8px; /* softly rounded corners */
+} /* end of the .panel rule */
+.panel h2 { /* the heading */
+  margin-top: 0; /* no gap above it */
+  color: var(--brand); /* the brand color */
+} /* end of the heading rule */
+.button { /* the call to action */
+  display: inline-block; /* a box that sits in the line */
+  padding: 0.6em 1.2em; /* room around the words */
+  border-radius: 6px; /* rounded corners */
+  background-color: var(--accent); /* the accent color */
+  color: var(--on-accent); /* the text on the accent */
+  font-weight: 700; /* bold text */
+  text-decoration: none; /* no underline on a button */
+} /* end of the .button rule */</code></pre>
+<h4>Preview</h4>
+<iframe title="Preview of Challenge 6.5: A whole color scheme from one number" sandbox="" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;title&gt;Preview&lt;/title&gt;&lt;style&gt;
+:root { /* the color tokens: every color on the page comes from here */
+  --hue: 265; /* the festival&#39;s base hue, an angle on the color wheel (265 is a blue-violet) */
+  --brand: hsl(var(--hue) 45% 30%); /* TODO 1: hsl() made from var(--hue), 45% saturation, 30% lightness */
+  --tint: hsl(var(--hue) 45% 90%); /* TODO 2: the same hue, very light: lightness 90% or more */
+  --text: hsl(265 45% 40%); /* TODO 3: far too pale to read on the tint; needs 4.5 : 1 */
+  --accent: hsl(calc(var(--hue) + 180) 70% 25%); /* TODO 4: the complementary hue, 180 degrees around the wheel */
+  --on-accent: #dedede; /* TODO 5: the button text; check its contrast on the accent */
+} /* end of the :root rule */
+body { /* the whole page */
+  font-family: system-ui, sans-serif; /* a clean sans-serif font stack */
+  margin: 16px; /* space around the page */
+} /* end of the body rule */
+.panel { /* the announcement box */
+  background-color: var(--tint); /* the light tint */
+  color: var(--text); /* the text color */
+  padding: 20px; /* room inside the box */
+  border-radius: 8px; /* softly rounded corners */
+} /* end of the .panel rule */
+.panel h2 { /* the heading */
+  margin-top: 0; /* no gap above it */
+  color: var(--brand); /* the brand color */
+} /* end of the heading rule */
+.button { /* the call to action */
+  display: inline-block; /* a box that sits in the line */
+  padding: 0.6em 1.2em; /* room around the words */
+  border-radius: 6px; /* rounded corners */
+  background-color: var(--accent); /* the accent color */
+  color: var(--on-accent); /* the text on the accent */
+  font-weight: 700; /* bold text */
+  text-decoration: none; /* no underline on a button */
+} /* end of the .button rule */
+&lt;/style&gt;&lt;/head&gt;&lt;body&gt;
+&lt;section class=&quot;panel&quot;&gt; &lt;!-- a screening announcement; the tint is its background --&gt;
+  &lt;h2&gt;Night Swim · Saturday 9 p.m.&lt;/h2&gt; &lt;!-- the heading, in the brand color --&gt;
+  &lt;p&gt;Outdoor screening by the lake. Bring a blanket; the lifeguards bring popcorn.&lt;/p&gt; &lt;!-- the message, in the text color --&gt;
+  &lt;a class=&quot;button&quot; href=&quot;tickets.html&quot;&gt;Buy tickets&lt;/a&gt; &lt;!-- the call to action, in the accent color --&gt;
+&lt;/section&gt; &lt;!-- end of the panel --&gt;
+&lt;/body&gt;&lt;/html&gt;"></iframe>
+</section>
+<section class="card" id="challenge-6">
+<h3>Challenge 7.1: Wrap the reviews around their stills</h3>
+<p class="st ok">5 of 5 checks pass</p>
+<ul class="checks"><li class="ok"><span class="mk">&#10003; Pass</span> Both stills float to the right and are 240px wide</li><li class="ok"><span class="mk">&#10003; Pass</span> Each still has at least 12px of margin on its left (the side that faces the text) and below it</li><li class="ok"><span class="mk">&#10003; Pass</span> The first review&#39;s text runs beside its still, not under it</li><li class="ok"><span class="mk">&#10003; Pass</span> Each <code>.rating</code> line starts below its still, using <code>clear</code></li><li class="ok"><span class="mk">&#10003; Pass</span> Each <code>.review</code> box contains its floated still, even without the rating&#39;s <code>clear</code>, so its border goes around the photo</li></ul>
+<h4>HTML</h4>
+<pre><code>&lt;article class=&quot;review&quot;&gt; &lt;!-- the first review card --&gt;
+  &lt;h2&gt;Night Swim&lt;/h2&gt; &lt;!-- the film --&gt;
+  &lt;img class=&quot;still&quot; src=&quot;data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;600&#39; height=&#39;400&#39; viewBox=&#39;0 0 600 400&#39; preserveAspectRatio=&#39;none&#39;%3E%3Crect width=&#39;600&#39; height=&#39;400&#39; fill=&#39;%23243f6b&#39;/%3E%3Ccircle cx=&#39;300&#39; cy=&#39;180&#39; r=&#39;110&#39; fill=&#39;%23f2b457&#39;/%3E%3C/svg%3E&quot; alt=&quot;The lifeguard alone on the high diving board at dusk&quot;&gt; &lt;!-- a 600 × 400 still; TODO 1 and TODO 2 --&gt;
+  &lt;p&gt;A lifeguard and a night janitor share one summer at a closed city pool, and slowly become friends. The film is quiet and patient, and it is beautifully lit: almost every scene happens after dark, under the blue pool lights. The two leads say very little, but their small kindnesses carry the whole story, and the final swim at sunrise earned a long round of applause from our audience.&lt;/p&gt; &lt;!-- a long paragraph that should wrap around the still --&gt;
+  &lt;p class=&quot;rating&quot;&gt;Our rating: four stars out of five&lt;/p&gt; &lt;!-- TODO 4: starts below the still --&gt;
+&lt;/article&gt; &lt;!-- end of the first review --&gt;
+&lt;article class=&quot;review&quot;&gt; &lt;!-- the second review card --&gt;
+  &lt;h2&gt;Paper Kites&lt;/h2&gt; &lt;!-- the film --&gt;
+  &lt;img class=&quot;still&quot; src=&quot;data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;600&#39; height=&#39;400&#39; viewBox=&#39;0 0 600 400&#39; preserveAspectRatio=&#39;none&#39;%3E%3Crect width=&#39;600&#39; height=&#39;400&#39; fill=&#39;%231f5e4a&#39;/%3E%3Ccircle cx=&#39;300&#39; cy=&#39;180&#39; r=&#39;110&#39; fill=&#39;%23f2b457&#39;/%3E%3C/svg%3E&quot; alt=&quot;Two sisters flying a paper kite over an empty parking lot&quot;&gt; &lt;!-- a 600 × 400 still; TODO 1 and TODO 2 --&gt;
+  &lt;p&gt;A short, funny road movie about two sisters and a car that will not start.&lt;/p&gt; &lt;!-- a short paragraph: much shorter than the still --&gt;
+  &lt;p class=&quot;rating&quot;&gt;Our rating: three stars out of five&lt;/p&gt; &lt;!-- TODO 4: starts below the still --&gt;
+&lt;/article&gt; &lt;!-- end of the second review --&gt;</code></pre>
+<h4>CSS</h4>
+<pre><code>body { /* the whole page */
+  font-family: Georgia, &quot;Times New Roman&quot;, serif; /* a serif font stack for reading */
+  line-height: 1.5; /* comfortable space between lines */
+  margin: 16px; /* space around the page */
+} /* end of the body rule */
+.review { /* each review card */
+  max-width: 640px; /* a readable width */
+  border: 1px solid #c9c3dc; /* a thin border, so you can see the box */
+  padding: 0 16px; /* room inside the left and right edges */
+  margin-bottom: 16px; /* space between the cards */
+  display: flow-root;/* TODO 5: make the box contain its float */
+} /* end of the .review rule */
+.still { /* each still */
+  height: auto; /* keep the 3 : 2 shape */
+  float: right;/* TODO 1: float right, 240px wide */
+  width: 240px;
+  margin-left: 12px;/* TODO 2: at least 12px of margin on the left and below */
+  margin-bottom: 12px;
+} /* end of the .still rule */
+.rating { /* the rating line */
+  font-weight: bold; /* make it stand out */
+  clear: both;/* TODO 4: start below the still */
+} /* end of the .rating rule */</code></pre>
+<h4>Preview</h4>
+<iframe title="Preview of Challenge 7.1: Wrap the reviews around their stills" sandbox="" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;title&gt;Preview&lt;/title&gt;&lt;style&gt;
+body { /* the whole page */
+  font-family: Georgia, &quot;Times New Roman&quot;, serif; /* a serif font stack for reading */
+  line-height: 1.5; /* comfortable space between lines */
+  margin: 16px; /* space around the page */
+} /* end of the body rule */
+.review { /* each review card */
+  max-width: 640px; /* a readable width */
+  border: 1px solid #c9c3dc; /* a thin border, so you can see the box */
+  padding: 0 16px; /* room inside the left and right edges */
+  margin-bottom: 16px; /* space between the cards */
+  display: flow-root;/* TODO 5: make the box contain its float */
+} /* end of the .review rule */
+.still { /* each still */
+  height: auto; /* keep the 3 : 2 shape */
+  float: right;/* TODO 1: float right, 240px wide */
+  width: 240px;
+  margin-left: 12px;/* TODO 2: at least 12px of margin on the left and below */
+  margin-bottom: 12px;
+} /* end of the .still rule */
+.rating { /* the rating line */
+  font-weight: bold; /* make it stand out */
+  clear: both;/* TODO 4: start below the still */
+} /* end of the .rating rule */
+&lt;/style&gt;&lt;/head&gt;&lt;body&gt;
+&lt;article class=&quot;review&quot;&gt; &lt;!-- the first review card --&gt;
+  &lt;h2&gt;Night Swim&lt;/h2&gt; &lt;!-- the film --&gt;
+  &lt;img class=&quot;still&quot; src=&quot;data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;600&#39; height=&#39;400&#39; viewBox=&#39;0 0 600 400&#39; preserveAspectRatio=&#39;none&#39;%3E%3Crect width=&#39;600&#39; height=&#39;400&#39; fill=&#39;%23243f6b&#39;/%3E%3Ccircle cx=&#39;300&#39; cy=&#39;180&#39; r=&#39;110&#39; fill=&#39;%23f2b457&#39;/%3E%3C/svg%3E&quot; alt=&quot;The lifeguard alone on the high diving board at dusk&quot;&gt; &lt;!-- a 600 × 400 still; TODO 1 and TODO 2 --&gt;
+  &lt;p&gt;A lifeguard and a night janitor share one summer at a closed city pool, and slowly become friends. The film is quiet and patient, and it is beautifully lit: almost every scene happens after dark, under the blue pool lights. The two leads say very little, but their small kindnesses carry the whole story, and the final swim at sunrise earned a long round of applause from our audience.&lt;/p&gt; &lt;!-- a long paragraph that should wrap around the still --&gt;
+  &lt;p class=&quot;rating&quot;&gt;Our rating: four stars out of five&lt;/p&gt; &lt;!-- TODO 4: starts below the still --&gt;
+&lt;/article&gt; &lt;!-- end of the first review --&gt;
+&lt;article class=&quot;review&quot;&gt; &lt;!-- the second review card --&gt;
+  &lt;h2&gt;Paper Kites&lt;/h2&gt; &lt;!-- the film --&gt;
+  &lt;img class=&quot;still&quot; src=&quot;data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;600&#39; height=&#39;400&#39; viewBox=&#39;0 0 600 400&#39; preserveAspectRatio=&#39;none&#39;%3E%3Crect width=&#39;600&#39; height=&#39;400&#39; fill=&#39;%231f5e4a&#39;/%3E%3Ccircle cx=&#39;300&#39; cy=&#39;180&#39; r=&#39;110&#39; fill=&#39;%23f2b457&#39;/%3E%3C/svg%3E&quot; alt=&quot;Two sisters flying a paper kite over an empty parking lot&quot;&gt; &lt;!-- a 600 × 400 still; TODO 1 and TODO 2 --&gt;
+  &lt;p&gt;A short, funny road movie about two sisters and a car that will not start.&lt;/p&gt; &lt;!-- a short paragraph: much shorter than the still --&gt;
+  &lt;p class=&quot;rating&quot;&gt;Our rating: three stars out of five&lt;/p&gt; &lt;!-- TODO 4: starts below the still --&gt;
+&lt;/article&gt; &lt;!-- end of the second review --&gt;
+&lt;/body&gt;&lt;/html&gt;"></iframe>
+</section>
+<section class="card" id="challenge-7">
+<h3>Challenge 7.2: Pin, overlay, stick and fix</h3>
+<p class="st ok">6 of 6 checks pass</p>
+<ul class="checks"><li class="ok"><span class="mk">&#10003; Pass</span> <code>.card</code> is the containing block: <code>position: relative</code>, with no offsets that move it</li><li class="ok"><span class="mk">&#10003; Pass</span> The ribbon is pinned 8px in from the card&#39;s top edge and right edge</li><li class="ok"><span class="mk">&#10003; Pass</span> The ribbon no longer takes up space: the poster starts at the very top of the card</li><li class="ok"><span class="mk">&#10003; Pass</span> The caption lies across the bottom of the poster, edge to edge</li><li class="ok"><span class="mk">&#10003; Pass</span> Each day heading sticks to the top of the showtimes box while its day scrolls past</li><li class="ok"><span class="mk">&#10003; Pass</span> The help button stays 16px from the bottom-right corner of the window</li></ul>
+<h4>HTML</h4>
+<pre><code>&lt;div class=&quot;card&quot;&gt; &lt;!-- a film card: the poster with two things on top of it --&gt;
+  &lt;p class=&quot;ribbon&quot;&gt;Sold out&lt;/p&gt; &lt;!-- TODO 2: pinned to the card&#39;s top-right corner --&gt;
+  &lt;img class=&quot;poster&quot; src=&quot;data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;600&#39; height=&#39;900&#39; viewBox=&#39;0 0 600 900&#39; preserveAspectRatio=&#39;none&#39;%3E%3Crect width=&#39;600&#39; height=&#39;900&#39; fill=&#39;%232b2350&#39;/%3E%3Ccircle cx=&#39;300&#39; cy=&#39;320&#39; r=&#39;160&#39; fill=&#39;%23f2b457&#39;/%3E%3Crect y=&#39;570&#39; width=&#39;600&#39; height=&#39;330&#39; fill=&#39;%231f6f8b&#39;/%3E%3C/svg%3E&quot; alt=&quot;Poster for Night Swim: a sun setting over a dark pool&quot;&gt; &lt;!-- the poster, 600 × 900 --&gt;
+  &lt;p class=&quot;caption&quot;&gt;Night Swim · Saturday 9 p.m.&lt;/p&gt; &lt;!-- TODO 3: across the bottom of the poster --&gt;
+&lt;/div&gt; &lt;!-- end of the card --&gt;
+&lt;h2&gt;Showtimes&lt;/h2&gt; &lt;!-- a heading for the list below --&gt;
+&lt;div class=&quot;schedule&quot;&gt; &lt;!-- a box that scrolls on its own --&gt;
+  &lt;section&gt; &lt;!-- one day --&gt;
+    &lt;h3&gt;Friday&lt;/h3&gt; &lt;!-- TODO 4: sticks to the top while Friday scrolls past --&gt;
+    &lt;ul&gt; &lt;!-- Friday&#39;s films --&gt;
+      &lt;li&gt;7:00 p.m. Paper Kites&lt;/li&gt; &lt;!-- a showing --&gt;
+      &lt;li&gt;8:30 p.m. The Long Light&lt;/li&gt; &lt;!-- a showing --&gt;
+      &lt;li&gt;10:00 p.m. Salt and Iron&lt;/li&gt; &lt;!-- a showing --&gt;
+      &lt;li&gt;11:45 p.m. Midnight shorts&lt;/li&gt; &lt;!-- a showing --&gt;
+    &lt;/ul&gt; &lt;!-- end of Friday&#39;s films --&gt;
+  &lt;/section&gt; &lt;!-- end of Friday --&gt;
+  &lt;section&gt; &lt;!-- the next day --&gt;
+    &lt;h3&gt;Saturday&lt;/h3&gt; &lt;!-- the next day&#39;s heading --&gt;
+    &lt;ul&gt; &lt;!-- Saturday&#39;s films --&gt;
+      &lt;li&gt;7:00 p.m. Harbor Lights&lt;/li&gt; &lt;!-- a showing --&gt;
+      &lt;li&gt;9:00 p.m. Night Swim&lt;/li&gt; &lt;!-- a showing --&gt;
+      &lt;li&gt;11:00 p.m. Static&lt;/li&gt; &lt;!-- a showing --&gt;
+    &lt;/ul&gt; &lt;!-- end of Saturday&#39;s films --&gt;
+  &lt;/section&gt; &lt;!-- end of Saturday --&gt;
+  &lt;section&gt; &lt;!-- the last day --&gt;
+    &lt;h3&gt;Sunday&lt;/h3&gt; &lt;!-- the last day&#39;s heading --&gt;
+    &lt;ul&gt; &lt;!-- Sunday&#39;s films --&gt;
+      &lt;li&gt;6:00 p.m. Audience award winner&lt;/li&gt; &lt;!-- a showing --&gt;
+      &lt;li&gt;8:00 p.m. Closing night party&lt;/li&gt; &lt;!-- an event --&gt;
+    &lt;/ul&gt; &lt;!-- end of Sunday&#39;s films --&gt;
+  &lt;/section&gt; &lt;!-- end of Sunday --&gt;
+&lt;/div&gt; &lt;!-- end of the scrolling box --&gt;
+&lt;p&gt;Tickets go on sale May 1. Every screening has English captions.&lt;/p&gt; &lt;!-- a closing line --&gt;
+&lt;button class=&quot;help&quot; type=&quot;button&quot;&gt;Need help?&lt;/button&gt; &lt;!-- TODO 5: always in the bottom-right corner --&gt;</code></pre>
+<h4>CSS</h4>
+<pre><code>body { /* the whole page */
+  font-family: system-ui, sans-serif; /* a clean sans-serif font stack */
+  margin: 16px; /* space around the page */
+} /* end of the body rule */
+.card { /* the film card */
+  width: 280px; /* a fixed card width */
+  border: 1px solid #c9c3dc; /* a thin border around the card */
+  position: relative;/* TODO 1: the containing block for the ribbon and the caption */
+} /* end of the .card rule */
+.poster { /* the poster */
+  display: block; /* no gap under the image */
+  width: 100%; /* as wide as the card */
+  height: auto; /* keep the 2 : 3 shape */
+} /* end of the .poster rule */
+.ribbon { /* the Sold out ribbon */
+  margin: 0; /* no paragraph margins */
+  padding: 4px 10px; /* room around the words */
+  background-color: #b3261e; /* a strong red */
+  color: white; /* white text on the red */
+  font-weight: 700; /* bold text */
+  position: absolute;
+  top: 8px;
+  right: 8px;
+ /* TODO 2: 8px in from the card&#39;s top and right edges */
+} /* end of the .ribbon rule */
+.caption { /* the caption */
+  margin: 0; /* no paragraph margins */
+  padding: 8px 12px; /* room around the words */
+  background-color: rgb(0 0 0 / 70%); /* a see-through dark strip */
+  color: white; /* white text on the strip */
+  position: absolute;/* TODO 3: across the bottom of the poster, edge to edge */
+  bottom: 0;
+  left: 0;
+  right: 0;
+} /* end of the .caption rule */
+.schedule { /* the scrolling box */
+  height: 180px; /* shorter than its content ... */
+  overflow: auto; /* ... so it scrolls */
+  border: 1px solid #c9c3dc; /* a thin border around the box */
+} /* end of the .schedule rule */
+.schedule h3 { /* each day heading */
+  margin: 0; /* no heading margins */
+  padding: 6px 12px; /* room around the words */
+  background-color: #ece8f6; /* a pale band, so text scrolls behind it */
+  position: sticky;/* TODO 4: stick to the top of the box */
+  top: 0;
+} /* end of the day heading rule */
+.schedule ul { /* each day&#39;s list */
+  margin: 0; /* no list margins */
+  padding: 8px 32px; /* room around the list */
+} /* end of the list rule */
+.help { /* the help button */
+  padding: 10px 16px; /* room around the words */
+  font: inherit; /* the page&#39;s font */
+  position: fixed;/* TODO 5: 16px from the bottom-right corner of the window */
+  bottom: 16px;
+  right: 16px;
+} /* end of the .help rule */</code></pre>
+<h4>Preview</h4>
+<iframe title="Preview of Challenge 7.2: Pin, overlay, stick and fix" sandbox="" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;title&gt;Preview&lt;/title&gt;&lt;style&gt;
+body { /* the whole page */
+  font-family: system-ui, sans-serif; /* a clean sans-serif font stack */
+  margin: 16px; /* space around the page */
+} /* end of the body rule */
+.card { /* the film card */
+  width: 280px; /* a fixed card width */
+  border: 1px solid #c9c3dc; /* a thin border around the card */
+  position: relative;/* TODO 1: the containing block for the ribbon and the caption */
+} /* end of the .card rule */
+.poster { /* the poster */
+  display: block; /* no gap under the image */
+  width: 100%; /* as wide as the card */
+  height: auto; /* keep the 2 : 3 shape */
+} /* end of the .poster rule */
+.ribbon { /* the Sold out ribbon */
+  margin: 0; /* no paragraph margins */
+  padding: 4px 10px; /* room around the words */
+  background-color: #b3261e; /* a strong red */
+  color: white; /* white text on the red */
+  font-weight: 700; /* bold text */
+  position: absolute;
+  top: 8px;
+  right: 8px;
+ /* TODO 2: 8px in from the card&#39;s top and right edges */
+} /* end of the .ribbon rule */
+.caption { /* the caption */
+  margin: 0; /* no paragraph margins */
+  padding: 8px 12px; /* room around the words */
+  background-color: rgb(0 0 0 / 70%); /* a see-through dark strip */
+  color: white; /* white text on the strip */
+  position: absolute;/* TODO 3: across the bottom of the poster, edge to edge */
+  bottom: 0;
+  left: 0;
+  right: 0;
+} /* end of the .caption rule */
+.schedule { /* the scrolling box */
+  height: 180px; /* shorter than its content ... */
+  overflow: auto; /* ... so it scrolls */
+  border: 1px solid #c9c3dc; /* a thin border around the box */
+} /* end of the .schedule rule */
+.schedule h3 { /* each day heading */
+  margin: 0; /* no heading margins */
+  padding: 6px 12px; /* room around the words */
+  background-color: #ece8f6; /* a pale band, so text scrolls behind it */
+  position: sticky;/* TODO 4: stick to the top of the box */
+  top: 0;
+} /* end of the day heading rule */
+.schedule ul { /* each day&#39;s list */
+  margin: 0; /* no list margins */
+  padding: 8px 32px; /* room around the list */
+} /* end of the list rule */
+.help { /* the help button */
+  padding: 10px 16px; /* room around the words */
+  font: inherit; /* the page&#39;s font */
+  position: fixed;/* TODO 5: 16px from the bottom-right corner of the window */
+  bottom: 16px;
+  right: 16px;
+} /* end of the .help rule */
+&lt;/style&gt;&lt;/head&gt;&lt;body&gt;
+&lt;div class=&quot;card&quot;&gt; &lt;!-- a film card: the poster with two things on top of it --&gt;
+  &lt;p class=&quot;ribbon&quot;&gt;Sold out&lt;/p&gt; &lt;!-- TODO 2: pinned to the card&#39;s top-right corner --&gt;
+  &lt;img class=&quot;poster&quot; src=&quot;data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;600&#39; height=&#39;900&#39; viewBox=&#39;0 0 600 900&#39; preserveAspectRatio=&#39;none&#39;%3E%3Crect width=&#39;600&#39; height=&#39;900&#39; fill=&#39;%232b2350&#39;/%3E%3Ccircle cx=&#39;300&#39; cy=&#39;320&#39; r=&#39;160&#39; fill=&#39;%23f2b457&#39;/%3E%3Crect y=&#39;570&#39; width=&#39;600&#39; height=&#39;330&#39; fill=&#39;%231f6f8b&#39;/%3E%3C/svg%3E&quot; alt=&quot;Poster for Night Swim: a sun setting over a dark pool&quot;&gt; &lt;!-- the poster, 600 × 900 --&gt;
+  &lt;p class=&quot;caption&quot;&gt;Night Swim · Saturday 9 p.m.&lt;/p&gt; &lt;!-- TODO 3: across the bottom of the poster --&gt;
+&lt;/div&gt; &lt;!-- end of the card --&gt;
+&lt;h2&gt;Showtimes&lt;/h2&gt; &lt;!-- a heading for the list below --&gt;
+&lt;div class=&quot;schedule&quot;&gt; &lt;!-- a box that scrolls on its own --&gt;
+  &lt;section&gt; &lt;!-- one day --&gt;
+    &lt;h3&gt;Friday&lt;/h3&gt; &lt;!-- TODO 4: sticks to the top while Friday scrolls past --&gt;
+    &lt;ul&gt; &lt;!-- Friday&#39;s films --&gt;
+      &lt;li&gt;7:00 p.m. Paper Kites&lt;/li&gt; &lt;!-- a showing --&gt;
+      &lt;li&gt;8:30 p.m. The Long Light&lt;/li&gt; &lt;!-- a showing --&gt;
+      &lt;li&gt;10:00 p.m. Salt and Iron&lt;/li&gt; &lt;!-- a showing --&gt;
+      &lt;li&gt;11:45 p.m. Midnight shorts&lt;/li&gt; &lt;!-- a showing --&gt;
+    &lt;/ul&gt; &lt;!-- end of Friday&#39;s films --&gt;
+  &lt;/section&gt; &lt;!-- end of Friday --&gt;
+  &lt;section&gt; &lt;!-- the next day --&gt;
+    &lt;h3&gt;Saturday&lt;/h3&gt; &lt;!-- the next day&#39;s heading --&gt;
+    &lt;ul&gt; &lt;!-- Saturday&#39;s films --&gt;
+      &lt;li&gt;7:00 p.m. Harbor Lights&lt;/li&gt; &lt;!-- a showing --&gt;
+      &lt;li&gt;9:00 p.m. Night Swim&lt;/li&gt; &lt;!-- a showing --&gt;
+      &lt;li&gt;11:00 p.m. Static&lt;/li&gt; &lt;!-- a showing --&gt;
+    &lt;/ul&gt; &lt;!-- end of Saturday&#39;s films --&gt;
+  &lt;/section&gt; &lt;!-- end of Saturday --&gt;
+  &lt;section&gt; &lt;!-- the last day --&gt;
+    &lt;h3&gt;Sunday&lt;/h3&gt; &lt;!-- the last day&#39;s heading --&gt;
+    &lt;ul&gt; &lt;!-- Sunday&#39;s films --&gt;
+      &lt;li&gt;6:00 p.m. Audience award winner&lt;/li&gt; &lt;!-- a showing --&gt;
+      &lt;li&gt;8:00 p.m. Closing night party&lt;/li&gt; &lt;!-- an event --&gt;
+    &lt;/ul&gt; &lt;!-- end of Sunday&#39;s films --&gt;
+  &lt;/section&gt; &lt;!-- end of Sunday --&gt;
+&lt;/div&gt; &lt;!-- end of the scrolling box --&gt;
+&lt;p&gt;Tickets go on sale May 1. Every screening has English captions.&lt;/p&gt; &lt;!-- a closing line --&gt;
+&lt;button class=&quot;help&quot; type=&quot;button&quot;&gt;Need help?&lt;/button&gt; &lt;!-- TODO 5: always in the bottom-right corner --&gt;
+&lt;/body&gt;&lt;/html&gt;"></iframe>
+</section>
+<section class="card" id="challenge-8">
+<h3>Challenge 7.3: A header and a row of tickets</h3>
+<p class="st ok">6 of 6 checks pass</p>
+<ul class="checks"><li class="ok"><span class="mk">&#10003; Pass</span> The header is a flex row: the logo at its left edge and the menu at its right edge, on one line</li><li class="ok"><span class="mk">&#10003; Pass</span> The logo and the menu links share one middle line (<code>align-items: center</code>)</li><li class="ok"><span class="mk">&#10003; Pass</span> The menu links sit side by side in a flex row, with at least 16px of <code>gap</code> between them</li><li class="ok"><span class="mk">&#10003; Pass</span> Each ticket is a flex row: thumbnail, details and Buy button side by side, at least 12px apart and centered vertically</li><li class="ok"><span class="mk">&#10003; Pass</span> The thumbnail never shrinks (<code>flex-shrink: 0</code>): in a narrow 320px row it is still 80 × 80</li><li class="ok"><span class="mk">&#10003; Pass</span> The details grow to fill each row, so every Buy button sits at the right edge of its ticket</li></ul>
+<h4>HTML</h4>
+<pre><code>&lt;header class=&quot;site&quot;&gt; &lt;!-- the banner: TODO 1 and 2 --&gt;
+  &lt;a class=&quot;logo&quot; href=&quot;index.html&quot;&gt;Lakeside Film Festival&lt;/a&gt; &lt;!-- the festival name, linking home --&gt;
+  &lt;nav&gt; &lt;!-- the main menu --&gt;
+    &lt;ul&gt; &lt;!-- a list of links: TODO 3 --&gt;
+      &lt;li&gt;&lt;a href=&quot;program.html&quot;&gt;Program&lt;/a&gt;&lt;/li&gt; &lt;!-- link 1 --&gt;
+      &lt;li&gt;&lt;a href=&quot;tickets.html&quot;&gt;Tickets&lt;/a&gt;&lt;/li&gt; &lt;!-- link 2 --&gt;
+      &lt;li&gt;&lt;a href=&quot;venues.html&quot;&gt;Venues&lt;/a&gt;&lt;/li&gt; &lt;!-- link 3 --&gt;
+      &lt;li&gt;&lt;a href=&quot;about.html&quot;&gt;About&lt;/a&gt;&lt;/li&gt; &lt;!-- link 4 --&gt;
+    &lt;/ul&gt; &lt;!-- end of the links --&gt;
+  &lt;/nav&gt; &lt;!-- end of the menu --&gt;
+&lt;/header&gt; &lt;!-- end of the banner --&gt;
+&lt;ul class=&quot;tickets&quot;&gt; &lt;!-- three tickets, one per row --&gt;
+  &lt;li class=&quot;ticket&quot;&gt; &lt;!-- a ticket row: TODO 4 --&gt;
+    &lt;img class=&quot;thumb&quot; src=&quot;data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;160&#39; height=&#39;160&#39; viewBox=&#39;0 0 160 160&#39;%3E%3Crect width=&#39;160&#39; height=&#39;160&#39; fill=&#39;%232b2350&#39;/%3E%3Ccircle cx=&#39;80&#39; cy=&#39;70&#39; r=&#39;40&#39; fill=&#39;%23f2b457&#39;/%3E%3C/svg%3E&quot; alt=&quot;&quot;&gt; &lt;!-- a decorative thumbnail: TODO 5 --&gt;
+    &lt;div class=&quot;info&quot;&gt; &lt;!-- the details: TODO 6 --&gt;
+      &lt;h3&gt;Night Swim&lt;/h3&gt; &lt;!-- the film --&gt;
+      &lt;p&gt;Saturday 9 p.m. · Lakeside lawn · 92 minutes&lt;/p&gt; &lt;!-- when, where and how long --&gt;
+    &lt;/div&gt; &lt;!-- end of the details --&gt;
+    &lt;a class=&quot;buy&quot; href=&quot;tickets.html&quot;&gt;Buy&lt;/a&gt; &lt;!-- the button --&gt;
+  &lt;/li&gt; &lt;!-- end of the first ticket --&gt;
+  &lt;li class=&quot;ticket&quot;&gt; &lt;!-- the second ticket row --&gt;
+    &lt;img class=&quot;thumb&quot; src=&quot;data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;160&#39; height=&#39;160&#39; viewBox=&#39;0 0 160 160&#39;%3E%3Crect width=&#39;160&#39; height=&#39;160&#39; fill=&#39;%231f5e4a&#39;/%3E%3Ccircle cx=&#39;80&#39; cy=&#39;70&#39; r=&#39;40&#39; fill=&#39;%23f2b457&#39;/%3E%3C/svg%3E&quot; alt=&quot;&quot;&gt; &lt;!-- its thumbnail --&gt;
+    &lt;div class=&quot;info&quot;&gt; &lt;!-- its details --&gt;
+      &lt;h3&gt;Paper Kites&lt;/h3&gt; &lt;!-- the film --&gt;
+      &lt;p&gt;Friday 7 p.m. · Boathouse · 78 minutes&lt;/p&gt; &lt;!-- when, where and how long --&gt;
+    &lt;/div&gt; &lt;!-- end of the details --&gt;
+    &lt;a class=&quot;buy&quot; href=&quot;tickets.html&quot;&gt;Buy&lt;/a&gt; &lt;!-- the button --&gt;
+  &lt;/li&gt; &lt;!-- end of the second ticket --&gt;
+  &lt;li class=&quot;ticket&quot;&gt; &lt;!-- the third ticket row --&gt;
+    &lt;img class=&quot;thumb&quot; src=&quot;data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;160&#39; height=&#39;160&#39; viewBox=&#39;0 0 160 160&#39;%3E%3Crect width=&#39;160&#39; height=&#39;160&#39; fill=&#39;%236b2443&#39;/%3E%3Ccircle cx=&#39;80&#39; cy=&#39;70&#39; r=&#39;40&#39; fill=&#39;%23f2b457&#39;/%3E%3C/svg%3E&quot; alt=&quot;&quot;&gt; &lt;!-- its thumbnail --&gt;
+    &lt;div class=&quot;info&quot;&gt; &lt;!-- its details --&gt;
+      &lt;h3&gt;Salt and Iron&lt;/h3&gt; &lt;!-- the film --&gt;
+      &lt;p&gt;Friday 10 p.m. · Lakeside lawn · 104 minutes&lt;/p&gt; &lt;!-- when, where and how long --&gt;
+    &lt;/div&gt; &lt;!-- end of the details --&gt;
+    &lt;a class=&quot;buy&quot; href=&quot;tickets.html&quot;&gt;Buy&lt;/a&gt; &lt;!-- the button --&gt;
+  &lt;/li&gt; &lt;!-- end of the third ticket --&gt;
+&lt;/ul&gt; &lt;!-- end of the tickets --&gt;</code></pre>
+<h4>CSS</h4>
+<pre><code>body { /* the whole page */
+  font-family: system-ui, sans-serif; /* a clean sans-serif font stack */
+  margin: 0; /* the header touches the edges */
+} /* end of the body rule */
+.site { /* the banner */
+  padding: 12px 20px; /* room inside the banner */
+  background-color: #2b2350; /* a dark violet */
+  color: white; /* white text */
+  display: flex;/* TODO 1: a flex row, logo at the left edge, menu at the right edge */
+  justify-content: space-between;
+  align-items: center;/* TODO 2: everything on one middle line */
+} /* end of the .site rule */
+.logo { /* the festival name */
+  color: white; /* white on the violet */
+  font-size: 1.5rem; /* bigger than the menu */
+  font-weight: 700; /* bold */
+  text-decoration: none; /* no underline */
+} /* end of the .logo rule */
+.site nav ul { /* the menu list */
+  list-style: none; /* no bullets */
+  padding: 0; /* no indent */
+  display: flex;
+  flex-directioin: row;/* TODO 3: links side by side, at least 16px apart */
+  gap: 16px;
+} /* end of the menu list rule */
+.site nav a { /* each menu link */
+  color: white; /* white on the violet */
+} /* end of the menu link rule */
+.tickets { /* the list of tickets */
+  list-style: none; /* no bullets */
+  margin: 16px 20px; /* space around the list */
+  padding: 0; /* no indent */
+} /* end of the .tickets rule */
+.ticket { /* each ticket row */
+  border: 1px solid #c9c3dc; /* a thin border */
+  padding: 8px; /* room inside */
+  margin-bottom: 8px; /* space between rows */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;/* TODO 4: a flex row, at least 12px apart, centered vertically */
+} /* end of the .ticket rule */
+.thumb { /* the thumbnail */
+  width: 80px; /* 80px wide ... */
+  height: 80px; /* ... and 80px tall */
+  flex-shrink: 0;/* TODO 5: never shrink */
+} /* end of the .thumb rule */
+.info { /* the details */
+  flex: auto;/* TODO 6: grow to fill the row */
+} /* end of the .info rule */
+.info h3 { margin: 0; } /* no gap above the film&#39;s name */
+.info p { margin: 4px 0 0; } /* a small gap above the details line */
+.buy { /* the Buy button */
+  padding: 8px 14px; /* room around the word */
+  border-radius: 6px; /* rounded corners */
+  background-color: #2b2350; /* dark violet */
+  color: white; /* white text */
+  text-decoration: none; /* no underline */
+} /* end of the .buy rule */</code></pre>
+<h4>Preview</h4>
+<iframe title="Preview of Challenge 7.3: A header and a row of tickets" sandbox="" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;title&gt;Preview&lt;/title&gt;&lt;style&gt;
+body { /* the whole page */
+  font-family: system-ui, sans-serif; /* a clean sans-serif font stack */
+  margin: 0; /* the header touches the edges */
+} /* end of the body rule */
+.site { /* the banner */
+  padding: 12px 20px; /* room inside the banner */
+  background-color: #2b2350; /* a dark violet */
+  color: white; /* white text */
+  display: flex;/* TODO 1: a flex row, logo at the left edge, menu at the right edge */
+  justify-content: space-between;
+  align-items: center;/* TODO 2: everything on one middle line */
+} /* end of the .site rule */
+.logo { /* the festival name */
+  color: white; /* white on the violet */
+  font-size: 1.5rem; /* bigger than the menu */
+  font-weight: 700; /* bold */
+  text-decoration: none; /* no underline */
+} /* end of the .logo rule */
+.site nav ul { /* the menu list */
+  list-style: none; /* no bullets */
+  padding: 0; /* no indent */
+  display: flex;
+  flex-directioin: row;/* TODO 3: links side by side, at least 16px apart */
+  gap: 16px;
+} /* end of the menu list rule */
+.site nav a { /* each menu link */
+  color: white; /* white on the violet */
+} /* end of the menu link rule */
+.tickets { /* the list of tickets */
+  list-style: none; /* no bullets */
+  margin: 16px 20px; /* space around the list */
+  padding: 0; /* no indent */
+} /* end of the .tickets rule */
+.ticket { /* each ticket row */
+  border: 1px solid #c9c3dc; /* a thin border */
+  padding: 8px; /* room inside */
+  margin-bottom: 8px; /* space between rows */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;/* TODO 4: a flex row, at least 12px apart, centered vertically */
+} /* end of the .ticket rule */
+.thumb { /* the thumbnail */
+  width: 80px; /* 80px wide ... */
+  height: 80px; /* ... and 80px tall */
+  flex-shrink: 0;/* TODO 5: never shrink */
+} /* end of the .thumb rule */
+.info { /* the details */
+  flex: auto;/* TODO 6: grow to fill the row */
+} /* end of the .info rule */
+.info h3 { margin: 0; } /* no gap above the film&#39;s name */
+.info p { margin: 4px 0 0; } /* a small gap above the details line */
+.buy { /* the Buy button */
+  padding: 8px 14px; /* room around the word */
+  border-radius: 6px; /* rounded corners */
+  background-color: #2b2350; /* dark violet */
+  color: white; /* white text */
+  text-decoration: none; /* no underline */
+} /* end of the .buy rule */
+&lt;/style&gt;&lt;/head&gt;&lt;body&gt;
+&lt;header class=&quot;site&quot;&gt; &lt;!-- the banner: TODO 1 and 2 --&gt;
+  &lt;a class=&quot;logo&quot; href=&quot;index.html&quot;&gt;Lakeside Film Festival&lt;/a&gt; &lt;!-- the festival name, linking home --&gt;
+  &lt;nav&gt; &lt;!-- the main menu --&gt;
+    &lt;ul&gt; &lt;!-- a list of links: TODO 3 --&gt;
+      &lt;li&gt;&lt;a href=&quot;program.html&quot;&gt;Program&lt;/a&gt;&lt;/li&gt; &lt;!-- link 1 --&gt;
+      &lt;li&gt;&lt;a href=&quot;tickets.html&quot;&gt;Tickets&lt;/a&gt;&lt;/li&gt; &lt;!-- link 2 --&gt;
+      &lt;li&gt;&lt;a href=&quot;venues.html&quot;&gt;Venues&lt;/a&gt;&lt;/li&gt; &lt;!-- link 3 --&gt;
+      &lt;li&gt;&lt;a href=&quot;about.html&quot;&gt;About&lt;/a&gt;&lt;/li&gt; &lt;!-- link 4 --&gt;
+    &lt;/ul&gt; &lt;!-- end of the links --&gt;
+  &lt;/nav&gt; &lt;!-- end of the menu --&gt;
+&lt;/header&gt; &lt;!-- end of the banner --&gt;
+&lt;ul class=&quot;tickets&quot;&gt; &lt;!-- three tickets, one per row --&gt;
+  &lt;li class=&quot;ticket&quot;&gt; &lt;!-- a ticket row: TODO 4 --&gt;
+    &lt;img class=&quot;thumb&quot; src=&quot;data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;160&#39; height=&#39;160&#39; viewBox=&#39;0 0 160 160&#39;%3E%3Crect width=&#39;160&#39; height=&#39;160&#39; fill=&#39;%232b2350&#39;/%3E%3Ccircle cx=&#39;80&#39; cy=&#39;70&#39; r=&#39;40&#39; fill=&#39;%23f2b457&#39;/%3E%3C/svg%3E&quot; alt=&quot;&quot;&gt; &lt;!-- a decorative thumbnail: TODO 5 --&gt;
+    &lt;div class=&quot;info&quot;&gt; &lt;!-- the details: TODO 6 --&gt;
+      &lt;h3&gt;Night Swim&lt;/h3&gt; &lt;!-- the film --&gt;
+      &lt;p&gt;Saturday 9 p.m. · Lakeside lawn · 92 minutes&lt;/p&gt; &lt;!-- when, where and how long --&gt;
+    &lt;/div&gt; &lt;!-- end of the details --&gt;
+    &lt;a class=&quot;buy&quot; href=&quot;tickets.html&quot;&gt;Buy&lt;/a&gt; &lt;!-- the button --&gt;
+  &lt;/li&gt; &lt;!-- end of the first ticket --&gt;
+  &lt;li class=&quot;ticket&quot;&gt; &lt;!-- the second ticket row --&gt;
+    &lt;img class=&quot;thumb&quot; src=&quot;data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;160&#39; height=&#39;160&#39; viewBox=&#39;0 0 160 160&#39;%3E%3Crect width=&#39;160&#39; height=&#39;160&#39; fill=&#39;%231f5e4a&#39;/%3E%3Ccircle cx=&#39;80&#39; cy=&#39;70&#39; r=&#39;40&#39; fill=&#39;%23f2b457&#39;/%3E%3C/svg%3E&quot; alt=&quot;&quot;&gt; &lt;!-- its thumbnail --&gt;
+    &lt;div class=&quot;info&quot;&gt; &lt;!-- its details --&gt;
+      &lt;h3&gt;Paper Kites&lt;/h3&gt; &lt;!-- the film --&gt;
+      &lt;p&gt;Friday 7 p.m. · Boathouse · 78 minutes&lt;/p&gt; &lt;!-- when, where and how long --&gt;
+    &lt;/div&gt; &lt;!-- end of the details --&gt;
+    &lt;a class=&quot;buy&quot; href=&quot;tickets.html&quot;&gt;Buy&lt;/a&gt; &lt;!-- the button --&gt;
+  &lt;/li&gt; &lt;!-- end of the second ticket --&gt;
+  &lt;li class=&quot;ticket&quot;&gt; &lt;!-- the third ticket row --&gt;
+    &lt;img class=&quot;thumb&quot; src=&quot;data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;160&#39; height=&#39;160&#39; viewBox=&#39;0 0 160 160&#39;%3E%3Crect width=&#39;160&#39; height=&#39;160&#39; fill=&#39;%236b2443&#39;/%3E%3Ccircle cx=&#39;80&#39; cy=&#39;70&#39; r=&#39;40&#39; fill=&#39;%23f2b457&#39;/%3E%3C/svg%3E&quot; alt=&quot;&quot;&gt; &lt;!-- its thumbnail --&gt;
+    &lt;div class=&quot;info&quot;&gt; &lt;!-- its details --&gt;
+      &lt;h3&gt;Salt and Iron&lt;/h3&gt; &lt;!-- the film --&gt;
+      &lt;p&gt;Friday 10 p.m. · Lakeside lawn · 104 minutes&lt;/p&gt; &lt;!-- when, where and how long --&gt;
+    &lt;/div&gt; &lt;!-- end of the details --&gt;
+    &lt;a class=&quot;buy&quot; href=&quot;tickets.html&quot;&gt;Buy&lt;/a&gt; &lt;!-- the button --&gt;
+  &lt;/li&gt; &lt;!-- end of the third ticket --&gt;
+&lt;/ul&gt; &lt;!-- end of the tickets --&gt;
+&lt;/body&gt;&lt;/html&gt;"></iframe>
+</section>
+<section class="card" id="challenge-9">
+<h3>Challenge 7.4: Cards that wrap, and a footer that stays down</h3>
+<p class="st ok">6 of 6 checks pass</p>
+<ul class="checks"><li class="ok"><span class="mk">&#10003; Pass</span> <code>.films</code> is a flex container that wraps, with a 16px <code>gap</code></li><li class="ok"><span class="mk">&#10003; Pass</span> 1000px wide: four cards share the first row, equally wide, and fill it exactly</li><li class="ok"><span class="mk">&#10003; Pass</span> 450px wide: two cards share each row, equally wide</li><li class="ok"><span class="mk">&#10003; Pass</span> The lonely fifth card grows to fill its whole row</li><li class="ok"><span class="mk">&#10003; Pass</span> The body is a flex column and <code>main</code> grows: on a short page the footer sits at the bottom of the window, and on a long page it comes after the content</li><li class="ok"><span class="mk">&#10003; Pass</span> The &quot;Program announced&quot; box is centered both ways inside its banner</li></ul>
+<h4>HTML</h4>
+<pre><code>&lt;header class=&quot;site&quot;&gt; &lt;!-- the banner --&gt;
+  &lt;p&gt;Lakeside Film Festival&lt;/p&gt; &lt;!-- the festival name --&gt;
+&lt;/header&gt; &lt;!-- end of the banner --&gt;
+&lt;main&gt; &lt;!-- the page&#39;s content: TODO 4, it grows --&gt;
+  &lt;div class=&quot;soon&quot;&gt; &lt;!-- a 160px-tall banner: TODO 3 --&gt;
+    &lt;p class=&quot;box&quot;&gt;Full program announced June 1&lt;/p&gt; &lt;!-- the box to center --&gt;
+  &lt;/div&gt; &lt;!-- end of the banner --&gt;
+  &lt;ul class=&quot;films&quot;&gt; &lt;!-- five film cards: TODO 1 --&gt;
+    &lt;li class=&quot;film&quot;&gt;&lt;h3&gt;Night Swim&lt;/h3&gt;&lt;p&gt;A summer at a closed city pool.&lt;/p&gt;&lt;/li&gt; &lt;!-- card 1 --&gt;
+    &lt;li class=&quot;film&quot;&gt;&lt;h3&gt;Paper Kites&lt;/h3&gt;&lt;p&gt;Two sisters and a car that will not start.&lt;/p&gt;&lt;/li&gt; &lt;!-- card 2 --&gt;
+    &lt;li class=&quot;film&quot;&gt;&lt;h3&gt;Salt and Iron&lt;/h3&gt;&lt;p&gt;A shipyard&#39;s last winter.&lt;/p&gt;&lt;/li&gt; &lt;!-- card 3 --&gt;
+    &lt;li class=&quot;film&quot;&gt;&lt;h3&gt;Harbor Lights&lt;/h3&gt;&lt;p&gt;A ferry pilot&#39;s final crossing.&lt;/p&gt;&lt;/li&gt; &lt;!-- card 4 --&gt;
+    &lt;li class=&quot;film&quot;&gt;&lt;h3&gt;Static&lt;/h3&gt;&lt;p&gt;A radio host hears a voice from 1987.&lt;/p&gt;&lt;/li&gt; &lt;!-- card 5: alone on its row --&gt;
+  &lt;/ul&gt; &lt;!-- end of the cards --&gt;
+&lt;/main&gt; &lt;!-- end of the content --&gt;
+&lt;footer class=&quot;foot&quot;&gt; &lt;!-- the bottom of the page --&gt;
+  &lt;p&gt;© 2026 Lakeside Film Festival&lt;/p&gt; &lt;!-- the footer line --&gt;
+&lt;/footer&gt; &lt;!-- end of the footer --&gt;</code></pre>
+<h4>CSS</h4>
+<pre><code>body { /* the whole page */
+  margin: 0; /* no gap around the window&#39;s edges */
+  font-family: system-ui, sans-serif; /* a clean sans-serif font stack */
+  display: flex; /* lay out the banner, main and footer with flexbox */
+  flex-direction: column; /* stack them top to bottom */
+  min-height: 100vh; /* at least as tall as the window */
+} /* end of the body rule */
+.site, .foot { /* the banner and the footer */
+  background-color: #2b2350; /* dark violet */
+  color: white; /* white text */
+  padding: 8px 20px; /* room inside */
+} /* end of the banner and footer rule */
+.site p, .foot p { margin: 0; } /* no paragraph margins in the bars */
+main { /* the content */
+  padding: 16px 20px; /* room around the content */
+  flex-grow: 1; /* take up spare height, pushing the footer down */
+} /* end of the main rule */
+.soon { /* the announcement banner */
+  height: 160px; /* a fixed height */
+  background-color: #ece8f6; /* pale violet */
+  display: flex; /* make the banner a flex container */
+  justify-content: center; /* center the box horizontally */
+  align-items: center; /* center the box vertically */
+} /* end of the .soon rule */
+.box { /* the box inside the banner */
+  margin: 0; /* no paragraph margins */
+  padding: 12px 20px; /* room around the words */
+  background-color: white; /* a white box */
+  border: 2px dashed #5b4b8a; /* a dashed border */
+} /* end of the .box rule */
+.films { /* the list of cards */
+  list-style: none; /* no bullets */
+  margin: 16px 0 0; /* space above */
+  padding: 0; /* no indent */
+  display: flex; /* lay the cards out in a row */
+  flex-wrap: wrap; /* wrap onto new rows when they don&#39;t fit */
+  gap: 16px; /* space between cards */
+} /* end of the .films rule */
+.film { /* each card */
+  box-sizing: border-box; /* the width includes padding and border */
+  border: 1px solid #c9c3dc; /* a thin border */
+  padding: 12px; /* room inside */
+  flex: 1 1 200px; /* start at 200px, grow to fill the row, shrink if needed */
+} /* end of the .film rule */
+.film h3 { margin: 0 0 4px; } /* the film&#39;s name */
+.film p { margin: 0; } /* its one-line description */</code></pre>
+<h4>Preview</h4>
+<iframe title="Preview of Challenge 7.4: Cards that wrap, and a footer that stays down" sandbox="" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;title&gt;Preview&lt;/title&gt;&lt;style&gt;
+body { /* the whole page */
+  margin: 0; /* no gap around the window&#39;s edges */
+  font-family: system-ui, sans-serif; /* a clean sans-serif font stack */
+  display: flex; /* lay out the banner, main and footer with flexbox */
+  flex-direction: column; /* stack them top to bottom */
+  min-height: 100vh; /* at least as tall as the window */
+} /* end of the body rule */
+.site, .foot { /* the banner and the footer */
+  background-color: #2b2350; /* dark violet */
+  color: white; /* white text */
+  padding: 8px 20px; /* room inside */
+} /* end of the banner and footer rule */
+.site p, .foot p { margin: 0; } /* no paragraph margins in the bars */
+main { /* the content */
+  padding: 16px 20px; /* room around the content */
+  flex-grow: 1; /* take up spare height, pushing the footer down */
+} /* end of the main rule */
+.soon { /* the announcement banner */
+  height: 160px; /* a fixed height */
+  background-color: #ece8f6; /* pale violet */
+  display: flex; /* make the banner a flex container */
+  justify-content: center; /* center the box horizontally */
+  align-items: center; /* center the box vertically */
+} /* end of the .soon rule */
+.box { /* the box inside the banner */
+  margin: 0; /* no paragraph margins */
+  padding: 12px 20px; /* room around the words */
+  background-color: white; /* a white box */
+  border: 2px dashed #5b4b8a; /* a dashed border */
+} /* end of the .box rule */
+.films { /* the list of cards */
+  list-style: none; /* no bullets */
+  margin: 16px 0 0; /* space above */
+  padding: 0; /* no indent */
+  display: flex; /* lay the cards out in a row */
+  flex-wrap: wrap; /* wrap onto new rows when they don&#39;t fit */
+  gap: 16px; /* space between cards */
+} /* end of the .films rule */
+.film { /* each card */
+  box-sizing: border-box; /* the width includes padding and border */
+  border: 1px solid #c9c3dc; /* a thin border */
+  padding: 12px; /* room inside */
+  flex: 1 1 200px; /* start at 200px, grow to fill the row, shrink if needed */
+} /* end of the .film rule */
+.film h3 { margin: 0 0 4px; } /* the film&#39;s name */
+.film p { margin: 0; } /* its one-line description */
+&lt;/style&gt;&lt;/head&gt;&lt;body&gt;
+&lt;header class=&quot;site&quot;&gt; &lt;!-- the banner --&gt;
+  &lt;p&gt;Lakeside Film Festival&lt;/p&gt; &lt;!-- the festival name --&gt;
+&lt;/header&gt; &lt;!-- end of the banner --&gt;
+&lt;main&gt; &lt;!-- the page&#39;s content: TODO 4, it grows --&gt;
+  &lt;div class=&quot;soon&quot;&gt; &lt;!-- a 160px-tall banner: TODO 3 --&gt;
+    &lt;p class=&quot;box&quot;&gt;Full program announced June 1&lt;/p&gt; &lt;!-- the box to center --&gt;
+  &lt;/div&gt; &lt;!-- end of the banner --&gt;
+  &lt;ul class=&quot;films&quot;&gt; &lt;!-- five film cards: TODO 1 --&gt;
+    &lt;li class=&quot;film&quot;&gt;&lt;h3&gt;Night Swim&lt;/h3&gt;&lt;p&gt;A summer at a closed city pool.&lt;/p&gt;&lt;/li&gt; &lt;!-- card 1 --&gt;
+    &lt;li class=&quot;film&quot;&gt;&lt;h3&gt;Paper Kites&lt;/h3&gt;&lt;p&gt;Two sisters and a car that will not start.&lt;/p&gt;&lt;/li&gt; &lt;!-- card 2 --&gt;
+    &lt;li class=&quot;film&quot;&gt;&lt;h3&gt;Salt and Iron&lt;/h3&gt;&lt;p&gt;A shipyard&#39;s last winter.&lt;/p&gt;&lt;/li&gt; &lt;!-- card 3 --&gt;
+    &lt;li class=&quot;film&quot;&gt;&lt;h3&gt;Harbor Lights&lt;/h3&gt;&lt;p&gt;A ferry pilot&#39;s final crossing.&lt;/p&gt;&lt;/li&gt; &lt;!-- card 4 --&gt;
+    &lt;li class=&quot;film&quot;&gt;&lt;h3&gt;Static&lt;/h3&gt;&lt;p&gt;A radio host hears a voice from 1987.&lt;/p&gt;&lt;/li&gt; &lt;!-- card 5: alone on its row --&gt;
+  &lt;/ul&gt; &lt;!-- end of the cards --&gt;
+&lt;/main&gt; &lt;!-- end of the content --&gt;
+&lt;footer class=&quot;foot&quot;&gt; &lt;!-- the bottom of the page --&gt;
+  &lt;p&gt;© 2026 Lakeside Film Festival&lt;/p&gt; &lt;!-- the footer line --&gt;
+&lt;/footer&gt; &lt;!-- end of the footer --&gt;
+&lt;/body&gt;&lt;/html&gt;"></iframe>
+</section>
+<section class="card" id="challenge-10">
+<h3>Challenge 7.5: The Saturday program grid</h3>
+<p class="st ok">5 of 5 checks pass</p>
+<ul class="checks"><li class="ok"><span class="mk">&#10003; Pass</span> <code>.program</code> is a grid of three equal columns with 12px gaps</li><li class="ok"><span class="mk">&#10003; Pass</span> The title runs across every column, even if the grid had four (<code>1 / -1</code>)</li><li class="ok"><span class="mk">&#10003; Pass</span> The featured film covers two columns and two rows, with the next two films stacked beside it</li><li class="ok"><span class="mk">&#10003; Pass</span> The title row fits its text; every film row is at least 100px tall and grows when its content needs more</li><li class="ok"><span class="mk">&#10003; Pass</span> The columns are written <code>repeat(3, 1fr)</code>, so they share any width: 192px each in a 600px grid</li></ul>
+<h4>HTML</h4>
+<pre><code>&lt;section class=&quot;program&quot;&gt; &lt;!-- the grid container: TODO 1 and 4 --&gt;
+  &lt;h2 class=&quot;title&quot;&gt;Saturday program&lt;/h2&gt; &lt;!-- TODO 2: across every column --&gt;
+  &lt;article class=&quot;feature&quot;&gt; &lt;!-- TODO 3: two columns and two rows --&gt;
+    &lt;h3&gt;Night Swim&lt;/h3&gt; &lt;!-- the featured film --&gt;
+    &lt;p&gt;9 p.m. on the lakeside lawn. Opening film of the night, with the director in person.&lt;/p&gt; &lt;!-- its details --&gt;
+  &lt;/article&gt; &lt;!-- end of the featured film --&gt;
+  &lt;article class=&quot;slot&quot;&gt;&lt;h3&gt;Paper Kites&lt;/h3&gt;&lt;p&gt;12 p.m. · Boathouse&lt;/p&gt;&lt;/article&gt; &lt;!-- film 1: beside the feature --&gt;
+  &lt;article class=&quot;slot&quot;&gt;&lt;h3&gt;Salt and Iron&lt;/h3&gt;&lt;p&gt;2 p.m. · Boathouse&lt;/p&gt;&lt;/article&gt; &lt;!-- film 2: beside the feature --&gt;
+  &lt;article class=&quot;slot&quot;&gt;&lt;h3&gt;Harbor Lights&lt;/h3&gt;&lt;p&gt;4 p.m. · Library hall&lt;/p&gt;&lt;/article&gt; &lt;!-- film 3 --&gt;
+  &lt;article class=&quot;slot&quot;&gt;&lt;h3&gt;Static&lt;/h3&gt;&lt;p&gt;6 p.m. · Library hall&lt;/p&gt;&lt;/article&gt; &lt;!-- film 4 --&gt;
+  &lt;article class=&quot;slot&quot;&gt;&lt;h3&gt;Midnight shorts&lt;/h3&gt;&lt;p&gt;11:45 p.m. · Lakeside lawn&lt;/p&gt;&lt;/article&gt; &lt;!-- film 5 --&gt;
+&lt;/section&gt; &lt;!-- end of the program --&gt;</code></pre>
+<h4>CSS</h4>
+<pre><code>body { /* the whole page */
+  font-family: system-ui, sans-serif; /* a clean sans-serif font stack */
+  margin: 16px; /* space around the page */
+} /* end of the body rule */
+.program { /* the grid container */
+  display: grid; /* make it a grid */
+  grid-template-columns: repeat(3, 1fr); /* three equal columns */
+  gap: 12px; /* space between cells */
+  grid-template-rows: auto repeat(3, minmax(100px, auto)); /* title row, then three rows of at least 100px */
+} /* end of the .program rule */
+.title { /* the title bar */
+  margin: 0; /* no heading margins */
+  padding: 8px 12px; /* room inside */
+  background-color: #2b2350; /* dark violet */
+  color: white; /* white text */
+  grid-column: 1 / -1; /* from the first column line to the last */
+} /* end of the .title rule */
+.feature, .slot { /* every film */
+  box-sizing: border-box; /* sizes include padding and border */
+  padding: 12px; /* room inside */
+  border: 1px solid #c9c3dc; /* a thin border */
+} /* end of the film rule */
+.feature { /* the featured film */
+  background-color: #fbe3b5; /* a warm highlight */
+  grid-column: span 2; /* cover two columns */
+  grid-row: span 2; /* cover two rows */
+} /* end of the .feature rule */
+.feature h3, .slot h3 { margin: 0 0 4px; } /* each film&#39;s name */
+.feature p, .slot p { margin: 0; } /* each film&#39;s details */</code></pre>
+<h4>Preview</h4>
+<iframe title="Preview of Challenge 7.5: The Saturday program grid" sandbox="" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;title&gt;Preview&lt;/title&gt;&lt;style&gt;
+body { /* the whole page */
+  font-family: system-ui, sans-serif; /* a clean sans-serif font stack */
+  margin: 16px; /* space around the page */
+} /* end of the body rule */
+.program { /* the grid container */
+  display: grid; /* make it a grid */
+  grid-template-columns: repeat(3, 1fr); /* three equal columns */
+  gap: 12px; /* space between cells */
+  grid-template-rows: auto repeat(3, minmax(100px, auto)); /* title row, then three rows of at least 100px */
+} /* end of the .program rule */
+.title { /* the title bar */
+  margin: 0; /* no heading margins */
+  padding: 8px 12px; /* room inside */
+  background-color: #2b2350; /* dark violet */
+  color: white; /* white text */
+  grid-column: 1 / -1; /* from the first column line to the last */
+} /* end of the .title rule */
+.feature, .slot { /* every film */
+  box-sizing: border-box; /* sizes include padding and border */
+  padding: 12px; /* room inside */
+  border: 1px solid #c9c3dc; /* a thin border */
+} /* end of the film rule */
+.feature { /* the featured film */
+  background-color: #fbe3b5; /* a warm highlight */
+  grid-column: span 2; /* cover two columns */
+  grid-row: span 2; /* cover two rows */
+} /* end of the .feature rule */
+.feature h3, .slot h3 { margin: 0 0 4px; } /* each film&#39;s name */
+.feature p, .slot p { margin: 0; } /* each film&#39;s details */
+&lt;/style&gt;&lt;/head&gt;&lt;body&gt;
+&lt;section class=&quot;program&quot;&gt; &lt;!-- the grid container: TODO 1 and 4 --&gt;
+  &lt;h2 class=&quot;title&quot;&gt;Saturday program&lt;/h2&gt; &lt;!-- TODO 2: across every column --&gt;
+  &lt;article class=&quot;feature&quot;&gt; &lt;!-- TODO 3: two columns and two rows --&gt;
+    &lt;h3&gt;Night Swim&lt;/h3&gt; &lt;!-- the featured film --&gt;
+    &lt;p&gt;9 p.m. on the lakeside lawn. Opening film of the night, with the director in person.&lt;/p&gt; &lt;!-- its details --&gt;
+  &lt;/article&gt; &lt;!-- end of the featured film --&gt;
+  &lt;article class=&quot;slot&quot;&gt;&lt;h3&gt;Paper Kites&lt;/h3&gt;&lt;p&gt;12 p.m. · Boathouse&lt;/p&gt;&lt;/article&gt; &lt;!-- film 1: beside the feature --&gt;
+  &lt;article class=&quot;slot&quot;&gt;&lt;h3&gt;Salt and Iron&lt;/h3&gt;&lt;p&gt;2 p.m. · Boathouse&lt;/p&gt;&lt;/article&gt; &lt;!-- film 2: beside the feature --&gt;
+  &lt;article class=&quot;slot&quot;&gt;&lt;h3&gt;Harbor Lights&lt;/h3&gt;&lt;p&gt;4 p.m. · Library hall&lt;/p&gt;&lt;/article&gt; &lt;!-- film 3 --&gt;
+  &lt;article class=&quot;slot&quot;&gt;&lt;h3&gt;Static&lt;/h3&gt;&lt;p&gt;6 p.m. · Library hall&lt;/p&gt;&lt;/article&gt; &lt;!-- film 4 --&gt;
+  &lt;article class=&quot;slot&quot;&gt;&lt;h3&gt;Midnight shorts&lt;/h3&gt;&lt;p&gt;11:45 p.m. · Lakeside lawn&lt;/p&gt;&lt;/article&gt; &lt;!-- film 5 --&gt;
+&lt;/section&gt; &lt;!-- end of the program --&gt;
+&lt;/body&gt;&lt;/html&gt;"></iframe>
+</section>
+<section class="card" id="challenge-11">
+<h3>Challenge 7.6: A mobile-first page with named areas</h3>
+<p class="st ok">6 of 6 checks pass</p>
+<ul class="checks"><li class="ok"><span class="mk">&#10003; Pass</span> The <code>&lt;head&gt;</code> has the viewport meta tag: <code>width=device-width, initial-scale=1</code> (and nothing that blocks zooming)</li><li class="ok"><span class="mk">&#10003; Pass</span> <code>.page</code> is a grid, and each part is placed by name with <code>grid-area</code>: <code>head</code>, <code>nav</code>, <code>main</code>, <code>side</code>, <code>foot</code></li><li class="ok"><span class="mk">&#10003; Pass</span> 360px wide: one column, the five parts stacked in HTML order, the photo fits and nothing scrolls sideways</li><li class="ok"><span class="mk">&#10003; Pass</span> 900px wide: header and footer span the page, and nav, main and aside sit side by side in that order, with main the widest</li><li class="ok"><span class="mk">&#10003; Pass</span> Mobile first: the wide layout comes from a <code>min-width</code> media query, and there are no <code>max-width</code> queries</li><li class="ok"><span class="mk">&#10003; Pass</span> The page is fluid: it fills a 600px screen, and on a 1400px screen it stops at 1200px or less and is centered</li></ul>
+<h4>HTML</h4>
+<pre><code>&lt;!DOCTYPE html&gt; &lt;!-- a whole HTML document this time --&gt;
+&lt;html lang=&quot;en&quot;&gt; &lt;!-- the page&#39;s language --&gt;
+&lt;head&gt; &lt;!-- information about the page --&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt; &lt;!-- the character encoding --&gt;
+  &lt;title&gt;Lakeside Film Festival&lt;/title&gt; &lt;!-- the tab title --&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt; &lt;!-- use the device&#39;s real width, no zoom --&gt;
+&lt;/head&gt; &lt;!-- end of the head --&gt;
+&lt;body&gt; &lt;!-- what the page shows --&gt;
+  &lt;div class=&quot;page&quot;&gt; &lt;!-- the grid container --&gt;
+    &lt;header class=&quot;head&quot;&gt;&lt;strong&gt;Lakeside Film Festival&lt;/strong&gt;&lt;/header&gt; &lt;!-- area: head --&gt;
+    &lt;nav class=&quot;nav&quot;&gt;&lt;a href=&quot;program.html&quot;&gt;Program&lt;/a&gt; · &lt;a href=&quot;tickets.html&quot;&gt;Tickets&lt;/a&gt; · &lt;a href=&quot;venues.html&quot;&gt;Venues&lt;/a&gt;&lt;/nav&gt; &lt;!-- area: nav --&gt;
+    &lt;main class=&quot;main&quot;&gt; &lt;!-- area: main --&gt;
+      &lt;h1&gt;Four nights by the water&lt;/h1&gt; &lt;!-- the page title --&gt;
+      &lt;img src=&quot;data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;900&#39; height=&#39;300&#39; viewBox=&#39;0 0 900 300&#39; preserveAspectRatio=&#39;none&#39;%3E%3Crect width=&#39;900&#39; height=&#39;300&#39; fill=&#39;%231f6f8b&#39;/%3E%3Ccircle cx=&#39;450&#39; cy=&#39;190&#39; r=&#39;90&#39; fill=&#39;%23f2b457&#39;/%3E%3Crect y=&#39;210&#39; width=&#39;900&#39; height=&#39;90&#39; fill=&#39;%23243f6b&#39;/%3E%3C/svg%3E&quot; alt=&quot;The sun going down behind the outdoor screen&quot;&gt; &lt;!-- a 900 × 300 photo: too wide for a phone --&gt;
+      &lt;p&gt;New films on an outdoor screen, June 18 to 21. Bring a blanket; we bring the popcorn.&lt;/p&gt; &lt;!-- the introduction --&gt;
+    &lt;/main&gt; &lt;!-- end of main --&gt;
+    &lt;aside class=&quot;side&quot;&gt;Tickets go on sale May 1.&lt;/aside&gt; &lt;!-- area: side --&gt;
+    &lt;footer class=&quot;foot&quot;&gt;© 2026 Lakeside Film Festival&lt;/footer&gt; &lt;!-- area: foot --&gt;
+  &lt;/div&gt; &lt;!-- end of the grid container --&gt;
+&lt;/body&gt; &lt;!-- end of the body --&gt;
+&lt;/html&gt; &lt;!-- end of the document --&gt;</code></pre>
+<h4>CSS</h4>
+<pre><code>body { /* the whole page */
+  margin: 0; /* no gap around the edges */
+  font-family: system-ui, sans-serif; /* a clean sans-serif font stack */
+} /* end of the body rule */
+.page { /* the grid container */
+  max-width: 1100px; /* fluid: shrinks with the window, stops growing at 1100px */
+  margin: 0 auto; /* centered */
+  display: grid; /* make it a grid */
+  grid-template-columns: 1fr; /* one column on phones */
+  grid-template-areas: /* the five areas stacked in HTML order */
+    &quot;head&quot;
+    &quot;nav&quot;
+    &quot;main&quot;
+    &quot;side&quot;
+    &quot;foot&quot;;
+} /* end of the .page rule */
+.head, .nav, .main, .side, .foot { /* every part */
+  padding: 12px 16px; /* room inside */
+} /* end of the parts rule */
+.head { background-color: #2b2350; color: white; } /* a dark header */
+.nav { background-color: #ece8f6; } /* a pale violet menu */
+.side { background-color: #fbe3b5; } /* a warm aside */
+.foot { background-color: #2b2350; color: white; } /* a dark footer */
+img { /* the photo */
+  max-width: 100%; /* never wider than its container */
+  height: auto; /* keep its proportions as it shrinks */
+} /* end of the img rule */
+.head { grid-area: head; } /* the header&#39;s area */
+.nav { grid-area: nav; } /* the menu&#39;s area */
+.main { grid-area: main; } /* the content&#39;s area */
+.side { grid-area: side; } /* the aside&#39;s area */
+.foot { grid-area: foot; } /* the footer&#39;s area */
+@media (min-width: 800px) { /* wide screens */
+  .page { /* the grid container */
+    grid-template-columns: 180px 1fr 220px; /* menu, content, aside */
+    grid-template-areas: /* the wide layout */
+      &quot;head head head&quot;
+      &quot;nav  main side&quot;
+      &quot;foot foot foot&quot;;
+  } /* end of the wide .page rule */
+} /* end of the media query */</code></pre>
+<h4>Preview</h4>
+<iframe title="Preview of Challenge 7.6: A mobile-first page with named areas" sandbox="" srcdoc="&lt;!DOCTYPE html&gt; &lt;!-- a whole HTML document this time --&gt;
+&lt;html lang=&quot;en&quot;&gt; &lt;!-- the page&#39;s language --&gt;
+&lt;head&gt;&lt;style&gt;
+body { /* the whole page */
+  margin: 0; /* no gap around the edges */
+  font-family: system-ui, sans-serif; /* a clean sans-serif font stack */
+} /* end of the body rule */
+.page { /* the grid container */
+  max-width: 1100px; /* fluid: shrinks with the window, stops growing at 1100px */
+  margin: 0 auto; /* centered */
+  display: grid; /* make it a grid */
+  grid-template-columns: 1fr; /* one column on phones */
+  grid-template-areas: /* the five areas stacked in HTML order */
+    &quot;head&quot;
+    &quot;nav&quot;
+    &quot;main&quot;
+    &quot;side&quot;
+    &quot;foot&quot;;
+} /* end of the .page rule */
+.head, .nav, .main, .side, .foot { /* every part */
+  padding: 12px 16px; /* room inside */
+} /* end of the parts rule */
+.head { background-color: #2b2350; color: white; } /* a dark header */
+.nav { background-color: #ece8f6; } /* a pale violet menu */
+.side { background-color: #fbe3b5; } /* a warm aside */
+.foot { background-color: #2b2350; color: white; } /* a dark footer */
+img { /* the photo */
+  max-width: 100%; /* never wider than its container */
+  height: auto; /* keep its proportions as it shrinks */
+} /* end of the img rule */
+.head { grid-area: head; } /* the header&#39;s area */
+.nav { grid-area: nav; } /* the menu&#39;s area */
+.main { grid-area: main; } /* the content&#39;s area */
+.side { grid-area: side; } /* the aside&#39;s area */
+.foot { grid-area: foot; } /* the footer&#39;s area */
+@media (min-width: 800px) { /* wide screens */
+  .page { /* the grid container */
+    grid-template-columns: 180px 1fr 220px; /* menu, content, aside */
+    grid-template-areas: /* the wide layout */
+      &quot;head head head&quot;
+      &quot;nav  main side&quot;
+      &quot;foot foot foot&quot;;
+  } /* end of the wide .page rule */
+} /* end of the media query */
+&lt;/style&gt; &lt;!-- information about the page --&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt; &lt;!-- the character encoding --&gt;
+  &lt;title&gt;Lakeside Film Festival&lt;/title&gt; &lt;!-- the tab title --&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt; &lt;!-- use the device&#39;s real width, no zoom --&gt;
+&lt;/head&gt; &lt;!-- end of the head --&gt;
+&lt;body&gt; &lt;!-- what the page shows --&gt;
+  &lt;div class=&quot;page&quot;&gt; &lt;!-- the grid container --&gt;
+    &lt;header class=&quot;head&quot;&gt;&lt;strong&gt;Lakeside Film Festival&lt;/strong&gt;&lt;/header&gt; &lt;!-- area: head --&gt;
+    &lt;nav class=&quot;nav&quot;&gt;&lt;a href=&quot;program.html&quot;&gt;Program&lt;/a&gt; · &lt;a href=&quot;tickets.html&quot;&gt;Tickets&lt;/a&gt; · &lt;a href=&quot;venues.html&quot;&gt;Venues&lt;/a&gt;&lt;/nav&gt; &lt;!-- area: nav --&gt;
+    &lt;main class=&quot;main&quot;&gt; &lt;!-- area: main --&gt;
+      &lt;h1&gt;Four nights by the water&lt;/h1&gt; &lt;!-- the page title --&gt;
+      &lt;img src=&quot;data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;900&#39; height=&#39;300&#39; viewBox=&#39;0 0 900 300&#39; preserveAspectRatio=&#39;none&#39;%3E%3Crect width=&#39;900&#39; height=&#39;300&#39; fill=&#39;%231f6f8b&#39;/%3E%3Ccircle cx=&#39;450&#39; cy=&#39;190&#39; r=&#39;90&#39; fill=&#39;%23f2b457&#39;/%3E%3Crect y=&#39;210&#39; width=&#39;900&#39; height=&#39;90&#39; fill=&#39;%23243f6b&#39;/%3E%3C/svg%3E&quot; alt=&quot;The sun going down behind the outdoor screen&quot;&gt; &lt;!-- a 900 × 300 photo: too wide for a phone --&gt;
+      &lt;p&gt;New films on an outdoor screen, June 18 to 21. Bring a blanket; we bring the popcorn.&lt;/p&gt; &lt;!-- the introduction --&gt;
+    &lt;/main&gt; &lt;!-- end of main --&gt;
+    &lt;aside class=&quot;side&quot;&gt;Tickets go on sale May 1.&lt;/aside&gt; &lt;!-- area: side --&gt;
+    &lt;footer class=&quot;foot&quot;&gt;© 2026 Lakeside Film Festival&lt;/footer&gt; &lt;!-- area: foot --&gt;
+  &lt;/div&gt; &lt;!-- end of the grid container --&gt;
+&lt;/body&gt; &lt;!-- end of the body --&gt;
+&lt;/html&gt; &lt;!-- end of the document --&gt;"></iframe>
+</section>
+<section class="card" id="challenge-12">
+<h3>Challenge 7.7: A card that feels alive, and calm when asked</h3>
+<p class="st ok">6 of 6 checks pass</p>
+<ul class="checks"><li class="ok"><span class="mk">&#10003; Pass</span> The button has all four corners rounded (6px or more) and a <code>box-shadow</code></li><li class="ok"><span class="mk">&#10003; Pass</span> The button&#39;s transition animates the lift on hover (<code>transform</code>, or <code>all</code>), over 0.1s to 0.4s</li><li class="ok"><span class="mk">&#10003; Pass</span> Both <code>:hover</code> and <code>:focus-visible</code> lift the button with a negative <code>translateY</code></li><li class="ok"><span class="mk">&#10003; Pass</span> The card has all four corners rounded (8px or more), a shadow, and <code>overflow: hidden</code> so the poster&#39;s corners are clipped</li><li class="ok"><span class="mk">&#10003; Pass</span> The live dot pulses forever with a <code>@keyframes</code> animation that visibly changes it (its opacity, its transform, or anything else you can see), each cycle at least half a second</li><li class="ok"><span class="mk">&#10003; Pass</span> When a visitor asks for reduced motion, the dot stops pulsing and the button no longer animates</li></ul>
+<h4>HTML</h4>
+<pre><code>&lt;article class=&quot;card&quot;&gt; &lt;!-- the film card: TODO 4 --&gt;
+  &lt;img class=&quot;poster&quot; src=&quot;data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;600&#39; height=&#39;400&#39; viewBox=&#39;0 0 600 400&#39; preserveAspectRatio=&#39;none&#39;%3E%3Crect width=&#39;600&#39; height=&#39;400&#39; fill=&#39;%232b2350&#39;/%3E%3Ccircle cx=&#39;300&#39; cy=&#39;170&#39; r=&#39;100&#39; fill=&#39;%23f2b457&#39;/%3E%3Crect y=&#39;260&#39; width=&#39;600&#39; height=&#39;140&#39; fill=&#39;%231f6f8b&#39;/%3E%3C/svg%3E&quot; alt=&quot;A sun setting over a dark pool&quot;&gt; &lt;!-- the still at the top of the card --&gt;
+  &lt;div class=&quot;body&quot;&gt; &lt;!-- the card&#39;s text --&gt;
+    &lt;h3&gt;Night Swim&lt;/h3&gt; &lt;!-- the film --&gt;
+    &lt;p class=&quot;live&quot;&gt;&lt;span class=&quot;dot&quot;&gt;&lt;/span&gt; Live Q&amp;A with the director after the film&lt;/p&gt; &lt;!-- TODO 5: the dot pulses --&gt;
+    &lt;a class=&quot;button&quot; href=&quot;tickets.html&quot;&gt;Get tickets&lt;/a&gt; &lt;!-- TODO 1 to 3 --&gt;
+  &lt;/div&gt; &lt;!-- end of the text --&gt;
+&lt;/article&gt; &lt;!-- end of the card --&gt;</code></pre>
+<h4>CSS</h4>
+<pre><code>body { /* the whole page */
+  font-family: system-ui, sans-serif; /* a clean sans-serif font stack */
+  margin: 24px; /* space around the page */
+  background-color: #f4f2f8; /* a pale background, so the card&#39;s shadow shows */
+} /* end of the body rule */
+.card { /* the film card */
+  width: 300px; /* a fixed card width */
+  background-color: white; /* a white card */
+  border-radius: 12px; /* rounded corners */
+  box-shadow: 0 4px 16px rgba(43, 35, 80, 0.15); /* a soft shadow */
+  overflow: hidden; /* clip the poster&#39;s square corners */
+} /* end of the .card rule */
+.poster { /* the still */
+  display: block; /* no gap under the image */
+  width: 100%; /* as wide as the card */
+  height: auto; /* keep the shape */
+} /* end of the .poster rule */
+.body { padding: 12px 16px 16px; } /* room around the text */
+.body h3 { margin: 0 0 6px; } /* the film&#39;s name */
+.dot { /* the live dot */
+  display: inline-block; /* a small box in the line */
+  width: 10px; /* 10px wide ... */
+  height: 10px; /* ... and 10px tall */
+  border-radius: 50%; /* a circle */
+  background-color: #c62828; /* red */
+  animation: pulse 1.2s ease-in-out infinite; /* play the pulse forever */
+} /* end of the .dot rule */
+.button { /* the ticket button */
+  display: inline-block; /* a box that sits in the line */
+  padding: 0.6em 1.2em; /* room around the words */
+  background-color: #2b2350; /* dark violet */
+  color: white; /* white text */
+  font-weight: 700; /* bold */
+  text-decoration: none; /* no underline */
+  border-radius: 8px; /* rounded corners */
+  box-shadow: 0 2px 6px rgba(43, 35, 80, 0.3); /* a small shadow */
+  transition: transform 0.2s ease; /* animate the lift */
+} /* end of the .button rule */
+.button:hover, .button:focus-visible { /* pointed at or tabbed to */
+  transform: translateY(-2px); /* lift it up 2px */
+} /* end of the lift rule */
+@keyframes pulse { /* the dot&#39;s animation */
+  0%, 100% { opacity: 1; transform: scale(1); } /* full and normal size */
+  50% { opacity: 0.3; transform: scale(1.4); } /* faded and larger */
+} /* end of the keyframes */
+@media (prefers-reduced-motion: reduce) { /* people who ask for less motion */
+  .dot { animation: none; } /* stop the pulse */
+  .button { transition: none; } /* no animated lift */
+} /* end of the media query */</code></pre>
+<h4>Preview</h4>
+<iframe title="Preview of Challenge 7.7: A card that feels alive, and calm when asked" sandbox="" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;title&gt;Preview&lt;/title&gt;&lt;style&gt;
+body { /* the whole page */
+  font-family: system-ui, sans-serif; /* a clean sans-serif font stack */
+  margin: 24px; /* space around the page */
+  background-color: #f4f2f8; /* a pale background, so the card&#39;s shadow shows */
+} /* end of the body rule */
+.card { /* the film card */
+  width: 300px; /* a fixed card width */
+  background-color: white; /* a white card */
+  border-radius: 12px; /* rounded corners */
+  box-shadow: 0 4px 16px rgba(43, 35, 80, 0.15); /* a soft shadow */
+  overflow: hidden; /* clip the poster&#39;s square corners */
+} /* end of the .card rule */
+.poster { /* the still */
+  display: block; /* no gap under the image */
+  width: 100%; /* as wide as the card */
+  height: auto; /* keep the shape */
+} /* end of the .poster rule */
+.body { padding: 12px 16px 16px; } /* room around the text */
+.body h3 { margin: 0 0 6px; } /* the film&#39;s name */
+.dot { /* the live dot */
+  display: inline-block; /* a small box in the line */
+  width: 10px; /* 10px wide ... */
+  height: 10px; /* ... and 10px tall */
+  border-radius: 50%; /* a circle */
+  background-color: #c62828; /* red */
+  animation: pulse 1.2s ease-in-out infinite; /* play the pulse forever */
+} /* end of the .dot rule */
+.button { /* the ticket button */
+  display: inline-block; /* a box that sits in the line */
+  padding: 0.6em 1.2em; /* room around the words */
+  background-color: #2b2350; /* dark violet */
+  color: white; /* white text */
+  font-weight: 700; /* bold */
+  text-decoration: none; /* no underline */
+  border-radius: 8px; /* rounded corners */
+  box-shadow: 0 2px 6px rgba(43, 35, 80, 0.3); /* a small shadow */
+  transition: transform 0.2s ease; /* animate the lift */
+} /* end of the .button rule */
+.button:hover, .button:focus-visible { /* pointed at or tabbed to */
+  transform: translateY(-2px); /* lift it up 2px */
+} /* end of the lift rule */
+@keyframes pulse { /* the dot&#39;s animation */
+  0%, 100% { opacity: 1; transform: scale(1); } /* full and normal size */
+  50% { opacity: 0.3; transform: scale(1.4); } /* faded and larger */
+} /* end of the keyframes */
+@media (prefers-reduced-motion: reduce) { /* people who ask for less motion */
+  .dot { animation: none; } /* stop the pulse */
+  .button { transition: none; } /* no animated lift */
+} /* end of the media query */
+&lt;/style&gt;&lt;/head&gt;&lt;body&gt;
+&lt;article class=&quot;card&quot;&gt; &lt;!-- the film card: TODO 4 --&gt;
+  &lt;img class=&quot;poster&quot; src=&quot;data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;600&#39; height=&#39;400&#39; viewBox=&#39;0 0 600 400&#39; preserveAspectRatio=&#39;none&#39;%3E%3Crect width=&#39;600&#39; height=&#39;400&#39; fill=&#39;%232b2350&#39;/%3E%3Ccircle cx=&#39;300&#39; cy=&#39;170&#39; r=&#39;100&#39; fill=&#39;%23f2b457&#39;/%3E%3Crect y=&#39;260&#39; width=&#39;600&#39; height=&#39;140&#39; fill=&#39;%231f6f8b&#39;/%3E%3C/svg%3E&quot; alt=&quot;A sun setting over a dark pool&quot;&gt; &lt;!-- the still at the top of the card --&gt;
+  &lt;div class=&quot;body&quot;&gt; &lt;!-- the card&#39;s text --&gt;
+    &lt;h3&gt;Night Swim&lt;/h3&gt; &lt;!-- the film --&gt;
+    &lt;p class=&quot;live&quot;&gt;&lt;span class=&quot;dot&quot;&gt;&lt;/span&gt; Live Q&amp;A with the director after the film&lt;/p&gt; &lt;!-- TODO 5: the dot pulses --&gt;
+    &lt;a class=&quot;button&quot; href=&quot;tickets.html&quot;&gt;Get tickets&lt;/a&gt; &lt;!-- TODO 1 to 3 --&gt;
+  &lt;/div&gt; &lt;!-- end of the text --&gt;
+&lt;/article&gt; &lt;!-- end of the card --&gt;
+&lt;/body&gt;&lt;/html&gt;"></iframe>
+</section>
+<section class="card" id="challenge-13">
+<h3>Challenge 7.8: The Lakeside Film Festival page</h3>
+<p class="st ok">10 of 10 checks pass</p>
+<ul class="checks"><li class="ok"><span class="mk">&#10003; Pass</span> Tokens: three or more custom properties on <code>:root</code>, and <code>--brand</code> colors both the title and the buttons (change it once and both follow)</li><li class="ok"><span class="mk">&#10003; Pass</span> Flexible images: at 360px nothing scrolls sideways, and the hero photo fits and keeps its 1600 : 600 shape</li><li class="ok"><span class="mk">&#10003; Pass</span> Header: at 1000px the logo sits at the left, the menu at the right, on one line</li><li class="ok"><span class="mk">&#10003; Pass</span> Film cards: <code>.films</code> is a grid with <code>repeat(auto-fit, minmax(200px, 1fr))</code> and a 16px gap, giving four per row at 900px, two at 440px and one at 300px</li><li class="ok"><span class="mk">&#10003; Pass</span> Layout: at 360px the aside sits under main, full width; at 1000px they sit side by side, main wider</li><li class="ok"><span class="mk">&#10003; Pass</span> Posters fill the width of their card and keep their 2 : 3 shape</li><li class="ok"><span class="mk">&#10003; Pass</span> Each badge is pinned inside the top-right corner of its card, without pushing the poster down</li><li class="ok"><span class="mk">&#10003; Pass</span> Buttons visibly change on <code>:hover</code> and <code>:focus-visible</code>, a transition animates that change, and a <code>prefers-reduced-motion: reduce</code> query switches the transition off</li><li class="ok"><span class="mk">&#10003; Pass</span> Readable colors: the page has its own background, and the intro, the buttons and the badges all reach 4.5 : 1 contrast</li><li class="ok"><span class="mk">&#10003; Pass</span> Mobile first: the side-by-side layout comes from a <code>min-width</code> media query, with no <code>max-width</code> queries, no <code>!important</code> and no inline styles</li></ul>
+<h4>HTML</h4>
+<pre><code>&lt;header class=&quot;site&quot;&gt; &lt;!-- the banner at the top --&gt;
+  &lt;a class=&quot;logo&quot; href=&quot;index.html&quot;&gt;Lakeside Film Festival&lt;/a&gt; &lt;!-- the festival name, linking home --&gt;
+  &lt;nav&gt; &lt;!-- the main menu --&gt;
+    &lt;ul&gt; &lt;!-- a list of links --&gt;
+      &lt;li&gt;&lt;a href=&quot;program.html&quot;&gt;Program&lt;/a&gt;&lt;/li&gt; &lt;!-- link 1 --&gt;
+      &lt;li&gt;&lt;a href=&quot;tickets.html&quot;&gt;Tickets&lt;/a&gt;&lt;/li&gt; &lt;!-- link 2 --&gt;
+      &lt;li&gt;&lt;a href=&quot;venues.html&quot;&gt;Venues&lt;/a&gt;&lt;/li&gt; &lt;!-- link 3 --&gt;
+      &lt;li&gt;&lt;a href=&quot;about.html&quot;&gt;About&lt;/a&gt;&lt;/li&gt; &lt;!-- link 4 --&gt;
+    &lt;/ul&gt; &lt;!-- end of the links --&gt;
+  &lt;/nav&gt; &lt;!-- end of the menu --&gt;
+&lt;/header&gt; &lt;!-- end of the banner --&gt;
+&lt;img class=&quot;hero&quot; src=&quot;data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;1600&#39; height=&#39;600&#39; viewBox=&#39;0 0 1600 600&#39; preserveAspectRatio=&#39;none&#39;%3E%3Crect width=&#39;1600&#39; height=&#39;600&#39; fill=&#39;%231f6f8b&#39;/%3E%3Ccircle cx=&#39;800&#39; cy=&#39;380&#39; r=&#39;170&#39; fill=&#39;%23f2b457&#39;/%3E%3Crect y=&#39;420&#39; width=&#39;1600&#39; height=&#39;180&#39; fill=&#39;%23243f6b&#39;/%3E%3C/svg%3E&quot; alt=&quot;The outdoor screen on the lake shore at sunset&quot; width=&quot;1600&quot; height=&quot;600&quot;&gt; &lt;!-- the hero photo, 1600 × 600 --&gt;
+&lt;div class=&quot;layout&quot;&gt; &lt;!-- main and the aside: stacked on phones, side by side on wide screens --&gt;
+  &lt;main&gt; &lt;!-- this page&#39;s content --&gt;
+    &lt;h1&gt;Lakeside Film Festival 2026&lt;/h1&gt; &lt;!-- the page title --&gt;
+    &lt;p class=&quot;intro&quot;&gt;Four nights of new films on a screen by the water, June 18 to 21.&lt;/p&gt; &lt;!-- the introduction --&gt;
+    &lt;ul class=&quot;films&quot;&gt; &lt;!-- the film cards --&gt;
+      &lt;li class=&quot;film&quot;&gt; &lt;!-- card 1 --&gt;
+        &lt;span class=&quot;badge&quot;&gt;Sold out&lt;/span&gt; &lt;!-- a badge for the top-right corner --&gt;
+        &lt;img class=&quot;poster&quot; src=&quot;data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;400&#39; height=&#39;600&#39; viewBox=&#39;0 0 400 600&#39; preserveAspectRatio=&#39;none&#39;%3E%3Crect width=&#39;400&#39; height=&#39;600&#39; fill=&#39;%232b2350&#39;/%3E%3Ccircle cx=&#39;200&#39; cy=&#39;220&#39; r=&#39;100&#39; fill=&#39;%23f2b457&#39;/%3E%3C/svg%3E&quot; alt=&quot;Poster for Night Swim: a sun setting over a dark pool&quot; width=&quot;400&quot; height=&quot;600&quot;&gt; &lt;!-- a 2 : 3 poster --&gt;
+        &lt;h2&gt;Night Swim&lt;/h2&gt; &lt;!-- the film --&gt;
+        &lt;p&gt;A lifeguard and a night janitor share one summer at a closed city pool.&lt;/p&gt; &lt;!-- its description --&gt;
+        &lt;a class=&quot;button&quot; href=&quot;tickets.html&quot;&gt;Get tickets&lt;/a&gt; &lt;!-- the call to action --&gt;
+      &lt;/li&gt; &lt;!-- end of card 1 --&gt;
+      &lt;li class=&quot;film&quot;&gt; &lt;!-- card 2 --&gt;
+        &lt;img class=&quot;poster&quot; src=&quot;data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;400&#39; height=&#39;600&#39; viewBox=&#39;0 0 400 600&#39; preserveAspectRatio=&#39;none&#39;%3E%3Crect width=&#39;400&#39; height=&#39;600&#39; fill=&#39;%231f5e4a&#39;/%3E%3Ccircle cx=&#39;200&#39; cy=&#39;220&#39; r=&#39;100&#39; fill=&#39;%23f2b457&#39;/%3E%3C/svg%3E&quot; alt=&quot;Poster for Paper Kites: a kite over an empty parking lot&quot; width=&quot;400&quot; height=&quot;600&quot;&gt; &lt;!-- a 2 : 3 poster --&gt;
+        &lt;h2&gt;Paper Kites&lt;/h2&gt; &lt;!-- the film --&gt;
+        &lt;p&gt;Two sisters, one broken car and the longest weekend of their lives.&lt;/p&gt; &lt;!-- its description --&gt;
+        &lt;a class=&quot;button&quot; href=&quot;tickets.html&quot;&gt;Get tickets&lt;/a&gt; &lt;!-- the call to action --&gt;
+      &lt;/li&gt; &lt;!-- end of card 2 --&gt;
+      &lt;li class=&quot;film&quot;&gt; &lt;!-- card 3 --&gt;
+        &lt;span class=&quot;badge&quot;&gt;Sold out&lt;/span&gt; &lt;!-- a badge for the top-right corner --&gt;
+        &lt;img class=&quot;poster&quot; src=&quot;data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;400&#39; height=&#39;600&#39; viewBox=&#39;0 0 400 600&#39; preserveAspectRatio=&#39;none&#39;%3E%3Crect width=&#39;400&#39; height=&#39;600&#39; fill=&#39;%236b2443&#39;/%3E%3Ccircle cx=&#39;200&#39; cy=&#39;220&#39; r=&#39;100&#39; fill=&#39;%23f2b457&#39;/%3E%3C/svg%3E&quot; alt=&quot;Poster for Salt and Iron: cranes over a frozen shipyard&quot; width=&quot;400&quot; height=&quot;600&quot;&gt; &lt;!-- a 2 : 3 poster --&gt;
+        &lt;h2&gt;Salt and Iron&lt;/h2&gt; &lt;!-- the film --&gt;
+        &lt;p&gt;The last winter of a shipyard, told by the welders who kept it running.&lt;/p&gt; &lt;!-- its description --&gt;
+        &lt;a class=&quot;button&quot; href=&quot;tickets.html&quot;&gt;Get tickets&lt;/a&gt; &lt;!-- the call to action --&gt;
+      &lt;/li&gt; &lt;!-- end of card 3 --&gt;
+      &lt;li class=&quot;film&quot;&gt; &lt;!-- card 4 --&gt;
+        &lt;img class=&quot;poster&quot; src=&quot;data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;400&#39; height=&#39;600&#39; viewBox=&#39;0 0 400 600&#39; preserveAspectRatio=&#39;none&#39;%3E%3Crect width=&#39;400&#39; height=&#39;600&#39; fill=&#39;%23243f6b&#39;/%3E%3Ccircle cx=&#39;200&#39; cy=&#39;220&#39; r=&#39;100&#39; fill=&#39;%23f2b457&#39;/%3E%3C/svg%3E&quot; alt=&quot;Poster for Static: an old radio glowing in a dark room&quot; width=&quot;400&quot; height=&quot;600&quot;&gt; &lt;!-- a 2 : 3 poster --&gt;
+        &lt;h2&gt;Static&lt;/h2&gt; &lt;!-- the film --&gt;
+        &lt;p&gt;A late-night radio host hears a caller who sounds exactly like her, in 1987.&lt;/p&gt; &lt;!-- its description --&gt;
+        &lt;a class=&quot;button&quot; href=&quot;tickets.html&quot;&gt;Get tickets&lt;/a&gt; &lt;!-- the call to action --&gt;
+      &lt;/li&gt; &lt;!-- end of card 4 --&gt;
+    &lt;/ul&gt; &lt;!-- end of the film cards --&gt;
+  &lt;/main&gt; &lt;!-- end of main --&gt;
+  &lt;aside class=&quot;info&quot;&gt; &lt;!-- the sidebar --&gt;
+    &lt;h2&gt;Plan your visit&lt;/h2&gt; &lt;!-- its heading --&gt;
+    &lt;p&gt;Gates open at 7 p.m. Bring a blanket or rent a chair at the gate. Every screening has English captions.&lt;/p&gt; &lt;!-- practical details --&gt;
+  &lt;/aside&gt; &lt;!-- end of the sidebar --&gt;
+&lt;/div&gt; &lt;!-- end of the layout --&gt;
+&lt;footer class=&quot;foot&quot;&gt; &lt;!-- the bottom of the page --&gt;
+  &lt;p&gt;© 2026 Lakeside Film Festival · 12 Shore Road&lt;/p&gt; &lt;!-- the footer line --&gt;
+&lt;/footer&gt; &lt;!-- end of the footer --&gt;</code></pre>
+<h4>CSS</h4>
+<pre><code>/* 1. Tokens: at least three custom properties on :root, including --brand */
+:root { /* the design tokens */
+  --brand: #2b2350; /* dark violet, the brand color */
+  --accent: #c62828; /* red, for the badges */
+  --text: #1f1b2e; /* near-black text */
+  --bg: #faf9fc; /* a very pale background */
+  --gap: 16px; /* the standard spacing */
+} /* end of the :root rule */
+h1 { color: var(--brand); } /* the page title in the brand color */
+
+/* 2. Flexible images: every img shrinks to fit and keeps its shape */
+img { /* every image */
+  max-width: 100%; /* never wider than its container */
+  height: auto; /* keep its proportions */
+} /* end of the img rule */
+
+/* 3. body: font stack, background color, readable text color */
+body { /* the whole page */
+  margin: 0; /* no gap around the edges */
+  font-family: system-ui, -apple-system, &quot;Segoe UI&quot;, Roboto, sans-serif; /* a clean sans-serif stack */
+  background-color: var(--bg); /* the pale background */
+  color: var(--text); /* dark text, far above 4.5 : 1 */
+} /* end of the body rule */
+
+/* 4. Header: a flex row, logo left, menu right, one middle line, wrapping */
+header { /* the site header */
+  display: flex; /* lay out logo and menu in a row */
+  justify-content: space-between; /* logo left, menu right */
+  align-items: center; /* both on one middle line */
+  flex-wrap: wrap; /* wrap on narrow screens */
+  gap: 8px var(--gap); /* space between them when they wrap */
+  padding: 12px var(--gap); /* room inside */
+} /* end of the header rule */
+
+/* 5. Layout: main and the aside stacked (the phone layout) */
+.layout { /* the wrapper around main and the aside */
+  display: grid; /* a grid */
+  grid-template-columns: 1fr; /* one column: stacked */
+  gap: var(--gap); /* space between them */
+  padding: var(--gap); /* room around them */
+} /* end of the .layout rule */
+
+/* 6. Film cards: an auto-fit grid; posters fill their card */
+.films { /* the list of cards */
+  list-style: none; /* no bullets */
+  margin: 0; /* no list margins */
+  padding: 0; /* no indent */
+  display: grid; /* a grid */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* as many 200px+ columns as fit */
+  gap: 16px; /* space between cards */
+} /* end of the .films rule */
+.film img { /* each poster */
+  display: block; /* no gap under the image */
+  width: 100%; /* fill the card */
+  aspect-ratio: 2 / 3; /* keep the 2 : 3 poster shape */
+  object-fit: cover; /* crop rather than stretch */
+} /* end of the poster rule */
+
+/* 7. Badges: pinned to the top-right corner of their card */
+.film { position: relative; } /* each card anchors its badge */
+.badge { /* the &quot;Sold out&quot; label */
+  position: absolute; /* taken out of the flow */
+  top: 8px; /* near the top ... */
+  right: 8px; /* ... right corner */
+  padding: 2px 8px; /* room around the words */
+  background-color: var(--accent); /* red */
+  color: white; /* white text, about 5.6 : 1 on the red */
+  font-weight: 700; /* bold */
+  border-radius: 4px; /* slightly rounded */
+} /* end of the .badge rule */
+
+/* 8. Buttons: var(--brand), readable, :hover, :focus-visible, a transition */
+.button { /* every button */
+  display: inline-block; /* a box in the line */
+  padding: 0.6em 1.2em; /* room around the words */
+  background-color: var(--brand); /* the brand color */
+  color: white; /* white text, well above 4.5 : 1 */
+  font-weight: 700; /* bold */
+  text-decoration: none; /* no underline */
+  border: 0; /* no default button border */
+  border-radius: 8px; /* rounded corners */
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* animate the lift */
+} /* end of the .button rule */
+.button:hover, .button:focus-visible { /* pointed at or tabbed to */
+  transform: translateY(-2px); /* lift it up */
+  box-shadow: 0 4px 10px rgba(43, 35, 80, 0.3); /* a shadow under it */
+} /* end of the hover and focus rule */
+.button:focus-visible { /* keyboard focus only */
+  outline: 3px solid var(--accent); /* a clear focus ring */
+  outline-offset: 2px; /* a little space before the ring */
+} /* end of the focus rule */
+
+/* 9. @media (min-width: ...) { main and the aside side by side } */
+@media (min-width: 900px) { /* wide screens */
+  .layout { /* the wrapper */
+    grid-template-columns: 2fr 1fr; /* main twice as wide as the aside */
+  } /* end of the wide .layout rule */
+} /* end of the media query */
+
+/* 10. @media (prefers-reduced-motion: reduce) { no transition } */
+@media (prefers-reduced-motion: reduce) { /* people who ask for less motion */
+  .button { transition: none; } /* no animated lift */
+} /* end of the media query */</code></pre>
+<h4>Preview</h4>
+<iframe title="Preview of Challenge 7.8: The Lakeside Film Festival page" sandbox="" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;title&gt;Preview&lt;/title&gt;&lt;style&gt;
+/* 1. Tokens: at least three custom properties on :root, including --brand */
+:root { /* the design tokens */
+  --brand: #2b2350; /* dark violet, the brand color */
+  --accent: #c62828; /* red, for the badges */
+  --text: #1f1b2e; /* near-black text */
+  --bg: #faf9fc; /* a very pale background */
+  --gap: 16px; /* the standard spacing */
+} /* end of the :root rule */
+h1 { color: var(--brand); } /* the page title in the brand color */
+
+/* 2. Flexible images: every img shrinks to fit and keeps its shape */
+img { /* every image */
+  max-width: 100%; /* never wider than its container */
+  height: auto; /* keep its proportions */
+} /* end of the img rule */
+
+/* 3. body: font stack, background color, readable text color */
+body { /* the whole page */
+  margin: 0; /* no gap around the edges */
+  font-family: system-ui, -apple-system, &quot;Segoe UI&quot;, Roboto, sans-serif; /* a clean sans-serif stack */
+  background-color: var(--bg); /* the pale background */
+  color: var(--text); /* dark text, far above 4.5 : 1 */
+} /* end of the body rule */
+
+/* 4. Header: a flex row, logo left, menu right, one middle line, wrapping */
+header { /* the site header */
+  display: flex; /* lay out logo and menu in a row */
+  justify-content: space-between; /* logo left, menu right */
+  align-items: center; /* both on one middle line */
+  flex-wrap: wrap; /* wrap on narrow screens */
+  gap: 8px var(--gap); /* space between them when they wrap */
+  padding: 12px var(--gap); /* room inside */
+} /* end of the header rule */
+
+/* 5. Layout: main and the aside stacked (the phone layout) */
+.layout { /* the wrapper around main and the aside */
+  display: grid; /* a grid */
+  grid-template-columns: 1fr; /* one column: stacked */
+  gap: var(--gap); /* space between them */
+  padding: var(--gap); /* room around them */
+} /* end of the .layout rule */
+
+/* 6. Film cards: an auto-fit grid; posters fill their card */
+.films { /* the list of cards */
+  list-style: none; /* no bullets */
+  margin: 0; /* no list margins */
+  padding: 0; /* no indent */
+  display: grid; /* a grid */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* as many 200px+ columns as fit */
+  gap: 16px; /* space between cards */
+} /* end of the .films rule */
+.film img { /* each poster */
+  display: block; /* no gap under the image */
+  width: 100%; /* fill the card */
+  aspect-ratio: 2 / 3; /* keep the 2 : 3 poster shape */
+  object-fit: cover; /* crop rather than stretch */
+} /* end of the poster rule */
+
+/* 7. Badges: pinned to the top-right corner of their card */
+.film { position: relative; } /* each card anchors its badge */
+.badge { /* the &quot;Sold out&quot; label */
+  position: absolute; /* taken out of the flow */
+  top: 8px; /* near the top ... */
+  right: 8px; /* ... right corner */
+  padding: 2px 8px; /* room around the words */
+  background-color: var(--accent); /* red */
+  color: white; /* white text, about 5.6 : 1 on the red */
+  font-weight: 700; /* bold */
+  border-radius: 4px; /* slightly rounded */
+} /* end of the .badge rule */
+
+/* 8. Buttons: var(--brand), readable, :hover, :focus-visible, a transition */
+.button { /* every button */
+  display: inline-block; /* a box in the line */
+  padding: 0.6em 1.2em; /* room around the words */
+  background-color: var(--brand); /* the brand color */
+  color: white; /* white text, well above 4.5 : 1 */
+  font-weight: 700; /* bold */
+  text-decoration: none; /* no underline */
+  border: 0; /* no default button border */
+  border-radius: 8px; /* rounded corners */
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* animate the lift */
+} /* end of the .button rule */
+.button:hover, .button:focus-visible { /* pointed at or tabbed to */
+  transform: translateY(-2px); /* lift it up */
+  box-shadow: 0 4px 10px rgba(43, 35, 80, 0.3); /* a shadow under it */
+} /* end of the hover and focus rule */
+.button:focus-visible { /* keyboard focus only */
+  outline: 3px solid var(--accent); /* a clear focus ring */
+  outline-offset: 2px; /* a little space before the ring */
+} /* end of the focus rule */
+
+/* 9. @media (min-width: ...) { main and the aside side by side } */
+@media (min-width: 900px) { /* wide screens */
+  .layout { /* the wrapper */
+    grid-template-columns: 2fr 1fr; /* main twice as wide as the aside */
+  } /* end of the wide .layout rule */
+} /* end of the media query */
+
+/* 10. @media (prefers-reduced-motion: reduce) { no transition } */
+@media (prefers-reduced-motion: reduce) { /* people who ask for less motion */
+  .button { transition: none; } /* no animated lift */
+} /* end of the media query */
+&lt;/style&gt;&lt;/head&gt;&lt;body&gt;
+&lt;header class=&quot;site&quot;&gt; &lt;!-- the banner at the top --&gt;
+  &lt;a class=&quot;logo&quot; href=&quot;index.html&quot;&gt;Lakeside Film Festival&lt;/a&gt; &lt;!-- the festival name, linking home --&gt;
+  &lt;nav&gt; &lt;!-- the main menu --&gt;
+    &lt;ul&gt; &lt;!-- a list of links --&gt;
+      &lt;li&gt;&lt;a href=&quot;program.html&quot;&gt;Program&lt;/a&gt;&lt;/li&gt; &lt;!-- link 1 --&gt;
+      &lt;li&gt;&lt;a href=&quot;tickets.html&quot;&gt;Tickets&lt;/a&gt;&lt;/li&gt; &lt;!-- link 2 --&gt;
+      &lt;li&gt;&lt;a href=&quot;venues.html&quot;&gt;Venues&lt;/a&gt;&lt;/li&gt; &lt;!-- link 3 --&gt;
+      &lt;li&gt;&lt;a href=&quot;about.html&quot;&gt;About&lt;/a&gt;&lt;/li&gt; &lt;!-- link 4 --&gt;
+    &lt;/ul&gt; &lt;!-- end of the links --&gt;
+  &lt;/nav&gt; &lt;!-- end of the menu --&gt;
+&lt;/header&gt; &lt;!-- end of the banner --&gt;
+&lt;img class=&quot;hero&quot; src=&quot;data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;1600&#39; height=&#39;600&#39; viewBox=&#39;0 0 1600 600&#39; preserveAspectRatio=&#39;none&#39;%3E%3Crect width=&#39;1600&#39; height=&#39;600&#39; fill=&#39;%231f6f8b&#39;/%3E%3Ccircle cx=&#39;800&#39; cy=&#39;380&#39; r=&#39;170&#39; fill=&#39;%23f2b457&#39;/%3E%3Crect y=&#39;420&#39; width=&#39;1600&#39; height=&#39;180&#39; fill=&#39;%23243f6b&#39;/%3E%3C/svg%3E&quot; alt=&quot;The outdoor screen on the lake shore at sunset&quot; width=&quot;1600&quot; height=&quot;600&quot;&gt; &lt;!-- the hero photo, 1600 × 600 --&gt;
+&lt;div class=&quot;layout&quot;&gt; &lt;!-- main and the aside: stacked on phones, side by side on wide screens --&gt;
+  &lt;main&gt; &lt;!-- this page&#39;s content --&gt;
+    &lt;h1&gt;Lakeside Film Festival 2026&lt;/h1&gt; &lt;!-- the page title --&gt;
+    &lt;p class=&quot;intro&quot;&gt;Four nights of new films on a screen by the water, June 18 to 21.&lt;/p&gt; &lt;!-- the introduction --&gt;
+    &lt;ul class=&quot;films&quot;&gt; &lt;!-- the film cards --&gt;
+      &lt;li class=&quot;film&quot;&gt; &lt;!-- card 1 --&gt;
+        &lt;span class=&quot;badge&quot;&gt;Sold out&lt;/span&gt; &lt;!-- a badge for the top-right corner --&gt;
+        &lt;img class=&quot;poster&quot; src=&quot;data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;400&#39; height=&#39;600&#39; viewBox=&#39;0 0 400 600&#39; preserveAspectRatio=&#39;none&#39;%3E%3Crect width=&#39;400&#39; height=&#39;600&#39; fill=&#39;%232b2350&#39;/%3E%3Ccircle cx=&#39;200&#39; cy=&#39;220&#39; r=&#39;100&#39; fill=&#39;%23f2b457&#39;/%3E%3C/svg%3E&quot; alt=&quot;Poster for Night Swim: a sun setting over a dark pool&quot; width=&quot;400&quot; height=&quot;600&quot;&gt; &lt;!-- a 2 : 3 poster --&gt;
+        &lt;h2&gt;Night Swim&lt;/h2&gt; &lt;!-- the film --&gt;
+        &lt;p&gt;A lifeguard and a night janitor share one summer at a closed city pool.&lt;/p&gt; &lt;!-- its description --&gt;
+        &lt;a class=&quot;button&quot; href=&quot;tickets.html&quot;&gt;Get tickets&lt;/a&gt; &lt;!-- the call to action --&gt;
+      &lt;/li&gt; &lt;!-- end of card 1 --&gt;
+      &lt;li class=&quot;film&quot;&gt; &lt;!-- card 2 --&gt;
+        &lt;img class=&quot;poster&quot; src=&quot;data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;400&#39; height=&#39;600&#39; viewBox=&#39;0 0 400 600&#39; preserveAspectRatio=&#39;none&#39;%3E%3Crect width=&#39;400&#39; height=&#39;600&#39; fill=&#39;%231f5e4a&#39;/%3E%3Ccircle cx=&#39;200&#39; cy=&#39;220&#39; r=&#39;100&#39; fill=&#39;%23f2b457&#39;/%3E%3C/svg%3E&quot; alt=&quot;Poster for Paper Kites: a kite over an empty parking lot&quot; width=&quot;400&quot; height=&quot;600&quot;&gt; &lt;!-- a 2 : 3 poster --&gt;
+        &lt;h2&gt;Paper Kites&lt;/h2&gt; &lt;!-- the film --&gt;
+        &lt;p&gt;Two sisters, one broken car and the longest weekend of their lives.&lt;/p&gt; &lt;!-- its description --&gt;
+        &lt;a class=&quot;button&quot; href=&quot;tickets.html&quot;&gt;Get tickets&lt;/a&gt; &lt;!-- the call to action --&gt;
+      &lt;/li&gt; &lt;!-- end of card 2 --&gt;
+      &lt;li class=&quot;film&quot;&gt; &lt;!-- card 3 --&gt;
+        &lt;span class=&quot;badge&quot;&gt;Sold out&lt;/span&gt; &lt;!-- a badge for the top-right corner --&gt;
+        &lt;img class=&quot;poster&quot; src=&quot;data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;400&#39; height=&#39;600&#39; viewBox=&#39;0 0 400 600&#39; preserveAspectRatio=&#39;none&#39;%3E%3Crect width=&#39;400&#39; height=&#39;600&#39; fill=&#39;%236b2443&#39;/%3E%3Ccircle cx=&#39;200&#39; cy=&#39;220&#39; r=&#39;100&#39; fill=&#39;%23f2b457&#39;/%3E%3C/svg%3E&quot; alt=&quot;Poster for Salt and Iron: cranes over a frozen shipyard&quot; width=&quot;400&quot; height=&quot;600&quot;&gt; &lt;!-- a 2 : 3 poster --&gt;
+        &lt;h2&gt;Salt and Iron&lt;/h2&gt; &lt;!-- the film --&gt;
+        &lt;p&gt;The last winter of a shipyard, told by the welders who kept it running.&lt;/p&gt; &lt;!-- its description --&gt;
+        &lt;a class=&quot;button&quot; href=&quot;tickets.html&quot;&gt;Get tickets&lt;/a&gt; &lt;!-- the call to action --&gt;
+      &lt;/li&gt; &lt;!-- end of card 3 --&gt;
+      &lt;li class=&quot;film&quot;&gt; &lt;!-- card 4 --&gt;
+        &lt;img class=&quot;poster&quot; src=&quot;data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;400&#39; height=&#39;600&#39; viewBox=&#39;0 0 400 600&#39; preserveAspectRatio=&#39;none&#39;%3E%3Crect width=&#39;400&#39; height=&#39;600&#39; fill=&#39;%23243f6b&#39;/%3E%3Ccircle cx=&#39;200&#39; cy=&#39;220&#39; r=&#39;100&#39; fill=&#39;%23f2b457&#39;/%3E%3C/svg%3E&quot; alt=&quot;Poster for Static: an old radio glowing in a dark room&quot; width=&quot;400&quot; height=&quot;600&quot;&gt; &lt;!-- a 2 : 3 poster --&gt;
+        &lt;h2&gt;Static&lt;/h2&gt; &lt;!-- the film --&gt;
+        &lt;p&gt;A late-night radio host hears a caller who sounds exactly like her, in 1987.&lt;/p&gt; &lt;!-- its description --&gt;
+        &lt;a class=&quot;button&quot; href=&quot;tickets.html&quot;&gt;Get tickets&lt;/a&gt; &lt;!-- the call to action --&gt;
+      &lt;/li&gt; &lt;!-- end of card 4 --&gt;
+    &lt;/ul&gt; &lt;!-- end of the film cards --&gt;
+  &lt;/main&gt; &lt;!-- end of main --&gt;
+  &lt;aside class=&quot;info&quot;&gt; &lt;!-- the sidebar --&gt;
+    &lt;h2&gt;Plan your visit&lt;/h2&gt; &lt;!-- its heading --&gt;
+    &lt;p&gt;Gates open at 7 p.m. Bring a blanket or rent a chair at the gate. Every screening has English captions.&lt;/p&gt; &lt;!-- practical details --&gt;
+  &lt;/aside&gt; &lt;!-- end of the sidebar --&gt;
+&lt;/div&gt; &lt;!-- end of the layout --&gt;
+&lt;footer class=&quot;foot&quot;&gt; &lt;!-- the bottom of the page --&gt;
+  &lt;p&gt;© 2026 Lakeside Film Festival · 12 Shore Road&lt;/p&gt; &lt;!-- the footer line --&gt;
+&lt;/footer&gt; &lt;!-- end of the footer --&gt;
+&lt;/body&gt;&lt;/html&gt;"></iframe>
+</section>
+<h2>Quizzes</h2>
+<table>
+<caption>Quiz results recorded in the browser</caption>
+<thead><tr><th scope="col">Quiz</th><th scope="col">Latest</th><th scope="col">Best</th><th scope="col">Attempts</th></tr></thead>
+<tbody>
+<tr><th scope="row">Quiz: pixels and color depth</th><td>7 of 7</td><td>7 of 7</td><td>1</td></tr>
+<tr><th scope="row">Play the browser: which file gets downloaded?</th><td>6 of 8</td><td>6 of 8</td><td>3</td></tr>
+<tr><th scope="row">Quiz: image sizes and responsive images</th><td>8 of 8</td><td>8 of 8</td><td>2</td></tr>
+<tr><th scope="row">Quiz: file formats</th><td>8 of 8</td><td>8 of 8</td><td>1</td></tr>
+<tr><th scope="row">Quiz: audio and video</th><td>8 of 8</td><td>8 of 8</td><td>1</td></tr>
+<tr><th scope="row">Quiz: working with color</th><td>8 of 8</td><td>8 of 8</td><td>1</td></tr>
+<tr><th scope="row">Quiz: normal flow, floats and positioning</th><td>8 of 8</td><td>8 of 8</td><td>1</td></tr>
+<tr><th scope="row">Quiz: Flexbox</th><td>8 of 8</td><td>8 of 8</td><td>2</td></tr>
+<tr><th scope="row">Quiz: Grid</th><td>8 of 8</td><td>8 of 8</td><td>2</td></tr>
+<tr><th scope="row">Quiz: responsive design</th><td>8 of 8</td><td>8 of 8</td><td>2</td></tr>
+<tr><th scope="row">Quiz: effects and preprocessors</th><td>8 of 8</td><td>8 of 8</td><td>2</td></tr>
+</tbody>
+</table>
+<h2>Written answers</h2>
+<div class="card">
+<p class="q">A classmate uploads a 4000 × 3000 photo straight from their phone and shows it 400 pixels wide on their project page. Explain what this costs the people who visit the page, and describe how you would fix it, using the ideas of dimensions, display size and srcset.</p>
+<p class="answer">This makes visitors pages  slow, especially on phones with weak signal, it also wastes their data plan and battery, and can make the layout jump while it loads. To fix it, resize the image’s actual dimensions to match its display size, with one copy at 400px and one at 800px for sharp high-density screens, and compress them, for example as WebP. Then give the browser the choices with sizes and srcset, and set width and height so space is reserved before the image arrives.</p>
+</div>
+<div class="card">
+<p class="q">Explain the difference between captions, subtitles and a transcript, and who each one helps. Then explain why a page should never play a video with sound by itself.</p>
+<p class="answer">Captions show the spoken words in the same language, plus key sounds. They help people who are deaf or hard of hearing, or anyone watching with the sound off. 
+Subtitles translate the dialogue into another language and usually skip sound effects. They help people who don’t speak the video’s language. 
+A transcript is a separate text version of the whole video. It helps users that are deaf and blind on braille displays, people who prefer to read or skim, and search engines.
+A page should never play a video with sound by itself because it drowns out screen readers, startles people and disrupts others nearby. WCAG requires that automatic audio longer than 3 seconds can be paused or stopped, so let the user start the video, or autoplay it muted with controls.</p>
+</div>
+<div class="card">
+<p class="q">A designer says the new yellow buttons must be readable because their HSL lightness is 50%, the same as the blue ones. Explain why the lightness number is not enough, what you would measure instead, and why an error message should never be shown by color alone.</p>
+<p class="answer">The lightness number is not enough because two colors with the same 50% lightness can look completely different. What should be measured instead is the contrast ratio between the text color and the button color and error messages should never be shown by color alone because about 1 in 12 men have some color blindness, so a red border may look the same as a normal one.</p>
+</div>
+<div class="card">
+<p class="q">Explain the difference between Flexbox and Grid in your own words. Then name one layout from this homework where you would choose Flexbox and one where you would choose Grid, and say why.</p>
+<p class="answer">Flexbox lays items out in one direction, a row or a column, and lets each item’s content decide how much space it takes. Grid lays items out in two directions at once, rows and columns. You define the structure first and then place items into it.</p>
+</div>
+<div class="card">
+<p class="q">Explain what mobile-first CSS means, and give two reasons it is the recommended way to organize a responsive stylesheet.</p>
+<p class="answer">Mobile-first CSS means writing the base styles for the smallest screen first, with no media query, and then adding min-width media queries that layer on changes as the screen gets wider. A phone gets just the simple one-column layout, while tablets and desktops get that plus the extra rules for their width.
+Two reasons why it is the recommended way to organize a stylesheet are, phones layout is usually the simplest and they often have slower connections and less processing power but are use widely.</p>
+</div>
+<div class="card">
+<p class="q">Sass variables and CSS custom properties both store a value under a name. Explain one thing a custom property can do that a Sass variable cannot, and describe a project where you would still reach for Sass.</p>
+<p class="answer">A CSS custom property lives in the browser, so it can change while the page runs. Sass variables exist only while compiling. In the finished CSS they are gone, so they can&#39;t change in a media query or from JavaScript. CSS custom properties can, which is why many projects now use custom properties even inside Sass. I think Sass should be used on a large site with a design system that has dozens of pages.</p>
+</div>
+</main>
+</body>
+</html>
