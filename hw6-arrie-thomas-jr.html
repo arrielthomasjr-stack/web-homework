@@ -1,0 +1,2625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Homework 6 · Arrie Thomas Jr</title>
+<style>
+body{margin:0;padding:24px 16px;background:#fff;color:#1d2330;font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header,main{max-width:980px;margin:0 auto}
+h1{font-size:1.9rem;line-height:1.2;margin:0 0 .3em}
+h2{font-size:1.4rem;margin:2.2em 0 .7em;padding-bottom:.3em;border-bottom:2px solid #d5dae3}
+h3{font-size:1.15rem;margin:0 0 .3em}
+h4{font-size:.95rem;margin:1.2em 0 .4em;color:#4a5262}
+.meta{margin:0;color:#4a5262}
+.card{border:1px solid #d5dae3;border-radius:10px;padding:16px 18px;margin:0 0 22px}
+.st{font-weight:700;margin:0 0 8px}.st.ok{color:#1b7a3a}.st.no{color:#b3261e}
+ul.checks{list-style:none;padding:0;margin:0}ul.checks li{padding:3px 0}
+.mk{display:inline-block;min-width:6.5em;font-weight:700}.ok .mk{color:#1b7a3a}.no .mk{color:#b3261e}
+pre{margin:0;background:#f4f6f9;border:1px solid #d5dae3;border-radius:8px;padding:12px;overflow:auto;max-height:440px;font:13px/1.5 ui-monospace,Menlo,Consolas,monospace;white-space:pre}
+pre.console{background:#161a23;color:#e8ecf3;border-color:#161a23;max-height:300px}
+.console .error{color:#ff9b93}.console .warn{color:#f2c46d}.console .info{color:#9ec5ff}
+code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.92em}
+iframe{display:block;width:100%;height:420px;border:1px solid #c3c9d4;border-radius:8px;background:#fff}
+table{border-collapse:collapse;width:100%}caption{text-align:left;font-weight:700;padding-bottom:6px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid #d5dae3;vertical-align:top}thead th{background:#eef1f6}
+.q{font-weight:700;margin:0 0 6px}
+.answer{white-space:pre-wrap;overflow-wrap:anywhere;background:#f4f6f9;border-left:4px solid #237089;padding:10px 14px;border-radius:6px;margin:0}
+.empty{color:#8a5a00;font-style:italic}
+.note{color:#4a5262;font-size:.9rem;margin:.4em 0 0}
+.sum li{margin:2px 0}
+</style>
+</head>
+<body>
+<header>
+<h1>Homework 6: Modules 8 and 9</h1>
+<p class="meta">Name: <strong>Arrie Thomas Jr</strong></p>
+<p class="meta">Downloaded: October 25, 2026 at 10:23 AM</p>
+</header>
+<main>
+<h2>Summary</h2>
+<ul class="sum">
+<li>Challenges complete: 13 of 13</li>
+<li>Quizzes finished: 10 of 10</li>
+<li>Written answers: 6 of 6</li>
+</ul>
+<h2>Challenges</h2>
+<section class="card" id="challenge-1">
+<h3>Challenge 8.1: Run the script at the right time</h3>
+<p class="st ok">4 of 4 checks pass</p>
+<ul class="checks"><li class="ok"><span class="mk">&#10003; Pass</span> The status line says <code>Spots open: sign up below</code> (the script found the paragraph)</li><li class="ok"><span class="mk">&#10003; Pass</span> The <code>&lt;script&gt;</code> is still in the <code>&lt;head&gt;</code>, and its code waits for <code>DOMContentLoaded</code></li><li class="ok"><span class="mk">&#10003; Pass</span> The button has no inline <code>onclick</code> attribute</li><li class="ok"><span class="mk">&#10003; Pass</span> The directions start hidden, and clicking the button shows them (attached with <code>addEventListener</code>)</li></ul>
+<h4>HTML</h4>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;title&gt;Autumn Ridge Walk&lt;/title&gt;
+  &lt;script&gt;
+    // Wait until the whole page has been parsed, so the elements below exist
+    document.addEventListener(&#39;DOMContentLoaded&#39;, () =&gt; {
+      const statusLine = document.querySelector(&#39;#status&#39;); // find the paragraph with id=&quot;status&quot;
+      statusLine.textContent = &#39;Spots open: sign up below&#39;; // replace its &quot;Loading...&quot; text
+      console.log(&#39;Status updated&#39;); // a note in the Console that this line was reached
+
+      function showMap() { // shows the hidden directions
+        document.querySelector(&#39;#directions&#39;).hidden = false; // un-hide the paragraph
+      } // end of showMap
+
+      // attach showMap from the script instead of an onclick attribute
+      document.querySelector(&#39;#map-button&#39;).addEventListener(&#39;click&#39;, showMap);
+    }); // end of the DOMContentLoaded listener
+  &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Autumn Ridge Walk&lt;/h1&gt;
+  &lt;p id=&quot;status&quot;&gt;Loading...&lt;/p&gt;
+  &lt;button type=&quot;button&quot; id=&quot;map-button&quot;&gt;Show directions&lt;/button&gt;
+  &lt;p id=&quot;directions&quot; hidden&gt;Take Route 9 north to the trailhead lot.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<h4>Console output</h4>
+<pre class="console"><span class="log">Status updated</span></pre>
+<h4>Preview</h4>
+<iframe title="Preview of Challenge 8.1: Run the script at the right time" sandbox="allow-scripts" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;&lt;script&gt;(function previewHelper(pgId, lineMap, opts) {
+    opts = opts || {};
+    // A preview shares this site&#39;s storage, so student code gets its own corner of it: keys are
+    // stored with a prefix, and clear(), length and key() only see that corner. A student&#39;s
+    // localStorage.clear() therefore never wipes the course progress saved under wd1:v1.
+    // Property access (localStorage.theme = &#39;dark&#39;, Object.keys(localStorage)) works too.
+    (function () {
+      var P = &#39;wd1-pg:&#39;;
+      [&#39;localStorage&#39;, &#39;sessionStorage&#39;].forEach(function (name) {
+        var real;
+        try { real = window[name]; if (!real) return; } catch (e) { return; }
+        var keys = function () {
+          var out = [];
+          for (var i = 0; i &lt; real.length; i++) { var k = real.key(i); if (k &amp;&amp; k.indexOf(P) === 0) out.push(k.slice(P.length)); }
+          return out;
+        };
+        var api = {
+          getItem: function (k) { return real.getItem(P + String(k)); },
+          setItem: function (k, v) { real.setItem(P + String(k), String(v)); },
+          removeItem: function (k) { real.removeItem(P + String(k)); },
+          clear: function () { keys().forEach(function (k) { real.removeItem(P + k); }); },
+          key: function (n) { var ks = keys(); return n &gt;= 0 &amp;&amp; n &lt; ks.length ? ks[n] : null; }
+        };
+        var target = {};
+        try { if (typeof Storage !== &#39;undefined&#39;) Object.setPrototypeOf(target, Storage.prototype); } catch (e) { /* ignore */ }
+        var shim = typeof Proxy === &#39;undefined&#39; ? api : new Proxy(target, {
+          get: function (t, p) {
+            if (p === &#39;length&#39;) return keys().length;
+            if (typeof p !== &#39;string&#39; || Object.prototype.hasOwnProperty.call(api, p)) return api[p];
+            if (p in Object.prototype) return Object.prototype[p];
+            var v = real.getItem(P + p);
+            return v === null ? undefined : v;
+          },
+          set: function (t, p, v) { if (typeof p === &#39;string&#39;) real.setItem(P + p, String(v)); return true; },
+          has: function (t, p) { return typeof p === &#39;string&#39; &amp;&amp; (p in api || p === &#39;length&#39; || real.getItem(P + p) !== null); },
+          deleteProperty: function (t, p) { if (typeof p === &#39;string&#39;) real.removeItem(P + p); return true; },
+          ownKeys: function () { return keys(); },
+          getOwnPropertyDescriptor: function (t, p) {
+            var v = typeof p === &#39;string&#39; ? real.getItem(P + p) : null;
+            return v === null ? undefined : { value: v, writable: true, enumerable: true, configurable: true };
+          }
+        });
+        try { Object.defineProperty(window, name, { configurable: true, get: function () { return shim; } }); } catch (e) { /* leave it */ }
+      });
+    })();
+    var post = function (type, args, extra) {
+      var msg = { wd1pg: pgId, type: type, args: args };
+      if (extra) for (var k in extra) msg[k] = extra[k];
+      try { parent.postMessage(msg, &#39;*&#39;); } catch (e) { /* ignore */ }
+    };
+    // Cap the output of one run, so a runaway loop full of console.log cannot flood the console panel.
+    var sent = { log: 0, error: 0 }, LIMIT = { log: 1000, error: 100 };
+    var send = function (type, args) {
+      var k = type === &#39;error&#39; ? &#39;error&#39; : &#39;log&#39;;
+      if (sent[k] &gt; LIMIT[k]) return;
+      if (++sent[k] &gt; LIMIT[k]) { post(&#39;warn&#39;, [&#39;Console output stopped after &#39; + LIMIT[k] + &#39; messages. Edit the code to run it again.&#39;]); return; }
+      post(type, args);
+    };
+    var fmt = function (v) {
+      try {
+        if (typeof v === &#39;string&#39;) return v;
+        if (v === undefined) return &#39;undefined&#39;;
+        if (typeof v === &#39;function&#39;) return &#39;ƒ &#39; + (v.name || &#39;anonymous&#39;) + &#39;()&#39;;
+        if (typeof Element !== &#39;undefined&#39; &amp;&amp; v instanceof Element) {
+          return &#39;&lt;&#39; + v.tagName.toLowerCase() + (v.id ? &#39;#&#39; + v.id : &#39;&#39;) +
+            (typeof v.className === &#39;string&#39; &amp;&amp; v.className.trim() ? &#39;.&#39; + v.className.trim().split(/\s+/).join(&#39;.&#39;) : &#39;&#39;) + &#39;&gt;&#39;;
+        }
+        if (typeof NodeList !== &#39;undefined&#39; &amp;&amp; (v instanceof NodeList || v instanceof HTMLCollection)) {
+          return (v instanceof NodeList ? &#39;NodeList&#39; : &#39;HTMLCollection&#39;) + &#39;(&#39; + v.length + &#39;) [&#39; + Array.prototype.map.call(v, fmt).join(&#39;, &#39;) + &#39;]&#39;;
+        }
+        if (v instanceof Error) return v.name + &#39;: &#39; + v.message;
+        if (typeof Event !== &#39;undefined&#39; &amp;&amp; v instanceof Event) return v.constructor.name + &#39; { type: &quot;&#39; + v.type + &#39;&quot; }&#39;;
+        if (typeof v === &#39;symbol&#39; || typeof v === &#39;bigint&#39;) return typeof v === &#39;bigint&#39; ? v + &#39;n&#39; : v.toString();
+        // A promise is still pending at the moment it is logged in nearly every real case.
+        if (typeof Promise !== &#39;undefined&#39; &amp;&amp; v instanceof Promise) return &#39;Promise {&lt;pending&gt;}&#39;;
+        if (typeof Map !== &#39;undefined&#39; &amp;&amp; v instanceof Map) {
+          var mp = []; v.forEach(function (val, key) { mp.push(fmtIn(key) + &#39; =&gt; &#39; + fmtIn(val)); });
+          return &#39;Map(&#39; + v.size + &#39;) {&#39; + mp.join(&#39;, &#39;) + &#39;}&#39;;
+        }
+        if (typeof Set !== &#39;undefined&#39; &amp;&amp; v instanceof Set) {
+          var st = []; v.forEach(function (val) { st.push(fmtIn(val)); });
+          return &#39;Set(&#39; + v.size + &#39;) {&#39; + st.join(&#39;, &#39;) + &#39;}&#39;;
+        }
+        if (v instanceof Date) return isNaN(v) ? &#39;Invalid Date&#39; : v.toString();
+        var json = JSON.stringify(v, function (k, x) {
+          if (typeof x === &#39;function&#39;) return &#39;__wd1fn__&#39; + (x.name || &#39;anonymous&#39;) + &#39;__&#39;;
+          if (x === undefined) return &#39;__wd1undef__&#39;;
+          return x;
+        }, 1);
+        json = json === undefined ? String(v) : json.replace(/\n\s*/g, &#39; &#39;).replace(/&quot;__wd1undef__&quot;/g, &#39;undefined&#39;)
+          .replace(/&quot;__wd1fn__([\w$]*)__&quot;/g, &#39;ƒ $1()&#39;);
+        // Objects made by a class (or a constructor function) show the class name first, like DevTools.
+        var proto = Object.getPrototypeOf(v);
+        var cname = proto &amp;&amp; proto.constructor &amp;&amp; proto.constructor.name;
+        if (cname &amp;&amp; cname !== &#39;Object&#39; &amp;&amp; cname !== &#39;Array&#39; &amp;&amp; typeof v === &#39;object&#39;) return cname + &#39; &#39; + json;
+        return json;
+      } catch (e) { return String(v); }
+    };
+    // Strings inside a Map or Set keep their quotes, as in DevTools.
+    var fmtIn = function (v) { return typeof v === &#39;string&#39; ? JSON.stringify(v) : fmt(v); };
+    [&#39;log&#39;, &#39;info&#39;, &#39;warn&#39;, &#39;error&#39;].forEach(function (k) {
+      var orig = console[k];
+      console[k] = function () {
+        send(k, Array.prototype.map.call(arguments, fmt));
+        if (orig) orig.apply(console, arguments);
+      };
+    });
+    // The document&#39;s own line numbers count the setup code mixed in with the student&#39;s code,
+    // so translate them; an error outside the student&#39;s tabs gets no line rather than a wrong one.
+    // Each lineMap entry is [firstDocLine, lastDocLine, offset, tab]; the last match wins, because
+    // a piece that starts partway through a line is the one that continues on it.
+    // An error from a separate file (&lt;script src&gt;) keeps that file&#39;s own name and line.
+    window.addEventListener(&#39;error&#39;, function (e) {
+      var m = lineMap || [], n = e.lineno, where = &#39;&#39;, file = e.filename || &#39;&#39;;
+      if (file &amp;&amp; file !== location.href) {
+        if (n) where = &#39; (&#39; + (file.split(/[?#]/)[0].split(&#39;/&#39;).pop() || file) + &#39; line &#39; + n + &#39;)&#39;;
+      } else {
+        for (var i = 0; n &amp;&amp; i &lt; m.length; i++) {
+          if (n &gt;= m[i][0] &amp;&amp; n &lt;= m[i][1]) where = &#39; (&#39; + m[i][3] + &#39; line &#39; + (n - m[i][2]) + &#39;)&#39;;
+        }
+      }
+      send(&#39;error&#39;, [e.message + where]);
+    });
+    // A rejected promise nobody handled (for example a failed await with no try/catch).
+    window.addEventListener(&#39;unhandledrejection&#39;, function (e) {
+      var r = e.reason;
+      send(&#39;error&#39;, [&#39;Uncaught (in promise) &#39; + (r instanceof Error ? r.name + &#39;: &#39; + r.message : fmt(r))]);
+    });
+
+    var panel = null;
+    function note(html) {
+      if (!document.body) return;
+      if (!panel || !panel.isConnected) {
+        panel = document.createElement(&#39;wd1-preview-note&#39;);
+        panel.style.cssText = &#39;all:initial;position:fixed;left:8px;right:8px;bottom:8px;z-index:2147483647;display:block;&#39;;
+        var root = panel.attachShadow ? panel.attachShadow({ mode: &#39;open&#39; }) : panel;
+        root.innerHTML = &#39;&lt;style&gt;.n{font:13px/1.45 system-ui,-apple-system,Segoe UI,sans-serif;color:#F3F5F8;background:#161A23;border-radius:10px;padding:10px 38px 10px 12px;box-shadow:0 8px 24px rgba(0,0,0,.35);position:relative;max-height:60vh;overflow:auto}&#39; +
+          &#39;.n b{color:#fff}.n code{font:12px ui-monospace,Menlo,Consolas,monospace;background:#2A3140;padding:1px 5px;border-radius:4px;color:#FFD89B;word-break:break-all}&#39; +
+          &#39;.n table{border-collapse:collapse;margin-top:6px;width:100%}.n td,.n th{text-align:left;border-top:1px solid #2F3747;padding:3px 6px;font-size:12px;vertical-align:top}&#39; +
+          &#39;.n th{color:#9AA3B5;font-weight:600}.n .w{color:#F2B457;margin-top:6px}.x{position:absolute;top:6px;right:6px;border:0;background:#2A3140;color:#fff;border-radius:6px;width:26px;height:26px;cursor:pointer;font-size:14px}&lt;/style&gt;&#39; +
+          &#39;&lt;div class=&quot;n&quot;&gt;&lt;button class=&quot;x&quot; aria-label=&quot;Close&quot;&gt;×&lt;/button&gt;&lt;div class=&quot;c&quot;&gt;&lt;/div&gt;&lt;/div&gt;&#39;;
+        root.querySelector(&#39;.x&#39;).addEventListener(&#39;click&#39;, function () { panel.remove(); });
+        document.body.appendChild(panel);
+      }
+      (panel.shadowRoot || panel).querySelector(&#39;.c&#39;).innerHTML = html;
+    }
+    var escH = function (s) { return String(s).replace(/[&amp;&lt;&gt;&quot;]/g, function (c) { return { &#39;&amp;&#39;: &#39;&amp;amp;&#39;, &#39;&lt;&#39;: &#39;&amp;lt;&#39;, &#39;&gt;&#39;: &#39;&amp;gt;&#39;, &#39;&quot;&#39;: &#39;&amp;quot;&#39; }[c]; }); };
+
+    document.addEventListener(&#39;click&#39;, function (e) {
+      var a = e.target &amp;&amp; e.target.closest ? e.target.closest(&#39;a[href]&#39;) : null;
+      if (!a || e.defaultPrevented) return;
+      var href = a.getAttribute(&#39;href&#39;);
+      if (href.charAt(0) === &#39;#&#39;) {
+        e.preventDefault();
+        var t = href.length &gt; 1 ? document.getElementById(decodeURIComponent(href.slice(1))) : null;
+        if (t) t.scrollIntoView({ behavior: &#39;smooth&#39; }); else window.scrollTo(0, 0);
+        return;
+      }
+      if (/^javascript:/i.test(href)) return;
+      e.preventDefault();
+      // A server playground (PHP, for example) follows links to its own pages by running the server again.
+      if (opts.server &amp;&amp; !/^[a-z][a-z0-9+.-]*:|^\/\//i.test(href) &amp;&amp; a.target !== &#39;_blank&#39;) {
+        post(&#39;nav&#39;, [], { method: &#39;GET&#39;, action: href, body: &#39;&#39;, kind: &#39;link&#39; });
+        return;
+      }
+      note(&#39;&lt;b&gt;Link clicked:&lt;/b&gt; &lt;code&gt;&#39; + escH(href) + &#39;&lt;/code&gt;&lt;br&gt;Links don\&#39;t navigate inside this preview&#39; +
+        (a.target === &#39;_blank&#39; ? &#39; (it would open in a new tab).&#39; : &#39;.&#39;));
+      send(&#39;info&#39;, [&#39;Link clicked → &#39; + href]);
+    });
+
+    window.addEventListener(&#39;submit&#39;, function (e) {
+      if (e.defaultPrevented) return;
+      e.preventDefault();
+      var f = e.target, fd;
+      try { fd = new FormData(f, e.submitter || undefined); } catch (err) { fd = new FormData(f); }
+      var method = (f.getAttribute(&#39;method&#39;) || &#39;get&#39;).toUpperCase();
+      var action = f.getAttribute(&#39;action&#39;) || &#39;(same page)&#39;;
+      var pairs = [];
+      fd.forEach(function (v, k) { pairs.push([k, typeof v === &#39;string&#39; ? v : (v &amp;&amp; v.name ? v.name : &#39;(no file)&#39;)]); });
+      var enc = pairs.map(function (p) { return encodeURIComponent(p[0]) + &#39;=&#39; + encodeURIComponent(p[1]).replace(/%20/g, &#39;+&#39;); }).join(&#39;&amp;&#39;);
+      // A server playground receives the request and answers it, just like a real server would.
+      var rawAction = f.getAttribute(&#39;action&#39;) || &#39;&#39;;
+      if (opts.server &amp;&amp; !/^[a-z][a-z0-9+.-]*:|^\/\//i.test(rawAction)) {
+        post(&#39;nav&#39;, [], { method: method === &#39;POST&#39; ? &#39;POST&#39; : &#39;GET&#39;, action: rawAction, body: enc, kind: &#39;form&#39; });
+        return;
+      }
+      var unnamed = Array.prototype.filter.call(f.querySelectorAll(&#39;input, select, textarea&#39;), function (c) {
+        return !c.name &amp;&amp; !/^(submit|button|reset|image)$/i.test(c.type);
+      }).length;
+      var html = &#39;&lt;b&gt;Form submitted&lt;/b&gt; · &lt;code&gt;&#39; + method + &#39;&lt;/code&gt; → &lt;code&gt;&#39; + escH(action) + &#39;&lt;/code&gt;&#39;;
+      if (method === &#39;GET&#39;) html += &#39;&lt;br&gt;Browser would request: &lt;code&gt;&#39; + escH((action === &#39;(same page)&#39; ? &#39;&#39; : action) + &#39;?&#39; + enc) + &#39;&lt;/code&gt;&#39;;
+      else html += &#39;&lt;br&gt;Request body: &lt;code&gt;&#39; + escH(enc || &#39;(empty)&#39;) + &#39;&lt;/code&gt;&#39;;
+      if (pairs.length) {
+        html += &#39;&lt;table&gt;&lt;tr&gt;&lt;th&gt;name&lt;/th&gt;&lt;th&gt;value&lt;/th&gt;&lt;/tr&gt;&#39; + pairs.map(function (p) { return &#39;&lt;tr&gt;&lt;td&gt;&lt;code&gt;&#39; + escH(p[0]) + &#39;&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&#39; + escH(p[1]) + &#39;&lt;/td&gt;&lt;/tr&gt;&#39;; }).join(&#39;&#39;) + &#39;&lt;/table&gt;&#39;;
+      } else html += &#39;&lt;div class=&quot;w&quot;&gt;No data was sent. Give each control a &lt;code&gt;name&lt;/code&gt; attribute.&lt;/div&gt;&#39;;
+      if (unnamed) html += &#39;&lt;div class=&quot;w&quot;&gt;&#39; + unnamed + &#39; field&#39; + (unnamed &gt; 1 ? &#39;s have&#39; : &#39; has&#39;) + &#39; no &lt;code&gt;name&lt;/code&gt;, so &#39; + (unnamed &gt; 1 ? &#39;they were&#39; : &#39;it was&#39;) + &#39; not sent.&lt;/div&gt;&#39;;
+      note(html);
+      send(&#39;info&#39;, [&#39;Form submitted: &#39; + method + &#39; &#39; + action + (enc ? &#39; · &#39; + enc : &#39;&#39;)]);
+    });
+  })(&quot;hw6-report&quot;, [[1,3,0,&quot;HTML&quot;],[202,226,199,&quot;HTML&quot;],[226,227,199,&quot;HTML&quot;]], {&quot;server&quot;:false});&lt;/script&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;title&gt;Autumn Ridge Walk&lt;/title&gt;
+  &lt;script&gt;
+    // Wait until the whole page has been parsed, so the elements below exist
+    document.addEventListener(&#39;DOMContentLoaded&#39;, () =&gt; {
+      const statusLine = document.querySelector(&#39;#status&#39;); // find the paragraph with id=&quot;status&quot;
+      statusLine.textContent = &#39;Spots open: sign up below&#39;; // replace its &quot;Loading...&quot; text
+      console.log(&#39;Status updated&#39;); // a note in the Console that this line was reached
+
+      function showMap() { // shows the hidden directions
+        document.querySelector(&#39;#directions&#39;).hidden = false; // un-hide the paragraph
+      } // end of showMap
+
+      // attach showMap from the script instead of an onclick attribute
+      document.querySelector(&#39;#map-button&#39;).addEventListener(&#39;click&#39;, showMap);
+    }); // end of the DOMContentLoaded listener
+  &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Autumn Ridge Walk&lt;/h1&gt;
+  &lt;p id=&quot;status&quot;&gt;Loading...&lt;/p&gt;
+  &lt;button type=&quot;button&quot; id=&quot;map-button&quot;&gt;Show directions&lt;/button&gt;
+  &lt;p id=&quot;directions&quot; hidden&gt;Take Route 9 north to the trailhead lot.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;"></iframe>
+<p class="note">The preview runs the code above, so it can be clicked and typed into.</p>
+</section>
+<section class="card" id="challenge-2">
+<h3>Challenge 8.2: The trip cost calculator</h3>
+<p class="st ok">5 of 5 checks pass</p>
+<ul class="checks"><li class="ok"><span class="mk">&#10003; Pass</span> <code>cost</code> is the number <code>18.5</code>, the fee plus the parking for any prices (the checks also try others), and <code>feeText</code> and <code>parkingText</code> are still <code>const</code> strings</li><li class="ok"><span class="mk">&#10003; Pass</span> Both strings are converted with <code>Number()</code> (or <code>parseFloat()</code>)</li><li class="ok"><span class="mk">&#10003; Pass</span> <code>spotsLeft</code> is declared with <code>let</code> and ends at <code>7</code></li><li class="ok"><span class="mk">&#10003; Pass</span> <code>summary</code> is exactly <code>3 hikers, $18.50 each, 7 spots left</code>, built with a template literal from the variables</li><li class="ok"><span class="mk">&#10003; Pass</span> <code>isFull</code> is <code>true</code> only when no spots are left (the checks also try 0, 1 and 7 spots), worked out with <code>===</code></li></ul>
+<h4>JavaScript</h4>
+<pre><code>const feeText = &#39;12&#39;; // the trip fee in dollars, as a string
+const parkingText = &#39;6.50&#39;; // the parking pass in dollars, also a string
+const hikers = 3; // how many hikers just signed up (already a number)
+
+// Convert both strings to numbers first, so + adds instead of joining text
+const cost = Number(feeText) + Number(parkingText); // 18.5
+
+// let, because the value changes on the next line
+let spotsLeft = 10; // open spots before these hikers signed up
+spotsLeft = spotsLeft - hikers; // 7
+
+// One template literal; the first $ is a literal dollar sign, ${ } starts an expression
+const summary = `${hikers} hikers, $${cost.toFixed(2)} each, ${spotsLeft} spots left`;
+
+// A comparison already produces true or false
+const isFull = spotsLeft === 0;
+
+console.log(cost, typeof cost); // 18.5 number
+console.log(summary); // 3 hikers, $18.50 each, 7 spots left
+console.log(isFull, typeof isFull); // false boolean</code></pre>
+<h4>Console output</h4>
+<pre class="console"><span class="log">18.5 number</span>
+<span class="log">3 hikers, $18.50 each, 7 spots left</span>
+<span class="log">false boolean</span></pre>
+</section>
+<section class="card" id="challenge-3">
+<h3>Challenge 8.3: Trail rules</h3>
+<p class="st ok">5 of 5 checks pass</p>
+<ul class="checks"><li class="ok"><span class="mk">&#10003; Pass</span> <code>rateTrail</code> returns <code>&#39;hard&#39;</code> for more than 10 miles or more than 2000 feet of climb</li><li class="ok"><span class="mk">&#10003; Pass</span> <code>rateTrail</code> returns <code>&#39;moderate&#39;</code> and <code>&#39;easy&#39;</code> at the right limits: <code>(6, 400)</code> and <code>(10, 2000)</code> are moderate, <code>(5, 800)</code> is easy</li><li class="ok"><span class="mk">&#10003; Pass</span> <code>canJoin</code>: 18 and older always, 14 to 17 only with a waiver, under 14 never</li><li class="ok"><span class="mk">&#10003; Pass</span> <code>gearNote</code> returns the right note for <code>&#39;sun&#39;</code>, <code>&#39;rain&#39;</code> and <code>&#39;snow&#39;</code>, and the fallback for anything else</li><li class="ok"><span class="mk">&#10003; Pass</span> Your code uses <code>else if</code>, a logical operator (<code>&amp;&amp;</code> or <code>||</code>) and a <code>switch</code></li></ul>
+<h4>JavaScript</h4>
+<pre><code>// Strictest rule first: only the first true branch runs
+function rateTrail(miles, climb) {
+  if (miles &gt; 10 || climb &gt; 2000) {
+    return &#39;hard&#39;;
+  } else if (miles &gt; 5 || climb &gt; 800) {
+    return &#39;moderate&#39;;
+  } else {
+    return &#39;easy&#39;;
+  }
+}
+
+// Two ways in: old enough on their own, OR 14+ with a signed waiver
+function canJoin(age, hasWaiver) {
+  return age &gt;= 18 || (age &gt;= 14 &amp;&amp; hasWaiver === true);
+}
+
+// return leaves the function, so no break is needed after each case
+function gearNote(forecast) {
+  switch (forecast) {
+    case &#39;sun&#39;:
+      return &#39;Bring sunscreen&#39;;
+    case &#39;rain&#39;:
+      return &#39;Bring a rain jacket&#39;;
+    case &#39;snow&#39;:
+      return &#39;Trip cancelled&#39;;
+    default:
+      return &#39;Check the forecast again&#39;;
+  }
+}
+
+console.log(rateTrail(12, 300), rateTrail(6, 400), rateTrail(3, 200)); // hard moderate easy
+console.log(canJoin(15, true), canJoin(15, false)); // true false
+console.log(gearNote(&#39;rain&#39;), gearNote(&#39;fog&#39;)); // Bring a rain jacket Check the forecast again</code></pre>
+<h4>Console output</h4>
+<pre class="console"><span class="log">hard moderate easy</span>
+<span class="log">true false</span>
+<span class="log">Bring a rain jacket Check the forecast again</span></pre>
+</section>
+<section class="card" id="challenge-4">
+<h3>Challenge 8.4: Mile markers, water and steep climbs</h3>
+<p class="st ok">5 of 5 checks pass</p>
+<ul class="checks"><li class="ok"><span class="mk">&#10003; Pass</span> <code>markers</code> is <code>[&#39;Mile 1&#39;, &#39;Mile 2&#39;, &#39;Mile 3&#39;, &#39;Mile 4&#39;, &#39;Mile 5&#39;, &#39;Mile 6&#39;]</code></li><li class="ok"><span class="mk">&#10003; Pass</span> <code>markers</code> is filled by a <code>for</code> loop that calls <code>markers.push()</code></li><li class="ok"><span class="mk">&#10003; Pass</span> The water lasts <code>5</code> hours and <code>250</code> ml is left</li><li class="ok"><span class="mk">&#10003; Pass</span> The water is counted down by a <code>while</code> loop</li><li class="ok"><span class="mk">&#10003; Pass</span> <code>firstSteep</code> is <code>1200</code> and <code>checked</code> is <code>3</code>: a <code>for...of</code> loop that stops with <code>break</code></li></ul>
+<h4>JavaScript</h4>
+<pre><code>// for: a counting job
+const trailMiles = 6;
+const markers = [];
+for (let i = 1; i &lt;= trailMiles; i++) {
+  markers.push(`Mile ${i}`);
+}
+
+// while: keep going until the water runs low (count not known in advance)
+let water = 2000;
+let hours = 0;
+while (water &gt;= 350) {
+  water -= 350;
+  hours += 1;
+}
+
+// for...of + break: look through the list and stop at the first match
+const climbs = [300, 650, 1200, 2400, 900];
+let firstSteep = 0;
+let checked = 0;
+for (const climb of climbs) {
+  checked++; // count it before testing, so the stopping climb is counted too
+  if (climb &gt; 1000) {
+    firstSteep = climb;
+    break;
+  }
+}
+
+console.log(markers); // [&quot;Mile 1&quot;, ..., &quot;Mile 6&quot;]
+console.log(hours, water); // 5 250
+console.log(firstSteep, checked); // 1200 3</code></pre>
+<h4>Console output</h4>
+<pre class="console"><span class="log">[ &quot;Mile 1&quot;, &quot;Mile 2&quot;, &quot;Mile 3&quot;, &quot;Mile 4&quot;, &quot;Mile 5&quot;, &quot;Mile 6&quot; ]</span>
+<span class="log">5 250</span>
+<span class="log">1200 3</span></pre>
+</section>
+<section class="card" id="challenge-5">
+<h3>Challenge 8.5: A season of walks in numbers</h3>
+<p class="st ok">5 of 5 checks pass</p>
+<ul class="checks"><li class="ok"><span class="mk">&#10003; Pass</span> <code>longWalks</code> is <code>[12, 8, 9]</code>, made with <code>filter</code></li><li class="ok"><span class="mk">&#10003; Pass</span> <code>km</code> is <code>[9.7, 5.6, 19.3, 12.9, 7.2, 14.5]</code> (numbers, not strings), made with <code>map</code></li><li class="ok"><span class="mk">&#10003; Pass</span> <code>totalMiles</code> is <code>43</code>, made with <code>reduce</code></li><li class="ok"><span class="mk">&#10003; Pass</span> <code>firstOver10</code> is <code>12</code>, made with <code>find</code></li><li class="ok"><span class="mk">&#10003; Pass</span> <code>shortestFirst</code> is <code>[3.5, 4.5, 6, 8, 9, 12]</code>, and <code>miles</code> is still in its original order</li></ul>
+<h4>JavaScript</h4>
+<pre><code>const miles = [6, 3.5, 12, 8, 4.5, 9]; // leave this array exactly as it is
+
+const longWalks = miles.filter((m) =&gt; m &gt; 7); // [12, 8, 9]
+
+const km = miles.map((m) =&gt; Math.round(m * 1.609 * 10) / 10); // [9.7, 5.6, 19.3, 12.9, 7.2, 14.5]
+
+const totalMiles = miles.reduce((sum, m) =&gt; sum + m, 0); // 43
+
+const firstOver10 = miles.find((m) =&gt; m &gt; 10); // 12
+
+// sort() changes the array it is called on, so sort a copy
+const shortestFirst = [...miles].sort((a, b) =&gt; a - b); // [3.5, 4.5, 6, 8, 9, 12]
+
+console.log(longWalks, km);
+console.log(totalMiles, firstOver10); // 43 12
+console.log(shortestFirst, miles); // sorted copy, original unchanged</code></pre>
+<h4>Console output</h4>
+<pre class="console"><span class="log">[ 12, 8, 9 ] [ 9.7, 5.6, 19.3, 12.9, 7.2, 14.5 ]</span>
+<span class="log">43 12</span>
+<span class="log">[ 3.5, 4.5, 6, 8, 9, 12 ] [ 6, 3.5, 12, 8, 4.5, 9 ]</span></pre>
+</section>
+<section class="card" id="challenge-6">
+<h3>Challenge 8.6: A trip object with methods</h3>
+<p class="st ok">5 of 5 checks pass</p>
+<ul class="checks"><li class="ok"><span class="mk">&#10003; Pass</span> <code>trip</code> has <code>miles</code> (<code>6</code>), <code>spots</code> (<code>4</code>) and a <code>hikers</code> array</li><li class="ok"><span class="mk">&#10003; Pass</span> <code>spotsLeft()</code> returns <code>spots</code> minus the number of hikers, using <code>this</code> (so it works on any trip object)</li><li class="ok"><span class="mk">&#10003; Pass</span> <code>join()</code> adds the hiker and returns <code>true</code> while spots are left, then returns <code>false</code> and adds no one</li><li class="ok"><span class="mk">&#10003; Pass</span> <code>leader</code> is <code>&#39;Maya&#39;</code> (dot notation) and <code>&#39;meeting point&#39;</code> is <code>&#39;North trailhead&#39;</code> (bracket notation)</li><li class="ok"><span class="mk">&#10003; Pass</span> <code>saved</code> is the trip as JSON text, made with <code>JSON.stringify(trip)</code> after the new properties were added</li></ul>
+<h4>JavaScript</h4>
+<pre><code>const trip = {
+  title: &#39;Autumn Ridge Walk&#39;,
+  miles: 6,
+  spots: 4,
+  hikers: [],
+  // this = the object the method was called on
+  spotsLeft() {
+    return this.spots - this.hikers.length;
+  },
+  join(person) {
+    if (this.spotsLeft() &gt; 0) {
+      this.hikers.push(person);
+      return true;
+    }
+    return false;
+  },
+};
+
+trip.leader = &#39;Maya&#39;; // dot notation
+trip[&#39;meeting point&#39;] = &#39;North trailhead&#39;; // brackets: the name has a space
+
+// after the new properties, so the JSON includes them (methods are skipped)
+const saved = JSON.stringify(trip);
+
+console.log(trip.join(&#39;Ana&#39;), trip.join(&#39;Ben&#39;)); // true true
+console.log(trip.spotsLeft(), trip.hikers); // 2 [&quot;Ana&quot;, &quot;Ben&quot;]
+console.log(trip[&#39;meeting point&#39;], saved);</code></pre>
+<h4>Console output</h4>
+<pre class="console"><span class="log">true true</span>
+<span class="log">2 [ &quot;Ana&quot;, &quot;Ben&quot; ]</span>
+<span class="log">North trailhead {&quot;title&quot;:&quot;Autumn Ridge Walk&quot;,&quot;miles&quot;:6,&quot;spots&quot;:4,&quot;hikers&quot;:[],&quot;leader&quot;:&quot;Maya&quot;,&quot;meeting point&quot;:&quot;North trailhead&quot;}</span></pre>
+</section>
+<section class="card" id="challenge-7">
+<h3>Challenge 8.7: Functions, scope and a bottle that remembers</h3>
+<p class="st ok">6 of 6 checks pass</p>
+<ul class="checks"><li class="ok"><span class="mk">&#10003; Pass</span> <code>minutesPerMile</code> is a function declaration: <code>(6, 3)</code> gives <code>30</code> and <code>(4, 1.5)</code> gives <code>23</code></li><li class="ok"><span class="mk">&#10003; Pass</span> <code>toKm</code> is an arrow function: <code>toKm(10)</code> is <code>16.1</code> and <code>toKm(26.2)</code> is <code>42.2</code></li><li class="ok"><span class="mk">&#10003; Pass</span> <code>welcome(&#39;Ana&#39;)</code> is <code>&#39;Welcome, Ana!&#39;</code> and <code>welcome()</code> is <code>&#39;Welcome, hiker!&#39;</code> (a default parameter)</li><li class="ok"><span class="mk">&#10003; Pass</span> <code>trailPoints(6, 1500)</code> is <code>11</code> and <code>trailPoints(6, 200)</code> is <code>6</code>: no more <code>ReferenceError</code></li><li class="ok"><span class="mk">&#10003; Pass</span> Each bottle remembers its own water over several drinks: <code>drink(300)</code> twice leaves <code>400</code>, it never goes below <code>0</code>, and <code>left()</code> reports it</li><li class="ok"><span class="mk">&#10003; Pass</span> The water is private: a bottle object holds only its two methods</li></ul>
+<h4>JavaScript</h4>
+<pre><code>// Function declaration
+function minutesPerMile(miles, hours) {
+  return Math.round((hours * 60) / miles);
+}
+
+// Arrow function: no braces, so the expression is returned automatically
+const toKm = (miles) =&gt; Math.round(miles * 1.609 * 10) / 10;
+
+// Default parameter: used when the argument is missing
+function welcome(person = &#39;hiker&#39;) {
+  return `Welcome, ${person}!`;
+}
+
+// Declare bonus before the if, so it still exists at the return
+function trailPoints(miles, climb) {
+  let bonus = 0;
+  if (climb &gt; 1000) {
+    bonus = 5;
+  }
+  return miles + bonus;
+}
+
+// Closure: water lives inside makeBottle; only drink() and left() can reach it
+function makeBottle(capacity) {
+  let water = capacity;
+  return {
+    drink(ml) {
+      water = Math.max(0, water - ml);
+      return water;
+    },
+    left() {
+      return water;
+    },
+  };
+}
+
+console.log(minutesPerMile(6, 3), toKm(10)); // 30 16.1
+console.log(welcome(&#39;Ana&#39;), welcome()); // Welcome, Ana! Welcome, hiker!
+console.log(trailPoints(6, 1500), trailPoints(6, 200)); // 11 6
+const mine = makeBottle(1000);
+const yours = makeBottle(500);
+console.log(mine.drink(300), yours.left()); // 700 500</code></pre>
+<h4>Console output</h4>
+<pre class="console"><span class="log">30 16.1</span>
+<span class="log">Welcome, Ana! Welcome, hiker!</span>
+<span class="log">11 6</span>
+<span class="log">700 500</span></pre>
+</section>
+<section class="card" id="challenge-8">
+<h3>Challenge 9.1: Find, change and add elements</h3>
+<p class="st ok">7 of 7 checks pass</p>
+<ul class="checks"><li class="ok"><span class="mk">&#10003; Pass</span> The heading reads <code>Autumn trips</code></li><li class="ok"><span class="mk">&#10003; Pass</span> Only the trip whose <code>data-spots</code> is <code>0</code> has the class <code>full</code></li><li class="ok"><span class="mk">&#10003; Pass</span> The sign-up link goes to <code>join.html#autumn</code></li><li class="ok"><span class="mk">&#10003; Pass</span> A new <code>&lt;li&gt;</code> with the classes <code>trip</code> and <code>new</code>, the text <code>Cedar Falls</code> and <code>data-spots=&quot;4&quot;</code> is the last item of <code>#trips</code></li><li class="ok"><span class="mk">&#10003; Pass</span> The <code>#loading</code> paragraph is gone</li><li class="ok"><span class="mk">&#10003; Pass</span> <code>#count</code> says <code>4 trips</code>, worked out by the code (from <code>.length</code> or a count)</li><li class="ok"><span class="mk">&#10003; Pass</span> Uses <code>createElement()</code> and <code>textContent</code> (or <code>innerText</code>), and no <code>innerHTML</code></li></ul>
+<h4>HTML</h4>
+<pre><code>&lt;h1&gt;Trips&lt;/h1&gt; &lt;!-- the page heading: your script changes its text --&gt;
+&lt;p id=&quot;loading&quot;&gt;Loading trips...&lt;/p&gt; &lt;!-- a placeholder: your script removes it --&gt;
+&lt;ul id=&quot;trips&quot;&gt; &lt;!-- the list of trips --&gt;
+  &lt;li class=&quot;trip&quot; data-spots=&quot;3&quot;&gt;Autumn Ridge Walk&lt;/li&gt; &lt;!-- 3 spots left --&gt;
+  &lt;li class=&quot;trip&quot; data-spots=&quot;0&quot;&gt;Lake Loop&lt;/li&gt; &lt;!-- full: 0 spots left --&gt;
+  &lt;li class=&quot;trip&quot; data-spots=&quot;5&quot;&gt;Summit Sunrise&lt;/li&gt; &lt;!-- 5 spots left --&gt;
+&lt;/ul&gt; &lt;!-- end of the list --&gt;
+&lt;p id=&quot;count&quot;&gt;&lt;/p&gt; &lt;!-- the script writes the number of trips here --&gt;
+&lt;a id=&quot;signup&quot; href=&quot;join.html&quot;&gt;Sign up for a trip&lt;/a&gt; &lt;!-- the sign-up link --&gt;</code></pre>
+<h4>CSS</h4>
+<pre><code>body { font-family: system-ui, sans-serif; margin: 16px; } /* a clean font and some room */
+.trip.full { color: #6b7280; text-decoration: line-through; } /* a full trip looks crossed out */
+.trip.new { font-weight: bold; } /* the trip your script adds stands out */</code></pre>
+<h4>JavaScript</h4>
+<pre><code>// 1. Change the heading text
+document.querySelector(&#39;h1&#39;).textContent = &#39;Autumn trips&#39;;
+
+// 2. Mark the full trip (dataset values are strings, so compare with &#39;0&#39;)
+document.querySelectorAll(&#39;.trip&#39;).forEach((trip) =&gt; {
+  if (trip.dataset.spots === &#39;0&#39;) {
+    trip.classList.add(&#39;full&#39;);
+  }
+});
+
+// 3. Change an attribute
+document.querySelector(&#39;#signup&#39;).setAttribute(&#39;href&#39;, &#39;join.html#autumn&#39;);
+
+// 4. Create, fill and insert a new element
+const newTrip = document.createElement(&#39;li&#39;);
+newTrip.classList.add(&#39;trip&#39;, &#39;new&#39;);
+newTrip.textContent = &#39;Cedar Falls&#39;;
+newTrip.dataset.spots = &#39;4&#39;;
+document.querySelector(&#39;#trips&#39;).append(newTrip);
+
+// 5. Remove the placeholder
+document.querySelector(&#39;#loading&#39;).remove();
+
+// 6. Count AFTER adding, so the new trip is included
+const tripCount = document.querySelectorAll(&#39;.trip&#39;).length;
+document.querySelector(&#39;#count&#39;).textContent = `${tripCount} trips`;</code></pre>
+<h4>Console output</h4>
+<p class="empty">Nothing was printed to the console while the page loaded.</p>
+<h4>Preview</h4>
+<iframe title="Preview of Challenge 9.1: Find, change and add elements" sandbox="allow-scripts" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;&lt;script&gt;(function previewHelper(pgId, lineMap, opts) {
+    opts = opts || {};
+    // A preview shares this site&#39;s storage, so student code gets its own corner of it: keys are
+    // stored with a prefix, and clear(), length and key() only see that corner. A student&#39;s
+    // localStorage.clear() therefore never wipes the course progress saved under wd1:v1.
+    // Property access (localStorage.theme = &#39;dark&#39;, Object.keys(localStorage)) works too.
+    (function () {
+      var P = &#39;wd1-pg:&#39;;
+      [&#39;localStorage&#39;, &#39;sessionStorage&#39;].forEach(function (name) {
+        var real;
+        try { real = window[name]; if (!real) return; } catch (e) { return; }
+        var keys = function () {
+          var out = [];
+          for (var i = 0; i &lt; real.length; i++) { var k = real.key(i); if (k &amp;&amp; k.indexOf(P) === 0) out.push(k.slice(P.length)); }
+          return out;
+        };
+        var api = {
+          getItem: function (k) { return real.getItem(P + String(k)); },
+          setItem: function (k, v) { real.setItem(P + String(k), String(v)); },
+          removeItem: function (k) { real.removeItem(P + String(k)); },
+          clear: function () { keys().forEach(function (k) { real.removeItem(P + k); }); },
+          key: function (n) { var ks = keys(); return n &gt;= 0 &amp;&amp; n &lt; ks.length ? ks[n] : null; }
+        };
+        var target = {};
+        try { if (typeof Storage !== &#39;undefined&#39;) Object.setPrototypeOf(target, Storage.prototype); } catch (e) { /* ignore */ }
+        var shim = typeof Proxy === &#39;undefined&#39; ? api : new Proxy(target, {
+          get: function (t, p) {
+            if (p === &#39;length&#39;) return keys().length;
+            if (typeof p !== &#39;string&#39; || Object.prototype.hasOwnProperty.call(api, p)) return api[p];
+            if (p in Object.prototype) return Object.prototype[p];
+            var v = real.getItem(P + p);
+            return v === null ? undefined : v;
+          },
+          set: function (t, p, v) { if (typeof p === &#39;string&#39;) real.setItem(P + p, String(v)); return true; },
+          has: function (t, p) { return typeof p === &#39;string&#39; &amp;&amp; (p in api || p === &#39;length&#39; || real.getItem(P + p) !== null); },
+          deleteProperty: function (t, p) { if (typeof p === &#39;string&#39;) real.removeItem(P + p); return true; },
+          ownKeys: function () { return keys(); },
+          getOwnPropertyDescriptor: function (t, p) {
+            var v = typeof p === &#39;string&#39; ? real.getItem(P + p) : null;
+            return v === null ? undefined : { value: v, writable: true, enumerable: true, configurable: true };
+          }
+        });
+        try { Object.defineProperty(window, name, { configurable: true, get: function () { return shim; } }); } catch (e) { /* leave it */ }
+      });
+    })();
+    var post = function (type, args, extra) {
+      var msg = { wd1pg: pgId, type: type, args: args };
+      if (extra) for (var k in extra) msg[k] = extra[k];
+      try { parent.postMessage(msg, &#39;*&#39;); } catch (e) { /* ignore */ }
+    };
+    // Cap the output of one run, so a runaway loop full of console.log cannot flood the console panel.
+    var sent = { log: 0, error: 0 }, LIMIT = { log: 1000, error: 100 };
+    var send = function (type, args) {
+      var k = type === &#39;error&#39; ? &#39;error&#39; : &#39;log&#39;;
+      if (sent[k] &gt; LIMIT[k]) return;
+      if (++sent[k] &gt; LIMIT[k]) { post(&#39;warn&#39;, [&#39;Console output stopped after &#39; + LIMIT[k] + &#39; messages. Edit the code to run it again.&#39;]); return; }
+      post(type, args);
+    };
+    var fmt = function (v) {
+      try {
+        if (typeof v === &#39;string&#39;) return v;
+        if (v === undefined) return &#39;undefined&#39;;
+        if (typeof v === &#39;function&#39;) return &#39;ƒ &#39; + (v.name || &#39;anonymous&#39;) + &#39;()&#39;;
+        if (typeof Element !== &#39;undefined&#39; &amp;&amp; v instanceof Element) {
+          return &#39;&lt;&#39; + v.tagName.toLowerCase() + (v.id ? &#39;#&#39; + v.id : &#39;&#39;) +
+            (typeof v.className === &#39;string&#39; &amp;&amp; v.className.trim() ? &#39;.&#39; + v.className.trim().split(/\s+/).join(&#39;.&#39;) : &#39;&#39;) + &#39;&gt;&#39;;
+        }
+        if (typeof NodeList !== &#39;undefined&#39; &amp;&amp; (v instanceof NodeList || v instanceof HTMLCollection)) {
+          return (v instanceof NodeList ? &#39;NodeList&#39; : &#39;HTMLCollection&#39;) + &#39;(&#39; + v.length + &#39;) [&#39; + Array.prototype.map.call(v, fmt).join(&#39;, &#39;) + &#39;]&#39;;
+        }
+        if (v instanceof Error) return v.name + &#39;: &#39; + v.message;
+        if (typeof Event !== &#39;undefined&#39; &amp;&amp; v instanceof Event) return v.constructor.name + &#39; { type: &quot;&#39; + v.type + &#39;&quot; }&#39;;
+        if (typeof v === &#39;symbol&#39; || typeof v === &#39;bigint&#39;) return typeof v === &#39;bigint&#39; ? v + &#39;n&#39; : v.toString();
+        // A promise is still pending at the moment it is logged in nearly every real case.
+        if (typeof Promise !== &#39;undefined&#39; &amp;&amp; v instanceof Promise) return &#39;Promise {&lt;pending&gt;}&#39;;
+        if (typeof Map !== &#39;undefined&#39; &amp;&amp; v instanceof Map) {
+          var mp = []; v.forEach(function (val, key) { mp.push(fmtIn(key) + &#39; =&gt; &#39; + fmtIn(val)); });
+          return &#39;Map(&#39; + v.size + &#39;) {&#39; + mp.join(&#39;, &#39;) + &#39;}&#39;;
+        }
+        if (typeof Set !== &#39;undefined&#39; &amp;&amp; v instanceof Set) {
+          var st = []; v.forEach(function (val) { st.push(fmtIn(val)); });
+          return &#39;Set(&#39; + v.size + &#39;) {&#39; + st.join(&#39;, &#39;) + &#39;}&#39;;
+        }
+        if (v instanceof Date) return isNaN(v) ? &#39;Invalid Date&#39; : v.toString();
+        var json = JSON.stringify(v, function (k, x) {
+          if (typeof x === &#39;function&#39;) return &#39;__wd1fn__&#39; + (x.name || &#39;anonymous&#39;) + &#39;__&#39;;
+          if (x === undefined) return &#39;__wd1undef__&#39;;
+          return x;
+        }, 1);
+        json = json === undefined ? String(v) : json.replace(/\n\s*/g, &#39; &#39;).replace(/&quot;__wd1undef__&quot;/g, &#39;undefined&#39;)
+          .replace(/&quot;__wd1fn__([\w$]*)__&quot;/g, &#39;ƒ $1()&#39;);
+        // Objects made by a class (or a constructor function) show the class name first, like DevTools.
+        var proto = Object.getPrototypeOf(v);
+        var cname = proto &amp;&amp; proto.constructor &amp;&amp; proto.constructor.name;
+        if (cname &amp;&amp; cname !== &#39;Object&#39; &amp;&amp; cname !== &#39;Array&#39; &amp;&amp; typeof v === &#39;object&#39;) return cname + &#39; &#39; + json;
+        return json;
+      } catch (e) { return String(v); }
+    };
+    // Strings inside a Map or Set keep their quotes, as in DevTools.
+    var fmtIn = function (v) { return typeof v === &#39;string&#39; ? JSON.stringify(v) : fmt(v); };
+    [&#39;log&#39;, &#39;info&#39;, &#39;warn&#39;, &#39;error&#39;].forEach(function (k) {
+      var orig = console[k];
+      console[k] = function () {
+        send(k, Array.prototype.map.call(arguments, fmt));
+        if (orig) orig.apply(console, arguments);
+      };
+    });
+    // The document&#39;s own line numbers count the setup code mixed in with the student&#39;s code,
+    // so translate them; an error outside the student&#39;s tabs gets no line rather than a wrong one.
+    // Each lineMap entry is [firstDocLine, lastDocLine, offset, tab]; the last match wins, because
+    // a piece that starts partway through a line is the one that continues on it.
+    // An error from a separate file (&lt;script src&gt;) keeps that file&#39;s own name and line.
+    window.addEventListener(&#39;error&#39;, function (e) {
+      var m = lineMap || [], n = e.lineno, where = &#39;&#39;, file = e.filename || &#39;&#39;;
+      if (file &amp;&amp; file !== location.href) {
+        if (n) where = &#39; (&#39; + (file.split(/[?#]/)[0].split(&#39;/&#39;).pop() || file) + &#39; line &#39; + n + &#39;)&#39;;
+      } else {
+        for (var i = 0; n &amp;&amp; i &lt; m.length; i++) {
+          if (n &gt;= m[i][0] &amp;&amp; n &lt;= m[i][1]) where = &#39; (&#39; + m[i][3] + &#39; line &#39; + (n - m[i][2]) + &#39;)&#39;;
+        }
+      }
+      send(&#39;error&#39;, [e.message + where]);
+    });
+    // A rejected promise nobody handled (for example a failed await with no try/catch).
+    window.addEventListener(&#39;unhandledrejection&#39;, function (e) {
+      var r = e.reason;
+      send(&#39;error&#39;, [&#39;Uncaught (in promise) &#39; + (r instanceof Error ? r.name + &#39;: &#39; + r.message : fmt(r))]);
+    });
+
+    var panel = null;
+    function note(html) {
+      if (!document.body) return;
+      if (!panel || !panel.isConnected) {
+        panel = document.createElement(&#39;wd1-preview-note&#39;);
+        panel.style.cssText = &#39;all:initial;position:fixed;left:8px;right:8px;bottom:8px;z-index:2147483647;display:block;&#39;;
+        var root = panel.attachShadow ? panel.attachShadow({ mode: &#39;open&#39; }) : panel;
+        root.innerHTML = &#39;&lt;style&gt;.n{font:13px/1.45 system-ui,-apple-system,Segoe UI,sans-serif;color:#F3F5F8;background:#161A23;border-radius:10px;padding:10px 38px 10px 12px;box-shadow:0 8px 24px rgba(0,0,0,.35);position:relative;max-height:60vh;overflow:auto}&#39; +
+          &#39;.n b{color:#fff}.n code{font:12px ui-monospace,Menlo,Consolas,monospace;background:#2A3140;padding:1px 5px;border-radius:4px;color:#FFD89B;word-break:break-all}&#39; +
+          &#39;.n table{border-collapse:collapse;margin-top:6px;width:100%}.n td,.n th{text-align:left;border-top:1px solid #2F3747;padding:3px 6px;font-size:12px;vertical-align:top}&#39; +
+          &#39;.n th{color:#9AA3B5;font-weight:600}.n .w{color:#F2B457;margin-top:6px}.x{position:absolute;top:6px;right:6px;border:0;background:#2A3140;color:#fff;border-radius:6px;width:26px;height:26px;cursor:pointer;font-size:14px}&lt;/style&gt;&#39; +
+          &#39;&lt;div class=&quot;n&quot;&gt;&lt;button class=&quot;x&quot; aria-label=&quot;Close&quot;&gt;×&lt;/button&gt;&lt;div class=&quot;c&quot;&gt;&lt;/div&gt;&lt;/div&gt;&#39;;
+        root.querySelector(&#39;.x&#39;).addEventListener(&#39;click&#39;, function () { panel.remove(); });
+        document.body.appendChild(panel);
+      }
+      (panel.shadowRoot || panel).querySelector(&#39;.c&#39;).innerHTML = html;
+    }
+    var escH = function (s) { return String(s).replace(/[&amp;&lt;&gt;&quot;]/g, function (c) { return { &#39;&amp;&#39;: &#39;&amp;amp;&#39;, &#39;&lt;&#39;: &#39;&amp;lt;&#39;, &#39;&gt;&#39;: &#39;&amp;gt;&#39;, &#39;&quot;&#39;: &#39;&amp;quot;&#39; }[c]; }); };
+
+    document.addEventListener(&#39;click&#39;, function (e) {
+      var a = e.target &amp;&amp; e.target.closest ? e.target.closest(&#39;a[href]&#39;) : null;
+      if (!a || e.defaultPrevented) return;
+      var href = a.getAttribute(&#39;href&#39;);
+      if (href.charAt(0) === &#39;#&#39;) {
+        e.preventDefault();
+        var t = href.length &gt; 1 ? document.getElementById(decodeURIComponent(href.slice(1))) : null;
+        if (t) t.scrollIntoView({ behavior: &#39;smooth&#39; }); else window.scrollTo(0, 0);
+        return;
+      }
+      if (/^javascript:/i.test(href)) return;
+      e.preventDefault();
+      // A server playground (PHP, for example) follows links to its own pages by running the server again.
+      if (opts.server &amp;&amp; !/^[a-z][a-z0-9+.-]*:|^\/\//i.test(href) &amp;&amp; a.target !== &#39;_blank&#39;) {
+        post(&#39;nav&#39;, [], { method: &#39;GET&#39;, action: href, body: &#39;&#39;, kind: &#39;link&#39; });
+        return;
+      }
+      note(&#39;&lt;b&gt;Link clicked:&lt;/b&gt; &lt;code&gt;&#39; + escH(href) + &#39;&lt;/code&gt;&lt;br&gt;Links don\&#39;t navigate inside this preview&#39; +
+        (a.target === &#39;_blank&#39; ? &#39; (it would open in a new tab).&#39; : &#39;.&#39;));
+      send(&#39;info&#39;, [&#39;Link clicked → &#39; + href]);
+    });
+
+    window.addEventListener(&#39;submit&#39;, function (e) {
+      if (e.defaultPrevented) return;
+      e.preventDefault();
+      var f = e.target, fd;
+      try { fd = new FormData(f, e.submitter || undefined); } catch (err) { fd = new FormData(f); }
+      var method = (f.getAttribute(&#39;method&#39;) || &#39;get&#39;).toUpperCase();
+      var action = f.getAttribute(&#39;action&#39;) || &#39;(same page)&#39;;
+      var pairs = [];
+      fd.forEach(function (v, k) { pairs.push([k, typeof v === &#39;string&#39; ? v : (v &amp;&amp; v.name ? v.name : &#39;(no file)&#39;)]); });
+      var enc = pairs.map(function (p) { return encodeURIComponent(p[0]) + &#39;=&#39; + encodeURIComponent(p[1]).replace(/%20/g, &#39;+&#39;); }).join(&#39;&amp;&#39;);
+      // A server playground receives the request and answers it, just like a real server would.
+      var rawAction = f.getAttribute(&#39;action&#39;) || &#39;&#39;;
+      if (opts.server &amp;&amp; !/^[a-z][a-z0-9+.-]*:|^\/\//i.test(rawAction)) {
+        post(&#39;nav&#39;, [], { method: method === &#39;POST&#39; ? &#39;POST&#39; : &#39;GET&#39;, action: rawAction, body: enc, kind: &#39;form&#39; });
+        return;
+      }
+      var unnamed = Array.prototype.filter.call(f.querySelectorAll(&#39;input, select, textarea&#39;), function (c) {
+        return !c.name &amp;&amp; !/^(submit|button|reset|image)$/i.test(c.type);
+      }).length;
+      var html = &#39;&lt;b&gt;Form submitted&lt;/b&gt; · &lt;code&gt;&#39; + method + &#39;&lt;/code&gt; → &lt;code&gt;&#39; + escH(action) + &#39;&lt;/code&gt;&#39;;
+      if (method === &#39;GET&#39;) html += &#39;&lt;br&gt;Browser would request: &lt;code&gt;&#39; + escH((action === &#39;(same page)&#39; ? &#39;&#39; : action) + &#39;?&#39; + enc) + &#39;&lt;/code&gt;&#39;;
+      else html += &#39;&lt;br&gt;Request body: &lt;code&gt;&#39; + escH(enc || &#39;(empty)&#39;) + &#39;&lt;/code&gt;&#39;;
+      if (pairs.length) {
+        html += &#39;&lt;table&gt;&lt;tr&gt;&lt;th&gt;name&lt;/th&gt;&lt;th&gt;value&lt;/th&gt;&lt;/tr&gt;&#39; + pairs.map(function (p) { return &#39;&lt;tr&gt;&lt;td&gt;&lt;code&gt;&#39; + escH(p[0]) + &#39;&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&#39; + escH(p[1]) + &#39;&lt;/td&gt;&lt;/tr&gt;&#39;; }).join(&#39;&#39;) + &#39;&lt;/table&gt;&#39;;
+      } else html += &#39;&lt;div class=&quot;w&quot;&gt;No data was sent. Give each control a &lt;code&gt;name&lt;/code&gt; attribute.&lt;/div&gt;&#39;;
+      if (unnamed) html += &#39;&lt;div class=&quot;w&quot;&gt;&#39; + unnamed + &#39; field&#39; + (unnamed &gt; 1 ? &#39;s have&#39; : &#39; has&#39;) + &#39; no &lt;code&gt;name&lt;/code&gt;, so &#39; + (unnamed &gt; 1 ? &#39;they were&#39; : &#39;it was&#39;) + &#39; not sent.&lt;/div&gt;&#39;;
+      note(html);
+      send(&#39;info&#39;, [&#39;Form submitted: &#39; + method + &#39; &#39; + action + (enc ? &#39; · &#39; + enc : &#39;&#39;)]);
+    });
+  })(&quot;hw6-report&quot;, [[205,213,204,&quot;HTML&quot;],[215,240,214,&quot;JS&quot;]], {&quot;server&quot;:false});&lt;/script&gt;&lt;script&gt;(function () { var n = 0, t0 = 0, told = false; window.__wd1lp = function () { if (!n++) { t0 = Date.now(); Promise.resolve().then(function () { n = 0; }); } if (n % 500 === 0 &amp;&amp; Date.now() - t0 &gt; 1500) { if (!told) { told = true; console.error(&quot;Stopped a loop that kept running for more than 1.5 seconds. Check that its condition eventually becomes false, for example that the counter changes every time around.&quot;); } return true; } return false; }; })();&lt;/script&gt;&lt;style&gt;
+body { font-family: system-ui, sans-serif; margin: 16px; } /* a clean font and some room */
+.trip.full { color: #6b7280; text-decoration: line-through; } /* a full trip looks crossed out */
+.trip.new { font-weight: bold; } /* the trip your script adds stands out */
+&lt;/style&gt;&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Trips&lt;/h1&gt; &lt;!-- the page heading: your script changes its text --&gt;
+&lt;p id=&quot;loading&quot;&gt;Loading trips...&lt;/p&gt; &lt;!-- a placeholder: your script removes it --&gt;
+&lt;ul id=&quot;trips&quot;&gt; &lt;!-- the list of trips --&gt;
+  &lt;li class=&quot;trip&quot; data-spots=&quot;3&quot;&gt;Autumn Ridge Walk&lt;/li&gt; &lt;!-- 3 spots left --&gt;
+  &lt;li class=&quot;trip&quot; data-spots=&quot;0&quot;&gt;Lake Loop&lt;/li&gt; &lt;!-- full: 0 spots left --&gt;
+  &lt;li class=&quot;trip&quot; data-spots=&quot;5&quot;&gt;Summit Sunrise&lt;/li&gt; &lt;!-- 5 spots left --&gt;
+&lt;/ul&gt; &lt;!-- end of the list --&gt;
+&lt;p id=&quot;count&quot;&gt;&lt;/p&gt; &lt;!-- the script writes the number of trips here --&gt;
+&lt;a id=&quot;signup&quot; href=&quot;join.html&quot;&gt;Sign up for a trip&lt;/a&gt; &lt;!-- the sign-up link --&gt;
+&lt;script&gt;
+// 1. Change the heading text
+document.querySelector(&#39;h1&#39;).textContent = &#39;Autumn trips&#39;;
+
+// 2. Mark the full trip (dataset values are strings, so compare with &#39;0&#39;)
+document.querySelectorAll(&#39;.trip&#39;).forEach((trip) =&gt; {
+  if (trip.dataset.spots === &#39;0&#39;) {
+    trip.classList.add(&#39;full&#39;);
+  }
+});
+
+// 3. Change an attribute
+document.querySelector(&#39;#signup&#39;).setAttribute(&#39;href&#39;, &#39;join.html#autumn&#39;);
+
+// 4. Create, fill and insert a new element
+const newTrip = document.createElement(&#39;li&#39;);
+newTrip.classList.add(&#39;trip&#39;, &#39;new&#39;);
+newTrip.textContent = &#39;Cedar Falls&#39;;
+newTrip.dataset.spots = &#39;4&#39;;
+document.querySelector(&#39;#trips&#39;).append(newTrip);
+
+// 5. Remove the placeholder
+document.querySelector(&#39;#loading&#39;).remove();
+
+// 6. Count AFTER adding, so the new trip is included
+const tripCount = document.querySelectorAll(&#39;.trip&#39;).length;
+document.querySelector(&#39;#count&#39;).textContent = `${tripCount} trips`;
+&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe>
+<p class="note">The preview runs the code above, so it can be clicked and typed into.</p>
+</section>
+<section class="card" id="challenge-9">
+<h3>Challenge 9.2: Filter buttons with one listener</h3>
+<p class="st ok">6 of 6 checks pass</p>
+<ul class="checks"><li class="ok"><span class="mk">&#10003; Pass</span> Clicking <strong>Easy</strong> shows only the two easy trips</li><li class="ok"><span class="mk">&#10003; Pass</span> Clicking <strong>All</strong> shows every trip again</li><li class="ok"><span class="mk">&#10003; Pass</span> After clicking <strong>Easy</strong> and then <strong>Moderate</strong>, only Moderate has <code>aria-pressed=&quot;true&quot;</code> and only the moderate trips show</li><li class="ok"><span class="mk">&#10003; Pass</span> A click on the dot inside a button works too (<code>closest()</code>), and a click on the toolbar between the buttons changes nothing</li><li class="ok"><span class="mk">&#10003; Pass</span> <code>#shown</code> reports the visible trips: <code>Showing 2 of 5 trips</code>, then <code>Showing 5 of 5 trips</code></li><li class="ok"><span class="mk">&#10003; Pass</span> One delegated click listener on <code>filters</code>, using <code>closest()</code>: a button added to the toolbar later works too</li></ul>
+<h4>HTML</h4>
+<pre><code>&lt;div id=&quot;filters&quot; role=&quot;group&quot; aria-label=&quot;Show trips by level&quot;&gt; &lt;!-- the toolbar: one listener here handles all four buttons --&gt;
+  &lt;button type=&quot;button&quot; data-level=&quot;all&quot; aria-pressed=&quot;true&quot;&gt;&lt;span class=&quot;dot&quot;&gt;&lt;/span&gt; All&lt;/button&gt; &lt;!-- shows every trip; pressed at the start --&gt;
+  &lt;button type=&quot;button&quot; data-level=&quot;easy&quot; aria-pressed=&quot;false&quot;&gt;&lt;span class=&quot;dot&quot;&gt;&lt;/span&gt; Easy&lt;/button&gt; &lt;!-- shows the easy trips --&gt;
+  &lt;button type=&quot;button&quot; data-level=&quot;moderate&quot; aria-pressed=&quot;false&quot;&gt;&lt;span class=&quot;dot&quot;&gt;&lt;/span&gt; Moderate&lt;/button&gt; &lt;!-- shows the moderate trips --&gt;
+  &lt;button type=&quot;button&quot; data-level=&quot;hard&quot; aria-pressed=&quot;false&quot;&gt;&lt;span class=&quot;dot&quot;&gt;&lt;/span&gt; Hard&lt;/button&gt; &lt;!-- shows the hard trips --&gt;
+&lt;/div&gt; &lt;!-- end of the toolbar --&gt;
+&lt;ul id=&quot;trips&quot;&gt; &lt;!-- the trips; data-level says how hard each one is --&gt;
+  &lt;li data-level=&quot;easy&quot;&gt;Lake Loop&lt;/li&gt; &lt;!-- an easy trip --&gt;
+  &lt;li data-level=&quot;moderate&quot;&gt;Autumn Ridge Walk&lt;/li&gt; &lt;!-- a moderate trip --&gt;
+  &lt;li data-level=&quot;hard&quot;&gt;Summit Sunrise&lt;/li&gt; &lt;!-- a hard trip --&gt;
+  &lt;li data-level=&quot;easy&quot;&gt;Meadow Stroll&lt;/li&gt; &lt;!-- another easy trip --&gt;
+  &lt;li data-level=&quot;moderate&quot;&gt;Cedar Falls&lt;/li&gt; &lt;!-- another moderate trip --&gt;
+&lt;/ul&gt; &lt;!-- end of the list --&gt;
+&lt;p id=&quot;shown&quot;&gt;Showing 5 of 5 trips&lt;/p&gt; &lt;!-- the script keeps this count up to date --&gt;</code></pre>
+<h4>CSS</h4>
+<pre><code>body { font-family: system-ui, sans-serif; margin: 16px; } /* a clean font and some room */
+#filters button { font: inherit; padding: 6px 12px; margin: 0 4px 8px 0; border: 2px solid #2f6f4e; border-radius: 999px; background: white; color: #2f6f4e; cursor: pointer; } /* pill-shaped filter buttons */
+#filters button[aria-pressed=&quot;true&quot;] { background: #2f6f4e; color: white; } /* the pressed button is filled in */
+.dot { display: inline-block; width: 0.6em; height: 0.6em; border-radius: 50%; background: currentColor; } /* a small dot inside each button: a click on it is a click on the button too */</code></pre>
+<h4>JavaScript</h4>
+<pre><code>const filters = document.querySelector(&#39;#filters&#39;); // the toolbar that holds the four buttons
+const items = document.querySelectorAll(&#39;#trips &gt; li&#39;); // every trip in the list
+
+// ONE delegated listener on the toolbar
+filters.addEventListener(&#39;click&#39;, (event) =&gt; {
+  // the click may land on the dot inside a button, so walk up to the button
+  const button = event.target.closest(&#39;button&#39;);
+  if (!button) return; // clicked between buttons: do nothing
+
+  const level = button.dataset.level;
+  let visible = 0;
+  items.forEach((item) =&gt; {
+    const match = level === &#39;all&#39; || item.dataset.level === level;
+    item.hidden = !match;
+    if (match) visible++;
+  });
+
+  // only the clicked button is pressed
+  filters.querySelectorAll(&#39;button&#39;).forEach((b) =&gt; {
+    b.setAttribute(&#39;aria-pressed&#39;, b === button ? &#39;true&#39; : &#39;false&#39;);
+  });
+
+  document.querySelector(&#39;#shown&#39;).textContent = `Showing ${visible} of ${items.length} trips`;
+});</code></pre>
+<h4>Console output</h4>
+<p class="empty">Nothing was printed to the console while the page loaded.</p>
+<h4>Preview</h4>
+<iframe title="Preview of Challenge 9.2: Filter buttons with one listener" sandbox="allow-scripts" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;&lt;script&gt;(function previewHelper(pgId, lineMap, opts) {
+    opts = opts || {};
+    // A preview shares this site&#39;s storage, so student code gets its own corner of it: keys are
+    // stored with a prefix, and clear(), length and key() only see that corner. A student&#39;s
+    // localStorage.clear() therefore never wipes the course progress saved under wd1:v1.
+    // Property access (localStorage.theme = &#39;dark&#39;, Object.keys(localStorage)) works too.
+    (function () {
+      var P = &#39;wd1-pg:&#39;;
+      [&#39;localStorage&#39;, &#39;sessionStorage&#39;].forEach(function (name) {
+        var real;
+        try { real = window[name]; if (!real) return; } catch (e) { return; }
+        var keys = function () {
+          var out = [];
+          for (var i = 0; i &lt; real.length; i++) { var k = real.key(i); if (k &amp;&amp; k.indexOf(P) === 0) out.push(k.slice(P.length)); }
+          return out;
+        };
+        var api = {
+          getItem: function (k) { return real.getItem(P + String(k)); },
+          setItem: function (k, v) { real.setItem(P + String(k), String(v)); },
+          removeItem: function (k) { real.removeItem(P + String(k)); },
+          clear: function () { keys().forEach(function (k) { real.removeItem(P + k); }); },
+          key: function (n) { var ks = keys(); return n &gt;= 0 &amp;&amp; n &lt; ks.length ? ks[n] : null; }
+        };
+        var target = {};
+        try { if (typeof Storage !== &#39;undefined&#39;) Object.setPrototypeOf(target, Storage.prototype); } catch (e) { /* ignore */ }
+        var shim = typeof Proxy === &#39;undefined&#39; ? api : new Proxy(target, {
+          get: function (t, p) {
+            if (p === &#39;length&#39;) return keys().length;
+            if (typeof p !== &#39;string&#39; || Object.prototype.hasOwnProperty.call(api, p)) return api[p];
+            if (p in Object.prototype) return Object.prototype[p];
+            var v = real.getItem(P + p);
+            return v === null ? undefined : v;
+          },
+          set: function (t, p, v) { if (typeof p === &#39;string&#39;) real.setItem(P + p, String(v)); return true; },
+          has: function (t, p) { return typeof p === &#39;string&#39; &amp;&amp; (p in api || p === &#39;length&#39; || real.getItem(P + p) !== null); },
+          deleteProperty: function (t, p) { if (typeof p === &#39;string&#39;) real.removeItem(P + p); return true; },
+          ownKeys: function () { return keys(); },
+          getOwnPropertyDescriptor: function (t, p) {
+            var v = typeof p === &#39;string&#39; ? real.getItem(P + p) : null;
+            return v === null ? undefined : { value: v, writable: true, enumerable: true, configurable: true };
+          }
+        });
+        try { Object.defineProperty(window, name, { configurable: true, get: function () { return shim; } }); } catch (e) { /* leave it */ }
+      });
+    })();
+    var post = function (type, args, extra) {
+      var msg = { wd1pg: pgId, type: type, args: args };
+      if (extra) for (var k in extra) msg[k] = extra[k];
+      try { parent.postMessage(msg, &#39;*&#39;); } catch (e) { /* ignore */ }
+    };
+    // Cap the output of one run, so a runaway loop full of console.log cannot flood the console panel.
+    var sent = { log: 0, error: 0 }, LIMIT = { log: 1000, error: 100 };
+    var send = function (type, args) {
+      var k = type === &#39;error&#39; ? &#39;error&#39; : &#39;log&#39;;
+      if (sent[k] &gt; LIMIT[k]) return;
+      if (++sent[k] &gt; LIMIT[k]) { post(&#39;warn&#39;, [&#39;Console output stopped after &#39; + LIMIT[k] + &#39; messages. Edit the code to run it again.&#39;]); return; }
+      post(type, args);
+    };
+    var fmt = function (v) {
+      try {
+        if (typeof v === &#39;string&#39;) return v;
+        if (v === undefined) return &#39;undefined&#39;;
+        if (typeof v === &#39;function&#39;) return &#39;ƒ &#39; + (v.name || &#39;anonymous&#39;) + &#39;()&#39;;
+        if (typeof Element !== &#39;undefined&#39; &amp;&amp; v instanceof Element) {
+          return &#39;&lt;&#39; + v.tagName.toLowerCase() + (v.id ? &#39;#&#39; + v.id : &#39;&#39;) +
+            (typeof v.className === &#39;string&#39; &amp;&amp; v.className.trim() ? &#39;.&#39; + v.className.trim().split(/\s+/).join(&#39;.&#39;) : &#39;&#39;) + &#39;&gt;&#39;;
+        }
+        if (typeof NodeList !== &#39;undefined&#39; &amp;&amp; (v instanceof NodeList || v instanceof HTMLCollection)) {
+          return (v instanceof NodeList ? &#39;NodeList&#39; : &#39;HTMLCollection&#39;) + &#39;(&#39; + v.length + &#39;) [&#39; + Array.prototype.map.call(v, fmt).join(&#39;, &#39;) + &#39;]&#39;;
+        }
+        if (v instanceof Error) return v.name + &#39;: &#39; + v.message;
+        if (typeof Event !== &#39;undefined&#39; &amp;&amp; v instanceof Event) return v.constructor.name + &#39; { type: &quot;&#39; + v.type + &#39;&quot; }&#39;;
+        if (typeof v === &#39;symbol&#39; || typeof v === &#39;bigint&#39;) return typeof v === &#39;bigint&#39; ? v + &#39;n&#39; : v.toString();
+        // A promise is still pending at the moment it is logged in nearly every real case.
+        if (typeof Promise !== &#39;undefined&#39; &amp;&amp; v instanceof Promise) return &#39;Promise {&lt;pending&gt;}&#39;;
+        if (typeof Map !== &#39;undefined&#39; &amp;&amp; v instanceof Map) {
+          var mp = []; v.forEach(function (val, key) { mp.push(fmtIn(key) + &#39; =&gt; &#39; + fmtIn(val)); });
+          return &#39;Map(&#39; + v.size + &#39;) {&#39; + mp.join(&#39;, &#39;) + &#39;}&#39;;
+        }
+        if (typeof Set !== &#39;undefined&#39; &amp;&amp; v instanceof Set) {
+          var st = []; v.forEach(function (val) { st.push(fmtIn(val)); });
+          return &#39;Set(&#39; + v.size + &#39;) {&#39; + st.join(&#39;, &#39;) + &#39;}&#39;;
+        }
+        if (v instanceof Date) return isNaN(v) ? &#39;Invalid Date&#39; : v.toString();
+        var json = JSON.stringify(v, function (k, x) {
+          if (typeof x === &#39;function&#39;) return &#39;__wd1fn__&#39; + (x.name || &#39;anonymous&#39;) + &#39;__&#39;;
+          if (x === undefined) return &#39;__wd1undef__&#39;;
+          return x;
+        }, 1);
+        json = json === undefined ? String(v) : json.replace(/\n\s*/g, &#39; &#39;).replace(/&quot;__wd1undef__&quot;/g, &#39;undefined&#39;)
+          .replace(/&quot;__wd1fn__([\w$]*)__&quot;/g, &#39;ƒ $1()&#39;);
+        // Objects made by a class (or a constructor function) show the class name first, like DevTools.
+        var proto = Object.getPrototypeOf(v);
+        var cname = proto &amp;&amp; proto.constructor &amp;&amp; proto.constructor.name;
+        if (cname &amp;&amp; cname !== &#39;Object&#39; &amp;&amp; cname !== &#39;Array&#39; &amp;&amp; typeof v === &#39;object&#39;) return cname + &#39; &#39; + json;
+        return json;
+      } catch (e) { return String(v); }
+    };
+    // Strings inside a Map or Set keep their quotes, as in DevTools.
+    var fmtIn = function (v) { return typeof v === &#39;string&#39; ? JSON.stringify(v) : fmt(v); };
+    [&#39;log&#39;, &#39;info&#39;, &#39;warn&#39;, &#39;error&#39;].forEach(function (k) {
+      var orig = console[k];
+      console[k] = function () {
+        send(k, Array.prototype.map.call(arguments, fmt));
+        if (orig) orig.apply(console, arguments);
+      };
+    });
+    // The document&#39;s own line numbers count the setup code mixed in with the student&#39;s code,
+    // so translate them; an error outside the student&#39;s tabs gets no line rather than a wrong one.
+    // Each lineMap entry is [firstDocLine, lastDocLine, offset, tab]; the last match wins, because
+    // a piece that starts partway through a line is the one that continues on it.
+    // An error from a separate file (&lt;script src&gt;) keeps that file&#39;s own name and line.
+    window.addEventListener(&#39;error&#39;, function (e) {
+      var m = lineMap || [], n = e.lineno, where = &#39;&#39;, file = e.filename || &#39;&#39;;
+      if (file &amp;&amp; file !== location.href) {
+        if (n) where = &#39; (&#39; + (file.split(/[?#]/)[0].split(&#39;/&#39;).pop() || file) + &#39; line &#39; + n + &#39;)&#39;;
+      } else {
+        for (var i = 0; n &amp;&amp; i &lt; m.length; i++) {
+          if (n &gt;= m[i][0] &amp;&amp; n &lt;= m[i][1]) where = &#39; (&#39; + m[i][3] + &#39; line &#39; + (n - m[i][2]) + &#39;)&#39;;
+        }
+      }
+      send(&#39;error&#39;, [e.message + where]);
+    });
+    // A rejected promise nobody handled (for example a failed await with no try/catch).
+    window.addEventListener(&#39;unhandledrejection&#39;, function (e) {
+      var r = e.reason;
+      send(&#39;error&#39;, [&#39;Uncaught (in promise) &#39; + (r instanceof Error ? r.name + &#39;: &#39; + r.message : fmt(r))]);
+    });
+
+    var panel = null;
+    function note(html) {
+      if (!document.body) return;
+      if (!panel || !panel.isConnected) {
+        panel = document.createElement(&#39;wd1-preview-note&#39;);
+        panel.style.cssText = &#39;all:initial;position:fixed;left:8px;right:8px;bottom:8px;z-index:2147483647;display:block;&#39;;
+        var root = panel.attachShadow ? panel.attachShadow({ mode: &#39;open&#39; }) : panel;
+        root.innerHTML = &#39;&lt;style&gt;.n{font:13px/1.45 system-ui,-apple-system,Segoe UI,sans-serif;color:#F3F5F8;background:#161A23;border-radius:10px;padding:10px 38px 10px 12px;box-shadow:0 8px 24px rgba(0,0,0,.35);position:relative;max-height:60vh;overflow:auto}&#39; +
+          &#39;.n b{color:#fff}.n code{font:12px ui-monospace,Menlo,Consolas,monospace;background:#2A3140;padding:1px 5px;border-radius:4px;color:#FFD89B;word-break:break-all}&#39; +
+          &#39;.n table{border-collapse:collapse;margin-top:6px;width:100%}.n td,.n th{text-align:left;border-top:1px solid #2F3747;padding:3px 6px;font-size:12px;vertical-align:top}&#39; +
+          &#39;.n th{color:#9AA3B5;font-weight:600}.n .w{color:#F2B457;margin-top:6px}.x{position:absolute;top:6px;right:6px;border:0;background:#2A3140;color:#fff;border-radius:6px;width:26px;height:26px;cursor:pointer;font-size:14px}&lt;/style&gt;&#39; +
+          &#39;&lt;div class=&quot;n&quot;&gt;&lt;button class=&quot;x&quot; aria-label=&quot;Close&quot;&gt;×&lt;/button&gt;&lt;div class=&quot;c&quot;&gt;&lt;/div&gt;&lt;/div&gt;&#39;;
+        root.querySelector(&#39;.x&#39;).addEventListener(&#39;click&#39;, function () { panel.remove(); });
+        document.body.appendChild(panel);
+      }
+      (panel.shadowRoot || panel).querySelector(&#39;.c&#39;).innerHTML = html;
+    }
+    var escH = function (s) { return String(s).replace(/[&amp;&lt;&gt;&quot;]/g, function (c) { return { &#39;&amp;&#39;: &#39;&amp;amp;&#39;, &#39;&lt;&#39;: &#39;&amp;lt;&#39;, &#39;&gt;&#39;: &#39;&amp;gt;&#39;, &#39;&quot;&#39;: &#39;&amp;quot;&#39; }[c]; }); };
+
+    document.addEventListener(&#39;click&#39;, function (e) {
+      var a = e.target &amp;&amp; e.target.closest ? e.target.closest(&#39;a[href]&#39;) : null;
+      if (!a || e.defaultPrevented) return;
+      var href = a.getAttribute(&#39;href&#39;);
+      if (href.charAt(0) === &#39;#&#39;) {
+        e.preventDefault();
+        var t = href.length &gt; 1 ? document.getElementById(decodeURIComponent(href.slice(1))) : null;
+        if (t) t.scrollIntoView({ behavior: &#39;smooth&#39; }); else window.scrollTo(0, 0);
+        return;
+      }
+      if (/^javascript:/i.test(href)) return;
+      e.preventDefault();
+      // A server playground (PHP, for example) follows links to its own pages by running the server again.
+      if (opts.server &amp;&amp; !/^[a-z][a-z0-9+.-]*:|^\/\//i.test(href) &amp;&amp; a.target !== &#39;_blank&#39;) {
+        post(&#39;nav&#39;, [], { method: &#39;GET&#39;, action: href, body: &#39;&#39;, kind: &#39;link&#39; });
+        return;
+      }
+      note(&#39;&lt;b&gt;Link clicked:&lt;/b&gt; &lt;code&gt;&#39; + escH(href) + &#39;&lt;/code&gt;&lt;br&gt;Links don\&#39;t navigate inside this preview&#39; +
+        (a.target === &#39;_blank&#39; ? &#39; (it would open in a new tab).&#39; : &#39;.&#39;));
+      send(&#39;info&#39;, [&#39;Link clicked → &#39; + href]);
+    });
+
+    window.addEventListener(&#39;submit&#39;, function (e) {
+      if (e.defaultPrevented) return;
+      e.preventDefault();
+      var f = e.target, fd;
+      try { fd = new FormData(f, e.submitter || undefined); } catch (err) { fd = new FormData(f); }
+      var method = (f.getAttribute(&#39;method&#39;) || &#39;get&#39;).toUpperCase();
+      var action = f.getAttribute(&#39;action&#39;) || &#39;(same page)&#39;;
+      var pairs = [];
+      fd.forEach(function (v, k) { pairs.push([k, typeof v === &#39;string&#39; ? v : (v &amp;&amp; v.name ? v.name : &#39;(no file)&#39;)]); });
+      var enc = pairs.map(function (p) { return encodeURIComponent(p[0]) + &#39;=&#39; + encodeURIComponent(p[1]).replace(/%20/g, &#39;+&#39;); }).join(&#39;&amp;&#39;);
+      // A server playground receives the request and answers it, just like a real server would.
+      var rawAction = f.getAttribute(&#39;action&#39;) || &#39;&#39;;
+      if (opts.server &amp;&amp; !/^[a-z][a-z0-9+.-]*:|^\/\//i.test(rawAction)) {
+        post(&#39;nav&#39;, [], { method: method === &#39;POST&#39; ? &#39;POST&#39; : &#39;GET&#39;, action: rawAction, body: enc, kind: &#39;form&#39; });
+        return;
+      }
+      var unnamed = Array.prototype.filter.call(f.querySelectorAll(&#39;input, select, textarea&#39;), function (c) {
+        return !c.name &amp;&amp; !/^(submit|button|reset|image)$/i.test(c.type);
+      }).length;
+      var html = &#39;&lt;b&gt;Form submitted&lt;/b&gt; · &lt;code&gt;&#39; + method + &#39;&lt;/code&gt; → &lt;code&gt;&#39; + escH(action) + &#39;&lt;/code&gt;&#39;;
+      if (method === &#39;GET&#39;) html += &#39;&lt;br&gt;Browser would request: &lt;code&gt;&#39; + escH((action === &#39;(same page)&#39; ? &#39;&#39; : action) + &#39;?&#39; + enc) + &#39;&lt;/code&gt;&#39;;
+      else html += &#39;&lt;br&gt;Request body: &lt;code&gt;&#39; + escH(enc || &#39;(empty)&#39;) + &#39;&lt;/code&gt;&#39;;
+      if (pairs.length) {
+        html += &#39;&lt;table&gt;&lt;tr&gt;&lt;th&gt;name&lt;/th&gt;&lt;th&gt;value&lt;/th&gt;&lt;/tr&gt;&#39; + pairs.map(function (p) { return &#39;&lt;tr&gt;&lt;td&gt;&lt;code&gt;&#39; + escH(p[0]) + &#39;&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&#39; + escH(p[1]) + &#39;&lt;/td&gt;&lt;/tr&gt;&#39;; }).join(&#39;&#39;) + &#39;&lt;/table&gt;&#39;;
+      } else html += &#39;&lt;div class=&quot;w&quot;&gt;No data was sent. Give each control a &lt;code&gt;name&lt;/code&gt; attribute.&lt;/div&gt;&#39;;
+      if (unnamed) html += &#39;&lt;div class=&quot;w&quot;&gt;&#39; + unnamed + &#39; field&#39; + (unnamed &gt; 1 ? &#39;s have&#39; : &#39; has&#39;) + &#39; no &lt;code&gt;name&lt;/code&gt;, so &#39; + (unnamed &gt; 1 ? &#39;they were&#39; : &#39;it was&#39;) + &#39; not sent.&lt;/div&gt;&#39;;
+      note(html);
+      send(&#39;info&#39;, [&#39;Form submitted: &#39; + method + &#39; &#39; + action + (enc ? &#39; · &#39; + enc : &#39;&#39;)]);
+    });
+  })(&quot;hw6-report&quot;, [[206,219,205,&quot;HTML&quot;],[221,244,220,&quot;JS&quot;]], {&quot;server&quot;:false});&lt;/script&gt;&lt;script&gt;(function () { var n = 0, t0 = 0, told = false; window.__wd1lp = function () { if (!n++) { t0 = Date.now(); Promise.resolve().then(function () { n = 0; }); } if (n % 500 === 0 &amp;&amp; Date.now() - t0 &gt; 1500) { if (!told) { told = true; console.error(&quot;Stopped a loop that kept running for more than 1.5 seconds. Check that its condition eventually becomes false, for example that the counter changes every time around.&quot;); } return true; } return false; }; })();&lt;/script&gt;&lt;style&gt;
+body { font-family: system-ui, sans-serif; margin: 16px; } /* a clean font and some room */
+#filters button { font: inherit; padding: 6px 12px; margin: 0 4px 8px 0; border: 2px solid #2f6f4e; border-radius: 999px; background: white; color: #2f6f4e; cursor: pointer; } /* pill-shaped filter buttons */
+#filters button[aria-pressed=&quot;true&quot;] { background: #2f6f4e; color: white; } /* the pressed button is filled in */
+.dot { display: inline-block; width: 0.6em; height: 0.6em; border-radius: 50%; background: currentColor; } /* a small dot inside each button: a click on it is a click on the button too */
+&lt;/style&gt;&lt;/head&gt;&lt;body&gt;
+&lt;div id=&quot;filters&quot; role=&quot;group&quot; aria-label=&quot;Show trips by level&quot;&gt; &lt;!-- the toolbar: one listener here handles all four buttons --&gt;
+  &lt;button type=&quot;button&quot; data-level=&quot;all&quot; aria-pressed=&quot;true&quot;&gt;&lt;span class=&quot;dot&quot;&gt;&lt;/span&gt; All&lt;/button&gt; &lt;!-- shows every trip; pressed at the start --&gt;
+  &lt;button type=&quot;button&quot; data-level=&quot;easy&quot; aria-pressed=&quot;false&quot;&gt;&lt;span class=&quot;dot&quot;&gt;&lt;/span&gt; Easy&lt;/button&gt; &lt;!-- shows the easy trips --&gt;
+  &lt;button type=&quot;button&quot; data-level=&quot;moderate&quot; aria-pressed=&quot;false&quot;&gt;&lt;span class=&quot;dot&quot;&gt;&lt;/span&gt; Moderate&lt;/button&gt; &lt;!-- shows the moderate trips --&gt;
+  &lt;button type=&quot;button&quot; data-level=&quot;hard&quot; aria-pressed=&quot;false&quot;&gt;&lt;span class=&quot;dot&quot;&gt;&lt;/span&gt; Hard&lt;/button&gt; &lt;!-- shows the hard trips --&gt;
+&lt;/div&gt; &lt;!-- end of the toolbar --&gt;
+&lt;ul id=&quot;trips&quot;&gt; &lt;!-- the trips; data-level says how hard each one is --&gt;
+  &lt;li data-level=&quot;easy&quot;&gt;Lake Loop&lt;/li&gt; &lt;!-- an easy trip --&gt;
+  &lt;li data-level=&quot;moderate&quot;&gt;Autumn Ridge Walk&lt;/li&gt; &lt;!-- a moderate trip --&gt;
+  &lt;li data-level=&quot;hard&quot;&gt;Summit Sunrise&lt;/li&gt; &lt;!-- a hard trip --&gt;
+  &lt;li data-level=&quot;easy&quot;&gt;Meadow Stroll&lt;/li&gt; &lt;!-- another easy trip --&gt;
+  &lt;li data-level=&quot;moderate&quot;&gt;Cedar Falls&lt;/li&gt; &lt;!-- another moderate trip --&gt;
+&lt;/ul&gt; &lt;!-- end of the list --&gt;
+&lt;p id=&quot;shown&quot;&gt;Showing 5 of 5 trips&lt;/p&gt; &lt;!-- the script keeps this count up to date --&gt;
+&lt;script&gt;
+const filters = document.querySelector(&#39;#filters&#39;); // the toolbar that holds the four buttons
+const items = document.querySelectorAll(&#39;#trips &gt; li&#39;); // every trip in the list
+
+// ONE delegated listener on the toolbar
+filters.addEventListener(&#39;click&#39;, (event) =&gt; {
+  // the click may land on the dot inside a button, so walk up to the button
+  const button = event.target.closest(&#39;button&#39;);
+  if (!button) return; // clicked between buttons: do nothing
+
+  const level = button.dataset.level;
+  let visible = 0;
+  items.forEach((item) =&gt; {
+    const match = level === &#39;all&#39; || item.dataset.level === level;
+    item.hidden = !match;
+    if (match) visible++;
+  });
+
+  // only the clicked button is pressed
+  filters.querySelectorAll(&#39;button&#39;).forEach((b) =&gt; {
+    b.setAttribute(&#39;aria-pressed&#39;, b === button ? &#39;true&#39; : &#39;false&#39;);
+  });
+
+  document.querySelector(&#39;#shown&#39;).textContent = `Showing ${visible} of ${items.length} trips`;
+});
+&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe>
+<p class="note">The preview runs the code above, so it can be clicked and typed into.</p>
+</section>
+<section class="card" id="challenge-10">
+<h3>Challenge 9.3: A live search box</h3>
+<p class="st ok">7 of 7 checks pass</p>
+<ul class="checks"><li class="ok"><span class="mk">&#10003; Pass</span> Typing <code>summit</code> and then <code>lake</code> shows only the matching trips each time: Lake Loop and Lakeshore Ramble at the end</li><li class="ok"><span class="mk">&#10003; Pass</span> The search ignores upper and lower case and spaces at the ends: <code>  SUMMIT </code> finds Summit Sunrise</li><li class="ok"><span class="mk">&#10003; Pass</span> <code>#shown</code> counts what is visible: <code>2 trips</code>, <code>1 trip</code>, <code>0 trips</code>, then <code>5 trips</code> for an empty box</li><li class="ok"><span class="mk">&#10003; Pass</span> Pressing <strong>Escape</strong> in the search box empties it and shows every trip again</li><li class="ok"><span class="mk">&#10003; Pass</span> Other keys leave the search alone: after <code>lake</code> and a press of <code>a</code>, the two Lake trips still show</li><li class="ok"><span class="mk">&#10003; Pass</span> The notes counter says <code>50 characters left</code> after 10 characters, and <code>3 characters too many</code> with the class <code>over</code> at 63</li><li class="ok"><span class="mk">&#10003; Pass</span> Handles the <code>input</code> and <code>keydown</code> events (with <code>addEventListener</code>, or <code>oninput</code> and <code>onkeydown</code>)</li></ul>
+<h4>HTML</h4>
+<pre><code>&lt;label for=&quot;search&quot;&gt;Search trips&lt;/label&gt; &lt;!-- the label for the search box --&gt;
+&lt;input id=&quot;search&quot; type=&quot;search&quot; autocomplete=&quot;off&quot; aria-describedby=&quot;search-help&quot;&gt; &lt;!-- the visitor types here --&gt;
+&lt;p id=&quot;search-help&quot; class=&quot;help&quot;&gt;Press Escape to clear the search.&lt;/p&gt; &lt;!-- a tip, connected to the box --&gt;
+&lt;ul id=&quot;trips&quot;&gt; &lt;!-- the trips the search filters --&gt;
+  &lt;li&gt;Autumn Ridge Walk&lt;/li&gt; &lt;!-- trip 1 --&gt;
+  &lt;li&gt;Lake Loop&lt;/li&gt; &lt;!-- trip 2 --&gt;
+  &lt;li&gt;Summit Sunrise&lt;/li&gt; &lt;!-- trip 3 --&gt;
+  &lt;li&gt;Cedar Falls&lt;/li&gt; &lt;!-- trip 4 --&gt;
+  &lt;li&gt;Lakeshore Ramble&lt;/li&gt; &lt;!-- trip 5 --&gt;
+&lt;/ul&gt; &lt;!-- end of the list --&gt;
+&lt;p id=&quot;shown&quot; aria-live=&quot;polite&quot;&gt;5 trips&lt;/p&gt; &lt;!-- how many trips are visible; read aloud when it changes --&gt;
+&lt;label for=&quot;notes&quot;&gt;Notes for the leader (up to 60 characters)&lt;/label&gt; &lt;!-- the label for the notes box --&gt;
+&lt;textarea id=&quot;notes&quot; rows=&quot;3&quot; aria-describedby=&quot;left&quot;&gt;&lt;/textarea&gt; &lt;!-- a short note to the trip leader --&gt;
+&lt;p id=&quot;left&quot;&gt;60 characters left&lt;/p&gt; &lt;!-- the live character counter --&gt;</code></pre>
+<h4>CSS</h4>
+<pre><code>body { font-family: system-ui, sans-serif; margin: 16px; } /* a clean font and some room */
+label { display: block; font-weight: bold; margin-top: 12px; } /* each label on its own line */
+input, textarea { font: inherit; width: 100%; max-width: 24rem; } /* readable, not too wide */
+.help { color: #4a5262; font-size: 0.9rem; margin-top: 4px; } /* the quieter tip text */
+#left.over { color: #b3261e; font-weight: bold; } /* the counter turns red and bold when the note is too long */</code></pre>
+<h4>JavaScript</h4>
+<pre><code>const search = document.querySelector(&#39;#search&#39;); // the search box
+const items = document.querySelectorAll(&#39;#trips &gt; li&#39;); // the five trips
+const shown = document.querySelector(&#39;#shown&#39;); // the &quot;5 trips&quot; line
+
+// One function does the filtering, so every event path stays in step
+function applySearch() {
+  const text = search.value.trim().toLowerCase();
+  let visible = 0;
+  items.forEach((item) =&gt; {
+    const match = item.textContent.toLowerCase().includes(text);
+    item.hidden = !match;
+    if (match) visible++;
+  });
+  shown.textContent = visible === 1 ? &#39;1 trip&#39; : `${visible} trips`;
+}
+
+search.addEventListener(&#39;input&#39;, applySearch);
+
+search.addEventListener(&#39;keydown&#39;, (event) =&gt; {
+  if (event.key === &#39;Escape&#39;) {
+    search.value = &#39;&#39;; // setting value from code fires no input event...
+    applySearch(); // ...so call the function ourselves
+  }
+});
+
+// Character counter for the notes box
+const notes = document.querySelector(&#39;#notes&#39;);
+const left = document.querySelector(&#39;#left&#39;);
+const MAX = 60;
+
+notes.addEventListener(&#39;input&#39;, () =&gt; {
+  const remaining = MAX - notes.value.length;
+  if (remaining &gt;= 0) {
+    left.textContent = `${remaining} characters left`;
+    left.classList.remove(&#39;over&#39;);
+  } else {
+    left.textContent = `${-remaining} characters too many`;
+    left.classList.add(&#39;over&#39;);
+  }
+});</code></pre>
+<h4>Console output</h4>
+<p class="empty">Nothing was printed to the console while the page loaded.</p>
+<h4>Preview</h4>
+<iframe title="Preview of Challenge 9.3: A live search box" sandbox="allow-scripts" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;&lt;script&gt;(function previewHelper(pgId, lineMap, opts) {
+    opts = opts || {};
+    // A preview shares this site&#39;s storage, so student code gets its own corner of it: keys are
+    // stored with a prefix, and clear(), length and key() only see that corner. A student&#39;s
+    // localStorage.clear() therefore never wipes the course progress saved under wd1:v1.
+    // Property access (localStorage.theme = &#39;dark&#39;, Object.keys(localStorage)) works too.
+    (function () {
+      var P = &#39;wd1-pg:&#39;;
+      [&#39;localStorage&#39;, &#39;sessionStorage&#39;].forEach(function (name) {
+        var real;
+        try { real = window[name]; if (!real) return; } catch (e) { return; }
+        var keys = function () {
+          var out = [];
+          for (var i = 0; i &lt; real.length; i++) { var k = real.key(i); if (k &amp;&amp; k.indexOf(P) === 0) out.push(k.slice(P.length)); }
+          return out;
+        };
+        var api = {
+          getItem: function (k) { return real.getItem(P + String(k)); },
+          setItem: function (k, v) { real.setItem(P + String(k), String(v)); },
+          removeItem: function (k) { real.removeItem(P + String(k)); },
+          clear: function () { keys().forEach(function (k) { real.removeItem(P + k); }); },
+          key: function (n) { var ks = keys(); return n &gt;= 0 &amp;&amp; n &lt; ks.length ? ks[n] : null; }
+        };
+        var target = {};
+        try { if (typeof Storage !== &#39;undefined&#39;) Object.setPrototypeOf(target, Storage.prototype); } catch (e) { /* ignore */ }
+        var shim = typeof Proxy === &#39;undefined&#39; ? api : new Proxy(target, {
+          get: function (t, p) {
+            if (p === &#39;length&#39;) return keys().length;
+            if (typeof p !== &#39;string&#39; || Object.prototype.hasOwnProperty.call(api, p)) return api[p];
+            if (p in Object.prototype) return Object.prototype[p];
+            var v = real.getItem(P + p);
+            return v === null ? undefined : v;
+          },
+          set: function (t, p, v) { if (typeof p === &#39;string&#39;) real.setItem(P + p, String(v)); return true; },
+          has: function (t, p) { return typeof p === &#39;string&#39; &amp;&amp; (p in api || p === &#39;length&#39; || real.getItem(P + p) !== null); },
+          deleteProperty: function (t, p) { if (typeof p === &#39;string&#39;) real.removeItem(P + p); return true; },
+          ownKeys: function () { return keys(); },
+          getOwnPropertyDescriptor: function (t, p) {
+            var v = typeof p === &#39;string&#39; ? real.getItem(P + p) : null;
+            return v === null ? undefined : { value: v, writable: true, enumerable: true, configurable: true };
+          }
+        });
+        try { Object.defineProperty(window, name, { configurable: true, get: function () { return shim; } }); } catch (e) { /* leave it */ }
+      });
+    })();
+    var post = function (type, args, extra) {
+      var msg = { wd1pg: pgId, type: type, args: args };
+      if (extra) for (var k in extra) msg[k] = extra[k];
+      try { parent.postMessage(msg, &#39;*&#39;); } catch (e) { /* ignore */ }
+    };
+    // Cap the output of one run, so a runaway loop full of console.log cannot flood the console panel.
+    var sent = { log: 0, error: 0 }, LIMIT = { log: 1000, error: 100 };
+    var send = function (type, args) {
+      var k = type === &#39;error&#39; ? &#39;error&#39; : &#39;log&#39;;
+      if (sent[k] &gt; LIMIT[k]) return;
+      if (++sent[k] &gt; LIMIT[k]) { post(&#39;warn&#39;, [&#39;Console output stopped after &#39; + LIMIT[k] + &#39; messages. Edit the code to run it again.&#39;]); return; }
+      post(type, args);
+    };
+    var fmt = function (v) {
+      try {
+        if (typeof v === &#39;string&#39;) return v;
+        if (v === undefined) return &#39;undefined&#39;;
+        if (typeof v === &#39;function&#39;) return &#39;ƒ &#39; + (v.name || &#39;anonymous&#39;) + &#39;()&#39;;
+        if (typeof Element !== &#39;undefined&#39; &amp;&amp; v instanceof Element) {
+          return &#39;&lt;&#39; + v.tagName.toLowerCase() + (v.id ? &#39;#&#39; + v.id : &#39;&#39;) +
+            (typeof v.className === &#39;string&#39; &amp;&amp; v.className.trim() ? &#39;.&#39; + v.className.trim().split(/\s+/).join(&#39;.&#39;) : &#39;&#39;) + &#39;&gt;&#39;;
+        }
+        if (typeof NodeList !== &#39;undefined&#39; &amp;&amp; (v instanceof NodeList || v instanceof HTMLCollection)) {
+          return (v instanceof NodeList ? &#39;NodeList&#39; : &#39;HTMLCollection&#39;) + &#39;(&#39; + v.length + &#39;) [&#39; + Array.prototype.map.call(v, fmt).join(&#39;, &#39;) + &#39;]&#39;;
+        }
+        if (v instanceof Error) return v.name + &#39;: &#39; + v.message;
+        if (typeof Event !== &#39;undefined&#39; &amp;&amp; v instanceof Event) return v.constructor.name + &#39; { type: &quot;&#39; + v.type + &#39;&quot; }&#39;;
+        if (typeof v === &#39;symbol&#39; || typeof v === &#39;bigint&#39;) return typeof v === &#39;bigint&#39; ? v + &#39;n&#39; : v.toString();
+        // A promise is still pending at the moment it is logged in nearly every real case.
+        if (typeof Promise !== &#39;undefined&#39; &amp;&amp; v instanceof Promise) return &#39;Promise {&lt;pending&gt;}&#39;;
+        if (typeof Map !== &#39;undefined&#39; &amp;&amp; v instanceof Map) {
+          var mp = []; v.forEach(function (val, key) { mp.push(fmtIn(key) + &#39; =&gt; &#39; + fmtIn(val)); });
+          return &#39;Map(&#39; + v.size + &#39;) {&#39; + mp.join(&#39;, &#39;) + &#39;}&#39;;
+        }
+        if (typeof Set !== &#39;undefined&#39; &amp;&amp; v instanceof Set) {
+          var st = []; v.forEach(function (val) { st.push(fmtIn(val)); });
+          return &#39;Set(&#39; + v.size + &#39;) {&#39; + st.join(&#39;, &#39;) + &#39;}&#39;;
+        }
+        if (v instanceof Date) return isNaN(v) ? &#39;Invalid Date&#39; : v.toString();
+        var json = JSON.stringify(v, function (k, x) {
+          if (typeof x === &#39;function&#39;) return &#39;__wd1fn__&#39; + (x.name || &#39;anonymous&#39;) + &#39;__&#39;;
+          if (x === undefined) return &#39;__wd1undef__&#39;;
+          return x;
+        }, 1);
+        json = json === undefined ? String(v) : json.replace(/\n\s*/g, &#39; &#39;).replace(/&quot;__wd1undef__&quot;/g, &#39;undefined&#39;)
+          .replace(/&quot;__wd1fn__([\w$]*)__&quot;/g, &#39;ƒ $1()&#39;);
+        // Objects made by a class (or a constructor function) show the class name first, like DevTools.
+        var proto = Object.getPrototypeOf(v);
+        var cname = proto &amp;&amp; proto.constructor &amp;&amp; proto.constructor.name;
+        if (cname &amp;&amp; cname !== &#39;Object&#39; &amp;&amp; cname !== &#39;Array&#39; &amp;&amp; typeof v === &#39;object&#39;) return cname + &#39; &#39; + json;
+        return json;
+      } catch (e) { return String(v); }
+    };
+    // Strings inside a Map or Set keep their quotes, as in DevTools.
+    var fmtIn = function (v) { return typeof v === &#39;string&#39; ? JSON.stringify(v) : fmt(v); };
+    [&#39;log&#39;, &#39;info&#39;, &#39;warn&#39;, &#39;error&#39;].forEach(function (k) {
+      var orig = console[k];
+      console[k] = function () {
+        send(k, Array.prototype.map.call(arguments, fmt));
+        if (orig) orig.apply(console, arguments);
+      };
+    });
+    // The document&#39;s own line numbers count the setup code mixed in with the student&#39;s code,
+    // so translate them; an error outside the student&#39;s tabs gets no line rather than a wrong one.
+    // Each lineMap entry is [firstDocLine, lastDocLine, offset, tab]; the last match wins, because
+    // a piece that starts partway through a line is the one that continues on it.
+    // An error from a separate file (&lt;script src&gt;) keeps that file&#39;s own name and line.
+    window.addEventListener(&#39;error&#39;, function (e) {
+      var m = lineMap || [], n = e.lineno, where = &#39;&#39;, file = e.filename || &#39;&#39;;
+      if (file &amp;&amp; file !== location.href) {
+        if (n) where = &#39; (&#39; + (file.split(/[?#]/)[0].split(&#39;/&#39;).pop() || file) + &#39; line &#39; + n + &#39;)&#39;;
+      } else {
+        for (var i = 0; n &amp;&amp; i &lt; m.length; i++) {
+          if (n &gt;= m[i][0] &amp;&amp; n &lt;= m[i][1]) where = &#39; (&#39; + m[i][3] + &#39; line &#39; + (n - m[i][2]) + &#39;)&#39;;
+        }
+      }
+      send(&#39;error&#39;, [e.message + where]);
+    });
+    // A rejected promise nobody handled (for example a failed await with no try/catch).
+    window.addEventListener(&#39;unhandledrejection&#39;, function (e) {
+      var r = e.reason;
+      send(&#39;error&#39;, [&#39;Uncaught (in promise) &#39; + (r instanceof Error ? r.name + &#39;: &#39; + r.message : fmt(r))]);
+    });
+
+    var panel = null;
+    function note(html) {
+      if (!document.body) return;
+      if (!panel || !panel.isConnected) {
+        panel = document.createElement(&#39;wd1-preview-note&#39;);
+        panel.style.cssText = &#39;all:initial;position:fixed;left:8px;right:8px;bottom:8px;z-index:2147483647;display:block;&#39;;
+        var root = panel.attachShadow ? panel.attachShadow({ mode: &#39;open&#39; }) : panel;
+        root.innerHTML = &#39;&lt;style&gt;.n{font:13px/1.45 system-ui,-apple-system,Segoe UI,sans-serif;color:#F3F5F8;background:#161A23;border-radius:10px;padding:10px 38px 10px 12px;box-shadow:0 8px 24px rgba(0,0,0,.35);position:relative;max-height:60vh;overflow:auto}&#39; +
+          &#39;.n b{color:#fff}.n code{font:12px ui-monospace,Menlo,Consolas,monospace;background:#2A3140;padding:1px 5px;border-radius:4px;color:#FFD89B;word-break:break-all}&#39; +
+          &#39;.n table{border-collapse:collapse;margin-top:6px;width:100%}.n td,.n th{text-align:left;border-top:1px solid #2F3747;padding:3px 6px;font-size:12px;vertical-align:top}&#39; +
+          &#39;.n th{color:#9AA3B5;font-weight:600}.n .w{color:#F2B457;margin-top:6px}.x{position:absolute;top:6px;right:6px;border:0;background:#2A3140;color:#fff;border-radius:6px;width:26px;height:26px;cursor:pointer;font-size:14px}&lt;/style&gt;&#39; +
+          &#39;&lt;div class=&quot;n&quot;&gt;&lt;button class=&quot;x&quot; aria-label=&quot;Close&quot;&gt;×&lt;/button&gt;&lt;div class=&quot;c&quot;&gt;&lt;/div&gt;&lt;/div&gt;&#39;;
+        root.querySelector(&#39;.x&#39;).addEventListener(&#39;click&#39;, function () { panel.remove(); });
+        document.body.appendChild(panel);
+      }
+      (panel.shadowRoot || panel).querySelector(&#39;.c&#39;).innerHTML = html;
+    }
+    var escH = function (s) { return String(s).replace(/[&amp;&lt;&gt;&quot;]/g, function (c) { return { &#39;&amp;&#39;: &#39;&amp;amp;&#39;, &#39;&lt;&#39;: &#39;&amp;lt;&#39;, &#39;&gt;&#39;: &#39;&amp;gt;&#39;, &#39;&quot;&#39;: &#39;&amp;quot;&#39; }[c]; }); };
+
+    document.addEventListener(&#39;click&#39;, function (e) {
+      var a = e.target &amp;&amp; e.target.closest ? e.target.closest(&#39;a[href]&#39;) : null;
+      if (!a || e.defaultPrevented) return;
+      var href = a.getAttribute(&#39;href&#39;);
+      if (href.charAt(0) === &#39;#&#39;) {
+        e.preventDefault();
+        var t = href.length &gt; 1 ? document.getElementById(decodeURIComponent(href.slice(1))) : null;
+        if (t) t.scrollIntoView({ behavior: &#39;smooth&#39; }); else window.scrollTo(0, 0);
+        return;
+      }
+      if (/^javascript:/i.test(href)) return;
+      e.preventDefault();
+      // A server playground (PHP, for example) follows links to its own pages by running the server again.
+      if (opts.server &amp;&amp; !/^[a-z][a-z0-9+.-]*:|^\/\//i.test(href) &amp;&amp; a.target !== &#39;_blank&#39;) {
+        post(&#39;nav&#39;, [], { method: &#39;GET&#39;, action: href, body: &#39;&#39;, kind: &#39;link&#39; });
+        return;
+      }
+      note(&#39;&lt;b&gt;Link clicked:&lt;/b&gt; &lt;code&gt;&#39; + escH(href) + &#39;&lt;/code&gt;&lt;br&gt;Links don\&#39;t navigate inside this preview&#39; +
+        (a.target === &#39;_blank&#39; ? &#39; (it would open in a new tab).&#39; : &#39;.&#39;));
+      send(&#39;info&#39;, [&#39;Link clicked → &#39; + href]);
+    });
+
+    window.addEventListener(&#39;submit&#39;, function (e) {
+      if (e.defaultPrevented) return;
+      e.preventDefault();
+      var f = e.target, fd;
+      try { fd = new FormData(f, e.submitter || undefined); } catch (err) { fd = new FormData(f); }
+      var method = (f.getAttribute(&#39;method&#39;) || &#39;get&#39;).toUpperCase();
+      var action = f.getAttribute(&#39;action&#39;) || &#39;(same page)&#39;;
+      var pairs = [];
+      fd.forEach(function (v, k) { pairs.push([k, typeof v === &#39;string&#39; ? v : (v &amp;&amp; v.name ? v.name : &#39;(no file)&#39;)]); });
+      var enc = pairs.map(function (p) { return encodeURIComponent(p[0]) + &#39;=&#39; + encodeURIComponent(p[1]).replace(/%20/g, &#39;+&#39;); }).join(&#39;&amp;&#39;);
+      // A server playground receives the request and answers it, just like a real server would.
+      var rawAction = f.getAttribute(&#39;action&#39;) || &#39;&#39;;
+      if (opts.server &amp;&amp; !/^[a-z][a-z0-9+.-]*:|^\/\//i.test(rawAction)) {
+        post(&#39;nav&#39;, [], { method: method === &#39;POST&#39; ? &#39;POST&#39; : &#39;GET&#39;, action: rawAction, body: enc, kind: &#39;form&#39; });
+        return;
+      }
+      var unnamed = Array.prototype.filter.call(f.querySelectorAll(&#39;input, select, textarea&#39;), function (c) {
+        return !c.name &amp;&amp; !/^(submit|button|reset|image)$/i.test(c.type);
+      }).length;
+      var html = &#39;&lt;b&gt;Form submitted&lt;/b&gt; · &lt;code&gt;&#39; + method + &#39;&lt;/code&gt; → &lt;code&gt;&#39; + escH(action) + &#39;&lt;/code&gt;&#39;;
+      if (method === &#39;GET&#39;) html += &#39;&lt;br&gt;Browser would request: &lt;code&gt;&#39; + escH((action === &#39;(same page)&#39; ? &#39;&#39; : action) + &#39;?&#39; + enc) + &#39;&lt;/code&gt;&#39;;
+      else html += &#39;&lt;br&gt;Request body: &lt;code&gt;&#39; + escH(enc || &#39;(empty)&#39;) + &#39;&lt;/code&gt;&#39;;
+      if (pairs.length) {
+        html += &#39;&lt;table&gt;&lt;tr&gt;&lt;th&gt;name&lt;/th&gt;&lt;th&gt;value&lt;/th&gt;&lt;/tr&gt;&#39; + pairs.map(function (p) { return &#39;&lt;tr&gt;&lt;td&gt;&lt;code&gt;&#39; + escH(p[0]) + &#39;&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&#39; + escH(p[1]) + &#39;&lt;/td&gt;&lt;/tr&gt;&#39;; }).join(&#39;&#39;) + &#39;&lt;/table&gt;&#39;;
+      } else html += &#39;&lt;div class=&quot;w&quot;&gt;No data was sent. Give each control a &lt;code&gt;name&lt;/code&gt; attribute.&lt;/div&gt;&#39;;
+      if (unnamed) html += &#39;&lt;div class=&quot;w&quot;&gt;&#39; + unnamed + &#39; field&#39; + (unnamed &gt; 1 ? &#39;s have&#39; : &#39; has&#39;) + &#39; no &lt;code&gt;name&lt;/code&gt;, so &#39; + (unnamed &gt; 1 ? &#39;they were&#39; : &#39;it was&#39;) + &#39; not sent.&lt;/div&gt;&#39;;
+      note(html);
+      send(&#39;info&#39;, [&#39;Form submitted: &#39; + method + &#39; &#39; + action + (enc ? &#39; · &#39; + enc : &#39;&#39;)]);
+    });
+  })(&quot;hw6-report&quot;, [[207,220,206,&quot;HTML&quot;],[222,261,221,&quot;JS&quot;]], {&quot;server&quot;:false});&lt;/script&gt;&lt;script&gt;(function () { var n = 0, t0 = 0, told = false; window.__wd1lp = function () { if (!n++) { t0 = Date.now(); Promise.resolve().then(function () { n = 0; }); } if (n % 500 === 0 &amp;&amp; Date.now() - t0 &gt; 1500) { if (!told) { told = true; console.error(&quot;Stopped a loop that kept running for more than 1.5 seconds. Check that its condition eventually becomes false, for example that the counter changes every time around.&quot;); } return true; } return false; }; })();&lt;/script&gt;&lt;style&gt;
+body { font-family: system-ui, sans-serif; margin: 16px; } /* a clean font and some room */
+label { display: block; font-weight: bold; margin-top: 12px; } /* each label on its own line */
+input, textarea { font: inherit; width: 100%; max-width: 24rem; } /* readable, not too wide */
+.help { color: #4a5262; font-size: 0.9rem; margin-top: 4px; } /* the quieter tip text */
+#left.over { color: #b3261e; font-weight: bold; } /* the counter turns red and bold when the note is too long */
+&lt;/style&gt;&lt;/head&gt;&lt;body&gt;
+&lt;label for=&quot;search&quot;&gt;Search trips&lt;/label&gt; &lt;!-- the label for the search box --&gt;
+&lt;input id=&quot;search&quot; type=&quot;search&quot; autocomplete=&quot;off&quot; aria-describedby=&quot;search-help&quot;&gt; &lt;!-- the visitor types here --&gt;
+&lt;p id=&quot;search-help&quot; class=&quot;help&quot;&gt;Press Escape to clear the search.&lt;/p&gt; &lt;!-- a tip, connected to the box --&gt;
+&lt;ul id=&quot;trips&quot;&gt; &lt;!-- the trips the search filters --&gt;
+  &lt;li&gt;Autumn Ridge Walk&lt;/li&gt; &lt;!-- trip 1 --&gt;
+  &lt;li&gt;Lake Loop&lt;/li&gt; &lt;!-- trip 2 --&gt;
+  &lt;li&gt;Summit Sunrise&lt;/li&gt; &lt;!-- trip 3 --&gt;
+  &lt;li&gt;Cedar Falls&lt;/li&gt; &lt;!-- trip 4 --&gt;
+  &lt;li&gt;Lakeshore Ramble&lt;/li&gt; &lt;!-- trip 5 --&gt;
+&lt;/ul&gt; &lt;!-- end of the list --&gt;
+&lt;p id=&quot;shown&quot; aria-live=&quot;polite&quot;&gt;5 trips&lt;/p&gt; &lt;!-- how many trips are visible; read aloud when it changes --&gt;
+&lt;label for=&quot;notes&quot;&gt;Notes for the leader (up to 60 characters)&lt;/label&gt; &lt;!-- the label for the notes box --&gt;
+&lt;textarea id=&quot;notes&quot; rows=&quot;3&quot; aria-describedby=&quot;left&quot;&gt;&lt;/textarea&gt; &lt;!-- a short note to the trip leader --&gt;
+&lt;p id=&quot;left&quot;&gt;60 characters left&lt;/p&gt; &lt;!-- the live character counter --&gt;
+&lt;script&gt;
+const search = document.querySelector(&#39;#search&#39;); // the search box
+const items = document.querySelectorAll(&#39;#trips &gt; li&#39;); // the five trips
+const shown = document.querySelector(&#39;#shown&#39;); // the &quot;5 trips&quot; line
+
+// One function does the filtering, so every event path stays in step
+function applySearch() {
+  const text = search.value.trim().toLowerCase();
+  let visible = 0;
+  items.forEach((item) =&gt; {
+    const match = item.textContent.toLowerCase().includes(text);
+    item.hidden = !match;
+    if (match) visible++;
+  });
+  shown.textContent = visible === 1 ? &#39;1 trip&#39; : `${visible} trips`;
+}
+
+search.addEventListener(&#39;input&#39;, applySearch);
+
+search.addEventListener(&#39;keydown&#39;, (event) =&gt; {
+  if (event.key === &#39;Escape&#39;) {
+    search.value = &#39;&#39;; // setting value from code fires no input event...
+    applySearch(); // ...so call the function ourselves
+  }
+});
+
+// Character counter for the notes box
+const notes = document.querySelector(&#39;#notes&#39;);
+const left = document.querySelector(&#39;#left&#39;);
+const MAX = 60;
+
+notes.addEventListener(&#39;input&#39;, () =&gt; {
+  const remaining = MAX - notes.value.length;
+  if (remaining &gt;= 0) {
+    left.textContent = `${remaining} characters left`;
+    left.classList.remove(&#39;over&#39;);
+  } else {
+    left.textContent = `${-remaining} characters too many`;
+    left.classList.add(&#39;over&#39;);
+  }
+});
+&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe>
+<p class="note">The preview runs the code above, so it can be clicked and typed into.</p>
+</section>
+<section class="card" id="challenge-11">
+<h3>Challenge 9.4: Validate the sign-up form</h3>
+<p class="st ok">7 of 7 checks pass</p>
+<ul class="checks"><li class="ok"><span class="mk">&#10003; Pass</span> Submitting is cancelled with <code>preventDefault()</code></li><li class="ok"><span class="mk">&#10003; Pass</span> An empty form marks all five controls <code>aria-invalid=&quot;true&quot;</code>, each with a message</li><li class="ok"><span class="mk">&#10003; Pass</span> Each rule is checked on its own: a bad email, a group of 9 and an unticked waiver fail, while the name and pace pass</li><li class="ok"><span class="mk">&#10003; Pass</span> A failed submit leaves <code>#done</code> empty</li><li class="ok"><span class="mk">&#10003; Pass</span> After a failed try, a valid form clears every error and shows <code>See you on the trail, Ana! Group of 2, steady pace.</code>, and a second sign-up shows its own values</li><li class="ok"><span class="mk">&#10003; Pass</span> Errors are timed kindly: typing <code>a</code> into a fresh email field shows no error yet, and a shown error clears as soon as the value is fixed (<code>input</code>, and <code>change</code> for the checkbox)</li><li class="ok"><span class="mk">&#10003; Pass</span> Checks the controls with <code>checkValidity()</code> (or <code>validity</code>), and uses no <code>innerHTML</code></li></ul>
+<h4>HTML</h4>
+<pre><code>&lt;form id=&quot;signup&quot; novalidate&gt; &lt;!-- novalidate: no browser bubbles, so your script shows the messages --&gt;
+  &lt;label for=&quot;fullname&quot;&gt;Full name&lt;/label&gt; &lt;!-- the label for the name field --&gt;
+  &lt;input id=&quot;fullname&quot; name=&quot;fullname&quot; required autocomplete=&quot;name&quot; aria-describedby=&quot;fullname-error&quot;&gt; &lt;!-- required --&gt;
+  &lt;p id=&quot;fullname-error&quot; class=&quot;error&quot;&gt;&lt;/p&gt; &lt;!-- the name&#39;s error message goes here --&gt;
+
+  &lt;label for=&quot;email&quot;&gt;Email&lt;/label&gt; &lt;!-- the label for the email field --&gt;
+  &lt;input id=&quot;email&quot; name=&quot;email&quot; type=&quot;email&quot; required autocomplete=&quot;email&quot; aria-describedby=&quot;email-error&quot;&gt; &lt;!-- must look like an email address --&gt;
+  &lt;p id=&quot;email-error&quot; class=&quot;error&quot;&gt;&lt;/p&gt; &lt;!-- the email&#39;s error message goes here --&gt;
+
+  &lt;label for=&quot;group&quot;&gt;Hikers in your group (1 to 6)&lt;/label&gt; &lt;!-- the label for the group size --&gt;
+  &lt;input id=&quot;group&quot; name=&quot;group&quot; type=&quot;number&quot; min=&quot;1&quot; max=&quot;6&quot; value=&quot;1&quot; required aria-describedby=&quot;group-error&quot;&gt; &lt;!-- a whole number from 1 to 6 --&gt;
+  &lt;p id=&quot;group-error&quot; class=&quot;error&quot;&gt;&lt;/p&gt; &lt;!-- the group size&#39;s error message goes here --&gt;
+
+  &lt;label for=&quot;pace&quot;&gt;Pace&lt;/label&gt; &lt;!-- the label for the pace menu --&gt;
+  &lt;select id=&quot;pace&quot; name=&quot;pace&quot; required aria-describedby=&quot;pace-error&quot;&gt; &lt;!-- the first option is empty, so required means &quot;pick one&quot; --&gt;
+    &lt;option value=&quot;&quot;&gt;Choose a pace&lt;/option&gt; &lt;!-- no value: does not count as a choice --&gt;
+    &lt;option value=&quot;relaxed&quot;&gt;Relaxed&lt;/option&gt; &lt;!-- choice 1 --&gt;
+    &lt;option value=&quot;steady&quot;&gt;Steady&lt;/option&gt; &lt;!-- choice 2 --&gt;
+    &lt;option value=&quot;fast&quot;&gt;Fast&lt;/option&gt; &lt;!-- choice 3 --&gt;
+  &lt;/select&gt; &lt;!-- end of the pace menu --&gt;
+  &lt;p id=&quot;pace-error&quot; class=&quot;error&quot;&gt;&lt;/p&gt; &lt;!-- the pace&#39;s error message goes here --&gt;
+
+  &lt;input id=&quot;waiver&quot; name=&quot;waiver&quot; type=&quot;checkbox&quot; required aria-describedby=&quot;waiver-error&quot;&gt; &lt;!-- must be ticked --&gt;
+  &lt;label for=&quot;waiver&quot; class=&quot;inline&quot;&gt;I have read the safety waiver&lt;/label&gt; &lt;!-- the checkbox&#39;s label --&gt;
+  &lt;p id=&quot;waiver-error&quot; class=&quot;error&quot;&gt;&lt;/p&gt; &lt;!-- the waiver&#39;s error message goes here --&gt;
+
+  &lt;button type=&quot;submit&quot;&gt;Sign up&lt;/button&gt; &lt;!-- sends the form, which fires &#39;submit&#39; --&gt;
+&lt;/form&gt; &lt;!-- end of the form --&gt;
+&lt;p id=&quot;done&quot; role=&quot;status&quot;&gt;&lt;/p&gt; &lt;!-- the welcome message appears here --&gt;</code></pre>
+<h4>CSS</h4>
+<pre><code>body { font-family: system-ui, sans-serif; margin: 16px; max-width: 30rem; } /* a clean font and a readable width */
+label { display: block; font-weight: bold; margin-top: 12px; } /* each label on its own line */
+label.inline { display: inline; } /* the checkbox label sits next to its box */
+input:not([type=&quot;checkbox&quot;]), select { font: inherit; width: 100%; } /* full-width fields */
+[aria-invalid=&quot;true&quot;] { border: 2px solid #b3261e; } /* a red border on a field that is wrong (never on its own: the text says why) */
+.error { color: #b3261e; margin: 4px 0 0; min-height: 1.2em; } /* the error text under each field */
+#done { font-weight: bold; color: #2f6f4e; } /* the welcome message */</code></pre>
+<h4>JavaScript</h4>
+<pre><code>const form = document.querySelector(&#39;#signup&#39;); // the sign-up form
+
+// Shows one field&#39;s error: text for everyone, aria-invalid for assistive technology
+function showError(field, message) {
+  document.getElementById(field.id + &#39;-error&#39;).textContent = message;
+  field.setAttribute(&#39;aria-invalid&#39;, &#39;true&#39;);
+}
+
+// Clears one field&#39;s error once its value is fine
+function clearError(field) {
+  document.getElementById(field.id + &#39;-error&#39;).textContent = &#39;&#39;;
+  field.setAttribute(&#39;aria-invalid&#39;, &#39;false&#39;);
+}
+
+const controls = [&#39;fullname&#39;, &#39;email&#39;, &#39;group&#39;, &#39;pace&#39;, &#39;waiver&#39;].map((n) =&gt; form.elements[n]);
+
+const messages = {
+  fullname: &#39;Please enter your full name.&#39;,
+  email: &#39;Enter an email address like name@example.com.&#39;,
+  group: &#39;Enter a group size from 1 to 6.&#39;,
+  pace: &#39;Choose a pace from the list.&#39;,
+  waiver: &#39;Tick the box to confirm you have read the safety waiver.&#39;,
+};
+
+// Checks one control, shows or clears its error, and says whether it passed
+function checkControl(control) {
+  if (control.checkValidity()) {
+    clearError(control);
+    return true;
+  }
+  showError(control, messages[control.id]);
+  return false;
+}
+
+form.addEventListener(&#39;submit&#39;, (event) =&gt; {
+  event.preventDefault();
+  // filter (not every) so ALL controls get checked, not just up to the first failure
+  const failed = controls.filter((control) =&gt; !checkControl(control));
+  const done = document.querySelector(&#39;#done&#39;);
+  if (failed.length === 0) {
+    const name = form.elements.fullname.value.trim();
+    const group = form.elements.group.value;
+    const pace = form.elements.pace.value;
+    done.textContent = `See you on the trail, ${name}! Group of ${group}, ${pace} pace.`;
+  } else {
+    done.textContent = &#39;&#39;;
+  }
+});
+
+// Re-check live, but only controls that are already showing an error
+controls.forEach((control) =&gt; {
+  [&#39;input&#39;, &#39;change&#39;].forEach((type) =&gt; {
+    control.addEventListener(type, () =&gt; {
+      if (control.getAttribute(&#39;aria-invalid&#39;) === &#39;true&#39;) {
+        checkControl(control);
+      }
+    });
+  });
+});</code></pre>
+<h4>Console output</h4>
+<p class="empty">Nothing was printed to the console while the page loaded.</p>
+<h4>Preview</h4>
+<iframe title="Preview of Challenge 9.4: Validate the sign-up form" sandbox="allow-scripts" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;&lt;script&gt;(function previewHelper(pgId, lineMap, opts) {
+    opts = opts || {};
+    // A preview shares this site&#39;s storage, so student code gets its own corner of it: keys are
+    // stored with a prefix, and clear(), length and key() only see that corner. A student&#39;s
+    // localStorage.clear() therefore never wipes the course progress saved under wd1:v1.
+    // Property access (localStorage.theme = &#39;dark&#39;, Object.keys(localStorage)) works too.
+    (function () {
+      var P = &#39;wd1-pg:&#39;;
+      [&#39;localStorage&#39;, &#39;sessionStorage&#39;].forEach(function (name) {
+        var real;
+        try { real = window[name]; if (!real) return; } catch (e) { return; }
+        var keys = function () {
+          var out = [];
+          for (var i = 0; i &lt; real.length; i++) { var k = real.key(i); if (k &amp;&amp; k.indexOf(P) === 0) out.push(k.slice(P.length)); }
+          return out;
+        };
+        var api = {
+          getItem: function (k) { return real.getItem(P + String(k)); },
+          setItem: function (k, v) { real.setItem(P + String(k), String(v)); },
+          removeItem: function (k) { real.removeItem(P + String(k)); },
+          clear: function () { keys().forEach(function (k) { real.removeItem(P + k); }); },
+          key: function (n) { var ks = keys(); return n &gt;= 0 &amp;&amp; n &lt; ks.length ? ks[n] : null; }
+        };
+        var target = {};
+        try { if (typeof Storage !== &#39;undefined&#39;) Object.setPrototypeOf(target, Storage.prototype); } catch (e) { /* ignore */ }
+        var shim = typeof Proxy === &#39;undefined&#39; ? api : new Proxy(target, {
+          get: function (t, p) {
+            if (p === &#39;length&#39;) return keys().length;
+            if (typeof p !== &#39;string&#39; || Object.prototype.hasOwnProperty.call(api, p)) return api[p];
+            if (p in Object.prototype) return Object.prototype[p];
+            var v = real.getItem(P + p);
+            return v === null ? undefined : v;
+          },
+          set: function (t, p, v) { if (typeof p === &#39;string&#39;) real.setItem(P + p, String(v)); return true; },
+          has: function (t, p) { return typeof p === &#39;string&#39; &amp;&amp; (p in api || p === &#39;length&#39; || real.getItem(P + p) !== null); },
+          deleteProperty: function (t, p) { if (typeof p === &#39;string&#39;) real.removeItem(P + p); return true; },
+          ownKeys: function () { return keys(); },
+          getOwnPropertyDescriptor: function (t, p) {
+            var v = typeof p === &#39;string&#39; ? real.getItem(P + p) : null;
+            return v === null ? undefined : { value: v, writable: true, enumerable: true, configurable: true };
+          }
+        });
+        try { Object.defineProperty(window, name, { configurable: true, get: function () { return shim; } }); } catch (e) { /* leave it */ }
+      });
+    })();
+    var post = function (type, args, extra) {
+      var msg = { wd1pg: pgId, type: type, args: args };
+      if (extra) for (var k in extra) msg[k] = extra[k];
+      try { parent.postMessage(msg, &#39;*&#39;); } catch (e) { /* ignore */ }
+    };
+    // Cap the output of one run, so a runaway loop full of console.log cannot flood the console panel.
+    var sent = { log: 0, error: 0 }, LIMIT = { log: 1000, error: 100 };
+    var send = function (type, args) {
+      var k = type === &#39;error&#39; ? &#39;error&#39; : &#39;log&#39;;
+      if (sent[k] &gt; LIMIT[k]) return;
+      if (++sent[k] &gt; LIMIT[k]) { post(&#39;warn&#39;, [&#39;Console output stopped after &#39; + LIMIT[k] + &#39; messages. Edit the code to run it again.&#39;]); return; }
+      post(type, args);
+    };
+    var fmt = function (v) {
+      try {
+        if (typeof v === &#39;string&#39;) return v;
+        if (v === undefined) return &#39;undefined&#39;;
+        if (typeof v === &#39;function&#39;) return &#39;ƒ &#39; + (v.name || &#39;anonymous&#39;) + &#39;()&#39;;
+        if (typeof Element !== &#39;undefined&#39; &amp;&amp; v instanceof Element) {
+          return &#39;&lt;&#39; + v.tagName.toLowerCase() + (v.id ? &#39;#&#39; + v.id : &#39;&#39;) +
+            (typeof v.className === &#39;string&#39; &amp;&amp; v.className.trim() ? &#39;.&#39; + v.className.trim().split(/\s+/).join(&#39;.&#39;) : &#39;&#39;) + &#39;&gt;&#39;;
+        }
+        if (typeof NodeList !== &#39;undefined&#39; &amp;&amp; (v instanceof NodeList || v instanceof HTMLCollection)) {
+          return (v instanceof NodeList ? &#39;NodeList&#39; : &#39;HTMLCollection&#39;) + &#39;(&#39; + v.length + &#39;) [&#39; + Array.prototype.map.call(v, fmt).join(&#39;, &#39;) + &#39;]&#39;;
+        }
+        if (v instanceof Error) return v.name + &#39;: &#39; + v.message;
+        if (typeof Event !== &#39;undefined&#39; &amp;&amp; v instanceof Event) return v.constructor.name + &#39; { type: &quot;&#39; + v.type + &#39;&quot; }&#39;;
+        if (typeof v === &#39;symbol&#39; || typeof v === &#39;bigint&#39;) return typeof v === &#39;bigint&#39; ? v + &#39;n&#39; : v.toString();
+        // A promise is still pending at the moment it is logged in nearly every real case.
+        if (typeof Promise !== &#39;undefined&#39; &amp;&amp; v instanceof Promise) return &#39;Promise {&lt;pending&gt;}&#39;;
+        if (typeof Map !== &#39;undefined&#39; &amp;&amp; v instanceof Map) {
+          var mp = []; v.forEach(function (val, key) { mp.push(fmtIn(key) + &#39; =&gt; &#39; + fmtIn(val)); });
+          return &#39;Map(&#39; + v.size + &#39;) {&#39; + mp.join(&#39;, &#39;) + &#39;}&#39;;
+        }
+        if (typeof Set !== &#39;undefined&#39; &amp;&amp; v instanceof Set) {
+          var st = []; v.forEach(function (val) { st.push(fmtIn(val)); });
+          return &#39;Set(&#39; + v.size + &#39;) {&#39; + st.join(&#39;, &#39;) + &#39;}&#39;;
+        }
+        if (v instanceof Date) return isNaN(v) ? &#39;Invalid Date&#39; : v.toString();
+        var json = JSON.stringify(v, function (k, x) {
+          if (typeof x === &#39;function&#39;) return &#39;__wd1fn__&#39; + (x.name || &#39;anonymous&#39;) + &#39;__&#39;;
+          if (x === undefined) return &#39;__wd1undef__&#39;;
+          return x;
+        }, 1);
+        json = json === undefined ? String(v) : json.replace(/\n\s*/g, &#39; &#39;).replace(/&quot;__wd1undef__&quot;/g, &#39;undefined&#39;)
+          .replace(/&quot;__wd1fn__([\w$]*)__&quot;/g, &#39;ƒ $1()&#39;);
+        // Objects made by a class (or a constructor function) show the class name first, like DevTools.
+        var proto = Object.getPrototypeOf(v);
+        var cname = proto &amp;&amp; proto.constructor &amp;&amp; proto.constructor.name;
+        if (cname &amp;&amp; cname !== &#39;Object&#39; &amp;&amp; cname !== &#39;Array&#39; &amp;&amp; typeof v === &#39;object&#39;) return cname + &#39; &#39; + json;
+        return json;
+      } catch (e) { return String(v); }
+    };
+    // Strings inside a Map or Set keep their quotes, as in DevTools.
+    var fmtIn = function (v) { return typeof v === &#39;string&#39; ? JSON.stringify(v) : fmt(v); };
+    [&#39;log&#39;, &#39;info&#39;, &#39;warn&#39;, &#39;error&#39;].forEach(function (k) {
+      var orig = console[k];
+      console[k] = function () {
+        send(k, Array.prototype.map.call(arguments, fmt));
+        if (orig) orig.apply(console, arguments);
+      };
+    });
+    // The document&#39;s own line numbers count the setup code mixed in with the student&#39;s code,
+    // so translate them; an error outside the student&#39;s tabs gets no line rather than a wrong one.
+    // Each lineMap entry is [firstDocLine, lastDocLine, offset, tab]; the last match wins, because
+    // a piece that starts partway through a line is the one that continues on it.
+    // An error from a separate file (&lt;script src&gt;) keeps that file&#39;s own name and line.
+    window.addEventListener(&#39;error&#39;, function (e) {
+      var m = lineMap || [], n = e.lineno, where = &#39;&#39;, file = e.filename || &#39;&#39;;
+      if (file &amp;&amp; file !== location.href) {
+        if (n) where = &#39; (&#39; + (file.split(/[?#]/)[0].split(&#39;/&#39;).pop() || file) + &#39; line &#39; + n + &#39;)&#39;;
+      } else {
+        for (var i = 0; n &amp;&amp; i &lt; m.length; i++) {
+          if (n &gt;= m[i][0] &amp;&amp; n &lt;= m[i][1]) where = &#39; (&#39; + m[i][3] + &#39; line &#39; + (n - m[i][2]) + &#39;)&#39;;
+        }
+      }
+      send(&#39;error&#39;, [e.message + where]);
+    });
+    // A rejected promise nobody handled (for example a failed await with no try/catch).
+    window.addEventListener(&#39;unhandledrejection&#39;, function (e) {
+      var r = e.reason;
+      send(&#39;error&#39;, [&#39;Uncaught (in promise) &#39; + (r instanceof Error ? r.name + &#39;: &#39; + r.message : fmt(r))]);
+    });
+
+    var panel = null;
+    function note(html) {
+      if (!document.body) return;
+      if (!panel || !panel.isConnected) {
+        panel = document.createElement(&#39;wd1-preview-note&#39;);
+        panel.style.cssText = &#39;all:initial;position:fixed;left:8px;right:8px;bottom:8px;z-index:2147483647;display:block;&#39;;
+        var root = panel.attachShadow ? panel.attachShadow({ mode: &#39;open&#39; }) : panel;
+        root.innerHTML = &#39;&lt;style&gt;.n{font:13px/1.45 system-ui,-apple-system,Segoe UI,sans-serif;color:#F3F5F8;background:#161A23;border-radius:10px;padding:10px 38px 10px 12px;box-shadow:0 8px 24px rgba(0,0,0,.35);position:relative;max-height:60vh;overflow:auto}&#39; +
+          &#39;.n b{color:#fff}.n code{font:12px ui-monospace,Menlo,Consolas,monospace;background:#2A3140;padding:1px 5px;border-radius:4px;color:#FFD89B;word-break:break-all}&#39; +
+          &#39;.n table{border-collapse:collapse;margin-top:6px;width:100%}.n td,.n th{text-align:left;border-top:1px solid #2F3747;padding:3px 6px;font-size:12px;vertical-align:top}&#39; +
+          &#39;.n th{color:#9AA3B5;font-weight:600}.n .w{color:#F2B457;margin-top:6px}.x{position:absolute;top:6px;right:6px;border:0;background:#2A3140;color:#fff;border-radius:6px;width:26px;height:26px;cursor:pointer;font-size:14px}&lt;/style&gt;&#39; +
+          &#39;&lt;div class=&quot;n&quot;&gt;&lt;button class=&quot;x&quot; aria-label=&quot;Close&quot;&gt;×&lt;/button&gt;&lt;div class=&quot;c&quot;&gt;&lt;/div&gt;&lt;/div&gt;&#39;;
+        root.querySelector(&#39;.x&#39;).addEventListener(&#39;click&#39;, function () { panel.remove(); });
+        document.body.appendChild(panel);
+      }
+      (panel.shadowRoot || panel).querySelector(&#39;.c&#39;).innerHTML = html;
+    }
+    var escH = function (s) { return String(s).replace(/[&amp;&lt;&gt;&quot;]/g, function (c) { return { &#39;&amp;&#39;: &#39;&amp;amp;&#39;, &#39;&lt;&#39;: &#39;&amp;lt;&#39;, &#39;&gt;&#39;: &#39;&amp;gt;&#39;, &#39;&quot;&#39;: &#39;&amp;quot;&#39; }[c]; }); };
+
+    document.addEventListener(&#39;click&#39;, function (e) {
+      var a = e.target &amp;&amp; e.target.closest ? e.target.closest(&#39;a[href]&#39;) : null;
+      if (!a || e.defaultPrevented) return;
+      var href = a.getAttribute(&#39;href&#39;);
+      if (href.charAt(0) === &#39;#&#39;) {
+        e.preventDefault();
+        var t = href.length &gt; 1 ? document.getElementById(decodeURIComponent(href.slice(1))) : null;
+        if (t) t.scrollIntoView({ behavior: &#39;smooth&#39; }); else window.scrollTo(0, 0);
+        return;
+      }
+      if (/^javascript:/i.test(href)) return;
+      e.preventDefault();
+      // A server playground (PHP, for example) follows links to its own pages by running the server again.
+      if (opts.server &amp;&amp; !/^[a-z][a-z0-9+.-]*:|^\/\//i.test(href) &amp;&amp; a.target !== &#39;_blank&#39;) {
+        post(&#39;nav&#39;, [], { method: &#39;GET&#39;, action: href, body: &#39;&#39;, kind: &#39;link&#39; });
+        return;
+      }
+      note(&#39;&lt;b&gt;Link clicked:&lt;/b&gt; &lt;code&gt;&#39; + escH(href) + &#39;&lt;/code&gt;&lt;br&gt;Links don\&#39;t navigate inside this preview&#39; +
+        (a.target === &#39;_blank&#39; ? &#39; (it would open in a new tab).&#39; : &#39;.&#39;));
+      send(&#39;info&#39;, [&#39;Link clicked → &#39; + href]);
+    });
+
+    window.addEventListener(&#39;submit&#39;, function (e) {
+      if (e.defaultPrevented) return;
+      e.preventDefault();
+      var f = e.target, fd;
+      try { fd = new FormData(f, e.submitter || undefined); } catch (err) { fd = new FormData(f); }
+      var method = (f.getAttribute(&#39;method&#39;) || &#39;get&#39;).toUpperCase();
+      var action = f.getAttribute(&#39;action&#39;) || &#39;(same page)&#39;;
+      var pairs = [];
+      fd.forEach(function (v, k) { pairs.push([k, typeof v === &#39;string&#39; ? v : (v &amp;&amp; v.name ? v.name : &#39;(no file)&#39;)]); });
+      var enc = pairs.map(function (p) { return encodeURIComponent(p[0]) + &#39;=&#39; + encodeURIComponent(p[1]).replace(/%20/g, &#39;+&#39;); }).join(&#39;&amp;&#39;);
+      // A server playground receives the request and answers it, just like a real server would.
+      var rawAction = f.getAttribute(&#39;action&#39;) || &#39;&#39;;
+      if (opts.server &amp;&amp; !/^[a-z][a-z0-9+.-]*:|^\/\//i.test(rawAction)) {
+        post(&#39;nav&#39;, [], { method: method === &#39;POST&#39; ? &#39;POST&#39; : &#39;GET&#39;, action: rawAction, body: enc, kind: &#39;form&#39; });
+        return;
+      }
+      var unnamed = Array.prototype.filter.call(f.querySelectorAll(&#39;input, select, textarea&#39;), function (c) {
+        return !c.name &amp;&amp; !/^(submit|button|reset|image)$/i.test(c.type);
+      }).length;
+      var html = &#39;&lt;b&gt;Form submitted&lt;/b&gt; · &lt;code&gt;&#39; + method + &#39;&lt;/code&gt; → &lt;code&gt;&#39; + escH(action) + &#39;&lt;/code&gt;&#39;;
+      if (method === &#39;GET&#39;) html += &#39;&lt;br&gt;Browser would request: &lt;code&gt;&#39; + escH((action === &#39;(same page)&#39; ? &#39;&#39; : action) + &#39;?&#39; + enc) + &#39;&lt;/code&gt;&#39;;
+      else html += &#39;&lt;br&gt;Request body: &lt;code&gt;&#39; + escH(enc || &#39;(empty)&#39;) + &#39;&lt;/code&gt;&#39;;
+      if (pairs.length) {
+        html += &#39;&lt;table&gt;&lt;tr&gt;&lt;th&gt;name&lt;/th&gt;&lt;th&gt;value&lt;/th&gt;&lt;/tr&gt;&#39; + pairs.map(function (p) { return &#39;&lt;tr&gt;&lt;td&gt;&lt;code&gt;&#39; + escH(p[0]) + &#39;&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&#39; + escH(p[1]) + &#39;&lt;/td&gt;&lt;/tr&gt;&#39;; }).join(&#39;&#39;) + &#39;&lt;/table&gt;&#39;;
+      } else html += &#39;&lt;div class=&quot;w&quot;&gt;No data was sent. Give each control a &lt;code&gt;name&lt;/code&gt; attribute.&lt;/div&gt;&#39;;
+      if (unnamed) html += &#39;&lt;div class=&quot;w&quot;&gt;&#39; + unnamed + &#39; field&#39; + (unnamed &gt; 1 ? &#39;s have&#39; : &#39; has&#39;) + &#39; no &lt;code&gt;name&lt;/code&gt;, so &#39; + (unnamed &gt; 1 ? &#39;they were&#39; : &#39;it was&#39;) + &#39; not sent.&lt;/div&gt;&#39;;
+      note(html);
+      send(&#39;info&#39;, [&#39;Form submitted: &#39; + method + &#39; &#39; + action + (enc ? &#39; · &#39; + enc : &#39;&#39;)]);
+    });
+  })(&quot;hw6-report&quot;, [[209,237,208,&quot;HTML&quot;],[239,297,238,&quot;JS&quot;]], {&quot;server&quot;:false});&lt;/script&gt;&lt;script&gt;(function () { var n = 0, t0 = 0, told = false; window.__wd1lp = function () { if (!n++) { t0 = Date.now(); Promise.resolve().then(function () { n = 0; }); } if (n % 500 === 0 &amp;&amp; Date.now() - t0 &gt; 1500) { if (!told) { told = true; console.error(&quot;Stopped a loop that kept running for more than 1.5 seconds. Check that its condition eventually becomes false, for example that the counter changes every time around.&quot;); } return true; } return false; }; })();&lt;/script&gt;&lt;style&gt;
+body { font-family: system-ui, sans-serif; margin: 16px; max-width: 30rem; } /* a clean font and a readable width */
+label { display: block; font-weight: bold; margin-top: 12px; } /* each label on its own line */
+label.inline { display: inline; } /* the checkbox label sits next to its box */
+input:not([type=&quot;checkbox&quot;]), select { font: inherit; width: 100%; } /* full-width fields */
+[aria-invalid=&quot;true&quot;] { border: 2px solid #b3261e; } /* a red border on a field that is wrong (never on its own: the text says why) */
+.error { color: #b3261e; margin: 4px 0 0; min-height: 1.2em; } /* the error text under each field */
+#done { font-weight: bold; color: #2f6f4e; } /* the welcome message */
+&lt;/style&gt;&lt;/head&gt;&lt;body&gt;
+&lt;form id=&quot;signup&quot; novalidate&gt; &lt;!-- novalidate: no browser bubbles, so your script shows the messages --&gt;
+  &lt;label for=&quot;fullname&quot;&gt;Full name&lt;/label&gt; &lt;!-- the label for the name field --&gt;
+  &lt;input id=&quot;fullname&quot; name=&quot;fullname&quot; required autocomplete=&quot;name&quot; aria-describedby=&quot;fullname-error&quot;&gt; &lt;!-- required --&gt;
+  &lt;p id=&quot;fullname-error&quot; class=&quot;error&quot;&gt;&lt;/p&gt; &lt;!-- the name&#39;s error message goes here --&gt;
+
+  &lt;label for=&quot;email&quot;&gt;Email&lt;/label&gt; &lt;!-- the label for the email field --&gt;
+  &lt;input id=&quot;email&quot; name=&quot;email&quot; type=&quot;email&quot; required autocomplete=&quot;email&quot; aria-describedby=&quot;email-error&quot;&gt; &lt;!-- must look like an email address --&gt;
+  &lt;p id=&quot;email-error&quot; class=&quot;error&quot;&gt;&lt;/p&gt; &lt;!-- the email&#39;s error message goes here --&gt;
+
+  &lt;label for=&quot;group&quot;&gt;Hikers in your group (1 to 6)&lt;/label&gt; &lt;!-- the label for the group size --&gt;
+  &lt;input id=&quot;group&quot; name=&quot;group&quot; type=&quot;number&quot; min=&quot;1&quot; max=&quot;6&quot; value=&quot;1&quot; required aria-describedby=&quot;group-error&quot;&gt; &lt;!-- a whole number from 1 to 6 --&gt;
+  &lt;p id=&quot;group-error&quot; class=&quot;error&quot;&gt;&lt;/p&gt; &lt;!-- the group size&#39;s error message goes here --&gt;
+
+  &lt;label for=&quot;pace&quot;&gt;Pace&lt;/label&gt; &lt;!-- the label for the pace menu --&gt;
+  &lt;select id=&quot;pace&quot; name=&quot;pace&quot; required aria-describedby=&quot;pace-error&quot;&gt; &lt;!-- the first option is empty, so required means &quot;pick one&quot; --&gt;
+    &lt;option value=&quot;&quot;&gt;Choose a pace&lt;/option&gt; &lt;!-- no value: does not count as a choice --&gt;
+    &lt;option value=&quot;relaxed&quot;&gt;Relaxed&lt;/option&gt; &lt;!-- choice 1 --&gt;
+    &lt;option value=&quot;steady&quot;&gt;Steady&lt;/option&gt; &lt;!-- choice 2 --&gt;
+    &lt;option value=&quot;fast&quot;&gt;Fast&lt;/option&gt; &lt;!-- choice 3 --&gt;
+  &lt;/select&gt; &lt;!-- end of the pace menu --&gt;
+  &lt;p id=&quot;pace-error&quot; class=&quot;error&quot;&gt;&lt;/p&gt; &lt;!-- the pace&#39;s error message goes here --&gt;
+
+  &lt;input id=&quot;waiver&quot; name=&quot;waiver&quot; type=&quot;checkbox&quot; required aria-describedby=&quot;waiver-error&quot;&gt; &lt;!-- must be ticked --&gt;
+  &lt;label for=&quot;waiver&quot; class=&quot;inline&quot;&gt;I have read the safety waiver&lt;/label&gt; &lt;!-- the checkbox&#39;s label --&gt;
+  &lt;p id=&quot;waiver-error&quot; class=&quot;error&quot;&gt;&lt;/p&gt; &lt;!-- the waiver&#39;s error message goes here --&gt;
+
+  &lt;button type=&quot;submit&quot;&gt;Sign up&lt;/button&gt; &lt;!-- sends the form, which fires &#39;submit&#39; --&gt;
+&lt;/form&gt; &lt;!-- end of the form --&gt;
+&lt;p id=&quot;done&quot; role=&quot;status&quot;&gt;&lt;/p&gt; &lt;!-- the welcome message appears here --&gt;
+&lt;script&gt;
+const form = document.querySelector(&#39;#signup&#39;); // the sign-up form
+
+// Shows one field&#39;s error: text for everyone, aria-invalid for assistive technology
+function showError(field, message) {
+  document.getElementById(field.id + &#39;-error&#39;).textContent = message;
+  field.setAttribute(&#39;aria-invalid&#39;, &#39;true&#39;);
+}
+
+// Clears one field&#39;s error once its value is fine
+function clearError(field) {
+  document.getElementById(field.id + &#39;-error&#39;).textContent = &#39;&#39;;
+  field.setAttribute(&#39;aria-invalid&#39;, &#39;false&#39;);
+}
+
+const controls = [&#39;fullname&#39;, &#39;email&#39;, &#39;group&#39;, &#39;pace&#39;, &#39;waiver&#39;].map((n) =&gt; form.elements[n]);
+
+const messages = {
+  fullname: &#39;Please enter your full name.&#39;,
+  email: &#39;Enter an email address like name@example.com.&#39;,
+  group: &#39;Enter a group size from 1 to 6.&#39;,
+  pace: &#39;Choose a pace from the list.&#39;,
+  waiver: &#39;Tick the box to confirm you have read the safety waiver.&#39;,
+};
+
+// Checks one control, shows or clears its error, and says whether it passed
+function checkControl(control) {
+  if (control.checkValidity()) {
+    clearError(control);
+    return true;
+  }
+  showError(control, messages[control.id]);
+  return false;
+}
+
+form.addEventListener(&#39;submit&#39;, (event) =&gt; {
+  event.preventDefault();
+  // filter (not every) so ALL controls get checked, not just up to the first failure
+  const failed = controls.filter((control) =&gt; !checkControl(control));
+  const done = document.querySelector(&#39;#done&#39;);
+  if (failed.length === 0) {
+    const name = form.elements.fullname.value.trim();
+    const group = form.elements.group.value;
+    const pace = form.elements.pace.value;
+    done.textContent = `See you on the trail, ${name}! Group of ${group}, ${pace} pace.`;
+  } else {
+    done.textContent = &#39;&#39;;
+  }
+});
+
+// Re-check live, but only controls that are already showing an error
+controls.forEach((control) =&gt; {
+  [&#39;input&#39;, &#39;change&#39;].forEach((type) =&gt; {
+    control.addEventListener(type, () =&gt; {
+      if (control.getAttribute(&#39;aria-invalid&#39;) === &#39;true&#39;) {
+        checkControl(control);
+      }
+    });
+  });
+});
+&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe>
+<p class="note">The preview runs the code above, so it can be clicked and typed into.</p>
+</section>
+<section class="card" id="challenge-12">
+<h3>Challenge 9.5: Patterns for IDs, times and tags</h3>
+<p class="st ok">8 of 8 checks pass</p>
+<ul class="checks"><li class="ok"><span class="mk">&#10003; Pass</span> <code>isMemberId</code> accepts <code>RHC-0042</code>, <code>RHC-1234</code> and <code>RHC-9999</code></li><li class="ok"><span class="mk">&#10003; Pass</span> <code>isMemberId</code> rejects lowercase, too few or too many digits, and extra text before or after: <code>rhc-0042</code>, <code>RHC-42</code>, <code>RHC-12345</code>, <code>ID RHC-1234</code>, <code>RHC-1234x</code></li><li class="ok"><span class="mk">&#10003; Pass</span> <code>isMeetTime</code> accepts <code>8:30</code>, <code>12:05</code>, <code>1:00</code> and <code>10:59</code></li><li class="ok"><span class="mk">&#10003; Pass</span> <code>isMeetTime</code> rejects <code>13:00</code>, <code>8:5</code>, <code>08:30</code>, <code>7:60</code>, <code>0:30</code>, and extra text such as <code>8:30pm</code> or <code>x8:30</code></li><li class="ok"><span class="mk">&#10003; Pass</span> <code>tagsFrom(&#39;Dogs,  views , Lakes&#39;)</code> is <code>[&#39;dogs&#39;, &#39;views&#39;, &#39;lakes&#39;]</code>: any mix of commas and spaces separates tags</li><li class="ok"><span class="mk">&#10003; Pass</span> <code>tagsFrom</code> never returns empty strings: <code>&#39;&#39;</code>, <code>&#39;   &#39;</code> and <code>&#39;,,,&#39;</code> give <code>[]</code>, and <code>&#39;,Dogs,&#39;</code> gives <code>[&#39;dogs&#39;]</code></li><li class="ok"><span class="mk">&#10003; Pass</span> Typing in <code>#member</code> marks it valid or invalid as you type, with the matching message</li><li class="ok"><span class="mk">&#10003; Pass</span> <code>isMemberId</code> and <code>isMeetTime</code> each use a regular expression (written in the function or stored in a variable)</li></ul>
+<h4>HTML</h4>
+<pre><code>&lt;label for=&quot;member&quot;&gt;Member ID (like RHC-1234)&lt;/label&gt; &lt;!-- the label for the member ID field --&gt;
+&lt;input id=&quot;member&quot; autocomplete=&quot;off&quot; aria-describedby=&quot;member-msg&quot;&gt; &lt;!-- the visitor types an ID here --&gt;
+&lt;p id=&quot;member-msg&quot;&gt;&lt;/p&gt; &lt;!-- the script says whether the ID looks right --&gt;</code></pre>
+<h4>CSS</h4>
+<pre><code>body { font-family: system-ui, sans-serif; margin: 16px; } /* a clean font and some room */
+label { display: block; font-weight: bold; } /* the label on its own line */
+input { font: inherit; } /* the field uses the page font */
+[aria-invalid=&quot;true&quot;] { border: 2px solid #b3261e; } /* a red border while the ID is wrong */
+[aria-invalid=&quot;false&quot;] { border: 2px solid #2f6f4e; } /* a green border once it is right */</code></pre>
+<h4>JavaScript</h4>
+<pre><code>// RHC- then exactly four digits; ^ and $ forbid anything before or after
+function isMemberId(text) {
+  return /^RHC-\d{4}$/.test(text);
+}
+
+// Hour 10-12 or 1-9, a colon, then minutes 00-59
+function isMeetTime(text) {
+  return /^(1[0-2]|[1-9]):[0-5]\d$/.test(text);
+}
+
+// Split on any run of commas and/or whitespace, then drop empty strings
+function tagsFrom(text) {
+  return text
+    .trim()
+    .toLowerCase()
+    .split(/[\s,]+/)
+    .filter((tag) =&gt; tag !== &#39;&#39;);
+}
+
+const member = document.querySelector(&#39;#member&#39;);
+const memberMsg = document.querySelector(&#39;#member-msg&#39;);
+
+member.addEventListener(&#39;input&#39;, () =&gt; {
+  if (isMemberId(member.value)) {
+    member.setAttribute(&#39;aria-invalid&#39;, &#39;false&#39;);
+    memberMsg.textContent = &#39;Looks good.&#39;;
+  } else {
+    member.setAttribute(&#39;aria-invalid&#39;, &#39;true&#39;);
+    memberMsg.textContent = &#39;Use RHC- and four digits, like RHC-1234.&#39;;
+  }
+});
+
+console.log(isMemberId(&#39;RHC-0042&#39;), isMemberId(&#39;RHC-42&#39;)); // true false
+console.log(isMeetTime(&#39;8:30&#39;), isMeetTime(&#39;13:00&#39;)); // true false
+console.log(tagsFrom(&#39;Dogs,  views , Lakes&#39;)); // [&quot;dogs&quot;, &quot;views&quot;, &quot;lakes&quot;]</code></pre>
+<h4>Console output</h4>
+<pre class="console"><span class="log">true false</span>
+<span class="log">true false</span>
+<span class="log">[ &quot;dogs&quot;, &quot;views&quot;, &quot;lakes&quot; ]</span></pre>
+<h4>Preview</h4>
+<iframe title="Preview of Challenge 9.5: Patterns for IDs, times and tags" sandbox="allow-scripts" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;&lt;script&gt;(function previewHelper(pgId, lineMap, opts) {
+    opts = opts || {};
+    // A preview shares this site&#39;s storage, so student code gets its own corner of it: keys are
+    // stored with a prefix, and clear(), length and key() only see that corner. A student&#39;s
+    // localStorage.clear() therefore never wipes the course progress saved under wd1:v1.
+    // Property access (localStorage.theme = &#39;dark&#39;, Object.keys(localStorage)) works too.
+    (function () {
+      var P = &#39;wd1-pg:&#39;;
+      [&#39;localStorage&#39;, &#39;sessionStorage&#39;].forEach(function (name) {
+        var real;
+        try { real = window[name]; if (!real) return; } catch (e) { return; }
+        var keys = function () {
+          var out = [];
+          for (var i = 0; i &lt; real.length; i++) { var k = real.key(i); if (k &amp;&amp; k.indexOf(P) === 0) out.push(k.slice(P.length)); }
+          return out;
+        };
+        var api = {
+          getItem: function (k) { return real.getItem(P + String(k)); },
+          setItem: function (k, v) { real.setItem(P + String(k), String(v)); },
+          removeItem: function (k) { real.removeItem(P + String(k)); },
+          clear: function () { keys().forEach(function (k) { real.removeItem(P + k); }); },
+          key: function (n) { var ks = keys(); return n &gt;= 0 &amp;&amp; n &lt; ks.length ? ks[n] : null; }
+        };
+        var target = {};
+        try { if (typeof Storage !== &#39;undefined&#39;) Object.setPrototypeOf(target, Storage.prototype); } catch (e) { /* ignore */ }
+        var shim = typeof Proxy === &#39;undefined&#39; ? api : new Proxy(target, {
+          get: function (t, p) {
+            if (p === &#39;length&#39;) return keys().length;
+            if (typeof p !== &#39;string&#39; || Object.prototype.hasOwnProperty.call(api, p)) return api[p];
+            if (p in Object.prototype) return Object.prototype[p];
+            var v = real.getItem(P + p);
+            return v === null ? undefined : v;
+          },
+          set: function (t, p, v) { if (typeof p === &#39;string&#39;) real.setItem(P + p, String(v)); return true; },
+          has: function (t, p) { return typeof p === &#39;string&#39; &amp;&amp; (p in api || p === &#39;length&#39; || real.getItem(P + p) !== null); },
+          deleteProperty: function (t, p) { if (typeof p === &#39;string&#39;) real.removeItem(P + p); return true; },
+          ownKeys: function () { return keys(); },
+          getOwnPropertyDescriptor: function (t, p) {
+            var v = typeof p === &#39;string&#39; ? real.getItem(P + p) : null;
+            return v === null ? undefined : { value: v, writable: true, enumerable: true, configurable: true };
+          }
+        });
+        try { Object.defineProperty(window, name, { configurable: true, get: function () { return shim; } }); } catch (e) { /* leave it */ }
+      });
+    })();
+    var post = function (type, args, extra) {
+      var msg = { wd1pg: pgId, type: type, args: args };
+      if (extra) for (var k in extra) msg[k] = extra[k];
+      try { parent.postMessage(msg, &#39;*&#39;); } catch (e) { /* ignore */ }
+    };
+    // Cap the output of one run, so a runaway loop full of console.log cannot flood the console panel.
+    var sent = { log: 0, error: 0 }, LIMIT = { log: 1000, error: 100 };
+    var send = function (type, args) {
+      var k = type === &#39;error&#39; ? &#39;error&#39; : &#39;log&#39;;
+      if (sent[k] &gt; LIMIT[k]) return;
+      if (++sent[k] &gt; LIMIT[k]) { post(&#39;warn&#39;, [&#39;Console output stopped after &#39; + LIMIT[k] + &#39; messages. Edit the code to run it again.&#39;]); return; }
+      post(type, args);
+    };
+    var fmt = function (v) {
+      try {
+        if (typeof v === &#39;string&#39;) return v;
+        if (v === undefined) return &#39;undefined&#39;;
+        if (typeof v === &#39;function&#39;) return &#39;ƒ &#39; + (v.name || &#39;anonymous&#39;) + &#39;()&#39;;
+        if (typeof Element !== &#39;undefined&#39; &amp;&amp; v instanceof Element) {
+          return &#39;&lt;&#39; + v.tagName.toLowerCase() + (v.id ? &#39;#&#39; + v.id : &#39;&#39;) +
+            (typeof v.className === &#39;string&#39; &amp;&amp; v.className.trim() ? &#39;.&#39; + v.className.trim().split(/\s+/).join(&#39;.&#39;) : &#39;&#39;) + &#39;&gt;&#39;;
+        }
+        if (typeof NodeList !== &#39;undefined&#39; &amp;&amp; (v instanceof NodeList || v instanceof HTMLCollection)) {
+          return (v instanceof NodeList ? &#39;NodeList&#39; : &#39;HTMLCollection&#39;) + &#39;(&#39; + v.length + &#39;) [&#39; + Array.prototype.map.call(v, fmt).join(&#39;, &#39;) + &#39;]&#39;;
+        }
+        if (v instanceof Error) return v.name + &#39;: &#39; + v.message;
+        if (typeof Event !== &#39;undefined&#39; &amp;&amp; v instanceof Event) return v.constructor.name + &#39; { type: &quot;&#39; + v.type + &#39;&quot; }&#39;;
+        if (typeof v === &#39;symbol&#39; || typeof v === &#39;bigint&#39;) return typeof v === &#39;bigint&#39; ? v + &#39;n&#39; : v.toString();
+        // A promise is still pending at the moment it is logged in nearly every real case.
+        if (typeof Promise !== &#39;undefined&#39; &amp;&amp; v instanceof Promise) return &#39;Promise {&lt;pending&gt;}&#39;;
+        if (typeof Map !== &#39;undefined&#39; &amp;&amp; v instanceof Map) {
+          var mp = []; v.forEach(function (val, key) { mp.push(fmtIn(key) + &#39; =&gt; &#39; + fmtIn(val)); });
+          return &#39;Map(&#39; + v.size + &#39;) {&#39; + mp.join(&#39;, &#39;) + &#39;}&#39;;
+        }
+        if (typeof Set !== &#39;undefined&#39; &amp;&amp; v instanceof Set) {
+          var st = []; v.forEach(function (val) { st.push(fmtIn(val)); });
+          return &#39;Set(&#39; + v.size + &#39;) {&#39; + st.join(&#39;, &#39;) + &#39;}&#39;;
+        }
+        if (v instanceof Date) return isNaN(v) ? &#39;Invalid Date&#39; : v.toString();
+        var json = JSON.stringify(v, function (k, x) {
+          if (typeof x === &#39;function&#39;) return &#39;__wd1fn__&#39; + (x.name || &#39;anonymous&#39;) + &#39;__&#39;;
+          if (x === undefined) return &#39;__wd1undef__&#39;;
+          return x;
+        }, 1);
+        json = json === undefined ? String(v) : json.replace(/\n\s*/g, &#39; &#39;).replace(/&quot;__wd1undef__&quot;/g, &#39;undefined&#39;)
+          .replace(/&quot;__wd1fn__([\w$]*)__&quot;/g, &#39;ƒ $1()&#39;);
+        // Objects made by a class (or a constructor function) show the class name first, like DevTools.
+        var proto = Object.getPrototypeOf(v);
+        var cname = proto &amp;&amp; proto.constructor &amp;&amp; proto.constructor.name;
+        if (cname &amp;&amp; cname !== &#39;Object&#39; &amp;&amp; cname !== &#39;Array&#39; &amp;&amp; typeof v === &#39;object&#39;) return cname + &#39; &#39; + json;
+        return json;
+      } catch (e) { return String(v); }
+    };
+    // Strings inside a Map or Set keep their quotes, as in DevTools.
+    var fmtIn = function (v) { return typeof v === &#39;string&#39; ? JSON.stringify(v) : fmt(v); };
+    [&#39;log&#39;, &#39;info&#39;, &#39;warn&#39;, &#39;error&#39;].forEach(function (k) {
+      var orig = console[k];
+      console[k] = function () {
+        send(k, Array.prototype.map.call(arguments, fmt));
+        if (orig) orig.apply(console, arguments);
+      };
+    });
+    // The document&#39;s own line numbers count the setup code mixed in with the student&#39;s code,
+    // so translate them; an error outside the student&#39;s tabs gets no line rather than a wrong one.
+    // Each lineMap entry is [firstDocLine, lastDocLine, offset, tab]; the last match wins, because
+    // a piece that starts partway through a line is the one that continues on it.
+    // An error from a separate file (&lt;script src&gt;) keeps that file&#39;s own name and line.
+    window.addEventListener(&#39;error&#39;, function (e) {
+      var m = lineMap || [], n = e.lineno, where = &#39;&#39;, file = e.filename || &#39;&#39;;
+      if (file &amp;&amp; file !== location.href) {
+        if (n) where = &#39; (&#39; + (file.split(/[?#]/)[0].split(&#39;/&#39;).pop() || file) + &#39; line &#39; + n + &#39;)&#39;;
+      } else {
+        for (var i = 0; n &amp;&amp; i &lt; m.length; i++) {
+          if (n &gt;= m[i][0] &amp;&amp; n &lt;= m[i][1]) where = &#39; (&#39; + m[i][3] + &#39; line &#39; + (n - m[i][2]) + &#39;)&#39;;
+        }
+      }
+      send(&#39;error&#39;, [e.message + where]);
+    });
+    // A rejected promise nobody handled (for example a failed await with no try/catch).
+    window.addEventListener(&#39;unhandledrejection&#39;, function (e) {
+      var r = e.reason;
+      send(&#39;error&#39;, [&#39;Uncaught (in promise) &#39; + (r instanceof Error ? r.name + &#39;: &#39; + r.message : fmt(r))]);
+    });
+
+    var panel = null;
+    function note(html) {
+      if (!document.body) return;
+      if (!panel || !panel.isConnected) {
+        panel = document.createElement(&#39;wd1-preview-note&#39;);
+        panel.style.cssText = &#39;all:initial;position:fixed;left:8px;right:8px;bottom:8px;z-index:2147483647;display:block;&#39;;
+        var root = panel.attachShadow ? panel.attachShadow({ mode: &#39;open&#39; }) : panel;
+        root.innerHTML = &#39;&lt;style&gt;.n{font:13px/1.45 system-ui,-apple-system,Segoe UI,sans-serif;color:#F3F5F8;background:#161A23;border-radius:10px;padding:10px 38px 10px 12px;box-shadow:0 8px 24px rgba(0,0,0,.35);position:relative;max-height:60vh;overflow:auto}&#39; +
+          &#39;.n b{color:#fff}.n code{font:12px ui-monospace,Menlo,Consolas,monospace;background:#2A3140;padding:1px 5px;border-radius:4px;color:#FFD89B;word-break:break-all}&#39; +
+          &#39;.n table{border-collapse:collapse;margin-top:6px;width:100%}.n td,.n th{text-align:left;border-top:1px solid #2F3747;padding:3px 6px;font-size:12px;vertical-align:top}&#39; +
+          &#39;.n th{color:#9AA3B5;font-weight:600}.n .w{color:#F2B457;margin-top:6px}.x{position:absolute;top:6px;right:6px;border:0;background:#2A3140;color:#fff;border-radius:6px;width:26px;height:26px;cursor:pointer;font-size:14px}&lt;/style&gt;&#39; +
+          &#39;&lt;div class=&quot;n&quot;&gt;&lt;button class=&quot;x&quot; aria-label=&quot;Close&quot;&gt;×&lt;/button&gt;&lt;div class=&quot;c&quot;&gt;&lt;/div&gt;&lt;/div&gt;&#39;;
+        root.querySelector(&#39;.x&#39;).addEventListener(&#39;click&#39;, function () { panel.remove(); });
+        document.body.appendChild(panel);
+      }
+      (panel.shadowRoot || panel).querySelector(&#39;.c&#39;).innerHTML = html;
+    }
+    var escH = function (s) { return String(s).replace(/[&amp;&lt;&gt;&quot;]/g, function (c) { return { &#39;&amp;&#39;: &#39;&amp;amp;&#39;, &#39;&lt;&#39;: &#39;&amp;lt;&#39;, &#39;&gt;&#39;: &#39;&amp;gt;&#39;, &#39;&quot;&#39;: &#39;&amp;quot;&#39; }[c]; }); };
+
+    document.addEventListener(&#39;click&#39;, function (e) {
+      var a = e.target &amp;&amp; e.target.closest ? e.target.closest(&#39;a[href]&#39;) : null;
+      if (!a || e.defaultPrevented) return;
+      var href = a.getAttribute(&#39;href&#39;);
+      if (href.charAt(0) === &#39;#&#39;) {
+        e.preventDefault();
+        var t = href.length &gt; 1 ? document.getElementById(decodeURIComponent(href.slice(1))) : null;
+        if (t) t.scrollIntoView({ behavior: &#39;smooth&#39; }); else window.scrollTo(0, 0);
+        return;
+      }
+      if (/^javascript:/i.test(href)) return;
+      e.preventDefault();
+      // A server playground (PHP, for example) follows links to its own pages by running the server again.
+      if (opts.server &amp;&amp; !/^[a-z][a-z0-9+.-]*:|^\/\//i.test(href) &amp;&amp; a.target !== &#39;_blank&#39;) {
+        post(&#39;nav&#39;, [], { method: &#39;GET&#39;, action: href, body: &#39;&#39;, kind: &#39;link&#39; });
+        return;
+      }
+      note(&#39;&lt;b&gt;Link clicked:&lt;/b&gt; &lt;code&gt;&#39; + escH(href) + &#39;&lt;/code&gt;&lt;br&gt;Links don\&#39;t navigate inside this preview&#39; +
+        (a.target === &#39;_blank&#39; ? &#39; (it would open in a new tab).&#39; : &#39;.&#39;));
+      send(&#39;info&#39;, [&#39;Link clicked → &#39; + href]);
+    });
+
+    window.addEventListener(&#39;submit&#39;, function (e) {
+      if (e.defaultPrevented) return;
+      e.preventDefault();
+      var f = e.target, fd;
+      try { fd = new FormData(f, e.submitter || undefined); } catch (err) { fd = new FormData(f); }
+      var method = (f.getAttribute(&#39;method&#39;) || &#39;get&#39;).toUpperCase();
+      var action = f.getAttribute(&#39;action&#39;) || &#39;(same page)&#39;;
+      var pairs = [];
+      fd.forEach(function (v, k) { pairs.push([k, typeof v === &#39;string&#39; ? v : (v &amp;&amp; v.name ? v.name : &#39;(no file)&#39;)]); });
+      var enc = pairs.map(function (p) { return encodeURIComponent(p[0]) + &#39;=&#39; + encodeURIComponent(p[1]).replace(/%20/g, &#39;+&#39;); }).join(&#39;&amp;&#39;);
+      // A server playground receives the request and answers it, just like a real server would.
+      var rawAction = f.getAttribute(&#39;action&#39;) || &#39;&#39;;
+      if (opts.server &amp;&amp; !/^[a-z][a-z0-9+.-]*:|^\/\//i.test(rawAction)) {
+        post(&#39;nav&#39;, [], { method: method === &#39;POST&#39; ? &#39;POST&#39; : &#39;GET&#39;, action: rawAction, body: enc, kind: &#39;form&#39; });
+        return;
+      }
+      var unnamed = Array.prototype.filter.call(f.querySelectorAll(&#39;input, select, textarea&#39;), function (c) {
+        return !c.name &amp;&amp; !/^(submit|button|reset|image)$/i.test(c.type);
+      }).length;
+      var html = &#39;&lt;b&gt;Form submitted&lt;/b&gt; · &lt;code&gt;&#39; + method + &#39;&lt;/code&gt; → &lt;code&gt;&#39; + escH(action) + &#39;&lt;/code&gt;&#39;;
+      if (method === &#39;GET&#39;) html += &#39;&lt;br&gt;Browser would request: &lt;code&gt;&#39; + escH((action === &#39;(same page)&#39; ? &#39;&#39; : action) + &#39;?&#39; + enc) + &#39;&lt;/code&gt;&#39;;
+      else html += &#39;&lt;br&gt;Request body: &lt;code&gt;&#39; + escH(enc || &#39;(empty)&#39;) + &#39;&lt;/code&gt;&#39;;
+      if (pairs.length) {
+        html += &#39;&lt;table&gt;&lt;tr&gt;&lt;th&gt;name&lt;/th&gt;&lt;th&gt;value&lt;/th&gt;&lt;/tr&gt;&#39; + pairs.map(function (p) { return &#39;&lt;tr&gt;&lt;td&gt;&lt;code&gt;&#39; + escH(p[0]) + &#39;&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&#39; + escH(p[1]) + &#39;&lt;/td&gt;&lt;/tr&gt;&#39;; }).join(&#39;&#39;) + &#39;&lt;/table&gt;&#39;;
+      } else html += &#39;&lt;div class=&quot;w&quot;&gt;No data was sent. Give each control a &lt;code&gt;name&lt;/code&gt; attribute.&lt;/div&gt;&#39;;
+      if (unnamed) html += &#39;&lt;div class=&quot;w&quot;&gt;&#39; + unnamed + &#39; field&#39; + (unnamed &gt; 1 ? &#39;s have&#39; : &#39; has&#39;) + &#39; no &lt;code&gt;name&lt;/code&gt;, so &#39; + (unnamed &gt; 1 ? &#39;they were&#39; : &#39;it was&#39;) + &#39; not sent.&lt;/div&gt;&#39;;
+      note(html);
+      send(&#39;info&#39;, [&#39;Form submitted: &#39; + method + &#39; &#39; + action + (enc ? &#39; · &#39; + enc : &#39;&#39;)]);
+    });
+  })(&quot;hw6-report&quot;, [[207,209,206,&quot;HTML&quot;],[211,245,210,&quot;JS&quot;]], {&quot;server&quot;:false});&lt;/script&gt;&lt;script&gt;(function () { var n = 0, t0 = 0, told = false; window.__wd1lp = function () { if (!n++) { t0 = Date.now(); Promise.resolve().then(function () { n = 0; }); } if (n % 500 === 0 &amp;&amp; Date.now() - t0 &gt; 1500) { if (!told) { told = true; console.error(&quot;Stopped a loop that kept running for more than 1.5 seconds. Check that its condition eventually becomes false, for example that the counter changes every time around.&quot;); } return true; } return false; }; })();&lt;/script&gt;&lt;style&gt;
+body { font-family: system-ui, sans-serif; margin: 16px; } /* a clean font and some room */
+label { display: block; font-weight: bold; } /* the label on its own line */
+input { font: inherit; } /* the field uses the page font */
+[aria-invalid=&quot;true&quot;] { border: 2px solid #b3261e; } /* a red border while the ID is wrong */
+[aria-invalid=&quot;false&quot;] { border: 2px solid #2f6f4e; } /* a green border once it is right */
+&lt;/style&gt;&lt;/head&gt;&lt;body&gt;
+&lt;label for=&quot;member&quot;&gt;Member ID (like RHC-1234)&lt;/label&gt; &lt;!-- the label for the member ID field --&gt;
+&lt;input id=&quot;member&quot; autocomplete=&quot;off&quot; aria-describedby=&quot;member-msg&quot;&gt; &lt;!-- the visitor types an ID here --&gt;
+&lt;p id=&quot;member-msg&quot;&gt;&lt;/p&gt; &lt;!-- the script says whether the ID looks right --&gt;
+&lt;script&gt;
+// RHC- then exactly four digits; ^ and $ forbid anything before or after
+function isMemberId(text) {
+  return /^RHC-\d{4}$/.test(text);
+}
+
+// Hour 10-12 or 1-9, a colon, then minutes 00-59
+function isMeetTime(text) {
+  return /^(1[0-2]|[1-9]):[0-5]\d$/.test(text);
+}
+
+// Split on any run of commas and/or whitespace, then drop empty strings
+function tagsFrom(text) {
+  return text
+    .trim()
+    .toLowerCase()
+    .split(/[\s,]+/)
+    .filter((tag) =&gt; tag !== &#39;&#39;);
+}
+
+const member = document.querySelector(&#39;#member&#39;);
+const memberMsg = document.querySelector(&#39;#member-msg&#39;);
+
+member.addEventListener(&#39;input&#39;, () =&gt; {
+  if (isMemberId(member.value)) {
+    member.setAttribute(&#39;aria-invalid&#39;, &#39;false&#39;);
+    memberMsg.textContent = &#39;Looks good.&#39;;
+  } else {
+    member.setAttribute(&#39;aria-invalid&#39;, &#39;true&#39;);
+    memberMsg.textContent = &#39;Use RHC- and four digits, like RHC-1234.&#39;;
+  }
+});
+
+console.log(isMemberId(&#39;RHC-0042&#39;), isMemberId(&#39;RHC-42&#39;)); // true false
+console.log(isMeetTime(&#39;8:30&#39;), isMeetTime(&#39;13:00&#39;)); // true false
+console.log(tagsFrom(&#39;Dogs,  views , Lakes&#39;)); // [&quot;dogs&quot;, &quot;views&quot;, &quot;lakes&quot;]
+&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe>
+<p class="note">The preview runs the code above, so it can be clicked and typed into.</p>
+</section>
+<section class="card" id="challenge-13">
+<h3>Challenge 9.6: The trip planner</h3>
+<p class="st ok">10 of 10 checks pass</p>
+<ul class="checks"><li class="ok"><span class="mk">&#10003; Pass</span> When the page loads, the planner is already drawn: four trips, the summary and the joined line (call <code>render()</code> once at the end of the script)</li><li class="ok"><span class="mk">&#10003; Pass</span> <code>render()</code> draws four <code>&lt;li class=&quot;trip&quot;&gt;</code> items in order, each with an <code>&lt;h2&gt;</code> title, a <code>.spots</code> line and a <code>.join</code> button with a <code>data-id</code></li><li class="ok"><span class="mk">&#10003; Pass</span> Each spots line reads like <code>6 miles, 2 spots left</code>, with <code>1 spot left</code> for exactly one</li><li class="ok"><span class="mk">&#10003; Pass</span> The full trip has the class <code>full</code> and a disabled <strong>Full</strong> button; the others have an enabled <strong>Join</strong> button</li><li class="ok"><span class="mk">&#10003; Pass</span> Joining Cedar Falls takes one spot, adds <code>&#39;falls&#39;</code> to <code>joined</code> and redraws its button as a disabled <strong>Joined</strong></li><li class="ok"><span class="mk">&#10003; Pass</span> Clicking a trip&#39;s title, its spots line or the empty list joins nothing; only the button joins</li><li class="ok"><span class="mk">&#10003; Pass</span> Typing in the search box redraws the list: <code>LA</code> leaves only Lake Loop, <code> falls </code> only Cedar Falls, and joining it keeps the search</li><li class="ok"><span class="mk">&#10003; Pass</span> <code>#summary</code> says <code>Showing 1 of 4 trips, 8 spots left</code> while searching, and the total drops with each join (7, then 6)</li><li class="ok"><span class="mk">&#10003; Pass</span> <code>#mine</code> lists the joined trips in order, or says <code>You have not joined a trip yet.</code>; a joined trip that is now full still says <strong>Joined</strong></li><li class="ok"><span class="mk">&#10003; Pass</span> Built with <code>createElement()</code> and <code>textContent</code> (no <code>innerHTML</code>) and <code>reduce()</code> for the total; one delegated click listener on the list with <code>closest()</code>, so a Join button render() did not draw works too</li></ul>
+<h4>HTML</h4>
+<pre><code>&lt;h1&gt;Riverside Hiking Club: autumn trips&lt;/h1&gt; &lt;!-- the page heading --&gt;
+&lt;label for=&quot;search&quot;&gt;Search trips&lt;/label&gt; &lt;!-- the label for the search box --&gt;
+&lt;input id=&quot;search&quot; type=&quot;search&quot; autocomplete=&quot;off&quot;&gt; &lt;!-- typing here narrows the list --&gt;
+&lt;p id=&quot;summary&quot; aria-live=&quot;polite&quot;&gt;&lt;/p&gt; &lt;!-- &#39;Showing 4 of 4 trips, 8 spots left&#39; --&gt;
+&lt;ul id=&quot;trips&quot;&gt;&lt;/ul&gt; &lt;!-- empty: render() draws the trips in here --&gt;
+&lt;p id=&quot;mine&quot; aria-live=&quot;polite&quot;&gt;&lt;/p&gt; &lt;!-- the trips this visitor has joined --&gt;</code></pre>
+<h4>CSS</h4>
+<pre><code>body { font-family: system-ui, sans-serif; margin: 16px; max-width: 34rem; } /* a clean font and a readable width */
+label { display: block; font-weight: bold; } /* the label on its own line */
+#search { font: inherit; width: 100%; } /* a full-width search box */
+#trips { list-style: none; padding: 0; } /* no bullets on the trip cards */
+.trip { border: 1px solid #c9ccd3; border-radius: 8px; padding: 10px 14px; margin-bottom: 10px; } /* each trip is a card */
+.trip h2 { font-size: 1.15rem; margin: 0; } /* the trip&#39;s title */
+.trip .spots { margin: 4px 0 8px; color: #4a5262; } /* the miles and spots line */
+.trip.full { background: #f3f4f6; } /* a full trip is greyed */
+.join { font: inherit; padding: 4px 14px; border-radius: 6px; border: 0; background: #2f6f4e; color: white; cursor: pointer; } /* the Join button */
+.join:disabled { background: #6b7280; cursor: default; } /* Full and Joined buttons are grey */</code></pre>
+<h4>JavaScript</h4>
+<pre><code>// The club&#39;s autumn trips. Your code draws the whole list from this array.
+const trips = [
+  { id: &#39;ridge&#39;, title: &#39;Autumn Ridge Walk&#39;, miles: 6, spots: 2 },
+  { id: &#39;lake&#39;, title: &#39;Lake Loop&#39;, miles: 3.5, spots: 0 },
+  { id: &#39;falls&#39;, title: &#39;Cedar Falls&#39;, miles: 9, spots: 5 },
+  { id: &#39;summit&#39;, title: &#39;Summit Sunrise&#39;, miles: 12, spots: 1 }
+];
+const joined = []; // ids of joined trips, in the order joined
+
+const list = document.querySelector(&#39;#trips&#39;);
+const search = document.querySelector(&#39;#search&#39;);
+const summary = document.querySelector(&#39;#summary&#39;);
+const mine = document.querySelector(&#39;#mine&#39;);
+
+// The ONE place that draws the page from the data
+function render() {
+  const text = search.value.trim().toLowerCase();
+  const matches = trips.filter((trip) =&gt; trip.title.toLowerCase().includes(text));
+
+  list.textContent = &#39;&#39;; // empty first, or every redraw adds more cards
+
+  matches.forEach((trip) =&gt; {
+    const li = document.createElement(&#39;li&#39;);
+    li.classList.add(&#39;trip&#39;);
+
+    const h2 = document.createElement(&#39;h2&#39;);
+    h2.textContent = trip.title;
+
+    const p = document.createElement(&#39;p&#39;);
+    p.classList.add(&#39;spots&#39;);
+    const word = trip.spots === 1 ? &#39;spot&#39; : &#39;spots&#39;;
+    p.textContent = `${trip.miles} miles, ${trip.spots} ${word} left`;
+
+    const button = document.createElement(&#39;button&#39;);
+    button.type = &#39;button&#39;;
+    button.classList.add(&#39;join&#39;);
+    button.dataset.id = trip.id;
+
+    if (trip.spots === 0) {
+      li.classList.add(&#39;full&#39;);
+    }
+    if (joined.includes(trip.id)) {
+      button.textContent = &#39;Joined&#39;;
+      button.disabled = true;
+    } else if (trip.spots === 0) {
+      button.textContent = &#39;Full&#39;;
+      button.disabled = true;
+    } else {
+      button.textContent = &#39;Join&#39;;
+    }
+
+    li.append(h2, p, button);
+    list.append(li);
+  });
+
+  // spots across ALL trips, even ones the search hides
+  const totalSpots = trips.reduce((sum, trip) =&gt; sum + trip.spots, 0);
+  summary.textContent = `Showing ${matches.length} of ${trips.length} trips, ${totalSpots} spots left`;
+
+  if (joined.length === 0) {
+    mine.textContent = &#39;You have not joined a trip yet.&#39;;
+  } else {
+    const titles = joined.map((id) =&gt; trips.find((trip) =&gt; trip.id === id).title);
+    mine.textContent = `You joined: ${titles.join(&#39;, &#39;)}`;
+  }
+}
+
+// ONE delegated listener: events change the data, then render() redraws
+list.addEventListener(&#39;click&#39;, (event) =&gt; {
+  const button = event.target.closest(&#39;.join&#39;);
+  if (!button) return;
+  const trip = trips.find((t) =&gt; t.id === button.dataset.id);
+  if (!trip || trip.spots === 0 || joined.includes(trip.id)) return;
+  trip.spots -= 1;
+  joined.push(trip.id);
+  render();
+});
+
+search.addEventListener(&#39;input&#39;, render);
+
+render(); // draw the page once at the start</code></pre>
+<h4>Console output</h4>
+<p class="empty">Nothing was printed to the console while the page loaded.</p>
+<h4>Preview</h4>
+<iframe title="Preview of Challenge 9.6: The trip planner" sandbox="allow-scripts" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;&lt;script&gt;(function previewHelper(pgId, lineMap, opts) {
+    opts = opts || {};
+    // A preview shares this site&#39;s storage, so student code gets its own corner of it: keys are
+    // stored with a prefix, and clear(), length and key() only see that corner. A student&#39;s
+    // localStorage.clear() therefore never wipes the course progress saved under wd1:v1.
+    // Property access (localStorage.theme = &#39;dark&#39;, Object.keys(localStorage)) works too.
+    (function () {
+      var P = &#39;wd1-pg:&#39;;
+      [&#39;localStorage&#39;, &#39;sessionStorage&#39;].forEach(function (name) {
+        var real;
+        try { real = window[name]; if (!real) return; } catch (e) { return; }
+        var keys = function () {
+          var out = [];
+          for (var i = 0; i &lt; real.length; i++) { var k = real.key(i); if (k &amp;&amp; k.indexOf(P) === 0) out.push(k.slice(P.length)); }
+          return out;
+        };
+        var api = {
+          getItem: function (k) { return real.getItem(P + String(k)); },
+          setItem: function (k, v) { real.setItem(P + String(k), String(v)); },
+          removeItem: function (k) { real.removeItem(P + String(k)); },
+          clear: function () { keys().forEach(function (k) { real.removeItem(P + k); }); },
+          key: function (n) { var ks = keys(); return n &gt;= 0 &amp;&amp; n &lt; ks.length ? ks[n] : null; }
+        };
+        var target = {};
+        try { if (typeof Storage !== &#39;undefined&#39;) Object.setPrototypeOf(target, Storage.prototype); } catch (e) { /* ignore */ }
+        var shim = typeof Proxy === &#39;undefined&#39; ? api : new Proxy(target, {
+          get: function (t, p) {
+            if (p === &#39;length&#39;) return keys().length;
+            if (typeof p !== &#39;string&#39; || Object.prototype.hasOwnProperty.call(api, p)) return api[p];
+            if (p in Object.prototype) return Object.prototype[p];
+            var v = real.getItem(P + p);
+            return v === null ? undefined : v;
+          },
+          set: function (t, p, v) { if (typeof p === &#39;string&#39;) real.setItem(P + p, String(v)); return true; },
+          has: function (t, p) { return typeof p === &#39;string&#39; &amp;&amp; (p in api || p === &#39;length&#39; || real.getItem(P + p) !== null); },
+          deleteProperty: function (t, p) { if (typeof p === &#39;string&#39;) real.removeItem(P + p); return true; },
+          ownKeys: function () { return keys(); },
+          getOwnPropertyDescriptor: function (t, p) {
+            var v = typeof p === &#39;string&#39; ? real.getItem(P + p) : null;
+            return v === null ? undefined : { value: v, writable: true, enumerable: true, configurable: true };
+          }
+        });
+        try { Object.defineProperty(window, name, { configurable: true, get: function () { return shim; } }); } catch (e) { /* leave it */ }
+      });
+    })();
+    var post = function (type, args, extra) {
+      var msg = { wd1pg: pgId, type: type, args: args };
+      if (extra) for (var k in extra) msg[k] = extra[k];
+      try { parent.postMessage(msg, &#39;*&#39;); } catch (e) { /* ignore */ }
+    };
+    // Cap the output of one run, so a runaway loop full of console.log cannot flood the console panel.
+    var sent = { log: 0, error: 0 }, LIMIT = { log: 1000, error: 100 };
+    var send = function (type, args) {
+      var k = type === &#39;error&#39; ? &#39;error&#39; : &#39;log&#39;;
+      if (sent[k] &gt; LIMIT[k]) return;
+      if (++sent[k] &gt; LIMIT[k]) { post(&#39;warn&#39;, [&#39;Console output stopped after &#39; + LIMIT[k] + &#39; messages. Edit the code to run it again.&#39;]); return; }
+      post(type, args);
+    };
+    var fmt = function (v) {
+      try {
+        if (typeof v === &#39;string&#39;) return v;
+        if (v === undefined) return &#39;undefined&#39;;
+        if (typeof v === &#39;function&#39;) return &#39;ƒ &#39; + (v.name || &#39;anonymous&#39;) + &#39;()&#39;;
+        if (typeof Element !== &#39;undefined&#39; &amp;&amp; v instanceof Element) {
+          return &#39;&lt;&#39; + v.tagName.toLowerCase() + (v.id ? &#39;#&#39; + v.id : &#39;&#39;) +
+            (typeof v.className === &#39;string&#39; &amp;&amp; v.className.trim() ? &#39;.&#39; + v.className.trim().split(/\s+/).join(&#39;.&#39;) : &#39;&#39;) + &#39;&gt;&#39;;
+        }
+        if (typeof NodeList !== &#39;undefined&#39; &amp;&amp; (v instanceof NodeList || v instanceof HTMLCollection)) {
+          return (v instanceof NodeList ? &#39;NodeList&#39; : &#39;HTMLCollection&#39;) + &#39;(&#39; + v.length + &#39;) [&#39; + Array.prototype.map.call(v, fmt).join(&#39;, &#39;) + &#39;]&#39;;
+        }
+        if (v instanceof Error) return v.name + &#39;: &#39; + v.message;
+        if (typeof Event !== &#39;undefined&#39; &amp;&amp; v instanceof Event) return v.constructor.name + &#39; { type: &quot;&#39; + v.type + &#39;&quot; }&#39;;
+        if (typeof v === &#39;symbol&#39; || typeof v === &#39;bigint&#39;) return typeof v === &#39;bigint&#39; ? v + &#39;n&#39; : v.toString();
+        // A promise is still pending at the moment it is logged in nearly every real case.
+        if (typeof Promise !== &#39;undefined&#39; &amp;&amp; v instanceof Promise) return &#39;Promise {&lt;pending&gt;}&#39;;
+        if (typeof Map !== &#39;undefined&#39; &amp;&amp; v instanceof Map) {
+          var mp = []; v.forEach(function (val, key) { mp.push(fmtIn(key) + &#39; =&gt; &#39; + fmtIn(val)); });
+          return &#39;Map(&#39; + v.size + &#39;) {&#39; + mp.join(&#39;, &#39;) + &#39;}&#39;;
+        }
+        if (typeof Set !== &#39;undefined&#39; &amp;&amp; v instanceof Set) {
+          var st = []; v.forEach(function (val) { st.push(fmtIn(val)); });
+          return &#39;Set(&#39; + v.size + &#39;) {&#39; + st.join(&#39;, &#39;) + &#39;}&#39;;
+        }
+        if (v instanceof Date) return isNaN(v) ? &#39;Invalid Date&#39; : v.toString();
+        var json = JSON.stringify(v, function (k, x) {
+          if (typeof x === &#39;function&#39;) return &#39;__wd1fn__&#39; + (x.name || &#39;anonymous&#39;) + &#39;__&#39;;
+          if (x === undefined) return &#39;__wd1undef__&#39;;
+          return x;
+        }, 1);
+        json = json === undefined ? String(v) : json.replace(/\n\s*/g, &#39; &#39;).replace(/&quot;__wd1undef__&quot;/g, &#39;undefined&#39;)
+          .replace(/&quot;__wd1fn__([\w$]*)__&quot;/g, &#39;ƒ $1()&#39;);
+        // Objects made by a class (or a constructor function) show the class name first, like DevTools.
+        var proto = Object.getPrototypeOf(v);
+        var cname = proto &amp;&amp; proto.constructor &amp;&amp; proto.constructor.name;
+        if (cname &amp;&amp; cname !== &#39;Object&#39; &amp;&amp; cname !== &#39;Array&#39; &amp;&amp; typeof v === &#39;object&#39;) return cname + &#39; &#39; + json;
+        return json;
+      } catch (e) { return String(v); }
+    };
+    // Strings inside a Map or Set keep their quotes, as in DevTools.
+    var fmtIn = function (v) { return typeof v === &#39;string&#39; ? JSON.stringify(v) : fmt(v); };
+    [&#39;log&#39;, &#39;info&#39;, &#39;warn&#39;, &#39;error&#39;].forEach(function (k) {
+      var orig = console[k];
+      console[k] = function () {
+        send(k, Array.prototype.map.call(arguments, fmt));
+        if (orig) orig.apply(console, arguments);
+      };
+    });
+    // The document&#39;s own line numbers count the setup code mixed in with the student&#39;s code,
+    // so translate them; an error outside the student&#39;s tabs gets no line rather than a wrong one.
+    // Each lineMap entry is [firstDocLine, lastDocLine, offset, tab]; the last match wins, because
+    // a piece that starts partway through a line is the one that continues on it.
+    // An error from a separate file (&lt;script src&gt;) keeps that file&#39;s own name and line.
+    window.addEventListener(&#39;error&#39;, function (e) {
+      var m = lineMap || [], n = e.lineno, where = &#39;&#39;, file = e.filename || &#39;&#39;;
+      if (file &amp;&amp; file !== location.href) {
+        if (n) where = &#39; (&#39; + (file.split(/[?#]/)[0].split(&#39;/&#39;).pop() || file) + &#39; line &#39; + n + &#39;)&#39;;
+      } else {
+        for (var i = 0; n &amp;&amp; i &lt; m.length; i++) {
+          if (n &gt;= m[i][0] &amp;&amp; n &lt;= m[i][1]) where = &#39; (&#39; + m[i][3] + &#39; line &#39; + (n - m[i][2]) + &#39;)&#39;;
+        }
+      }
+      send(&#39;error&#39;, [e.message + where]);
+    });
+    // A rejected promise nobody handled (for example a failed await with no try/catch).
+    window.addEventListener(&#39;unhandledrejection&#39;, function (e) {
+      var r = e.reason;
+      send(&#39;error&#39;, [&#39;Uncaught (in promise) &#39; + (r instanceof Error ? r.name + &#39;: &#39; + r.message : fmt(r))]);
+    });
+
+    var panel = null;
+    function note(html) {
+      if (!document.body) return;
+      if (!panel || !panel.isConnected) {
+        panel = document.createElement(&#39;wd1-preview-note&#39;);
+        panel.style.cssText = &#39;all:initial;position:fixed;left:8px;right:8px;bottom:8px;z-index:2147483647;display:block;&#39;;
+        var root = panel.attachShadow ? panel.attachShadow({ mode: &#39;open&#39; }) : panel;
+        root.innerHTML = &#39;&lt;style&gt;.n{font:13px/1.45 system-ui,-apple-system,Segoe UI,sans-serif;color:#F3F5F8;background:#161A23;border-radius:10px;padding:10px 38px 10px 12px;box-shadow:0 8px 24px rgba(0,0,0,.35);position:relative;max-height:60vh;overflow:auto}&#39; +
+          &#39;.n b{color:#fff}.n code{font:12px ui-monospace,Menlo,Consolas,monospace;background:#2A3140;padding:1px 5px;border-radius:4px;color:#FFD89B;word-break:break-all}&#39; +
+          &#39;.n table{border-collapse:collapse;margin-top:6px;width:100%}.n td,.n th{text-align:left;border-top:1px solid #2F3747;padding:3px 6px;font-size:12px;vertical-align:top}&#39; +
+          &#39;.n th{color:#9AA3B5;font-weight:600}.n .w{color:#F2B457;margin-top:6px}.x{position:absolute;top:6px;right:6px;border:0;background:#2A3140;color:#fff;border-radius:6px;width:26px;height:26px;cursor:pointer;font-size:14px}&lt;/style&gt;&#39; +
+          &#39;&lt;div class=&quot;n&quot;&gt;&lt;button class=&quot;x&quot; aria-label=&quot;Close&quot;&gt;×&lt;/button&gt;&lt;div class=&quot;c&quot;&gt;&lt;/div&gt;&lt;/div&gt;&#39;;
+        root.querySelector(&#39;.x&#39;).addEventListener(&#39;click&#39;, function () { panel.remove(); });
+        document.body.appendChild(panel);
+      }
+      (panel.shadowRoot || panel).querySelector(&#39;.c&#39;).innerHTML = html;
+    }
+    var escH = function (s) { return String(s).replace(/[&amp;&lt;&gt;&quot;]/g, function (c) { return { &#39;&amp;&#39;: &#39;&amp;amp;&#39;, &#39;&lt;&#39;: &#39;&amp;lt;&#39;, &#39;&gt;&#39;: &#39;&amp;gt;&#39;, &#39;&quot;&#39;: &#39;&amp;quot;&#39; }[c]; }); };
+
+    document.addEventListener(&#39;click&#39;, function (e) {
+      var a = e.target &amp;&amp; e.target.closest ? e.target.closest(&#39;a[href]&#39;) : null;
+      if (!a || e.defaultPrevented) return;
+      var href = a.getAttribute(&#39;href&#39;);
+      if (href.charAt(0) === &#39;#&#39;) {
+        e.preventDefault();
+        var t = href.length &gt; 1 ? document.getElementById(decodeURIComponent(href.slice(1))) : null;
+        if (t) t.scrollIntoView({ behavior: &#39;smooth&#39; }); else window.scrollTo(0, 0);
+        return;
+      }
+      if (/^javascript:/i.test(href)) return;
+      e.preventDefault();
+      // A server playground (PHP, for example) follows links to its own pages by running the server again.
+      if (opts.server &amp;&amp; !/^[a-z][a-z0-9+.-]*:|^\/\//i.test(href) &amp;&amp; a.target !== &#39;_blank&#39;) {
+        post(&#39;nav&#39;, [], { method: &#39;GET&#39;, action: href, body: &#39;&#39;, kind: &#39;link&#39; });
+        return;
+      }
+      note(&#39;&lt;b&gt;Link clicked:&lt;/b&gt; &lt;code&gt;&#39; + escH(href) + &#39;&lt;/code&gt;&lt;br&gt;Links don\&#39;t navigate inside this preview&#39; +
+        (a.target === &#39;_blank&#39; ? &#39; (it would open in a new tab).&#39; : &#39;.&#39;));
+      send(&#39;info&#39;, [&#39;Link clicked → &#39; + href]);
+    });
+
+    window.addEventListener(&#39;submit&#39;, function (e) {
+      if (e.defaultPrevented) return;
+      e.preventDefault();
+      var f = e.target, fd;
+      try { fd = new FormData(f, e.submitter || undefined); } catch (err) { fd = new FormData(f); }
+      var method = (f.getAttribute(&#39;method&#39;) || &#39;get&#39;).toUpperCase();
+      var action = f.getAttribute(&#39;action&#39;) || &#39;(same page)&#39;;
+      var pairs = [];
+      fd.forEach(function (v, k) { pairs.push([k, typeof v === &#39;string&#39; ? v : (v &amp;&amp; v.name ? v.name : &#39;(no file)&#39;)]); });
+      var enc = pairs.map(function (p) { return encodeURIComponent(p[0]) + &#39;=&#39; + encodeURIComponent(p[1]).replace(/%20/g, &#39;+&#39;); }).join(&#39;&amp;&#39;);
+      // A server playground receives the request and answers it, just like a real server would.
+      var rawAction = f.getAttribute(&#39;action&#39;) || &#39;&#39;;
+      if (opts.server &amp;&amp; !/^[a-z][a-z0-9+.-]*:|^\/\//i.test(rawAction)) {
+        post(&#39;nav&#39;, [], { method: method === &#39;POST&#39; ? &#39;POST&#39; : &#39;GET&#39;, action: rawAction, body: enc, kind: &#39;form&#39; });
+        return;
+      }
+      var unnamed = Array.prototype.filter.call(f.querySelectorAll(&#39;input, select, textarea&#39;), function (c) {
+        return !c.name &amp;&amp; !/^(submit|button|reset|image)$/i.test(c.type);
+      }).length;
+      var html = &#39;&lt;b&gt;Form submitted&lt;/b&gt; · &lt;code&gt;&#39; + method + &#39;&lt;/code&gt; → &lt;code&gt;&#39; + escH(action) + &#39;&lt;/code&gt;&#39;;
+      if (method === &#39;GET&#39;) html += &#39;&lt;br&gt;Browser would request: &lt;code&gt;&#39; + escH((action === &#39;(same page)&#39; ? &#39;&#39; : action) + &#39;?&#39; + enc) + &#39;&lt;/code&gt;&#39;;
+      else html += &#39;&lt;br&gt;Request body: &lt;code&gt;&#39; + escH(enc || &#39;(empty)&#39;) + &#39;&lt;/code&gt;&#39;;
+      if (pairs.length) {
+        html += &#39;&lt;table&gt;&lt;tr&gt;&lt;th&gt;name&lt;/th&gt;&lt;th&gt;value&lt;/th&gt;&lt;/tr&gt;&#39; + pairs.map(function (p) { return &#39;&lt;tr&gt;&lt;td&gt;&lt;code&gt;&#39; + escH(p[0]) + &#39;&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&#39; + escH(p[1]) + &#39;&lt;/td&gt;&lt;/tr&gt;&#39;; }).join(&#39;&#39;) + &#39;&lt;/table&gt;&#39;;
+      } else html += &#39;&lt;div class=&quot;w&quot;&gt;No data was sent. Give each control a &lt;code&gt;name&lt;/code&gt; attribute.&lt;/div&gt;&#39;;
+      if (unnamed) html += &#39;&lt;div class=&quot;w&quot;&gt;&#39; + unnamed + &#39; field&#39; + (unnamed &gt; 1 ? &#39;s have&#39; : &#39; has&#39;) + &#39; no &lt;code&gt;name&lt;/code&gt;, so &#39; + (unnamed &gt; 1 ? &#39;they were&#39; : &#39;it was&#39;) + &#39; not sent.&lt;/div&gt;&#39;;
+      note(html);
+      send(&#39;info&#39;, [&#39;Form submitted: &#39; + method + &#39; &#39; + action + (enc ? &#39; · &#39; + enc : &#39;&#39;)]);
+    });
+  })(&quot;hw6-report&quot;, [[212,217,211,&quot;HTML&quot;],[219,299,218,&quot;JS&quot;]], {&quot;server&quot;:false});&lt;/script&gt;&lt;script&gt;(function () { var n = 0, t0 = 0, told = false; window.__wd1lp = function () { if (!n++) { t0 = Date.now(); Promise.resolve().then(function () { n = 0; }); } if (n % 500 === 0 &amp;&amp; Date.now() - t0 &gt; 1500) { if (!told) { told = true; console.error(&quot;Stopped a loop that kept running for more than 1.5 seconds. Check that its condition eventually becomes false, for example that the counter changes every time around.&quot;); } return true; } return false; }; })();&lt;/script&gt;&lt;style&gt;
+body { font-family: system-ui, sans-serif; margin: 16px; max-width: 34rem; } /* a clean font and a readable width */
+label { display: block; font-weight: bold; } /* the label on its own line */
+#search { font: inherit; width: 100%; } /* a full-width search box */
+#trips { list-style: none; padding: 0; } /* no bullets on the trip cards */
+.trip { border: 1px solid #c9ccd3; border-radius: 8px; padding: 10px 14px; margin-bottom: 10px; } /* each trip is a card */
+.trip h2 { font-size: 1.15rem; margin: 0; } /* the trip&#39;s title */
+.trip .spots { margin: 4px 0 8px; color: #4a5262; } /* the miles and spots line */
+.trip.full { background: #f3f4f6; } /* a full trip is greyed */
+.join { font: inherit; padding: 4px 14px; border-radius: 6px; border: 0; background: #2f6f4e; color: white; cursor: pointer; } /* the Join button */
+.join:disabled { background: #6b7280; cursor: default; } /* Full and Joined buttons are grey */
+&lt;/style&gt;&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Riverside Hiking Club: autumn trips&lt;/h1&gt; &lt;!-- the page heading --&gt;
+&lt;label for=&quot;search&quot;&gt;Search trips&lt;/label&gt; &lt;!-- the label for the search box --&gt;
+&lt;input id=&quot;search&quot; type=&quot;search&quot; autocomplete=&quot;off&quot;&gt; &lt;!-- typing here narrows the list --&gt;
+&lt;p id=&quot;summary&quot; aria-live=&quot;polite&quot;&gt;&lt;/p&gt; &lt;!-- &#39;Showing 4 of 4 trips, 8 spots left&#39; --&gt;
+&lt;ul id=&quot;trips&quot;&gt;&lt;/ul&gt; &lt;!-- empty: render() draws the trips in here --&gt;
+&lt;p id=&quot;mine&quot; aria-live=&quot;polite&quot;&gt;&lt;/p&gt; &lt;!-- the trips this visitor has joined --&gt;
+&lt;script&gt;
+// The club&#39;s autumn trips. Your code draws the whole list from this array.
+const trips = [
+  { id: &#39;ridge&#39;, title: &#39;Autumn Ridge Walk&#39;, miles: 6, spots: 2 },
+  { id: &#39;lake&#39;, title: &#39;Lake Loop&#39;, miles: 3.5, spots: 0 },
+  { id: &#39;falls&#39;, title: &#39;Cedar Falls&#39;, miles: 9, spots: 5 },
+  { id: &#39;summit&#39;, title: &#39;Summit Sunrise&#39;, miles: 12, spots: 1 }
+];
+const joined = []; // ids of joined trips, in the order joined
+
+const list = document.querySelector(&#39;#trips&#39;);
+const search = document.querySelector(&#39;#search&#39;);
+const summary = document.querySelector(&#39;#summary&#39;);
+const mine = document.querySelector(&#39;#mine&#39;);
+
+// The ONE place that draws the page from the data
+function render() {
+  const text = search.value.trim().toLowerCase();
+  const matches = trips.filter((trip) =&gt; trip.title.toLowerCase().includes(text));
+
+  list.textContent = &#39;&#39;; // empty first, or every redraw adds more cards
+
+  matches.forEach((trip) =&gt; {
+    const li = document.createElement(&#39;li&#39;);
+    li.classList.add(&#39;trip&#39;);
+
+    const h2 = document.createElement(&#39;h2&#39;);
+    h2.textContent = trip.title;
+
+    const p = document.createElement(&#39;p&#39;);
+    p.classList.add(&#39;spots&#39;);
+    const word = trip.spots === 1 ? &#39;spot&#39; : &#39;spots&#39;;
+    p.textContent = `${trip.miles} miles, ${trip.spots} ${word} left`;
+
+    const button = document.createElement(&#39;button&#39;);
+    button.type = &#39;button&#39;;
+    button.classList.add(&#39;join&#39;);
+    button.dataset.id = trip.id;
+
+    if (trip.spots === 0) {
+      li.classList.add(&#39;full&#39;);
+    }
+    if (joined.includes(trip.id)) {
+      button.textContent = &#39;Joined&#39;;
+      button.disabled = true;
+    } else if (trip.spots === 0) {
+      button.textContent = &#39;Full&#39;;
+      button.disabled = true;
+    } else {
+      button.textContent = &#39;Join&#39;;
+    }
+
+    li.append(h2, p, button);
+    list.append(li);
+  });
+
+  // spots across ALL trips, even ones the search hides
+  const totalSpots = trips.reduce((sum, trip) =&gt; sum + trip.spots, 0);
+  summary.textContent = `Showing ${matches.length} of ${trips.length} trips, ${totalSpots} spots left`;
+
+  if (joined.length === 0) {
+    mine.textContent = &#39;You have not joined a trip yet.&#39;;
+  } else {
+    const titles = joined.map((id) =&gt; trips.find((trip) =&gt; trip.id === id).title);
+    mine.textContent = `You joined: ${titles.join(&#39;, &#39;)}`;
+  }
+}
+
+// ONE delegated listener: events change the data, then render() redraws
+list.addEventListener(&#39;click&#39;, (event) =&gt; {
+  const button = event.target.closest(&#39;.join&#39;);
+  if (!button) return;
+  const trip = trips.find((t) =&gt; t.id === button.dataset.id);
+  if (!trip || trip.spots === 0 || joined.includes(trip.id)) return;
+  trip.spots -= 1;
+  joined.push(trip.id);
+  render();
+});
+
+search.addEventListener(&#39;input&#39;, render);
+
+render(); // draw the page once at the start
+&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe>
+<p class="note">The preview runs the code above, so it can be clicked and typed into.</p>
+</section>
+<h2>Quizzes</h2>
+<table>
+<caption>Quiz results recorded in the browser</caption>
+<thead><tr><th scope="col">Quiz</th><th scope="col">Latest</th><th scope="col">Best</th><th scope="col">Attempts</th></tr></thead>
+<tbody>
+<tr><th scope="row">Quiz: what JavaScript is and where it goes</th><td>6 of 6</td><td>6 of 6</td><td>2</td></tr>
+<tr><th scope="row">What does the console print?</th><td>8 of 8</td><td>8 of 8</td><td>3</td></tr>
+<tr><th scope="row">Quiz: variables and data types</th><td>6 of 6</td><td>6 of 6</td><td>1</td></tr>
+<tr><th scope="row">Quiz: conditionals</th><td>5 of 5</td><td>5 of 5</td><td>2</td></tr>
+<tr><th scope="row">Quiz: loops and arrays</th><td>7 of 7</td><td>7 of 7</td><td>2</td></tr>
+<tr><th scope="row">Quiz: objects</th><td>5 of 5</td><td>5 of 5</td><td>2</td></tr>
+<tr><th scope="row">Quiz: functions, scope and closures</th><td>6 of 6</td><td>6 of 6</td><td>2</td></tr>
+<tr><th scope="row">Quiz: the DOM</th><td>6 of 6</td><td>6 of 6</td><td>2</td></tr>
+<tr><th scope="row">Quiz: events and event types</th><td>6 of 6</td><td>6 of 6</td><td>1</td></tr>
+<tr><th scope="row">Quiz: forms and regular expressions</th><td>7 of 7</td><td>7 of 7</td><td>2</td></tr>
+</tbody>
+</table>
+<h2>Written answers</h2>
+<div class="card">
+<p class="q">In Challenge 8.1, the script in the &lt;head&gt; found nothing until you changed it. Explain why, and describe two different ways to make sure a script runs only after the elements it needs exist.</p>
+<p class="answer">It found nothing because the browser reads the HTML from top to bottom and runs a &lt;script&gt; as soon as it reaches it. A script in the &lt;head&gt; runs before the browser has reached the &lt;body&gt;, so the elements it looks for don’t exist yet. You can add defer to the script tag or move the script to the end of the body element.</p>
+</div>
+<div class="card">
+<p class="q">A text box gives your script the value &#39;5&#39;. Explain why &#39;5&#39; + 1 and Number(&#39;5&#39;) + 1 give different results, and why === is a safer way than == to compare values like these.</p>
+<p class="answer">They give different results because text boxes always return a string. When either side of + is a string, JavaScript joins the values as text instead of adding them. Number(&#39;5&#39;) + 1 gives 6, because Number() turns the string into a real number first. === is safer than == because == quietly converts types before comparing, so &#39;5&#39; == 5 and even &#39;&#39; == 0 are true. === checks type and value with no conversion, so &#39;5&#39; === 5 is false, and you have to convert the input yourself, which keeps the code clear and avoids hidden bugs.</p>
+</div>
+<div class="card">
+<p class="q">Explain how makeBottle keeps each bottle&#39;s water separate and private. Where does the water variable live, and why does it still exist after makeBottle has finished running?</p>
+<p class="answer">Water is a local variable declared with let inside makeBottle, and it starts at capacity. Each call creates a new object with its own water, so makeBottle 1000 and makeBottle 500 give mine and yours two completely separate variables. The variable is private because nothing outside the function can reach it. The variable water still exists after makeBottle returns because of a closure. JavaScript keeps that water alive for as long as the bottle object exists.</p>
+</div>
+<div class="card">
+<p class="q">Explain why you should use textContent rather than innerHTML to show text that a visitor typed. What could go wrong with innerHTML?</p>
+<p class="answer">You should use textContent because it shows a visitor’s input as plain text, so &lt;b&gt;hi&lt;/b&gt; appears exactly as typed. Now innerHTML turns the input into real HTML, which lets an attacker inject code. This is called cross-site scripting (XSS).  Real attacker could use the same trick to steal cookies or change the page for other visitors. textContent keeps user input as harmless text that can’t run.</p>
+</div>
+<div class="card">
+<p class="q">Explain event delegation in your own words. Why does one listener on #filters hear clicks on every button, and why do you need closest() instead of using event.target as it is?</p>
+<p class="answer">Event delegation means putting one listener on a parent instead of one on each child. Clicks bubble up from the clicked element through its ancestors, so every click on a button inside #filters reaches #filters, and one listener hears them all, even buttons added later. event.target is the exact element clicked, which might be a &lt;span&gt; or icon inside the button, or the gap between buttons. event.target.closest(&#39;button&#39;) walks up to the nearest button, or returns null if the click wasn’t on one, so you always get the button itself.</p>
+</div>
+<div class="card">
+<p class="q">Your script checks the sign-up form before anything is sent. Explain why the club&#39;s server must still check the same data, and how aria-invalid and a text message under each field help a visitor who cannot see a red border.</p>
+<p class="answer">The club&#39;s server must still check the same data because the browser check is only a convenience for the visitor, and anyone can turn off JavaScript, edit the page in DevTools or send data straight to the server without the form. The server is the only check visitors can’t skip, so it must validate the data again before saving it. For visitors who can’t see a red border, aria-invalid=&quot;true&quot; tells screen readers the field has an error. A text message under the field, linked with aria-describedby, explains what’s wrong, such as “Enter a valid email.” This works for screen reader users, people with color blindness and everyone else.</p>
+</div>
+</main>
+</body>
+</html>
